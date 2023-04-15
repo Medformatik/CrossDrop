@@ -37,6 +37,12 @@ dependencies:
   multicast_dns: ^0.3.2+3
   protobuf: ^2.1.0
   protoc_plugin: ^20.0.1
+  provider: ^6.0.5
+  system_tray: ^2.0.2
+  window_manager:
+    git:
+      url: https://github.com/leanflutter/window_manager.git
+      ref: main
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -51,6 +57,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/sf_symbols/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
