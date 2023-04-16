@@ -1,24 +1,135 @@
-import 'package:crossdrop/pages/buttons_page.dart';
-import 'package:crossdrop/pages/colors_page.dart';
-import 'package:crossdrop/pages/dialogs_page.dart';
-import 'package:crossdrop/pages/fields_page.dart';
-import 'package:crossdrop/pages/indicators_page.dart';
-import 'package:crossdrop/pages/selectors_page.dart';
-import 'package:crossdrop/pages/sliver_toolbar_page.dart';
-import 'package:crossdrop/pages/tabview_page.dart';
-import 'package:crossdrop/pages/toolbar_page.dart';
-import 'package:flutter/cupertino.dart';
+import 'dart:async';
+import 'dart:io';
+
+import 'package:crossdrop/window/platform_menu_bar.dart';
+import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:window_manager/window_manager.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:system_tray/system_tray.dart';
 
 import 'theme.dart';
 
-void main() {
-  runApp(const MacosUIGalleryApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await windowManager.ensureInitialized();
+
+  WindowOptions windowOptions = const WindowOptions(
+    center: true,
+    backgroundColor: Colors.transparent,
+    skipTaskbar: false,
+    titleBarStyle: TitleBarStyle.hidden,
+    windowButtonVisibility: true,
+    minimumSize: Size(400, 250),
+    maximumSize: Size(800, 600),
+    title: 'Crossdrop',
+  );
+
+  windowManager.waitUntilReadyToShow(windowOptions, () async {
+    await windowManager.show();
+    await windowManager.focus();
+  });
+
+  runApp(const App());
 }
 
-class MacosUIGalleryApp extends StatelessWidget {
-  const MacosUIGalleryApp({super.key});
+class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
+
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  final TextEditingController _deviceNameController = TextEditingController();
+
+  final SystemTray _systemTray = SystemTray();
+  final Menu menu = Menu();
+
+  @override
+  void initState() {
+    super.initState();
+    initSystemTray();
+    initDeviceNameController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _deviceNameController.dispose();
+  }
+
+  Future<void> initSystemTray() async {
+    String path = Platform.isWindows ? 'assets/icons/app_icon.ico' : 'assets/icons/app_icon.png';
+
+    // We first init the systray menu and then add the menu entries
+    await _systemTray.initSystemTray(iconPath: path, toolTip: 'Crossdrop: Nearby Share for all platforms');
+
+    // handle system tray event
+    _systemTray.registerSystemTrayEventHandler((eventName) {
+      if (eventName == kSystemTrayEventClick) {
+        Platform.isWindows ? windowManager.show() : _systemTray.popUpContextMenu();
+      } else if (eventName == kSystemTrayEventRightClick) {
+        Platform.isWindows ? _systemTray.popUpContextMenu() : windowManager.show();
+      }
+    });
+
+    await menu.buildFrom([
+      MenuItemLabel(label: 'Show', onClicked: (menuItem) => windowManager.show()),
+      MenuItemLabel(label: 'Hide', onClicked: (menuItem) => windowManager.hide()),
+      MenuItemLabel(label: 'Exit', onClicked: (menuItem) => windowManager.close()),
+    ]);
+
+    _systemTray.setContextMenu(menu);
+  }
+
+  Future<void> initDeviceNameController() async {
+    // Get deviceName from SharedPreferences and device name from device_info_plus
+    // If text in controller is empty, set to deviceName from SharedPreferences if it exists and is not empty, otherwise set to device name from device_info_plus
+    SharedPreferences.getInstance().then((prefs) {
+      String deviceName = prefs.getString('deviceName') ?? '';
+      if (deviceName.isEmpty) {
+        DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+        if (Platform.isIOS) {
+          deviceInfo.iosInfo.then((info) {
+            deviceName = info.name ?? info.model ?? '';
+            SharedPreferences.getInstance().then((prefs) {
+              prefs.setString('deviceName', deviceName);
+              setState(() {
+                _deviceNameController.text = deviceName;
+              });
+            });
+          });
+        } else if (Platform.isMacOS) {
+          deviceInfo.macOsInfo.then((info) {
+            deviceName = info.computerName;
+            SharedPreferences.getInstance().then((prefs) {
+              prefs.setString('deviceName', deviceName);
+              setState(() {
+                _deviceNameController.text = deviceName;
+              });
+            });
+          });
+        } else if (Platform.isLinux) {
+          deviceInfo.linuxInfo.then((info) {
+            deviceName = info.prettyName;
+            SharedPreferences.getInstance().then((prefs) {
+              prefs.setString('deviceName', deviceName);
+              setState(() {
+                _deviceNameController.text = deviceName;
+              });
+            });
+          });
+        }
+      } else {
+        setState(() {
+          _deviceNameController.text = deviceName;
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,271 +138,51 @@ class MacosUIGalleryApp extends StatelessWidget {
       builder: (context, _) {
         final appTheme = context.watch<AppTheme>();
         return MacosApp(
-          title: 'macos_ui Widget Gallery',
+          title: 'Crossdrop',
           theme: MacosThemeData.light(),
           darkTheme: MacosThemeData.dark(),
           themeMode: appTheme.mode,
           debugShowCheckedModeBanner: false,
-          home: const WidgetGallery(),
+          home: AppPlatformMenuBar(
+            child: MacosWindow(
+              child: MacosScaffold(
+                toolBar: const ToolBar(
+                  title: Text(
+                    'Crossdrop',
+                    textAlign: TextAlign.center,
+                  ),
+                  centerTitle: true,
+                ),
+                children: [
+                  ContentArea(
+                    builder: (context, scrollController) {
+                      return SingleChildScrollView(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              width: 300.0,
+                              child: MacosTextField(
+                                placeholder: 'Device name',
+                                maxLines: 1,
+                                controller: _deviceNameController,
+                                onEditingComplete: () async {
+                                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                                  prefs.setString('deviceName', _deviceNameController.text);
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
         );
       },
-    );
-  }
-}
-
-class WidgetGallery extends StatefulWidget {
-  const WidgetGallery({super.key});
-
-  @override
-  State<WidgetGallery> createState() => _WidgetGalleryState();
-}
-
-class _WidgetGalleryState extends State<WidgetGallery> {
-  double ratingValue = 0;
-  double sliderValue = 0;
-  bool value = false;
-
-  int pageIndex = 0;
-
-  late final searchFieldController = TextEditingController();
-
-  final List<Widget> pages = [
-    CupertinoTabView(
-      builder: (_) => const ButtonsPage(),
-    ),
-    const IndicatorsPage(),
-    const FieldsPage(),
-    const ColorsPage(),
-    const Center(
-      child: MacosIcon(
-        CupertinoIcons.add,
-      ),
-    ),
-    const DialogsPage(),
-    const ToolbarPage(),
-    const SliverToolbarPage(),
-    const TabViewPage(),
-    const SelectorsPage(),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return PlatformMenuBar(
-      menus: const [
-        PlatformMenu(
-          label: 'macos_ui Widget Gallery',
-          menus: [
-            PlatformProvidedMenuItem(
-              type: PlatformProvidedMenuItemType.about,
-            ),
-            PlatformProvidedMenuItem(
-              type: PlatformProvidedMenuItemType.quit,
-            ),
-          ],
-        ),
-        PlatformMenu(
-          label: 'View',
-          menus: [
-            PlatformProvidedMenuItem(
-              type: PlatformProvidedMenuItemType.toggleFullScreen,
-            ),
-          ],
-        ),
-        PlatformMenu(
-          label: 'Window',
-          menus: [
-            PlatformProvidedMenuItem(
-              type: PlatformProvidedMenuItemType.minimizeWindow,
-            ),
-            PlatformProvidedMenuItem(
-              type: PlatformProvidedMenuItemType.zoomWindow,
-            ),
-          ],
-        ),
-      ],
-      child: MacosWindow(
-        sidebar: Sidebar(
-          top: MacosSearchField(
-            placeholder: 'Search',
-            controller: searchFieldController,
-            onResultSelected: (result) {
-              switch (result.searchKey) {
-                case 'Buttons':
-                  setState(() {
-                    pageIndex = 0;
-                    searchFieldController.clear();
-                  });
-                  break;
-                case 'Indicators':
-                  setState(() {
-                    pageIndex = 1;
-                    searchFieldController.clear();
-                  });
-                  break;
-                case 'Fields':
-                  setState(() {
-                    pageIndex = 2;
-                    searchFieldController.clear();
-                  });
-                  break;
-                case 'Colors':
-                  setState(() {
-                    pageIndex = 3;
-                    searchFieldController.clear();
-                  });
-                  break;
-                case 'Dialogs and Sheets':
-                  setState(() {
-                    pageIndex = 5;
-                    searchFieldController.clear();
-                  });
-                  break;
-                case 'Toolbar':
-                  setState(() {
-                    pageIndex = 6;
-                    searchFieldController.clear();
-                  });
-                  break;
-                case 'Selectors':
-                  setState(() {
-                    pageIndex = 7;
-                    searchFieldController.clear();
-                  });
-                  break;
-                default:
-                  searchFieldController.clear();
-              }
-            },
-            results: const [
-              SearchResultItem('Buttons'),
-              SearchResultItem('Indicators'),
-              SearchResultItem('Fields'),
-              SearchResultItem('Colors'),
-              SearchResultItem('Dialogs and Sheets'),
-              SearchResultItem('Toolbar'),
-              SearchResultItem('Selectors'),
-            ],
-          ),
-          minWidth: 200,
-          builder: (context, scrollController) {
-            return SidebarItems(
-              currentIndex: pageIndex,
-              onChanged: (i) => setState(() => pageIndex = i),
-              scrollController: scrollController,
-              itemSize: SidebarItemSize.large,
-              items: [
-                const SidebarItem(
-                  // leading: MacosIcon(CupertinoIcons.square_on_circle),
-                  leading: MacosImageIcon(
-                    AssetImage(
-                      'assets/sf_symbols/button_programmable_2x.png',
-                    ),
-                  ),
-                  label: Text('Buttons'),
-                ),
-                const SidebarItem(
-                  leading: MacosImageIcon(
-                    AssetImage(
-                      'assets/sf_symbols/lines_measurement_horizontal_2x.png',
-                    ),
-                  ),
-                  label: Text('Indicators'),
-                ),
-                const SidebarItem(
-                  leading: MacosImageIcon(
-                    AssetImage(
-                      'assets/sf_symbols/character_cursor_ibeam_2x.png',
-                    ),
-                  ),
-                  label: Text('Fields'),
-                ),
-                SidebarItem(
-                  leading: const MacosIcon(CupertinoIcons.folder),
-                  label: const Text('Disclosure'),
-                  trailing: Text(
-                    '2',
-                    style: TextStyle(
-                      color: MacosTheme.brightnessOf(context) == Brightness.dark ? MacosColors.tertiaryLabelColor.darkColor : MacosColors.tertiaryLabelColor,
-                    ),
-                  ),
-                  disclosureItems: [
-                    const SidebarItem(
-                      leading: MacosImageIcon(
-                        AssetImage(
-                          'assets/sf_symbols/rectangle_3_group_2x.png',
-                        ),
-                      ),
-                      label: Text('Colors'),
-                    ),
-                    const SidebarItem(
-                      leading: MacosIcon(CupertinoIcons.infinite),
-                      label: Text('Item 3'),
-                    ),
-                  ],
-                ),
-                const SidebarItem(
-                  leading: MacosIcon(CupertinoIcons.square_on_square),
-                  label: Text('Dialogs & Sheets'),
-                ),
-                const SidebarItem(
-                  leading: MacosImageIcon(
-                    AssetImage(
-                      'assets/sf_symbols/macwindow.on.rectangle_2x.png',
-                    ),
-                  ),
-                  label: Text('Layout'),
-                  disclosureItems: [
-                    SidebarItem(
-                      leading: MacosIcon(CupertinoIcons.macwindow),
-                      label: Text('Toolbar'),
-                    ),
-                    SidebarItem(
-                      leading: MacosImageIcon(
-                        AssetImage(
-                          'assets/sf_symbols/menubar.rectangle_2x.png',
-                        ),
-                      ),
-                      label: Text('SliverToolbar'),
-                    ),
-                    SidebarItem(
-                      leading: MacosIcon(CupertinoIcons.uiwindow_split_2x1),
-                      label: Text('TabView'),
-                    ),
-                  ],
-                ),
-                const SidebarItem(
-                  leading: MacosImageIcon(
-                    AssetImage(
-                      'assets/sf_symbols/filemenu_and_selection_2x.png',
-                    ),
-                  ),
-                  label: Text('Selectors'),
-                ),
-              ],
-            );
-          },
-          bottom: const MacosListTile(
-            leading: MacosIcon(CupertinoIcons.profile_circled),
-            title: Text('Tim Apple'),
-            subtitle: Text('tim@apple.com'),
-          ),
-        ),
-        endSidebar: Sidebar(
-          startWidth: 200,
-          minWidth: 200,
-          maxWidth: 300,
-          shownByDefault: false,
-          builder: (context, _) {
-            return const Center(
-              child: Text('End Sidebar'),
-            );
-          },
-        ),
-        child: IndexedStack(
-          index: pageIndex,
-          children: pages,
-        ),
-      ),
     );
   }
 }

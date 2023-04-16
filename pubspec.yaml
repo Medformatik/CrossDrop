@@ -30,6 +30,7 @@ environment:
 dependencies:
   cryptography: ^2.5.0
   cupertino_icons: ^1.0.2
+  device_info_plus: ^8.2.0
   flutter:
     sdk: flutter
   flutter_local_notifications: ^13.0.0
@@ -38,6 +39,7 @@ dependencies:
   protobuf: ^2.1.0
   protoc_plugin: ^20.0.1
   provider: ^6.0.5
+  shared_preferences: ^2.1.0
   system_tray: ^2.0.2
   window_manager:
     git:
@@ -59,6 +61,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/sf_symbols/
+    - assets/icons/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
