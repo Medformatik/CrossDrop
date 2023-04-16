@@ -24,12 +24,12 @@ void main() async {
     windowButtonVisibility: true,
     minimumSize: Size(400, 250),
     maximumSize: Size(800, 600),
+    alwaysOnTop: true,
     title: 'Crossdrop',
   );
 
   windowManager.waitUntilReadyToShow(windowOptions, () async {
-    await windowManager.show();
-    await windowManager.focus();
+    await windowManager.hide();
   });
 
   runApp(const App());
@@ -137,52 +137,126 @@ class _AppState extends State<App> {
       create: (_) => AppTheme(),
       builder: (context, _) {
         final appTheme = context.watch<AppTheme>();
-        return MacosApp(
-          title: 'Crossdrop',
-          theme: MacosThemeData.light(),
-          darkTheme: MacosThemeData.dark(),
-          themeMode: appTheme.mode,
-          debugShowCheckedModeBanner: false,
-          home: AppPlatformMenuBar(
-            child: MacosWindow(
-              child: MacosScaffold(
-                toolBar: const ToolBar(
-                  title: Text(
-                    'Crossdrop',
-                    textAlign: TextAlign.center,
-                  ),
-                  centerTitle: true,
-                ),
-                children: [
-                  ContentArea(
-                    builder: (context, scrollController) {
-                      return SingleChildScrollView(
-                        padding: const EdgeInsets.all(20),
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              width: 300.0,
-                              child: MacosTextField(
-                                placeholder: 'Device name',
-                                maxLines: 1,
-                                controller: _deviceNameController,
-                                onEditingComplete: () async {
-                                  SharedPreferences prefs = await SharedPreferences.getInstance();
-                                  prefs.setString('deviceName', _deviceNameController.text);
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
+        return Platform.isMacOS
+            ? AppMacos(
+                appTheme: appTheme,
+                deviceNameController: _deviceNameController,
+              )
+            : AppMaterial(
+                appTheme: appTheme,
+                deviceNameController: _deviceNameController,
+              );
       },
+    );
+  }
+}
+
+class AppMaterial extends StatelessWidget {
+  const AppMaterial({
+    super.key,
+    required this.appTheme,
+    required TextEditingController deviceNameController,
+  }) : _deviceNameController = deviceNameController;
+
+  final AppTheme appTheme;
+  final TextEditingController _deviceNameController;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Crossdrop',
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: appTheme.mode,
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Crossdrop',
+            textAlign: TextAlign.center,
+          ),
+          centerTitle: true,
+        ),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              SizedBox(
+                width: 300.0,
+                child: TextField(
+                  decoration: const InputDecoration(
+                    labelText: 'Device name',
+                  ),
+                  maxLines: 1,
+                  controller: _deviceNameController,
+                  onEditingComplete: () async {
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    prefs.setString('deviceName', _deviceNameController.text);
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class AppMacos extends StatelessWidget {
+  const AppMacos({
+    super.key,
+    required this.appTheme,
+    required TextEditingController deviceNameController,
+  }) : _deviceNameController = deviceNameController;
+
+  final AppTheme appTheme;
+  final TextEditingController _deviceNameController;
+
+  @override
+  Widget build(BuildContext context) {
+    return MacosApp(
+      title: 'Crossdrop',
+      theme: MacosThemeData.light(),
+      darkTheme: MacosThemeData.dark(),
+      themeMode: appTheme.mode,
+      debugShowCheckedModeBanner: false,
+      home: AppPlatformMenuBar(
+        child: MacosScaffold(
+          toolBar: const ToolBar(
+            title: Text(
+              'Crossdrop',
+              textAlign: TextAlign.center,
+            ),
+            centerTitle: true,
+          ),
+          children: [
+            ContentArea(
+              builder: (context, scrollController) {
+                return SingleChildScrollView(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        width: 300.0,
+                        child: MacosTextField(
+                          placeholder: 'Device name',
+                          maxLines: 1,
+                          controller: _deviceNameController,
+                          onEditingComplete: () async {
+                            SharedPreferences prefs = await SharedPreferences.getInstance();
+                            prefs.setString('deviceName', _deviceNameController.text);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
