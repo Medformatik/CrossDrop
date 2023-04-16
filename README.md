@@ -1,6 +1,6 @@
-**Crossdrop** is a partial implementation of [Google's Nearby Share](https://blog.google/products/android/nearby-share/) in Flutter for macOS, iOS and Linux.
+**CrossDrop** is a partial implementation of [Google's Nearby Share](https://blog.google/products/android/nearby-share/) in Flutter for macOS, iOS and Linux.
 
-Crossdrop is based on [NearDrop](https://github.com/grishka/NearDrop), a Swift implementation of Nearby Share for macOS.
+CrossDrop is based on [NearDrop](https://github.com/grishka/NearDrop), a Swift implementation of Nearby Share for macOS.
 
 This is a work in progress. It is not yet feature-complete, and it is not yet stable. It is not yet ready for production use.
 
@@ -8,7 +8,7 @@ This is a work in progress. It is not yet feature-complete, and it is not yet st
 
 The app lives in your menu bar and saves files to your downloads folder.
 
-Getting Crossdrop to work on iOS has the least priority, first getting it to work on Linux is the goal.
+Getting CrossDrop to work on iOS has the least priority, first getting it to work on Linux is the goal.
 
 ## Limitations
 
@@ -24,7 +24,7 @@ Contributions are welcome! Please open an issue or a pull request.
 
 ### Why does this exist next to NearDrop?
 
-NearDrop is a Swift implementation of Nearby Share for macOS. It therefore only works on macOS. Crossdrop is a Flutter implementation of Nearby Share. It serves the same purpose, but works on more platforms. This way, Nearby Share can also be used on Linux and iOS.
+NearDrop is a Swift implementation of Nearby Share for macOS. It therefore only works on macOS. CrossDrop is a Flutter implementation of Nearby Share. It serves the same purpose, but works on more platforms. This way, Nearby Share can also be used on Linux and iOS.
 
 
 ### Why not the other way around, i.e. AirDrop on Android?

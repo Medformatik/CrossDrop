@@ -25,7 +25,7 @@ void main() async {
     minimumSize: Size(400, 250),
     maximumSize: Size(800, 600),
     alwaysOnTop: true,
-    title: 'Crossdrop',
+    title: 'CrossDrop',
   );
 
   windowManager.waitUntilReadyToShow(windowOptions, () async {
@@ -65,7 +65,7 @@ class _AppState extends State<App> {
     String path = Platform.isWindows ? 'assets/icons/app_icon.ico' : 'assets/icons/app_icon.png';
 
     // We first init the systray menu and then add the menu entries
-    await _systemTray.initSystemTray(iconPath: path, toolTip: 'Crossdrop: Nearby Share for all platforms');
+    await _systemTray.initSystemTray(iconPath: path, toolTip: 'CrossDrop: Nearby Share for all platforms');
 
     // handle system tray event
     _systemTray.registerSystemTrayEventHandler((eventName) {
@@ -164,7 +164,7 @@ class AppMaterial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Crossdrop',
+      title: 'CrossDrop',
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       themeMode: appTheme.mode,
@@ -172,7 +172,7 @@ class AppMaterial extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Crossdrop',
+            'CrossDrop',
             textAlign: TextAlign.center,
           ),
           centerTitle: true,
