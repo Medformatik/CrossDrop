@@ -37,7 +37,6 @@ dependencies:
   macos_ui: ^1.12.2
   multicast_dns: ^0.3.2+3
   protobuf: ^2.1.0
-  protoc_plugin: ^20.0.1
   provider: ^6.0.5
   shared_preferences: ^2.1.0
   system_tray: ^2.0.2
