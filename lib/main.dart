@@ -79,7 +79,12 @@ class _AppState extends State<App> {
     await menu.buildFrom([
       MenuItemLabel(label: 'Show', onClicked: (menuItem) => windowManager.show()),
       MenuItemLabel(label: 'Hide', onClicked: (menuItem) => windowManager.hide()),
-      MenuItemLabel(label: 'Exit', onClicked: (menuItem) => windowManager.close()),
+      MenuItemLabel(
+          label: 'Exit',
+          onClicked: (menuItem) {
+            windowManager.close();
+            exit(0);
+          }),
     ]);
 
     _systemTray.setContextMenu(menu);
