@@ -36,7 +36,9 @@ dependencies:
     sdk: flutter
   flutter_local_notifications: ^13.0.0
   macos_ui: ^1.12.2
+  # Not sure whether to use multicast_dns or nsd
   multicast_dns: ^0.3.2+3
+  nsd: ^2.3.1
   protobuf: ^2.1.0
   provider: ^6.0.5
   shared_preferences: ^2.1.0
