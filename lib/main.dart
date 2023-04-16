@@ -62,7 +62,7 @@ class _AppState extends State<App> {
   }
 
   Future<void> initSystemTray() async {
-    String path = Platform.isWindows ? 'assets/icons/app_icon.ico' : 'assets/icons/app_icon.png';
+    String path = Platform.isWindows ? 'assets/icons/system_tray_icon.ico' : 'assets/icons/system_tray_icon.png';
 
     // We first init the systray menu and then add the menu entries
     await _systemTray.initSystemTray(iconPath: path, toolTip: 'CrossDrop: Nearby Share for all platforms');
