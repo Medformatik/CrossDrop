@@ -1,20 +1,24 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: wire_format.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
-// ignore_for_file: UNDEFINED_SHOWN_NAME
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+
 import 'dart:core' as $core;
+
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class FileMetadata_Type extends $pb.ProtobufEnum {
-  static const FileMetadata_Type UNKNOWN = FileMetadata_Type._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UNKNOWN');
-  static const FileMetadata_Type IMAGE = FileMetadata_Type._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'IMAGE');
-  static const FileMetadata_Type VIDEO = FileMetadata_Type._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'VIDEO');
-  static const FileMetadata_Type APP = FileMetadata_Type._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'APP');
-  static const FileMetadata_Type AUDIO = FileMetadata_Type._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'AUDIO');
+  static const FileMetadata_Type UNKNOWN = FileMetadata_Type._(0, _omitEnumNames ? '' : 'UNKNOWN');
+  static const FileMetadata_Type IMAGE = FileMetadata_Type._(1, _omitEnumNames ? '' : 'IMAGE');
+  static const FileMetadata_Type VIDEO = FileMetadata_Type._(2, _omitEnumNames ? '' : 'VIDEO');
+  static const FileMetadata_Type APP = FileMetadata_Type._(3, _omitEnumNames ? '' : 'APP');
+  static const FileMetadata_Type AUDIO = FileMetadata_Type._(4, _omitEnumNames ? '' : 'AUDIO');
 
   static const $core.List<FileMetadata_Type> values = <FileMetadata_Type> [
     UNKNOWN,
@@ -31,11 +35,11 @@ class FileMetadata_Type extends $pb.ProtobufEnum {
 }
 
 class TextMetadata_Type extends $pb.ProtobufEnum {
-  static const TextMetadata_Type UNKNOWN = TextMetadata_Type._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UNKNOWN');
-  static const TextMetadata_Type TEXT = TextMetadata_Type._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TEXT');
-  static const TextMetadata_Type URL = TextMetadata_Type._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'URL');
-  static const TextMetadata_Type ADDRESS = TextMetadata_Type._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'ADDRESS');
-  static const TextMetadata_Type PHONE_NUMBER = TextMetadata_Type._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PHONE_NUMBER');
+  static const TextMetadata_Type UNKNOWN = TextMetadata_Type._(0, _omitEnumNames ? '' : 'UNKNOWN');
+  static const TextMetadata_Type TEXT = TextMetadata_Type._(1, _omitEnumNames ? '' : 'TEXT');
+  static const TextMetadata_Type URL = TextMetadata_Type._(2, _omitEnumNames ? '' : 'URL');
+  static const TextMetadata_Type ADDRESS = TextMetadata_Type._(3, _omitEnumNames ? '' : 'ADDRESS');
+  static const TextMetadata_Type PHONE_NUMBER = TextMetadata_Type._(4, _omitEnumNames ? '' : 'PHONE_NUMBER');
 
   static const $core.List<TextMetadata_Type> values = <TextMetadata_Type> [
     UNKNOWN,
@@ -52,10 +56,10 @@ class TextMetadata_Type extends $pb.ProtobufEnum {
 }
 
 class WifiCredentialsMetadata_SecurityType extends $pb.ProtobufEnum {
-  static const WifiCredentialsMetadata_SecurityType UNKNOWN_SECURITY_TYPE = WifiCredentialsMetadata_SecurityType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UNKNOWN_SECURITY_TYPE');
-  static const WifiCredentialsMetadata_SecurityType OPEN = WifiCredentialsMetadata_SecurityType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'OPEN');
-  static const WifiCredentialsMetadata_SecurityType WPA_PSK = WifiCredentialsMetadata_SecurityType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'WPA_PSK');
-  static const WifiCredentialsMetadata_SecurityType WEP = WifiCredentialsMetadata_SecurityType._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'WEP');
+  static const WifiCredentialsMetadata_SecurityType UNKNOWN_SECURITY_TYPE = WifiCredentialsMetadata_SecurityType._(0, _omitEnumNames ? '' : 'UNKNOWN_SECURITY_TYPE');
+  static const WifiCredentialsMetadata_SecurityType OPEN = WifiCredentialsMetadata_SecurityType._(1, _omitEnumNames ? '' : 'OPEN');
+  static const WifiCredentialsMetadata_SecurityType WPA_PSK = WifiCredentialsMetadata_SecurityType._(2, _omitEnumNames ? '' : 'WPA_PSK');
+  static const WifiCredentialsMetadata_SecurityType WEP = WifiCredentialsMetadata_SecurityType._(3, _omitEnumNames ? '' : 'WEP');
 
   static const $core.List<WifiCredentialsMetadata_SecurityType> values = <WifiCredentialsMetadata_SecurityType> [
     UNKNOWN_SECURITY_TYPE,
@@ -71,8 +75,8 @@ class WifiCredentialsMetadata_SecurityType extends $pb.ProtobufEnum {
 }
 
 class Frame_Version extends $pb.ProtobufEnum {
-  static const Frame_Version UNKNOWN_VERSION = Frame_Version._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UNKNOWN_VERSION');
-  static const Frame_Version V1 = Frame_Version._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'V1');
+  static const Frame_Version UNKNOWN_VERSION = Frame_Version._(0, _omitEnumNames ? '' : 'UNKNOWN_VERSION');
+  static const Frame_Version V1 = Frame_Version._(1, _omitEnumNames ? '' : 'V1');
 
   static const $core.List<Frame_Version> values = <Frame_Version> [
     UNKNOWN_VERSION,
@@ -86,13 +90,13 @@ class Frame_Version extends $pb.ProtobufEnum {
 }
 
 class V1Frame_FrameType extends $pb.ProtobufEnum {
-  static const V1Frame_FrameType UNKNOWN_FRAME_TYPE = V1Frame_FrameType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UNKNOWN_FRAME_TYPE');
-  static const V1Frame_FrameType INTRODUCTION = V1Frame_FrameType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'INTRODUCTION');
-  static const V1Frame_FrameType RESPONSE = V1Frame_FrameType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'RESPONSE');
-  static const V1Frame_FrameType PAIRED_KEY_ENCRYPTION = V1Frame_FrameType._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PAIRED_KEY_ENCRYPTION');
-  static const V1Frame_FrameType PAIRED_KEY_RESULT = V1Frame_FrameType._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PAIRED_KEY_RESULT');
-  static const V1Frame_FrameType CERTIFICATE_INFO = V1Frame_FrameType._(5, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CERTIFICATE_INFO');
-  static const V1Frame_FrameType CANCEL = V1Frame_FrameType._(6, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CANCEL');
+  static const V1Frame_FrameType UNKNOWN_FRAME_TYPE = V1Frame_FrameType._(0, _omitEnumNames ? '' : 'UNKNOWN_FRAME_TYPE');
+  static const V1Frame_FrameType INTRODUCTION = V1Frame_FrameType._(1, _omitEnumNames ? '' : 'INTRODUCTION');
+  static const V1Frame_FrameType RESPONSE = V1Frame_FrameType._(2, _omitEnumNames ? '' : 'RESPONSE');
+  static const V1Frame_FrameType PAIRED_KEY_ENCRYPTION = V1Frame_FrameType._(3, _omitEnumNames ? '' : 'PAIRED_KEY_ENCRYPTION');
+  static const V1Frame_FrameType PAIRED_KEY_RESULT = V1Frame_FrameType._(4, _omitEnumNames ? '' : 'PAIRED_KEY_RESULT');
+  static const V1Frame_FrameType CERTIFICATE_INFO = V1Frame_FrameType._(5, _omitEnumNames ? '' : 'CERTIFICATE_INFO');
+  static const V1Frame_FrameType CANCEL = V1Frame_FrameType._(6, _omitEnumNames ? '' : 'CANCEL');
 
   static const $core.List<V1Frame_FrameType> values = <V1Frame_FrameType> [
     UNKNOWN_FRAME_TYPE,
@@ -111,12 +115,12 @@ class V1Frame_FrameType extends $pb.ProtobufEnum {
 }
 
 class ConnectionResponseFrame_Status extends $pb.ProtobufEnum {
-  static const ConnectionResponseFrame_Status UNKNOWN = ConnectionResponseFrame_Status._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UNKNOWN');
-  static const ConnectionResponseFrame_Status ACCEPT = ConnectionResponseFrame_Status._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'ACCEPT');
-  static const ConnectionResponseFrame_Status REJECT = ConnectionResponseFrame_Status._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REJECT');
-  static const ConnectionResponseFrame_Status NOT_ENOUGH_SPACE = ConnectionResponseFrame_Status._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'NOT_ENOUGH_SPACE');
-  static const ConnectionResponseFrame_Status UNSUPPORTED_ATTACHMENT_TYPE = ConnectionResponseFrame_Status._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UNSUPPORTED_ATTACHMENT_TYPE');
-  static const ConnectionResponseFrame_Status TIMED_OUT = ConnectionResponseFrame_Status._(5, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TIMED_OUT');
+  static const ConnectionResponseFrame_Status UNKNOWN = ConnectionResponseFrame_Status._(0, _omitEnumNames ? '' : 'UNKNOWN');
+  static const ConnectionResponseFrame_Status ACCEPT = ConnectionResponseFrame_Status._(1, _omitEnumNames ? '' : 'ACCEPT');
+  static const ConnectionResponseFrame_Status REJECT = ConnectionResponseFrame_Status._(2, _omitEnumNames ? '' : 'REJECT');
+  static const ConnectionResponseFrame_Status NOT_ENOUGH_SPACE = ConnectionResponseFrame_Status._(3, _omitEnumNames ? '' : 'NOT_ENOUGH_SPACE');
+  static const ConnectionResponseFrame_Status UNSUPPORTED_ATTACHMENT_TYPE = ConnectionResponseFrame_Status._(4, _omitEnumNames ? '' : 'UNSUPPORTED_ATTACHMENT_TYPE');
+  static const ConnectionResponseFrame_Status TIMED_OUT = ConnectionResponseFrame_Status._(5, _omitEnumNames ? '' : 'TIMED_OUT');
 
   static const $core.List<ConnectionResponseFrame_Status> values = <ConnectionResponseFrame_Status> [
     UNKNOWN,
@@ -134,10 +138,10 @@ class ConnectionResponseFrame_Status extends $pb.ProtobufEnum {
 }
 
 class PairedKeyResultFrame_Status extends $pb.ProtobufEnum {
-  static const PairedKeyResultFrame_Status UNKNOWN = PairedKeyResultFrame_Status._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UNKNOWN');
-  static const PairedKeyResultFrame_Status SUCCESS = PairedKeyResultFrame_Status._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SUCCESS');
-  static const PairedKeyResultFrame_Status FAIL = PairedKeyResultFrame_Status._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'FAIL');
-  static const PairedKeyResultFrame_Status UNABLE = PairedKeyResultFrame_Status._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UNABLE');
+  static const PairedKeyResultFrame_Status UNKNOWN = PairedKeyResultFrame_Status._(0, _omitEnumNames ? '' : 'UNKNOWN');
+  static const PairedKeyResultFrame_Status SUCCESS = PairedKeyResultFrame_Status._(1, _omitEnumNames ? '' : 'SUCCESS');
+  static const PairedKeyResultFrame_Status FAIL = PairedKeyResultFrame_Status._(2, _omitEnumNames ? '' : 'FAIL');
+  static const PairedKeyResultFrame_Status UNABLE = PairedKeyResultFrame_Status._(3, _omitEnumNames ? '' : 'UNABLE');
 
   static const $core.List<PairedKeyResultFrame_Status> values = <PairedKeyResultFrame_Status> [
     UNKNOWN,
@@ -152,3 +156,5 @@ class PairedKeyResultFrame_Status extends $pb.ProtobufEnum {
   const PairedKeyResultFrame_Status._($core.int v, $core.String n) : super(v, n);
 }
 
+
+const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');

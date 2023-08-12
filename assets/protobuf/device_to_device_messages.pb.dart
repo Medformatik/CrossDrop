@@ -1,43 +1,35 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: device_to_device_messages.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'securemessage.pb.dart' as $0;
-
 import 'device_to_device_messages.pbenum.dart';
+import 'securemessage.pb.dart' as $0;
 
 export 'device_to_device_messages.pbenum.dart';
 
 class DeviceToDeviceMessage extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DeviceToDeviceMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'securegcm'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message', $pb.PbFieldType.OY)
-    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sequenceNumber', $pb.PbFieldType.O3)
+  factory DeviceToDeviceMessage() => create();
+  DeviceToDeviceMessage._() : super();
+  factory DeviceToDeviceMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DeviceToDeviceMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DeviceToDeviceMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'securegcm'), createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'message', $pb.PbFieldType.OY)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'sequenceNumber', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
-  DeviceToDeviceMessage._() : super();
-  factory DeviceToDeviceMessage({
-    $core.List<$core.int>? message,
-    $core.int? sequenceNumber,
-  }) {
-    final _result = create();
-    if (message != null) {
-      _result.message = message;
-    }
-    if (sequenceNumber != null) {
-      _result.sequenceNumber = sequenceNumber;
-    }
-    return _result;
-  }
-  factory DeviceToDeviceMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory DeviceToDeviceMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -47,8 +39,10 @@ class DeviceToDeviceMessage extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  DeviceToDeviceMessage copyWith(void Function(DeviceToDeviceMessage) updates) => super.copyWith((message) => updates(message as DeviceToDeviceMessage)) as DeviceToDeviceMessage; // ignore: deprecated_member_use
+  DeviceToDeviceMessage copyWith(void Function(DeviceToDeviceMessage) updates) => super.copyWith((message) => updates(message as DeviceToDeviceMessage)) as DeviceToDeviceMessage;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static DeviceToDeviceMessage create() => DeviceToDeviceMessage._();
   DeviceToDeviceMessage createEmptyInstance() => create();
@@ -77,27 +71,16 @@ class DeviceToDeviceMessage extends $pb.GeneratedMessage {
 }
 
 class InitiatorHello extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitiatorHello', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'securegcm'), createEmptyInstance: create)
-    ..aOM<$0.GenericPublicKey>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'publicDhKey', subBuilder: $0.GenericPublicKey.create)
-    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'protocolVersion', $pb.PbFieldType.O3)
-  ;
-
+  factory InitiatorHello() => create();
   InitiatorHello._() : super();
-  factory InitiatorHello({
-    $0.GenericPublicKey? publicDhKey,
-    $core.int? protocolVersion,
-  }) {
-    final _result = create();
-    if (publicDhKey != null) {
-      _result.publicDhKey = publicDhKey;
-    }
-    if (protocolVersion != null) {
-      _result.protocolVersion = protocolVersion;
-    }
-    return _result;
-  }
   factory InitiatorHello.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory InitiatorHello.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'InitiatorHello', package: const $pb.PackageName(_omitMessageNames ? '' : 'securegcm'), createEmptyInstance: create)
+    ..aOM<$0.GenericPublicKey>(1, _omitFieldNames ? '' : 'publicDhKey', subBuilder: $0.GenericPublicKey.create)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'protocolVersion', $pb.PbFieldType.O3)
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -107,8 +90,10 @@ class InitiatorHello extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  InitiatorHello copyWith(void Function(InitiatorHello) updates) => super.copyWith((message) => updates(message as InitiatorHello)) as InitiatorHello; // ignore: deprecated_member_use
+  InitiatorHello copyWith(void Function(InitiatorHello) updates) => super.copyWith((message) => updates(message as InitiatorHello)) as InitiatorHello;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static InitiatorHello create() => InitiatorHello._();
   InitiatorHello createEmptyInstance() => create();
@@ -139,27 +124,16 @@ class InitiatorHello extends $pb.GeneratedMessage {
 }
 
 class ResponderHello extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ResponderHello', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'securegcm'), createEmptyInstance: create)
-    ..aOM<$0.GenericPublicKey>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'publicDhKey', subBuilder: $0.GenericPublicKey.create)
-    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'protocolVersion', $pb.PbFieldType.O3)
-  ;
-
+  factory ResponderHello() => create();
   ResponderHello._() : super();
-  factory ResponderHello({
-    $0.GenericPublicKey? publicDhKey,
-    $core.int? protocolVersion,
-  }) {
-    final _result = create();
-    if (publicDhKey != null) {
-      _result.publicDhKey = publicDhKey;
-    }
-    if (protocolVersion != null) {
-      _result.protocolVersion = protocolVersion;
-    }
-    return _result;
-  }
   factory ResponderHello.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ResponderHello.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ResponderHello', package: const $pb.PackageName(_omitMessageNames ? '' : 'securegcm'), createEmptyInstance: create)
+    ..aOM<$0.GenericPublicKey>(1, _omitFieldNames ? '' : 'publicDhKey', subBuilder: $0.GenericPublicKey.create)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'protocolVersion', $pb.PbFieldType.O3)
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -169,8 +143,10 @@ class ResponderHello extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ResponderHello copyWith(void Function(ResponderHello) updates) => super.copyWith((message) => updates(message as ResponderHello)) as ResponderHello; // ignore: deprecated_member_use
+  ResponderHello copyWith(void Function(ResponderHello) updates) => super.copyWith((message) => updates(message as ResponderHello)) as ResponderHello;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static ResponderHello create() => ResponderHello._();
   ResponderHello createEmptyInstance() => create();
@@ -201,32 +177,17 @@ class ResponderHello extends $pb.GeneratedMessage {
 }
 
 class EcPoint extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'EcPoint', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'securegcm'), createEmptyInstance: create)
-    ..e<Curve>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'curve', $pb.PbFieldType.QE, defaultOrMaker: Curve.ED_25519, valueOf: Curve.valueOf, enumValues: Curve.values)
-    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'x', $pb.PbFieldType.QY)
-    ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'y', $pb.PbFieldType.QY)
-  ;
-
+  factory EcPoint() => create();
   EcPoint._() : super();
-  factory EcPoint({
-    Curve? curve,
-    $core.List<$core.int>? x,
-    $core.List<$core.int>? y,
-  }) {
-    final _result = create();
-    if (curve != null) {
-      _result.curve = curve;
-    }
-    if (x != null) {
-      _result.x = x;
-    }
-    if (y != null) {
-      _result.y = y;
-    }
-    return _result;
-  }
   factory EcPoint.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory EcPoint.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'EcPoint', package: const $pb.PackageName(_omitMessageNames ? '' : 'securegcm'), createEmptyInstance: create)
+    ..e<Curve>(1, _omitFieldNames ? '' : 'curve', $pb.PbFieldType.QE, defaultOrMaker: Curve.ED_25519, valueOf: Curve.valueOf, enumValues: Curve.values)
+    ..a<$core.List<$core.int>>(2, _omitFieldNames ? '' : 'x', $pb.PbFieldType.QY)
+    ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'y', $pb.PbFieldType.QY)
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -236,8 +197,10 @@ class EcPoint extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  EcPoint copyWith(void Function(EcPoint) updates) => super.copyWith((message) => updates(message as EcPoint)) as EcPoint; // ignore: deprecated_member_use
+  EcPoint copyWith(void Function(EcPoint) updates) => super.copyWith((message) => updates(message as EcPoint)) as EcPoint;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static EcPoint create() => EcPoint._();
   EcPoint createEmptyInstance() => create();
@@ -275,37 +238,18 @@ class EcPoint extends $pb.GeneratedMessage {
 }
 
 class SpakeHandshakeMessage extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SpakeHandshakeMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'securegcm'), createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'flowNumber', $pb.PbFieldType.O3)
-    ..aOM<EcPoint>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ecPoint', subBuilder: EcPoint.create)
-    ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hashValue', $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'payload', $pb.PbFieldType.OY)
-  ;
-
+  factory SpakeHandshakeMessage() => create();
   SpakeHandshakeMessage._() : super();
-  factory SpakeHandshakeMessage({
-    $core.int? flowNumber,
-    EcPoint? ecPoint,
-    $core.List<$core.int>? hashValue,
-    $core.List<$core.int>? payload,
-  }) {
-    final _result = create();
-    if (flowNumber != null) {
-      _result.flowNumber = flowNumber;
-    }
-    if (ecPoint != null) {
-      _result.ecPoint = ecPoint;
-    }
-    if (hashValue != null) {
-      _result.hashValue = hashValue;
-    }
-    if (payload != null) {
-      _result.payload = payload;
-    }
-    return _result;
-  }
   factory SpakeHandshakeMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SpakeHandshakeMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SpakeHandshakeMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'securegcm'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'flowNumber', $pb.PbFieldType.O3)
+    ..aOM<EcPoint>(2, _omitFieldNames ? '' : 'ecPoint', subBuilder: EcPoint.create)
+    ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'hashValue', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(4, _omitFieldNames ? '' : 'payload', $pb.PbFieldType.OY)
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -315,8 +259,10 @@ class SpakeHandshakeMessage extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  SpakeHandshakeMessage copyWith(void Function(SpakeHandshakeMessage) updates) => super.copyWith((message) => updates(message as SpakeHandshakeMessage)) as SpakeHandshakeMessage; // ignore: deprecated_member_use
+  SpakeHandshakeMessage copyWith(void Function(SpakeHandshakeMessage) updates) => super.copyWith((message) => updates(message as SpakeHandshakeMessage)) as SpakeHandshakeMessage;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static SpakeHandshakeMessage create() => SpakeHandshakeMessage._();
   SpakeHandshakeMessage createEmptyInstance() => create();
@@ -364,3 +310,6 @@ class SpakeHandshakeMessage extends $pb.GeneratedMessage {
   void clearPayload() => clearField(4);
 }
 
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

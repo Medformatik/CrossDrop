@@ -1,9 +1,13 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: wire_format.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
@@ -15,48 +19,21 @@ import 'wire_format.pbenum.dart';
 export 'wire_format.pbenum.dart';
 
 class FileMetadata extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FileMetadata', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sharing.nearby'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..e<FileMetadata_Type>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: FileMetadata_Type.UNKNOWN, valueOf: FileMetadata_Type.valueOf, enumValues: FileMetadata_Type.values)
-    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'payloadId')
-    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'size')
-    ..a<$core.String>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mimeType', $pb.PbFieldType.OS, defaultOrMaker: 'application/octet-stream')
-    ..aInt64(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+  factory FileMetadata() => create();
+  FileMetadata._() : super();
+  factory FileMetadata.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FileMetadata.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FileMetadata', package: const $pb.PackageName(_omitMessageNames ? '' : 'sharing.nearby'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'name')
+    ..e<FileMetadata_Type>(2, _omitFieldNames ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: FileMetadata_Type.UNKNOWN, valueOf: FileMetadata_Type.valueOf, enumValues: FileMetadata_Type.values)
+    ..aInt64(3, _omitFieldNames ? '' : 'payloadId')
+    ..aInt64(4, _omitFieldNames ? '' : 'size')
+    ..a<$core.String>(5, _omitFieldNames ? '' : 'mimeType', $pb.PbFieldType.OS, defaultOrMaker: 'application/octet-stream')
+    ..aInt64(6, _omitFieldNames ? '' : 'id')
     ..hasRequiredFields = false
   ;
 
-  FileMetadata._() : super();
-  factory FileMetadata({
-    $core.String? name,
-    FileMetadata_Type? type,
-    $fixnum.Int64? payloadId,
-    $fixnum.Int64? size,
-    $core.String? mimeType,
-    $fixnum.Int64? id,
-  }) {
-    final _result = create();
-    if (name != null) {
-      _result.name = name;
-    }
-    if (type != null) {
-      _result.type = type;
-    }
-    if (payloadId != null) {
-      _result.payloadId = payloadId;
-    }
-    if (size != null) {
-      _result.size = size;
-    }
-    if (mimeType != null) {
-      _result.mimeType = mimeType;
-    }
-    if (id != null) {
-      _result.id = id;
-    }
-    return _result;
-  }
-  factory FileMetadata.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory FileMetadata.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -66,8 +43,10 @@ class FileMetadata extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  FileMetadata copyWith(void Function(FileMetadata) updates) => super.copyWith((message) => updates(message as FileMetadata)) as FileMetadata; // ignore: deprecated_member_use
+  FileMetadata copyWith(void Function(FileMetadata) updates) => super.copyWith((message) => updates(message as FileMetadata)) as FileMetadata;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static FileMetadata create() => FileMetadata._();
   FileMetadata createEmptyInstance() => create();
@@ -132,43 +111,20 @@ class FileMetadata extends $pb.GeneratedMessage {
 }
 
 class TextMetadata extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TextMetadata', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sharing.nearby'), createEmptyInstance: create)
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'textTitle')
-    ..e<TextMetadata_Type>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: TextMetadata_Type.UNKNOWN, valueOf: TextMetadata_Type.valueOf, enumValues: TextMetadata_Type.values)
-    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'payloadId')
-    ..aInt64(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'size')
-    ..aInt64(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+  factory TextMetadata() => create();
+  TextMetadata._() : super();
+  factory TextMetadata.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory TextMetadata.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TextMetadata', package: const $pb.PackageName(_omitMessageNames ? '' : 'sharing.nearby'), createEmptyInstance: create)
+    ..aOS(2, _omitFieldNames ? '' : 'textTitle')
+    ..e<TextMetadata_Type>(3, _omitFieldNames ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: TextMetadata_Type.UNKNOWN, valueOf: TextMetadata_Type.valueOf, enumValues: TextMetadata_Type.values)
+    ..aInt64(4, _omitFieldNames ? '' : 'payloadId')
+    ..aInt64(5, _omitFieldNames ? '' : 'size')
+    ..aInt64(6, _omitFieldNames ? '' : 'id')
     ..hasRequiredFields = false
   ;
 
-  TextMetadata._() : super();
-  factory TextMetadata({
-    $core.String? textTitle,
-    TextMetadata_Type? type,
-    $fixnum.Int64? payloadId,
-    $fixnum.Int64? size,
-    $fixnum.Int64? id,
-  }) {
-    final _result = create();
-    if (textTitle != null) {
-      _result.textTitle = textTitle;
-    }
-    if (type != null) {
-      _result.type = type;
-    }
-    if (payloadId != null) {
-      _result.payloadId = payloadId;
-    }
-    if (size != null) {
-      _result.size = size;
-    }
-    if (id != null) {
-      _result.id = id;
-    }
-    return _result;
-  }
-  factory TextMetadata.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory TextMetadata.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -178,8 +134,10 @@ class TextMetadata extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  TextMetadata copyWith(void Function(TextMetadata) updates) => super.copyWith((message) => updates(message as TextMetadata)) as TextMetadata; // ignore: deprecated_member_use
+  TextMetadata copyWith(void Function(TextMetadata) updates) => super.copyWith((message) => updates(message as TextMetadata)) as TextMetadata;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static TextMetadata create() => TextMetadata._();
   TextMetadata createEmptyInstance() => create();
@@ -235,38 +193,19 @@ class TextMetadata extends $pb.GeneratedMessage {
 }
 
 class WifiCredentialsMetadata extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'WifiCredentialsMetadata', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sharing.nearby'), createEmptyInstance: create)
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ssid')
-    ..e<WifiCredentialsMetadata_SecurityType>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'securityType', $pb.PbFieldType.OE, defaultOrMaker: WifiCredentialsMetadata_SecurityType.UNKNOWN_SECURITY_TYPE, valueOf: WifiCredentialsMetadata_SecurityType.valueOf, enumValues: WifiCredentialsMetadata_SecurityType.values)
-    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'payloadId')
-    ..aInt64(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+  factory WifiCredentialsMetadata() => create();
+  WifiCredentialsMetadata._() : super();
+  factory WifiCredentialsMetadata.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory WifiCredentialsMetadata.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'WifiCredentialsMetadata', package: const $pb.PackageName(_omitMessageNames ? '' : 'sharing.nearby'), createEmptyInstance: create)
+    ..aOS(2, _omitFieldNames ? '' : 'ssid')
+    ..e<WifiCredentialsMetadata_SecurityType>(3, _omitFieldNames ? '' : 'securityType', $pb.PbFieldType.OE, defaultOrMaker: WifiCredentialsMetadata_SecurityType.UNKNOWN_SECURITY_TYPE, valueOf: WifiCredentialsMetadata_SecurityType.valueOf, enumValues: WifiCredentialsMetadata_SecurityType.values)
+    ..aInt64(4, _omitFieldNames ? '' : 'payloadId')
+    ..aInt64(5, _omitFieldNames ? '' : 'id')
     ..hasRequiredFields = false
   ;
 
-  WifiCredentialsMetadata._() : super();
-  factory WifiCredentialsMetadata({
-    $core.String? ssid,
-    WifiCredentialsMetadata_SecurityType? securityType,
-    $fixnum.Int64? payloadId,
-    $fixnum.Int64? id,
-  }) {
-    final _result = create();
-    if (ssid != null) {
-      _result.ssid = ssid;
-    }
-    if (securityType != null) {
-      _result.securityType = securityType;
-    }
-    if (payloadId != null) {
-      _result.payloadId = payloadId;
-    }
-    if (id != null) {
-      _result.id = id;
-    }
-    return _result;
-  }
-  factory WifiCredentialsMetadata.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory WifiCredentialsMetadata.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -276,8 +215,10 @@ class WifiCredentialsMetadata extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  WifiCredentialsMetadata copyWith(void Function(WifiCredentialsMetadata) updates) => super.copyWith((message) => updates(message as WifiCredentialsMetadata)) as WifiCredentialsMetadata; // ignore: deprecated_member_use
+  WifiCredentialsMetadata copyWith(void Function(WifiCredentialsMetadata) updates) => super.copyWith((message) => updates(message as WifiCredentialsMetadata)) as WifiCredentialsMetadata;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static WifiCredentialsMetadata create() => WifiCredentialsMetadata._();
   WifiCredentialsMetadata createEmptyInstance() => create();
@@ -324,28 +265,17 @@ class WifiCredentialsMetadata extends $pb.GeneratedMessage {
 }
 
 class Frame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Frame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sharing.nearby'), createEmptyInstance: create)
-    ..e<Frame_Version>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version', $pb.PbFieldType.OE, defaultOrMaker: Frame_Version.UNKNOWN_VERSION, valueOf: Frame_Version.valueOf, enumValues: Frame_Version.values)
-    ..aOM<V1Frame>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'v1', subBuilder: V1Frame.create)
+  factory Frame() => create();
+  Frame._() : super();
+  factory Frame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Frame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Frame', package: const $pb.PackageName(_omitMessageNames ? '' : 'sharing.nearby'), createEmptyInstance: create)
+    ..e<Frame_Version>(1, _omitFieldNames ? '' : 'version', $pb.PbFieldType.OE, defaultOrMaker: Frame_Version.UNKNOWN_VERSION, valueOf: Frame_Version.valueOf, enumValues: Frame_Version.values)
+    ..aOM<V1Frame>(2, _omitFieldNames ? '' : 'v1', subBuilder: V1Frame.create)
     ..hasRequiredFields = false
   ;
 
-  Frame._() : super();
-  factory Frame({
-    Frame_Version? version,
-    V1Frame? v1,
-  }) {
-    final _result = create();
-    if (version != null) {
-      _result.version = version;
-    }
-    if (v1 != null) {
-      _result.v1 = v1;
-    }
-    return _result;
-  }
-  factory Frame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Frame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -355,8 +285,10 @@ class Frame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Frame copyWith(void Function(Frame) updates) => super.copyWith((message) => updates(message as Frame)) as Frame; // ignore: deprecated_member_use
+  Frame copyWith(void Function(Frame) updates) => super.copyWith((message) => updates(message as Frame)) as Frame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static Frame create() => Frame._();
   Frame createEmptyInstance() => create();
@@ -387,48 +319,21 @@ class Frame extends $pb.GeneratedMessage {
 }
 
 class V1Frame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'V1Frame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sharing.nearby'), createEmptyInstance: create)
-    ..e<V1Frame_FrameType>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: V1Frame_FrameType.UNKNOWN_FRAME_TYPE, valueOf: V1Frame_FrameType.valueOf, enumValues: V1Frame_FrameType.values)
-    ..aOM<IntroductionFrame>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'introduction', subBuilder: IntroductionFrame.create)
-    ..aOM<ConnectionResponseFrame>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'connectionResponse', subBuilder: ConnectionResponseFrame.create)
-    ..aOM<PairedKeyEncryptionFrame>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pairedKeyEncryption', subBuilder: PairedKeyEncryptionFrame.create)
-    ..aOM<PairedKeyResultFrame>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pairedKeyResult', subBuilder: PairedKeyResultFrame.create)
-    ..aOM<CertificateInfoFrame>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'certificateInfo', subBuilder: CertificateInfoFrame.create)
+  factory V1Frame() => create();
+  V1Frame._() : super();
+  factory V1Frame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory V1Frame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'V1Frame', package: const $pb.PackageName(_omitMessageNames ? '' : 'sharing.nearby'), createEmptyInstance: create)
+    ..e<V1Frame_FrameType>(1, _omitFieldNames ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: V1Frame_FrameType.UNKNOWN_FRAME_TYPE, valueOf: V1Frame_FrameType.valueOf, enumValues: V1Frame_FrameType.values)
+    ..aOM<IntroductionFrame>(2, _omitFieldNames ? '' : 'introduction', subBuilder: IntroductionFrame.create)
+    ..aOM<ConnectionResponseFrame>(3, _omitFieldNames ? '' : 'connectionResponse', subBuilder: ConnectionResponseFrame.create)
+    ..aOM<PairedKeyEncryptionFrame>(4, _omitFieldNames ? '' : 'pairedKeyEncryption', subBuilder: PairedKeyEncryptionFrame.create)
+    ..aOM<PairedKeyResultFrame>(5, _omitFieldNames ? '' : 'pairedKeyResult', subBuilder: PairedKeyResultFrame.create)
+    ..aOM<CertificateInfoFrame>(6, _omitFieldNames ? '' : 'certificateInfo', subBuilder: CertificateInfoFrame.create)
     ..hasRequiredFields = false
   ;
 
-  V1Frame._() : super();
-  factory V1Frame({
-    V1Frame_FrameType? type,
-    IntroductionFrame? introduction,
-    ConnectionResponseFrame? connectionResponse,
-    PairedKeyEncryptionFrame? pairedKeyEncryption,
-    PairedKeyResultFrame? pairedKeyResult,
-    CertificateInfoFrame? certificateInfo,
-  }) {
-    final _result = create();
-    if (type != null) {
-      _result.type = type;
-    }
-    if (introduction != null) {
-      _result.introduction = introduction;
-    }
-    if (connectionResponse != null) {
-      _result.connectionResponse = connectionResponse;
-    }
-    if (pairedKeyEncryption != null) {
-      _result.pairedKeyEncryption = pairedKeyEncryption;
-    }
-    if (pairedKeyResult != null) {
-      _result.pairedKeyResult = pairedKeyResult;
-    }
-    if (certificateInfo != null) {
-      _result.certificateInfo = certificateInfo;
-    }
-    return _result;
-  }
-  factory V1Frame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory V1Frame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -438,8 +343,10 @@ class V1Frame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  V1Frame copyWith(void Function(V1Frame) updates) => super.copyWith((message) => updates(message as V1Frame)) as V1Frame; // ignore: deprecated_member_use
+  V1Frame copyWith(void Function(V1Frame) updates) => super.copyWith((message) => updates(message as V1Frame)) as V1Frame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static V1Frame create() => V1Frame._();
   V1Frame createEmptyInstance() => create();
@@ -514,38 +421,19 @@ class V1Frame extends $pb.GeneratedMessage {
 }
 
 class IntroductionFrame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'IntroductionFrame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sharing.nearby'), createEmptyInstance: create)
-    ..pc<FileMetadata>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fileMetadata', $pb.PbFieldType.PM, subBuilder: FileMetadata.create)
-    ..pc<TextMetadata>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'textMetadata', $pb.PbFieldType.PM, subBuilder: TextMetadata.create)
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'requiredPackage')
-    ..pc<WifiCredentialsMetadata>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wifiCredentialsMetadata', $pb.PbFieldType.PM, subBuilder: WifiCredentialsMetadata.create)
+  factory IntroductionFrame() => create();
+  IntroductionFrame._() : super();
+  factory IntroductionFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory IntroductionFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'IntroductionFrame', package: const $pb.PackageName(_omitMessageNames ? '' : 'sharing.nearby'), createEmptyInstance: create)
+    ..pc<FileMetadata>(1, _omitFieldNames ? '' : 'fileMetadata', $pb.PbFieldType.PM, subBuilder: FileMetadata.create)
+    ..pc<TextMetadata>(2, _omitFieldNames ? '' : 'textMetadata', $pb.PbFieldType.PM, subBuilder: TextMetadata.create)
+    ..aOS(3, _omitFieldNames ? '' : 'requiredPackage')
+    ..pc<WifiCredentialsMetadata>(4, _omitFieldNames ? '' : 'wifiCredentialsMetadata', $pb.PbFieldType.PM, subBuilder: WifiCredentialsMetadata.create)
     ..hasRequiredFields = false
   ;
 
-  IntroductionFrame._() : super();
-  factory IntroductionFrame({
-    $core.Iterable<FileMetadata>? fileMetadata,
-    $core.Iterable<TextMetadata>? textMetadata,
-    $core.String? requiredPackage,
-    $core.Iterable<WifiCredentialsMetadata>? wifiCredentialsMetadata,
-  }) {
-    final _result = create();
-    if (fileMetadata != null) {
-      _result.fileMetadata.addAll(fileMetadata);
-    }
-    if (textMetadata != null) {
-      _result.textMetadata.addAll(textMetadata);
-    }
-    if (requiredPackage != null) {
-      _result.requiredPackage = requiredPackage;
-    }
-    if (wifiCredentialsMetadata != null) {
-      _result.wifiCredentialsMetadata.addAll(wifiCredentialsMetadata);
-    }
-    return _result;
-  }
-  factory IntroductionFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory IntroductionFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -555,8 +443,10 @@ class IntroductionFrame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  IntroductionFrame copyWith(void Function(IntroductionFrame) updates) => super.copyWith((message) => updates(message as IntroductionFrame)) as IntroductionFrame; // ignore: deprecated_member_use
+  IntroductionFrame copyWith(void Function(IntroductionFrame) updates) => super.copyWith((message) => updates(message as IntroductionFrame)) as IntroductionFrame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static IntroductionFrame create() => IntroductionFrame._();
   IntroductionFrame createEmptyInstance() => create();
@@ -585,23 +475,16 @@ class IntroductionFrame extends $pb.GeneratedMessage {
 }
 
 class ConnectionResponseFrame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ConnectionResponseFrame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sharing.nearby'), createEmptyInstance: create)
-    ..e<ConnectionResponseFrame_Status>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: ConnectionResponseFrame_Status.UNKNOWN, valueOf: ConnectionResponseFrame_Status.valueOf, enumValues: ConnectionResponseFrame_Status.values)
+  factory ConnectionResponseFrame() => create();
+  ConnectionResponseFrame._() : super();
+  factory ConnectionResponseFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ConnectionResponseFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ConnectionResponseFrame', package: const $pb.PackageName(_omitMessageNames ? '' : 'sharing.nearby'), createEmptyInstance: create)
+    ..e<ConnectionResponseFrame_Status>(1, _omitFieldNames ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: ConnectionResponseFrame_Status.UNKNOWN, valueOf: ConnectionResponseFrame_Status.valueOf, enumValues: ConnectionResponseFrame_Status.values)
     ..hasRequiredFields = false
   ;
 
-  ConnectionResponseFrame._() : super();
-  factory ConnectionResponseFrame({
-    ConnectionResponseFrame_Status? status,
-  }) {
-    final _result = create();
-    if (status != null) {
-      _result.status = status;
-    }
-    return _result;
-  }
-  factory ConnectionResponseFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ConnectionResponseFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -611,8 +494,10 @@ class ConnectionResponseFrame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ConnectionResponseFrame copyWith(void Function(ConnectionResponseFrame) updates) => super.copyWith((message) => updates(message as ConnectionResponseFrame)) as ConnectionResponseFrame; // ignore: deprecated_member_use
+  ConnectionResponseFrame copyWith(void Function(ConnectionResponseFrame) updates) => super.copyWith((message) => updates(message as ConnectionResponseFrame)) as ConnectionResponseFrame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static ConnectionResponseFrame create() => ConnectionResponseFrame._();
   ConnectionResponseFrame createEmptyInstance() => create();
@@ -632,33 +517,18 @@ class ConnectionResponseFrame extends $pb.GeneratedMessage {
 }
 
 class PairedKeyEncryptionFrame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PairedKeyEncryptionFrame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sharing.nearby'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signedData', $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'secretIdHash', $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'optionalSignedData', $pb.PbFieldType.OY)
+  factory PairedKeyEncryptionFrame() => create();
+  PairedKeyEncryptionFrame._() : super();
+  factory PairedKeyEncryptionFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PairedKeyEncryptionFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PairedKeyEncryptionFrame', package: const $pb.PackageName(_omitMessageNames ? '' : 'sharing.nearby'), createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'signedData', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(2, _omitFieldNames ? '' : 'secretIdHash', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'optionalSignedData', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
   ;
 
-  PairedKeyEncryptionFrame._() : super();
-  factory PairedKeyEncryptionFrame({
-    $core.List<$core.int>? signedData,
-    $core.List<$core.int>? secretIdHash,
-    $core.List<$core.int>? optionalSignedData,
-  }) {
-    final _result = create();
-    if (signedData != null) {
-      _result.signedData = signedData;
-    }
-    if (secretIdHash != null) {
-      _result.secretIdHash = secretIdHash;
-    }
-    if (optionalSignedData != null) {
-      _result.optionalSignedData = optionalSignedData;
-    }
-    return _result;
-  }
-  factory PairedKeyEncryptionFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PairedKeyEncryptionFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -668,8 +538,10 @@ class PairedKeyEncryptionFrame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PairedKeyEncryptionFrame copyWith(void Function(PairedKeyEncryptionFrame) updates) => super.copyWith((message) => updates(message as PairedKeyEncryptionFrame)) as PairedKeyEncryptionFrame; // ignore: deprecated_member_use
+  PairedKeyEncryptionFrame copyWith(void Function(PairedKeyEncryptionFrame) updates) => super.copyWith((message) => updates(message as PairedKeyEncryptionFrame)) as PairedKeyEncryptionFrame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static PairedKeyEncryptionFrame create() => PairedKeyEncryptionFrame._();
   PairedKeyEncryptionFrame createEmptyInstance() => create();
@@ -707,23 +579,16 @@ class PairedKeyEncryptionFrame extends $pb.GeneratedMessage {
 }
 
 class PairedKeyResultFrame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PairedKeyResultFrame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sharing.nearby'), createEmptyInstance: create)
-    ..e<PairedKeyResultFrame_Status>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: PairedKeyResultFrame_Status.UNKNOWN, valueOf: PairedKeyResultFrame_Status.valueOf, enumValues: PairedKeyResultFrame_Status.values)
+  factory PairedKeyResultFrame() => create();
+  PairedKeyResultFrame._() : super();
+  factory PairedKeyResultFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PairedKeyResultFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PairedKeyResultFrame', package: const $pb.PackageName(_omitMessageNames ? '' : 'sharing.nearby'), createEmptyInstance: create)
+    ..e<PairedKeyResultFrame_Status>(1, _omitFieldNames ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: PairedKeyResultFrame_Status.UNKNOWN, valueOf: PairedKeyResultFrame_Status.valueOf, enumValues: PairedKeyResultFrame_Status.values)
     ..hasRequiredFields = false
   ;
 
-  PairedKeyResultFrame._() : super();
-  factory PairedKeyResultFrame({
-    PairedKeyResultFrame_Status? status,
-  }) {
-    final _result = create();
-    if (status != null) {
-      _result.status = status;
-    }
-    return _result;
-  }
-  factory PairedKeyResultFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PairedKeyResultFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -733,8 +598,10 @@ class PairedKeyResultFrame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PairedKeyResultFrame copyWith(void Function(PairedKeyResultFrame) updates) => super.copyWith((message) => updates(message as PairedKeyResultFrame)) as PairedKeyResultFrame; // ignore: deprecated_member_use
+  PairedKeyResultFrame copyWith(void Function(PairedKeyResultFrame) updates) => super.copyWith((message) => updates(message as PairedKeyResultFrame)) as PairedKeyResultFrame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static PairedKeyResultFrame create() => PairedKeyResultFrame._();
   PairedKeyResultFrame createEmptyInstance() => create();
@@ -754,23 +621,16 @@ class PairedKeyResultFrame extends $pb.GeneratedMessage {
 }
 
 class CertificateInfoFrame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CertificateInfoFrame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sharing.nearby'), createEmptyInstance: create)
-    ..pc<PublicCertificate>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'publicCertificate', $pb.PbFieldType.PM, subBuilder: PublicCertificate.create)
+  factory CertificateInfoFrame() => create();
+  CertificateInfoFrame._() : super();
+  factory CertificateInfoFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CertificateInfoFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CertificateInfoFrame', package: const $pb.PackageName(_omitMessageNames ? '' : 'sharing.nearby'), createEmptyInstance: create)
+    ..pc<PublicCertificate>(1, _omitFieldNames ? '' : 'publicCertificate', $pb.PbFieldType.PM, subBuilder: PublicCertificate.create)
     ..hasRequiredFields = false
   ;
 
-  CertificateInfoFrame._() : super();
-  factory CertificateInfoFrame({
-    $core.Iterable<PublicCertificate>? publicCertificate,
-  }) {
-    final _result = create();
-    if (publicCertificate != null) {
-      _result.publicCertificate.addAll(publicCertificate);
-    }
-    return _result;
-  }
-  factory CertificateInfoFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory CertificateInfoFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -780,8 +640,10 @@ class CertificateInfoFrame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  CertificateInfoFrame copyWith(void Function(CertificateInfoFrame) updates) => super.copyWith((message) => updates(message as CertificateInfoFrame)) as CertificateInfoFrame; // ignore: deprecated_member_use
+  CertificateInfoFrame copyWith(void Function(CertificateInfoFrame) updates) => super.copyWith((message) => updates(message as CertificateInfoFrame)) as CertificateInfoFrame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CertificateInfoFrame create() => CertificateInfoFrame._();
   CertificateInfoFrame createEmptyInstance() => create();
@@ -795,53 +657,22 @@ class CertificateInfoFrame extends $pb.GeneratedMessage {
 }
 
 class PublicCertificate extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PublicCertificate', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sharing.nearby'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'secretId', $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'authenticityKey', $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'publicKey', $pb.PbFieldType.OY)
-    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startTime')
-    ..aInt64(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endTime')
-    ..a<$core.List<$core.int>>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'encryptedMetadataBytes', $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metadataEncryptionKeyTag', $pb.PbFieldType.OY)
+  factory PublicCertificate() => create();
+  PublicCertificate._() : super();
+  factory PublicCertificate.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PublicCertificate.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PublicCertificate', package: const $pb.PackageName(_omitMessageNames ? '' : 'sharing.nearby'), createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'secretId', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(2, _omitFieldNames ? '' : 'authenticityKey', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'publicKey', $pb.PbFieldType.OY)
+    ..aInt64(4, _omitFieldNames ? '' : 'startTime')
+    ..aInt64(5, _omitFieldNames ? '' : 'endTime')
+    ..a<$core.List<$core.int>>(6, _omitFieldNames ? '' : 'encryptedMetadataBytes', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(7, _omitFieldNames ? '' : 'metadataEncryptionKeyTag', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
   ;
 
-  PublicCertificate._() : super();
-  factory PublicCertificate({
-    $core.List<$core.int>? secretId,
-    $core.List<$core.int>? authenticityKey,
-    $core.List<$core.int>? publicKey,
-    $fixnum.Int64? startTime,
-    $fixnum.Int64? endTime,
-    $core.List<$core.int>? encryptedMetadataBytes,
-    $core.List<$core.int>? metadataEncryptionKeyTag,
-  }) {
-    final _result = create();
-    if (secretId != null) {
-      _result.secretId = secretId;
-    }
-    if (authenticityKey != null) {
-      _result.authenticityKey = authenticityKey;
-    }
-    if (publicKey != null) {
-      _result.publicKey = publicKey;
-    }
-    if (startTime != null) {
-      _result.startTime = startTime;
-    }
-    if (endTime != null) {
-      _result.endTime = endTime;
-    }
-    if (encryptedMetadataBytes != null) {
-      _result.encryptedMetadataBytes = encryptedMetadataBytes;
-    }
-    if (metadataEncryptionKeyTag != null) {
-      _result.metadataEncryptionKeyTag = metadataEncryptionKeyTag;
-    }
-    return _result;
-  }
-  factory PublicCertificate.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PublicCertificate.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -851,8 +682,10 @@ class PublicCertificate extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PublicCertificate copyWith(void Function(PublicCertificate) updates) => super.copyWith((message) => updates(message as PublicCertificate)) as PublicCertificate; // ignore: deprecated_member_use
+  PublicCertificate copyWith(void Function(PublicCertificate) updates) => super.copyWith((message) => updates(message as PublicCertificate)) as PublicCertificate;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static PublicCertificate create() => PublicCertificate._();
   PublicCertificate createEmptyInstance() => create();
@@ -926,28 +759,17 @@ class PublicCertificate extends $pb.GeneratedMessage {
 }
 
 class WifiCredentials extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'WifiCredentials', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sharing.nearby'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'password')
-    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hiddenSsid')
+  factory WifiCredentials() => create();
+  WifiCredentials._() : super();
+  factory WifiCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory WifiCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'WifiCredentials', package: const $pb.PackageName(_omitMessageNames ? '' : 'sharing.nearby'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'password')
+    ..aOB(2, _omitFieldNames ? '' : 'hiddenSsid')
     ..hasRequiredFields = false
   ;
 
-  WifiCredentials._() : super();
-  factory WifiCredentials({
-    $core.String? password,
-    $core.bool? hiddenSsid,
-  }) {
-    final _result = create();
-    if (password != null) {
-      _result.password = password;
-    }
-    if (hiddenSsid != null) {
-      _result.hiddenSsid = hiddenSsid;
-    }
-    return _result;
-  }
-  factory WifiCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory WifiCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -957,8 +779,10 @@ class WifiCredentials extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  WifiCredentials copyWith(void Function(WifiCredentials) updates) => super.copyWith((message) => updates(message as WifiCredentials)) as WifiCredentials; // ignore: deprecated_member_use
+  WifiCredentials copyWith(void Function(WifiCredentials) updates) => super.copyWith((message) => updates(message as WifiCredentials)) as WifiCredentials;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static WifiCredentials create() => WifiCredentials._();
   WifiCredentials createEmptyInstance() => create();
@@ -986,3 +810,6 @@ class WifiCredentials extends $pb.GeneratedMessage {
   void clearHiddenSsid() => clearField(2);
 }
 
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

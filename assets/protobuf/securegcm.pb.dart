@@ -1,9 +1,13 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: securegcm.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
@@ -15,207 +19,52 @@ import 'securegcm.pbenum.dart';
 export 'securegcm.pbenum.dart';
 
 class GcmDeviceInfo extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GcmDeviceInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'securegcm'), createEmptyInstance: create)
-    ..a<$fixnum.Int64>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'androidDeviceId', $pb.PbFieldType.OF6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$core.List<$core.int>>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userPublicKey', $pb.PbFieldType.QY)
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceModel')
-    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'locale')
-    ..a<$core.List<$core.int>>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'keyHandle', $pb.PbFieldType.OY)
-    ..aInt64(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'counter')
-    ..aOS(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceOsVersion')
-    ..aInt64(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceOsVersionCode')
-    ..aOS(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceOsRelease')
-    ..aOS(16, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceOsCodename')
-    ..aOS(17, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceSoftwareVersion')
-    ..aInt64(18, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceSoftwareVersionCode')
-    ..aOS(19, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceSoftwarePackage')
-    ..a<$core.int>(22, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceDisplayDiagonalMils', $pb.PbFieldType.O3)
-    ..a<$core.int>(24, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceAuthzenVersion', $pb.PbFieldType.O3)
-    ..a<$core.List<$core.int>>(29, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'longDeviceId', $pb.PbFieldType.OY)
-    ..aOS(31, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceManufacturer')
-    ..e<DeviceType>(32, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceType', $pb.PbFieldType.OE, defaultOrMaker: DeviceType.ANDROID, valueOf: DeviceType.valueOf, enumValues: DeviceType.values)
-    ..a<$core.List<$core.int>>(102, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'gcmRegistrationId', $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(103, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceMasterKeyHash', $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(202, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'apnRegistrationId', $pb.PbFieldType.OY)
-    ..a<$core.bool>(203, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'notificationEnabled', $pb.PbFieldType.OB, defaultOrMaker: true)
-    ..aOS(302, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'bluetoothMacAddress')
-    ..aOB(400, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'usingSecureScreenlock')
-    ..aOB(401, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'autoUnlockScreenlockSupported')
-    ..aOB(402, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'autoUnlockScreenlockEnabled')
-    ..aOB(403, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'bluetoothRadioSupported')
-    ..aOB(404, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'bluetoothRadioEnabled')
-    ..aOB(405, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mobileDataSupported')
-    ..aOB(406, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tetheringSupported')
-    ..aOB(407, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'bleRadioSupported')
-    ..aOB(408, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pixelExperience')
-    ..aOB(409, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'arcPlusPlus')
-    ..aOB(410, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isScreenlockStateFlaky')
-    ..pc<SoftwareFeature>(411, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportedSoftwareFeatures', $pb.PbFieldType.PE, valueOf: SoftwareFeature.valueOf, enumValues: SoftwareFeature.values, defaultEnumValue: SoftwareFeature.UNKNOWN_FEATURE)
-    ..pc<SoftwareFeature>(412, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'enabledSoftwareFeatures', $pb.PbFieldType.PE, valueOf: SoftwareFeature.valueOf, enumValues: SoftwareFeature.values, defaultEnumValue: SoftwareFeature.UNKNOWN_FEATURE)
-    ..a<$core.List<$core.int>>(1000, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'enrollmentSessionId', $pb.PbFieldType.OY)
-    ..aOS(1001, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'oauthToken')
-  ;
-
+  factory GcmDeviceInfo() => create();
   GcmDeviceInfo._() : super();
-  factory GcmDeviceInfo({
-    $fixnum.Int64? androidDeviceId,
-    $core.List<$core.int>? userPublicKey,
-    $core.String? deviceModel,
-    $core.String? locale,
-    $core.List<$core.int>? keyHandle,
-    $fixnum.Int64? counter,
-    $core.String? deviceOsVersion,
-    $fixnum.Int64? deviceOsVersionCode,
-    $core.String? deviceOsRelease,
-    $core.String? deviceOsCodename,
-    $core.String? deviceSoftwareVersion,
-    $fixnum.Int64? deviceSoftwareVersionCode,
-    $core.String? deviceSoftwarePackage,
-    $core.int? deviceDisplayDiagonalMils,
-    $core.int? deviceAuthzenVersion,
-    $core.List<$core.int>? longDeviceId,
-    $core.String? deviceManufacturer,
-    DeviceType? deviceType,
-    $core.List<$core.int>? gcmRegistrationId,
-    $core.List<$core.int>? deviceMasterKeyHash,
-    $core.List<$core.int>? apnRegistrationId,
-    $core.bool? notificationEnabled,
-    $core.String? bluetoothMacAddress,
-    $core.bool? usingSecureScreenlock,
-    $core.bool? autoUnlockScreenlockSupported,
-    $core.bool? autoUnlockScreenlockEnabled,
-    $core.bool? bluetoothRadioSupported,
-    $core.bool? bluetoothRadioEnabled,
-    $core.bool? mobileDataSupported,
-    $core.bool? tetheringSupported,
-    $core.bool? bleRadioSupported,
-    $core.bool? pixelExperience,
-    $core.bool? arcPlusPlus,
-    $core.bool? isScreenlockStateFlaky,
-    $core.Iterable<SoftwareFeature>? supportedSoftwareFeatures,
-    $core.Iterable<SoftwareFeature>? enabledSoftwareFeatures,
-    $core.List<$core.int>? enrollmentSessionId,
-    $core.String? oauthToken,
-  }) {
-    final _result = create();
-    if (androidDeviceId != null) {
-      _result.androidDeviceId = androidDeviceId;
-    }
-    if (userPublicKey != null) {
-      _result.userPublicKey = userPublicKey;
-    }
-    if (deviceModel != null) {
-      _result.deviceModel = deviceModel;
-    }
-    if (locale != null) {
-      _result.locale = locale;
-    }
-    if (keyHandle != null) {
-      _result.keyHandle = keyHandle;
-    }
-    if (counter != null) {
-      _result.counter = counter;
-    }
-    if (deviceOsVersion != null) {
-      _result.deviceOsVersion = deviceOsVersion;
-    }
-    if (deviceOsVersionCode != null) {
-      _result.deviceOsVersionCode = deviceOsVersionCode;
-    }
-    if (deviceOsRelease != null) {
-      _result.deviceOsRelease = deviceOsRelease;
-    }
-    if (deviceOsCodename != null) {
-      _result.deviceOsCodename = deviceOsCodename;
-    }
-    if (deviceSoftwareVersion != null) {
-      _result.deviceSoftwareVersion = deviceSoftwareVersion;
-    }
-    if (deviceSoftwareVersionCode != null) {
-      _result.deviceSoftwareVersionCode = deviceSoftwareVersionCode;
-    }
-    if (deviceSoftwarePackage != null) {
-      _result.deviceSoftwarePackage = deviceSoftwarePackage;
-    }
-    if (deviceDisplayDiagonalMils != null) {
-      _result.deviceDisplayDiagonalMils = deviceDisplayDiagonalMils;
-    }
-    if (deviceAuthzenVersion != null) {
-      _result.deviceAuthzenVersion = deviceAuthzenVersion;
-    }
-    if (longDeviceId != null) {
-      _result.longDeviceId = longDeviceId;
-    }
-    if (deviceManufacturer != null) {
-      _result.deviceManufacturer = deviceManufacturer;
-    }
-    if (deviceType != null) {
-      _result.deviceType = deviceType;
-    }
-    if (gcmRegistrationId != null) {
-      _result.gcmRegistrationId = gcmRegistrationId;
-    }
-    if (deviceMasterKeyHash != null) {
-      _result.deviceMasterKeyHash = deviceMasterKeyHash;
-    }
-    if (apnRegistrationId != null) {
-      _result.apnRegistrationId = apnRegistrationId;
-    }
-    if (notificationEnabled != null) {
-      _result.notificationEnabled = notificationEnabled;
-    }
-    if (bluetoothMacAddress != null) {
-      _result.bluetoothMacAddress = bluetoothMacAddress;
-    }
-    if (usingSecureScreenlock != null) {
-      _result.usingSecureScreenlock = usingSecureScreenlock;
-    }
-    if (autoUnlockScreenlockSupported != null) {
-      _result.autoUnlockScreenlockSupported = autoUnlockScreenlockSupported;
-    }
-    if (autoUnlockScreenlockEnabled != null) {
-      _result.autoUnlockScreenlockEnabled = autoUnlockScreenlockEnabled;
-    }
-    if (bluetoothRadioSupported != null) {
-      _result.bluetoothRadioSupported = bluetoothRadioSupported;
-    }
-    if (bluetoothRadioEnabled != null) {
-      _result.bluetoothRadioEnabled = bluetoothRadioEnabled;
-    }
-    if (mobileDataSupported != null) {
-      _result.mobileDataSupported = mobileDataSupported;
-    }
-    if (tetheringSupported != null) {
-      _result.tetheringSupported = tetheringSupported;
-    }
-    if (bleRadioSupported != null) {
-      _result.bleRadioSupported = bleRadioSupported;
-    }
-    if (pixelExperience != null) {
-      _result.pixelExperience = pixelExperience;
-    }
-    if (arcPlusPlus != null) {
-      _result.arcPlusPlus = arcPlusPlus;
-    }
-    if (isScreenlockStateFlaky != null) {
-      _result.isScreenlockStateFlaky = isScreenlockStateFlaky;
-    }
-    if (supportedSoftwareFeatures != null) {
-      _result.supportedSoftwareFeatures.addAll(supportedSoftwareFeatures);
-    }
-    if (enabledSoftwareFeatures != null) {
-      _result.enabledSoftwareFeatures.addAll(enabledSoftwareFeatures);
-    }
-    if (enrollmentSessionId != null) {
-      _result.enrollmentSessionId = enrollmentSessionId;
-    }
-    if (oauthToken != null) {
-      _result.oauthToken = oauthToken;
-    }
-    return _result;
-  }
   factory GcmDeviceInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GcmDeviceInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GcmDeviceInfo', package: const $pb.PackageName(_omitMessageNames ? '' : 'securegcm'), createEmptyInstance: create)
+    ..a<$fixnum.Int64>(1, _omitFieldNames ? '' : 'androidDeviceId', $pb.PbFieldType.OF6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$core.List<$core.int>>(4, _omitFieldNames ? '' : 'userPublicKey', $pb.PbFieldType.QY)
+    ..aOS(7, _omitFieldNames ? '' : 'deviceModel')
+    ..aOS(8, _omitFieldNames ? '' : 'locale')
+    ..a<$core.List<$core.int>>(9, _omitFieldNames ? '' : 'keyHandle', $pb.PbFieldType.OY)
+    ..aInt64(12, _omitFieldNames ? '' : 'counter')
+    ..aOS(13, _omitFieldNames ? '' : 'deviceOsVersion')
+    ..aInt64(14, _omitFieldNames ? '' : 'deviceOsVersionCode')
+    ..aOS(15, _omitFieldNames ? '' : 'deviceOsRelease')
+    ..aOS(16, _omitFieldNames ? '' : 'deviceOsCodename')
+    ..aOS(17, _omitFieldNames ? '' : 'deviceSoftwareVersion')
+    ..aInt64(18, _omitFieldNames ? '' : 'deviceSoftwareVersionCode')
+    ..aOS(19, _omitFieldNames ? '' : 'deviceSoftwarePackage')
+    ..a<$core.int>(22, _omitFieldNames ? '' : 'deviceDisplayDiagonalMils', $pb.PbFieldType.O3)
+    ..a<$core.int>(24, _omitFieldNames ? '' : 'deviceAuthzenVersion', $pb.PbFieldType.O3)
+    ..a<$core.List<$core.int>>(29, _omitFieldNames ? '' : 'longDeviceId', $pb.PbFieldType.OY)
+    ..aOS(31, _omitFieldNames ? '' : 'deviceManufacturer')
+    ..e<DeviceType>(32, _omitFieldNames ? '' : 'deviceType', $pb.PbFieldType.OE, defaultOrMaker: DeviceType.ANDROID, valueOf: DeviceType.valueOf, enumValues: DeviceType.values)
+    ..a<$core.List<$core.int>>(102, _omitFieldNames ? '' : 'gcmRegistrationId', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(103, _omitFieldNames ? '' : 'deviceMasterKeyHash', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(202, _omitFieldNames ? '' : 'apnRegistrationId', $pb.PbFieldType.OY)
+    ..a<$core.bool>(203, _omitFieldNames ? '' : 'notificationEnabled', $pb.PbFieldType.OB, defaultOrMaker: true)
+    ..aOS(302, _omitFieldNames ? '' : 'bluetoothMacAddress')
+    ..aOB(400, _omitFieldNames ? '' : 'usingSecureScreenlock')
+    ..aOB(401, _omitFieldNames ? '' : 'autoUnlockScreenlockSupported')
+    ..aOB(402, _omitFieldNames ? '' : 'autoUnlockScreenlockEnabled')
+    ..aOB(403, _omitFieldNames ? '' : 'bluetoothRadioSupported')
+    ..aOB(404, _omitFieldNames ? '' : 'bluetoothRadioEnabled')
+    ..aOB(405, _omitFieldNames ? '' : 'mobileDataSupported')
+    ..aOB(406, _omitFieldNames ? '' : 'tetheringSupported')
+    ..aOB(407, _omitFieldNames ? '' : 'bleRadioSupported')
+    ..aOB(408, _omitFieldNames ? '' : 'pixelExperience')
+    ..aOB(409, _omitFieldNames ? '' : 'arcPlusPlus')
+    ..aOB(410, _omitFieldNames ? '' : 'isScreenlockStateFlaky')
+    ..pc<SoftwareFeature>(411, _omitFieldNames ? '' : 'supportedSoftwareFeatures', $pb.PbFieldType.PE, valueOf: SoftwareFeature.valueOf, enumValues: SoftwareFeature.values, defaultEnumValue: SoftwareFeature.UNKNOWN_FEATURE)
+    ..pc<SoftwareFeature>(412, _omitFieldNames ? '' : 'enabledSoftwareFeatures', $pb.PbFieldType.PE, valueOf: SoftwareFeature.valueOf, enumValues: SoftwareFeature.values, defaultEnumValue: SoftwareFeature.UNKNOWN_FEATURE)
+    ..a<$core.List<$core.int>>(1000, _omitFieldNames ? '' : 'enrollmentSessionId', $pb.PbFieldType.OY)
+    ..aOS(1001, _omitFieldNames ? '' : 'oauthToken')
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -225,8 +74,10 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  GcmDeviceInfo copyWith(void Function(GcmDeviceInfo) updates) => super.copyWith((message) => updates(message as GcmDeviceInfo)) as GcmDeviceInfo; // ignore: deprecated_member_use
+  GcmDeviceInfo copyWith(void Function(GcmDeviceInfo) updates) => super.copyWith((message) => updates(message as GcmDeviceInfo)) as GcmDeviceInfo;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static GcmDeviceInfo create() => GcmDeviceInfo._();
   GcmDeviceInfo createEmptyInstance() => create();
@@ -567,27 +418,16 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
 }
 
 class GcmMetadata extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GcmMetadata', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'securegcm'), createEmptyInstance: create)
-    ..e<Type>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.QE, defaultOrMaker: Type.ENROLLMENT, valueOf: Type.valueOf, enumValues: Type.values)
-    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version', $pb.PbFieldType.O3)
-  ;
-
+  factory GcmMetadata() => create();
   GcmMetadata._() : super();
-  factory GcmMetadata({
-    Type? type,
-    $core.int? version,
-  }) {
-    final _result = create();
-    if (type != null) {
-      _result.type = type;
-    }
-    if (version != null) {
-      _result.version = version;
-    }
-    return _result;
-  }
   factory GcmMetadata.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GcmMetadata.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GcmMetadata', package: const $pb.PackageName(_omitMessageNames ? '' : 'securegcm'), createEmptyInstance: create)
+    ..e<Type>(1, _omitFieldNames ? '' : 'type', $pb.PbFieldType.QE, defaultOrMaker: Type.ENROLLMENT, valueOf: Type.valueOf, enumValues: Type.values)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'version', $pb.PbFieldType.O3)
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -597,8 +437,10 @@ class GcmMetadata extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  GcmMetadata copyWith(void Function(GcmMetadata) updates) => super.copyWith((message) => updates(message as GcmMetadata)) as GcmMetadata; // ignore: deprecated_member_use
+  GcmMetadata copyWith(void Function(GcmMetadata) updates) => super.copyWith((message) => updates(message as GcmMetadata)) as GcmMetadata;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static GcmMetadata create() => GcmMetadata._();
   GcmMetadata createEmptyInstance() => create();
@@ -627,23 +469,16 @@ class GcmMetadata extends $pb.GeneratedMessage {
 }
 
 class Tickle extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Tickle', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'securegcm'), createEmptyInstance: create)
-    ..a<$fixnum.Int64>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'expiryTime', $pb.PbFieldType.OF6, defaultOrMaker: $fixnum.Int64.ZERO)
+  factory Tickle() => create();
+  Tickle._() : super();
+  factory Tickle.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Tickle.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Tickle', package: const $pb.PackageName(_omitMessageNames ? '' : 'securegcm'), createEmptyInstance: create)
+    ..a<$fixnum.Int64>(1, _omitFieldNames ? '' : 'expiryTime', $pb.PbFieldType.OF6, defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false
   ;
 
-  Tickle._() : super();
-  factory Tickle({
-    $fixnum.Int64? expiryTime,
-  }) {
-    final _result = create();
-    if (expiryTime != null) {
-      _result.expiryTime = expiryTime;
-    }
-    return _result;
-  }
-  factory Tickle.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Tickle.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -653,8 +488,10 @@ class Tickle extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Tickle copyWith(void Function(Tickle) updates) => super.copyWith((message) => updates(message as Tickle)) as Tickle; // ignore: deprecated_member_use
+  Tickle copyWith(void Function(Tickle) updates) => super.copyWith((message) => updates(message as Tickle)) as Tickle;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static Tickle create() => Tickle._();
   Tickle createEmptyInstance() => create();
@@ -674,43 +511,20 @@ class Tickle extends $pb.GeneratedMessage {
 }
 
 class LoginNotificationInfo extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LoginNotificationInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'securegcm'), createEmptyInstance: create)
-    ..a<$fixnum.Int64>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creationTime', $pb.PbFieldType.OF6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'email')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'host')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'source')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'eventType')
+  factory LoginNotificationInfo() => create();
+  LoginNotificationInfo._() : super();
+  factory LoginNotificationInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LoginNotificationInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'LoginNotificationInfo', package: const $pb.PackageName(_omitMessageNames ? '' : 'securegcm'), createEmptyInstance: create)
+    ..a<$fixnum.Int64>(2, _omitFieldNames ? '' : 'creationTime', $pb.PbFieldType.OF6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOS(3, _omitFieldNames ? '' : 'email')
+    ..aOS(4, _omitFieldNames ? '' : 'host')
+    ..aOS(5, _omitFieldNames ? '' : 'source')
+    ..aOS(6, _omitFieldNames ? '' : 'eventType')
     ..hasRequiredFields = false
   ;
 
-  LoginNotificationInfo._() : super();
-  factory LoginNotificationInfo({
-    $fixnum.Int64? creationTime,
-    $core.String? email,
-    $core.String? host,
-    $core.String? source,
-    $core.String? eventType,
-  }) {
-    final _result = create();
-    if (creationTime != null) {
-      _result.creationTime = creationTime;
-    }
-    if (email != null) {
-      _result.email = email;
-    }
-    if (host != null) {
-      _result.host = host;
-    }
-    if (source != null) {
-      _result.source = source;
-    }
-    if (eventType != null) {
-      _result.eventType = eventType;
-    }
-    return _result;
-  }
-  factory LoginNotificationInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory LoginNotificationInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -720,8 +534,10 @@ class LoginNotificationInfo extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  LoginNotificationInfo copyWith(void Function(LoginNotificationInfo) updates) => super.copyWith((message) => updates(message as LoginNotificationInfo)) as LoginNotificationInfo; // ignore: deprecated_member_use
+  LoginNotificationInfo copyWith(void Function(LoginNotificationInfo) updates) => super.copyWith((message) => updates(message as LoginNotificationInfo)) as LoginNotificationInfo;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static LoginNotificationInfo create() => LoginNotificationInfo._();
   LoginNotificationInfo createEmptyInstance() => create();
@@ -776,3 +592,6 @@ class LoginNotificationInfo extends $pb.GeneratedMessage {
   void clearEventType() => clearField(6);
 }
 
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

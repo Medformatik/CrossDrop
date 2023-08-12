@@ -1,9 +1,13 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: offline_wire_formats.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
@@ -15,28 +19,17 @@ import 'offline_wire_formats.pbenum.dart';
 export 'offline_wire_formats.pbenum.dart';
 
 class OfflineFrame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'OfflineFrame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..e<OfflineFrame_Version>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version', $pb.PbFieldType.OE, defaultOrMaker: OfflineFrame_Version.UNKNOWN_VERSION, valueOf: OfflineFrame_Version.valueOf, enumValues: OfflineFrame_Version.values)
-    ..aOM<V1Frame>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'v1', subBuilder: V1Frame.create)
+  factory OfflineFrame() => create();
+  OfflineFrame._() : super();
+  factory OfflineFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory OfflineFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OfflineFrame', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..e<OfflineFrame_Version>(1, _omitFieldNames ? '' : 'version', $pb.PbFieldType.OE, defaultOrMaker: OfflineFrame_Version.UNKNOWN_VERSION, valueOf: OfflineFrame_Version.valueOf, enumValues: OfflineFrame_Version.values)
+    ..aOM<V1Frame>(2, _omitFieldNames ? '' : 'v1', subBuilder: V1Frame.create)
     ..hasRequiredFields = false
   ;
 
-  OfflineFrame._() : super();
-  factory OfflineFrame({
-    OfflineFrame_Version? version,
-    V1Frame? v1,
-  }) {
-    final _result = create();
-    if (version != null) {
-      _result.version = version;
-    }
-    if (v1 != null) {
-      _result.v1 = v1;
-    }
-    return _result;
-  }
-  factory OfflineFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory OfflineFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -46,8 +39,10 @@ class OfflineFrame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  OfflineFrame copyWith(void Function(OfflineFrame) updates) => super.copyWith((message) => updates(message as OfflineFrame)) as OfflineFrame; // ignore: deprecated_member_use
+  OfflineFrame copyWith(void Function(OfflineFrame) updates) => super.copyWith((message) => updates(message as OfflineFrame)) as OfflineFrame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static OfflineFrame create() => OfflineFrame._();
   OfflineFrame createEmptyInstance() => create();
@@ -78,58 +73,23 @@ class OfflineFrame extends $pb.GeneratedMessage {
 }
 
 class V1Frame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'V1Frame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..e<V1Frame_FrameType>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: V1Frame_FrameType.UNKNOWN_FRAME_TYPE, valueOf: V1Frame_FrameType.valueOf, enumValues: V1Frame_FrameType.values)
-    ..aOM<ConnectionRequestFrame>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'connectionRequest', subBuilder: ConnectionRequestFrame.create)
-    ..aOM<ConnectionResponseFrame>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'connectionResponse', subBuilder: ConnectionResponseFrame.create)
-    ..aOM<PayloadTransferFrame>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'payloadTransfer', subBuilder: PayloadTransferFrame.create)
-    ..aOM<BandwidthUpgradeNegotiationFrame>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'bandwidthUpgradeNegotiation', subBuilder: BandwidthUpgradeNegotiationFrame.create)
-    ..aOM<KeepAliveFrame>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'keepAlive', subBuilder: KeepAliveFrame.create)
-    ..aOM<DisconnectionFrame>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'disconnection', subBuilder: DisconnectionFrame.create)
-    ..aOM<PairedKeyEncryptionFrame>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pairedKeyEncryption', subBuilder: PairedKeyEncryptionFrame.create)
+  factory V1Frame() => create();
+  V1Frame._() : super();
+  factory V1Frame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory V1Frame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'V1Frame', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..e<V1Frame_FrameType>(1, _omitFieldNames ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: V1Frame_FrameType.UNKNOWN_FRAME_TYPE, valueOf: V1Frame_FrameType.valueOf, enumValues: V1Frame_FrameType.values)
+    ..aOM<ConnectionRequestFrame>(2, _omitFieldNames ? '' : 'connectionRequest', subBuilder: ConnectionRequestFrame.create)
+    ..aOM<ConnectionResponseFrame>(3, _omitFieldNames ? '' : 'connectionResponse', subBuilder: ConnectionResponseFrame.create)
+    ..aOM<PayloadTransferFrame>(4, _omitFieldNames ? '' : 'payloadTransfer', subBuilder: PayloadTransferFrame.create)
+    ..aOM<BandwidthUpgradeNegotiationFrame>(5, _omitFieldNames ? '' : 'bandwidthUpgradeNegotiation', subBuilder: BandwidthUpgradeNegotiationFrame.create)
+    ..aOM<KeepAliveFrame>(6, _omitFieldNames ? '' : 'keepAlive', subBuilder: KeepAliveFrame.create)
+    ..aOM<DisconnectionFrame>(7, _omitFieldNames ? '' : 'disconnection', subBuilder: DisconnectionFrame.create)
+    ..aOM<PairedKeyEncryptionFrame>(8, _omitFieldNames ? '' : 'pairedKeyEncryption', subBuilder: PairedKeyEncryptionFrame.create)
     ..hasRequiredFields = false
   ;
 
-  V1Frame._() : super();
-  factory V1Frame({
-    V1Frame_FrameType? type,
-    ConnectionRequestFrame? connectionRequest,
-    ConnectionResponseFrame? connectionResponse,
-    PayloadTransferFrame? payloadTransfer,
-    BandwidthUpgradeNegotiationFrame? bandwidthUpgradeNegotiation,
-    KeepAliveFrame? keepAlive,
-    DisconnectionFrame? disconnection,
-    PairedKeyEncryptionFrame? pairedKeyEncryption,
-  }) {
-    final _result = create();
-    if (type != null) {
-      _result.type = type;
-    }
-    if (connectionRequest != null) {
-      _result.connectionRequest = connectionRequest;
-    }
-    if (connectionResponse != null) {
-      _result.connectionResponse = connectionResponse;
-    }
-    if (payloadTransfer != null) {
-      _result.payloadTransfer = payloadTransfer;
-    }
-    if (bandwidthUpgradeNegotiation != null) {
-      _result.bandwidthUpgradeNegotiation = bandwidthUpgradeNegotiation;
-    }
-    if (keepAlive != null) {
-      _result.keepAlive = keepAlive;
-    }
-    if (disconnection != null) {
-      _result.disconnection = disconnection;
-    }
-    if (pairedKeyEncryption != null) {
-      _result.pairedKeyEncryption = pairedKeyEncryption;
-    }
-    return _result;
-  }
-  factory V1Frame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory V1Frame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -139,8 +99,10 @@ class V1Frame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  V1Frame copyWith(void Function(V1Frame) updates) => super.copyWith((message) => updates(message as V1Frame)) as V1Frame; // ignore: deprecated_member_use
+  V1Frame copyWith(void Function(V1Frame) updates) => super.copyWith((message) => updates(message as V1Frame)) as V1Frame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static V1Frame create() => V1Frame._();
   V1Frame createEmptyInstance() => create();
@@ -237,73 +199,26 @@ class V1Frame extends $pb.GeneratedMessage {
 }
 
 class ConnectionRequestFrame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ConnectionRequestFrame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endpointId')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endpointName')
-    ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'handshakeData', $pb.PbFieldType.OY)
-    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nonce', $pb.PbFieldType.O3)
-    ..pc<ConnectionRequestFrame_Medium>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mediums', $pb.PbFieldType.PE, valueOf: ConnectionRequestFrame_Medium.valueOf, enumValues: ConnectionRequestFrame_Medium.values, defaultEnumValue: ConnectionRequestFrame_Medium.UNKNOWN_MEDIUM)
-    ..a<$core.List<$core.int>>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endpointInfo', $pb.PbFieldType.OY)
-    ..aOM<MediumMetadata>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mediumMetadata', subBuilder: MediumMetadata.create)
-    ..a<$core.int>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'keepAliveIntervalMillis', $pb.PbFieldType.O3)
-    ..a<$core.int>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'keepAliveTimeoutMillis', $pb.PbFieldType.O3)
-    ..a<$core.int>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceType', $pb.PbFieldType.O3)
-    ..a<$core.List<$core.int>>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceInfo', $pb.PbFieldType.OY)
+  factory ConnectionRequestFrame() => create();
+  ConnectionRequestFrame._() : super();
+  factory ConnectionRequestFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ConnectionRequestFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ConnectionRequestFrame', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'endpointId')
+    ..aOS(2, _omitFieldNames ? '' : 'endpointName')
+    ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'handshakeData', $pb.PbFieldType.OY)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'nonce', $pb.PbFieldType.O3)
+    ..pc<ConnectionRequestFrame_Medium>(5, _omitFieldNames ? '' : 'mediums', $pb.PbFieldType.PE, valueOf: ConnectionRequestFrame_Medium.valueOf, enumValues: ConnectionRequestFrame_Medium.values, defaultEnumValue: ConnectionRequestFrame_Medium.UNKNOWN_MEDIUM)
+    ..a<$core.List<$core.int>>(6, _omitFieldNames ? '' : 'endpointInfo', $pb.PbFieldType.OY)
+    ..aOM<MediumMetadata>(7, _omitFieldNames ? '' : 'mediumMetadata', subBuilder: MediumMetadata.create)
+    ..a<$core.int>(8, _omitFieldNames ? '' : 'keepAliveIntervalMillis', $pb.PbFieldType.O3)
+    ..a<$core.int>(9, _omitFieldNames ? '' : 'keepAliveTimeoutMillis', $pb.PbFieldType.O3)
+    ..a<$core.int>(10, _omitFieldNames ? '' : 'deviceType', $pb.PbFieldType.O3)
+    ..a<$core.List<$core.int>>(11, _omitFieldNames ? '' : 'deviceInfo', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
   ;
 
-  ConnectionRequestFrame._() : super();
-  factory ConnectionRequestFrame({
-    $core.String? endpointId,
-    $core.String? endpointName,
-    $core.List<$core.int>? handshakeData,
-    $core.int? nonce,
-    $core.Iterable<ConnectionRequestFrame_Medium>? mediums,
-    $core.List<$core.int>? endpointInfo,
-    MediumMetadata? mediumMetadata,
-    $core.int? keepAliveIntervalMillis,
-    $core.int? keepAliveTimeoutMillis,
-    $core.int? deviceType,
-    $core.List<$core.int>? deviceInfo,
-  }) {
-    final _result = create();
-    if (endpointId != null) {
-      _result.endpointId = endpointId;
-    }
-    if (endpointName != null) {
-      _result.endpointName = endpointName;
-    }
-    if (handshakeData != null) {
-      _result.handshakeData = handshakeData;
-    }
-    if (nonce != null) {
-      _result.nonce = nonce;
-    }
-    if (mediums != null) {
-      _result.mediums.addAll(mediums);
-    }
-    if (endpointInfo != null) {
-      _result.endpointInfo = endpointInfo;
-    }
-    if (mediumMetadata != null) {
-      _result.mediumMetadata = mediumMetadata;
-    }
-    if (keepAliveIntervalMillis != null) {
-      _result.keepAliveIntervalMillis = keepAliveIntervalMillis;
-    }
-    if (keepAliveTimeoutMillis != null) {
-      _result.keepAliveTimeoutMillis = keepAliveTimeoutMillis;
-    }
-    if (deviceType != null) {
-      _result.deviceType = deviceType;
-    }
-    if (deviceInfo != null) {
-      _result.deviceInfo = deviceInfo;
-    }
-    return _result;
-  }
-  factory ConnectionRequestFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ConnectionRequestFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -313,8 +228,10 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ConnectionRequestFrame copyWith(void Function(ConnectionRequestFrame) updates) => super.copyWith((message) => updates(message as ConnectionRequestFrame)) as ConnectionRequestFrame; // ignore: deprecated_member_use
+  ConnectionRequestFrame copyWith(void Function(ConnectionRequestFrame) updates) => super.copyWith((message) => updates(message as ConnectionRequestFrame)) as ConnectionRequestFrame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static ConnectionRequestFrame create() => ConnectionRequestFrame._();
   ConnectionRequestFrame createEmptyInstance() => create();
@@ -420,50 +337,21 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
 }
 
 class ConnectionResponseFrame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ConnectionResponseFrame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status', $pb.PbFieldType.O3)
-    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'handshakeData', $pb.PbFieldType.OY)
-    ..e<ConnectionResponseFrame_ResponseStatus>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'response', $pb.PbFieldType.OE, defaultOrMaker: ConnectionResponseFrame_ResponseStatus.UNKNOWN_RESPONSE_STATUS, valueOf: ConnectionResponseFrame_ResponseStatus.valueOf, enumValues: ConnectionResponseFrame_ResponseStatus.values)
-    ..aOM<OsInfo>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'osInfo', subBuilder: OsInfo.create)
-    ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'multiplexSocketBitmask', $pb.PbFieldType.O3)
-    ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nearbyConnectionsVersion', $pb.PbFieldType.O3)
+  factory ConnectionResponseFrame() => create();
+  ConnectionResponseFrame._() : super();
+  factory ConnectionResponseFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ConnectionResponseFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ConnectionResponseFrame', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'status', $pb.PbFieldType.O3)
+    ..a<$core.List<$core.int>>(2, _omitFieldNames ? '' : 'handshakeData', $pb.PbFieldType.OY)
+    ..e<ConnectionResponseFrame_ResponseStatus>(3, _omitFieldNames ? '' : 'response', $pb.PbFieldType.OE, defaultOrMaker: ConnectionResponseFrame_ResponseStatus.UNKNOWN_RESPONSE_STATUS, valueOf: ConnectionResponseFrame_ResponseStatus.valueOf, enumValues: ConnectionResponseFrame_ResponseStatus.values)
+    ..aOM<OsInfo>(4, _omitFieldNames ? '' : 'osInfo', subBuilder: OsInfo.create)
+    ..a<$core.int>(5, _omitFieldNames ? '' : 'multiplexSocketBitmask', $pb.PbFieldType.O3)
+    ..a<$core.int>(6, _omitFieldNames ? '' : 'nearbyConnectionsVersion', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
-  ConnectionResponseFrame._() : super();
-  factory ConnectionResponseFrame({
-  @$core.Deprecated('This field is deprecated.')
-    $core.int? status,
-    $core.List<$core.int>? handshakeData,
-    ConnectionResponseFrame_ResponseStatus? response,
-    OsInfo? osInfo,
-    $core.int? multiplexSocketBitmask,
-    $core.int? nearbyConnectionsVersion,
-  }) {
-    final _result = create();
-    if (status != null) {
-      // ignore: deprecated_member_use_from_same_package
-      _result.status = status;
-    }
-    if (handshakeData != null) {
-      _result.handshakeData = handshakeData;
-    }
-    if (response != null) {
-      _result.response = response;
-    }
-    if (osInfo != null) {
-      _result.osInfo = osInfo;
-    }
-    if (multiplexSocketBitmask != null) {
-      _result.multiplexSocketBitmask = multiplexSocketBitmask;
-    }
-    if (nearbyConnectionsVersion != null) {
-      _result.nearbyConnectionsVersion = nearbyConnectionsVersion;
-    }
-    return _result;
-  }
-  factory ConnectionResponseFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ConnectionResponseFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -473,8 +361,10 @@ class ConnectionResponseFrame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ConnectionResponseFrame copyWith(void Function(ConnectionResponseFrame) updates) => super.copyWith((message) => updates(message as ConnectionResponseFrame)) as ConnectionResponseFrame; // ignore: deprecated_member_use
+  ConnectionResponseFrame copyWith(void Function(ConnectionResponseFrame) updates) => super.copyWith((message) => updates(message as ConnectionResponseFrame)) as ConnectionResponseFrame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static ConnectionResponseFrame create() => ConnectionResponseFrame._();
   ConnectionResponseFrame createEmptyInstance() => create();
@@ -545,48 +435,21 @@ class ConnectionResponseFrame extends $pb.GeneratedMessage {
 }
 
 class PayloadTransferFrame_PayloadHeader extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PayloadTransferFrame.PayloadHeader', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..aInt64(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
-    ..e<PayloadTransferFrame_PayloadHeader_PayloadType>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: PayloadTransferFrame_PayloadHeader_PayloadType.UNKNOWN_PAYLOAD_TYPE, valueOf: PayloadTransferFrame_PayloadHeader_PayloadType.valueOf, enumValues: PayloadTransferFrame_PayloadHeader_PayloadType.values)
-    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalSize')
-    ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isSensitive')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fileName')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'parentFolder')
+  factory PayloadTransferFrame_PayloadHeader() => create();
+  PayloadTransferFrame_PayloadHeader._() : super();
+  factory PayloadTransferFrame_PayloadHeader.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PayloadTransferFrame_PayloadHeader.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PayloadTransferFrame.PayloadHeader', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'id')
+    ..e<PayloadTransferFrame_PayloadHeader_PayloadType>(2, _omitFieldNames ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: PayloadTransferFrame_PayloadHeader_PayloadType.UNKNOWN_PAYLOAD_TYPE, valueOf: PayloadTransferFrame_PayloadHeader_PayloadType.valueOf, enumValues: PayloadTransferFrame_PayloadHeader_PayloadType.values)
+    ..aInt64(3, _omitFieldNames ? '' : 'totalSize')
+    ..aOB(4, _omitFieldNames ? '' : 'isSensitive')
+    ..aOS(5, _omitFieldNames ? '' : 'fileName')
+    ..aOS(6, _omitFieldNames ? '' : 'parentFolder')
     ..hasRequiredFields = false
   ;
 
-  PayloadTransferFrame_PayloadHeader._() : super();
-  factory PayloadTransferFrame_PayloadHeader({
-    $fixnum.Int64? id,
-    PayloadTransferFrame_PayloadHeader_PayloadType? type,
-    $fixnum.Int64? totalSize,
-    $core.bool? isSensitive,
-    $core.String? fileName,
-    $core.String? parentFolder,
-  }) {
-    final _result = create();
-    if (id != null) {
-      _result.id = id;
-    }
-    if (type != null) {
-      _result.type = type;
-    }
-    if (totalSize != null) {
-      _result.totalSize = totalSize;
-    }
-    if (isSensitive != null) {
-      _result.isSensitive = isSensitive;
-    }
-    if (fileName != null) {
-      _result.fileName = fileName;
-    }
-    if (parentFolder != null) {
-      _result.parentFolder = parentFolder;
-    }
-    return _result;
-  }
-  factory PayloadTransferFrame_PayloadHeader.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PayloadTransferFrame_PayloadHeader.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -596,8 +459,10 @@ class PayloadTransferFrame_PayloadHeader extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PayloadTransferFrame_PayloadHeader copyWith(void Function(PayloadTransferFrame_PayloadHeader) updates) => super.copyWith((message) => updates(message as PayloadTransferFrame_PayloadHeader)) as PayloadTransferFrame_PayloadHeader; // ignore: deprecated_member_use
+  PayloadTransferFrame_PayloadHeader copyWith(void Function(PayloadTransferFrame_PayloadHeader) updates) => super.copyWith((message) => updates(message as PayloadTransferFrame_PayloadHeader)) as PayloadTransferFrame_PayloadHeader;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static PayloadTransferFrame_PayloadHeader create() => PayloadTransferFrame_PayloadHeader._();
   PayloadTransferFrame_PayloadHeader createEmptyInstance() => create();
@@ -662,33 +527,18 @@ class PayloadTransferFrame_PayloadHeader extends $pb.GeneratedMessage {
 }
 
 class PayloadTransferFrame_PayloadChunk extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PayloadTransferFrame.PayloadChunk', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'flags', $pb.PbFieldType.O3)
-    ..aInt64(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'offset')
-    ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'body', $pb.PbFieldType.OY)
+  factory PayloadTransferFrame_PayloadChunk() => create();
+  PayloadTransferFrame_PayloadChunk._() : super();
+  factory PayloadTransferFrame_PayloadChunk.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PayloadTransferFrame_PayloadChunk.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PayloadTransferFrame.PayloadChunk', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'flags', $pb.PbFieldType.O3)
+    ..aInt64(2, _omitFieldNames ? '' : 'offset')
+    ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'body', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
   ;
 
-  PayloadTransferFrame_PayloadChunk._() : super();
-  factory PayloadTransferFrame_PayloadChunk({
-    $core.int? flags,
-    $fixnum.Int64? offset,
-    $core.List<$core.int>? body,
-  }) {
-    final _result = create();
-    if (flags != null) {
-      _result.flags = flags;
-    }
-    if (offset != null) {
-      _result.offset = offset;
-    }
-    if (body != null) {
-      _result.body = body;
-    }
-    return _result;
-  }
-  factory PayloadTransferFrame_PayloadChunk.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PayloadTransferFrame_PayloadChunk.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -698,8 +548,10 @@ class PayloadTransferFrame_PayloadChunk extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PayloadTransferFrame_PayloadChunk copyWith(void Function(PayloadTransferFrame_PayloadChunk) updates) => super.copyWith((message) => updates(message as PayloadTransferFrame_PayloadChunk)) as PayloadTransferFrame_PayloadChunk; // ignore: deprecated_member_use
+  PayloadTransferFrame_PayloadChunk copyWith(void Function(PayloadTransferFrame_PayloadChunk) updates) => super.copyWith((message) => updates(message as PayloadTransferFrame_PayloadChunk)) as PayloadTransferFrame_PayloadChunk;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static PayloadTransferFrame_PayloadChunk create() => PayloadTransferFrame_PayloadChunk._();
   PayloadTransferFrame_PayloadChunk createEmptyInstance() => create();
@@ -737,28 +589,17 @@ class PayloadTransferFrame_PayloadChunk extends $pb.GeneratedMessage {
 }
 
 class PayloadTransferFrame_ControlMessage extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PayloadTransferFrame.ControlMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..e<PayloadTransferFrame_ControlMessage_EventType>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'event', $pb.PbFieldType.OE, defaultOrMaker: PayloadTransferFrame_ControlMessage_EventType.UNKNOWN_EVENT_TYPE, valueOf: PayloadTransferFrame_ControlMessage_EventType.valueOf, enumValues: PayloadTransferFrame_ControlMessage_EventType.values)
-    ..aInt64(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'offset')
+  factory PayloadTransferFrame_ControlMessage() => create();
+  PayloadTransferFrame_ControlMessage._() : super();
+  factory PayloadTransferFrame_ControlMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PayloadTransferFrame_ControlMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PayloadTransferFrame.ControlMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..e<PayloadTransferFrame_ControlMessage_EventType>(1, _omitFieldNames ? '' : 'event', $pb.PbFieldType.OE, defaultOrMaker: PayloadTransferFrame_ControlMessage_EventType.UNKNOWN_EVENT_TYPE, valueOf: PayloadTransferFrame_ControlMessage_EventType.valueOf, enumValues: PayloadTransferFrame_ControlMessage_EventType.values)
+    ..aInt64(2, _omitFieldNames ? '' : 'offset')
     ..hasRequiredFields = false
   ;
 
-  PayloadTransferFrame_ControlMessage._() : super();
-  factory PayloadTransferFrame_ControlMessage({
-    PayloadTransferFrame_ControlMessage_EventType? event,
-    $fixnum.Int64? offset,
-  }) {
-    final _result = create();
-    if (event != null) {
-      _result.event = event;
-    }
-    if (offset != null) {
-      _result.offset = offset;
-    }
-    return _result;
-  }
-  factory PayloadTransferFrame_ControlMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PayloadTransferFrame_ControlMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -768,8 +609,10 @@ class PayloadTransferFrame_ControlMessage extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PayloadTransferFrame_ControlMessage copyWith(void Function(PayloadTransferFrame_ControlMessage) updates) => super.copyWith((message) => updates(message as PayloadTransferFrame_ControlMessage)) as PayloadTransferFrame_ControlMessage; // ignore: deprecated_member_use
+  PayloadTransferFrame_ControlMessage copyWith(void Function(PayloadTransferFrame_ControlMessage) updates) => super.copyWith((message) => updates(message as PayloadTransferFrame_ControlMessage)) as PayloadTransferFrame_ControlMessage;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static PayloadTransferFrame_ControlMessage create() => PayloadTransferFrame_ControlMessage._();
   PayloadTransferFrame_ControlMessage createEmptyInstance() => create();
@@ -798,38 +641,19 @@ class PayloadTransferFrame_ControlMessage extends $pb.GeneratedMessage {
 }
 
 class PayloadTransferFrame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PayloadTransferFrame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..e<PayloadTransferFrame_PacketType>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'packetType', $pb.PbFieldType.OE, defaultOrMaker: PayloadTransferFrame_PacketType.UNKNOWN_PACKET_TYPE, valueOf: PayloadTransferFrame_PacketType.valueOf, enumValues: PayloadTransferFrame_PacketType.values)
-    ..aOM<PayloadTransferFrame_PayloadHeader>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'payloadHeader', subBuilder: PayloadTransferFrame_PayloadHeader.create)
-    ..aOM<PayloadTransferFrame_PayloadChunk>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'payloadChunk', subBuilder: PayloadTransferFrame_PayloadChunk.create)
-    ..aOM<PayloadTransferFrame_ControlMessage>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'controlMessage', subBuilder: PayloadTransferFrame_ControlMessage.create)
+  factory PayloadTransferFrame() => create();
+  PayloadTransferFrame._() : super();
+  factory PayloadTransferFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PayloadTransferFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PayloadTransferFrame', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..e<PayloadTransferFrame_PacketType>(1, _omitFieldNames ? '' : 'packetType', $pb.PbFieldType.OE, defaultOrMaker: PayloadTransferFrame_PacketType.UNKNOWN_PACKET_TYPE, valueOf: PayloadTransferFrame_PacketType.valueOf, enumValues: PayloadTransferFrame_PacketType.values)
+    ..aOM<PayloadTransferFrame_PayloadHeader>(2, _omitFieldNames ? '' : 'payloadHeader', subBuilder: PayloadTransferFrame_PayloadHeader.create)
+    ..aOM<PayloadTransferFrame_PayloadChunk>(3, _omitFieldNames ? '' : 'payloadChunk', subBuilder: PayloadTransferFrame_PayloadChunk.create)
+    ..aOM<PayloadTransferFrame_ControlMessage>(4, _omitFieldNames ? '' : 'controlMessage', subBuilder: PayloadTransferFrame_ControlMessage.create)
     ..hasRequiredFields = false
   ;
 
-  PayloadTransferFrame._() : super();
-  factory PayloadTransferFrame({
-    PayloadTransferFrame_PacketType? packetType,
-    PayloadTransferFrame_PayloadHeader? payloadHeader,
-    PayloadTransferFrame_PayloadChunk? payloadChunk,
-    PayloadTransferFrame_ControlMessage? controlMessage,
-  }) {
-    final _result = create();
-    if (packetType != null) {
-      _result.packetType = packetType;
-    }
-    if (payloadHeader != null) {
-      _result.payloadHeader = payloadHeader;
-    }
-    if (payloadChunk != null) {
-      _result.payloadChunk = payloadChunk;
-    }
-    if (controlMessage != null) {
-      _result.controlMessage = controlMessage;
-    }
-    return _result;
-  }
-  factory PayloadTransferFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PayloadTransferFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -839,8 +663,10 @@ class PayloadTransferFrame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PayloadTransferFrame copyWith(void Function(PayloadTransferFrame) updates) => super.copyWith((message) => updates(message as PayloadTransferFrame)) as PayloadTransferFrame; // ignore: deprecated_member_use
+  PayloadTransferFrame copyWith(void Function(PayloadTransferFrame) updates) => super.copyWith((message) => updates(message as PayloadTransferFrame)) as PayloadTransferFrame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static PayloadTransferFrame create() => PayloadTransferFrame._();
   PayloadTransferFrame createEmptyInstance() => create();
@@ -893,43 +719,20 @@ class PayloadTransferFrame extends $pb.GeneratedMessage {
 }
 
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BandwidthUpgradeNegotiationFrame.UpgradePathInfo.WifiHotspotCredentials', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ssid')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'password')
-    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'port', $pb.PbFieldType.O3)
-    ..a<$core.String>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'gateway', $pb.PbFieldType.OS, defaultOrMaker: '0.0.0.0')
-    ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'frequency', $pb.PbFieldType.O3, defaultOrMaker: -1)
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials() => create();
+  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials._() : super();
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BandwidthUpgradeNegotiationFrame.UpgradePathInfo.WifiHotspotCredentials', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'ssid')
+    ..aOS(2, _omitFieldNames ? '' : 'password')
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'port', $pb.PbFieldType.O3)
+    ..a<$core.String>(4, _omitFieldNames ? '' : 'gateway', $pb.PbFieldType.OS, defaultOrMaker: '0.0.0.0')
+    ..a<$core.int>(5, _omitFieldNames ? '' : 'frequency', $pb.PbFieldType.O3, defaultOrMaker: -1)
     ..hasRequiredFields = false
   ;
 
-  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials._() : super();
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials({
-    $core.String? ssid,
-    $core.String? password,
-    $core.int? port,
-    $core.String? gateway,
-    $core.int? frequency,
-  }) {
-    final _result = create();
-    if (ssid != null) {
-      _result.ssid = ssid;
-    }
-    if (password != null) {
-      _result.password = password;
-    }
-    if (port != null) {
-      _result.port = port;
-    }
-    if (gateway != null) {
-      _result.gateway = gateway;
-    }
-    if (frequency != null) {
-      _result.frequency = frequency;
-    }
-    return _result;
-  }
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -939,8 +742,10 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials ex
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials copyWith(void Function(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials)) as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials; // ignore: deprecated_member_use
+  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials copyWith(void Function(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials)) as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials create() => BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials._();
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials createEmptyInstance() => create();
@@ -996,28 +801,17 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials ex
 }
 
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BandwidthUpgradeNegotiationFrame.UpgradePathInfo.WifiLanSocket', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ipAddress', $pb.PbFieldType.OY)
-    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wifiPort', $pb.PbFieldType.O3)
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket() => create();
+  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket._() : super();
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BandwidthUpgradeNegotiationFrame.UpgradePathInfo.WifiLanSocket', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'ipAddress', $pb.PbFieldType.OY)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'wifiPort', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
-  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket._() : super();
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket({
-    $core.List<$core.int>? ipAddress,
-    $core.int? wifiPort,
-  }) {
-    final _result = create();
-    if (ipAddress != null) {
-      _result.ipAddress = ipAddress;
-    }
-    if (wifiPort != null) {
-      _result.wifiPort = wifiPort;
-    }
-    return _result;
-  }
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1027,8 +821,10 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket extends $pb
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket copyWith(void Function(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket)) as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket; // ignore: deprecated_member_use
+  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket copyWith(void Function(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket)) as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket create() => BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket._();
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket createEmptyInstance() => create();
@@ -1057,28 +853,17 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket extends $pb
 }
 
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BandwidthUpgradeNegotiationFrame.UpgradePathInfo.BluetoothCredentials', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'serviceName')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'macAddress')
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials() => create();
+  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials._() : super();
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BandwidthUpgradeNegotiationFrame.UpgradePathInfo.BluetoothCredentials', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'serviceName')
+    ..aOS(2, _omitFieldNames ? '' : 'macAddress')
     ..hasRequiredFields = false
   ;
 
-  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials._() : super();
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials({
-    $core.String? serviceName,
-    $core.String? macAddress,
-  }) {
-    final _result = create();
-    if (serviceName != null) {
-      _result.serviceName = serviceName;
-    }
-    if (macAddress != null) {
-      _result.macAddress = macAddress;
-    }
-    return _result;
-  }
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1088,8 +873,10 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials exte
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials copyWith(void Function(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials)) as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials; // ignore: deprecated_member_use
+  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials copyWith(void Function(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials)) as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials create() => BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials._();
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials createEmptyInstance() => create();
@@ -1118,33 +905,18 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials exte
 }
 
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BandwidthUpgradeNegotiationFrame.UpgradePathInfo.WifiAwareCredentials', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'serviceId')
-    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'serviceInfo', $pb.PbFieldType.OY)
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'password')
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials() => create();
+  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials._() : super();
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BandwidthUpgradeNegotiationFrame.UpgradePathInfo.WifiAwareCredentials', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'serviceId')
+    ..a<$core.List<$core.int>>(2, _omitFieldNames ? '' : 'serviceInfo', $pb.PbFieldType.OY)
+    ..aOS(3, _omitFieldNames ? '' : 'password')
     ..hasRequiredFields = false
   ;
 
-  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials._() : super();
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials({
-    $core.String? serviceId,
-    $core.List<$core.int>? serviceInfo,
-    $core.String? password,
-  }) {
-    final _result = create();
-    if (serviceId != null) {
-      _result.serviceId = serviceId;
-    }
-    if (serviceInfo != null) {
-      _result.serviceInfo = serviceInfo;
-    }
-    if (password != null) {
-      _result.password = password;
-    }
-    return _result;
-  }
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1154,8 +926,10 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials exte
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials copyWith(void Function(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials)) as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials; // ignore: deprecated_member_use
+  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials copyWith(void Function(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials)) as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials create() => BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials._();
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials createEmptyInstance() => create();
@@ -1193,43 +967,20 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials exte
 }
 
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BandwidthUpgradeNegotiationFrame.UpgradePathInfo.WifiDirectCredentials', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ssid')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'password')
-    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'port', $pb.PbFieldType.O3)
-    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'frequency', $pb.PbFieldType.O3)
-    ..a<$core.String>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'gateway', $pb.PbFieldType.OS, defaultOrMaker: '0.0.0.0')
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials() => create();
+  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials._() : super();
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BandwidthUpgradeNegotiationFrame.UpgradePathInfo.WifiDirectCredentials', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'ssid')
+    ..aOS(2, _omitFieldNames ? '' : 'password')
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'port', $pb.PbFieldType.O3)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'frequency', $pb.PbFieldType.O3)
+    ..a<$core.String>(5, _omitFieldNames ? '' : 'gateway', $pb.PbFieldType.OS, defaultOrMaker: '0.0.0.0')
     ..hasRequiredFields = false
   ;
 
-  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials._() : super();
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials({
-    $core.String? ssid,
-    $core.String? password,
-    $core.int? port,
-    $core.int? frequency,
-    $core.String? gateway,
-  }) {
-    final _result = create();
-    if (ssid != null) {
-      _result.ssid = ssid;
-    }
-    if (password != null) {
-      _result.password = password;
-    }
-    if (port != null) {
-      _result.port = port;
-    }
-    if (frequency != null) {
-      _result.frequency = frequency;
-    }
-    if (gateway != null) {
-      _result.gateway = gateway;
-    }
-    return _result;
-  }
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1239,8 +990,10 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials ext
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials copyWith(void Function(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials)) as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials; // ignore: deprecated_member_use
+  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials copyWith(void Function(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials)) as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials create() => BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials._();
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials createEmptyInstance() => create();
@@ -1296,28 +1049,17 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials ext
 }
 
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BandwidthUpgradeNegotiationFrame.UpgradePathInfo.WebRtcCredentials', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peerId')
-    ..aOM<LocationHint>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'locationHint', subBuilder: LocationHint.create)
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials() => create();
+  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials._() : super();
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BandwidthUpgradeNegotiationFrame.UpgradePathInfo.WebRtcCredentials', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'peerId')
+    ..aOM<LocationHint>(2, _omitFieldNames ? '' : 'locationHint', subBuilder: LocationHint.create)
     ..hasRequiredFields = false
   ;
 
-  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials._() : super();
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials({
-    $core.String? peerId,
-    LocationHint? locationHint,
-  }) {
-    final _result = create();
-    if (peerId != null) {
-      _result.peerId = peerId;
-    }
-    if (locationHint != null) {
-      _result.locationHint = locationHint;
-    }
-    return _result;
-  }
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1327,8 +1069,10 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials extends
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials copyWith(void Function(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials)) as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials; // ignore: deprecated_member_use
+  BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials copyWith(void Function(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials)) as BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials create() => BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials._();
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials createEmptyInstance() => create();
@@ -1359,63 +1103,24 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials extends
 }
 
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BandwidthUpgradeNegotiationFrame.UpgradePathInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..e<BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'medium', $pb.PbFieldType.OE, defaultOrMaker: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium.UNKNOWN_MEDIUM, valueOf: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium.valueOf, enumValues: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium.values)
-    ..aOM<BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wifiHotspotCredentials', subBuilder: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials.create)
-    ..aOM<BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wifiLanSocket', subBuilder: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket.create)
-    ..aOM<BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'bluetoothCredentials', subBuilder: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials.create)
-    ..aOM<BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wifiAwareCredentials', subBuilder: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials.create)
-    ..aOM<BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wifiDirectCredentials', subBuilder: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials.create)
-    ..aOB(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsDisablingEncryption')
-    ..aOM<BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'webRtcCredentials', subBuilder: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials.create)
-    ..aOB(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsClientIntroductionAck')
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo() => create();
+  BandwidthUpgradeNegotiationFrame_UpgradePathInfo._() : super();
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BandwidthUpgradeNegotiationFrame.UpgradePathInfo', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..e<BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium>(1, _omitFieldNames ? '' : 'medium', $pb.PbFieldType.OE, defaultOrMaker: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium.UNKNOWN_MEDIUM, valueOf: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium.valueOf, enumValues: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium.values)
+    ..aOM<BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials>(2, _omitFieldNames ? '' : 'wifiHotspotCredentials', subBuilder: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials.create)
+    ..aOM<BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket>(3, _omitFieldNames ? '' : 'wifiLanSocket', subBuilder: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket.create)
+    ..aOM<BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials>(4, _omitFieldNames ? '' : 'bluetoothCredentials', subBuilder: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials.create)
+    ..aOM<BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials>(5, _omitFieldNames ? '' : 'wifiAwareCredentials', subBuilder: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials.create)
+    ..aOM<BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials>(6, _omitFieldNames ? '' : 'wifiDirectCredentials', subBuilder: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials.create)
+    ..aOB(7, _omitFieldNames ? '' : 'supportsDisablingEncryption')
+    ..aOM<BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials>(8, _omitFieldNames ? '' : 'webRtcCredentials', subBuilder: BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials.create)
+    ..aOB(9, _omitFieldNames ? '' : 'supportsClientIntroductionAck')
     ..hasRequiredFields = false
   ;
 
-  BandwidthUpgradeNegotiationFrame_UpgradePathInfo._() : super();
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo({
-    BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium? medium,
-    BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials? wifiHotspotCredentials,
-    BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket? wifiLanSocket,
-    BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials? bluetoothCredentials,
-    BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials? wifiAwareCredentials,
-    BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials? wifiDirectCredentials,
-    $core.bool? supportsDisablingEncryption,
-    BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials? webRtcCredentials,
-    $core.bool? supportsClientIntroductionAck,
-  }) {
-    final _result = create();
-    if (medium != null) {
-      _result.medium = medium;
-    }
-    if (wifiHotspotCredentials != null) {
-      _result.wifiHotspotCredentials = wifiHotspotCredentials;
-    }
-    if (wifiLanSocket != null) {
-      _result.wifiLanSocket = wifiLanSocket;
-    }
-    if (bluetoothCredentials != null) {
-      _result.bluetoothCredentials = bluetoothCredentials;
-    }
-    if (wifiAwareCredentials != null) {
-      _result.wifiAwareCredentials = wifiAwareCredentials;
-    }
-    if (wifiDirectCredentials != null) {
-      _result.wifiDirectCredentials = wifiDirectCredentials;
-    }
-    if (supportsDisablingEncryption != null) {
-      _result.supportsDisablingEncryption = supportsDisablingEncryption;
-    }
-    if (webRtcCredentials != null) {
-      _result.webRtcCredentials = webRtcCredentials;
-    }
-    if (supportsClientIntroductionAck != null) {
-      _result.supportsClientIntroductionAck = supportsClientIntroductionAck;
-    }
-    return _result;
-  }
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1425,8 +1130,10 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo extends $pb.GeneratedMess
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  BandwidthUpgradeNegotiationFrame_UpgradePathInfo copyWith(void Function(BandwidthUpgradeNegotiationFrame_UpgradePathInfo) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_UpgradePathInfo)) as BandwidthUpgradeNegotiationFrame_UpgradePathInfo; // ignore: deprecated_member_use
+  BandwidthUpgradeNegotiationFrame_UpgradePathInfo copyWith(void Function(BandwidthUpgradeNegotiationFrame_UpgradePathInfo) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_UpgradePathInfo)) as BandwidthUpgradeNegotiationFrame_UpgradePathInfo;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static BandwidthUpgradeNegotiationFrame_UpgradePathInfo create() => BandwidthUpgradeNegotiationFrame_UpgradePathInfo._();
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo createEmptyInstance() => create();
@@ -1530,28 +1237,17 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo extends $pb.GeneratedMess
 }
 
 class BandwidthUpgradeNegotiationFrame_ClientIntroduction extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BandwidthUpgradeNegotiationFrame.ClientIntroduction', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endpointId')
-    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsDisablingEncryption')
+  factory BandwidthUpgradeNegotiationFrame_ClientIntroduction() => create();
+  BandwidthUpgradeNegotiationFrame_ClientIntroduction._() : super();
+  factory BandwidthUpgradeNegotiationFrame_ClientIntroduction.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BandwidthUpgradeNegotiationFrame_ClientIntroduction.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BandwidthUpgradeNegotiationFrame.ClientIntroduction', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'endpointId')
+    ..aOB(2, _omitFieldNames ? '' : 'supportsDisablingEncryption')
     ..hasRequiredFields = false
   ;
 
-  BandwidthUpgradeNegotiationFrame_ClientIntroduction._() : super();
-  factory BandwidthUpgradeNegotiationFrame_ClientIntroduction({
-    $core.String? endpointId,
-    $core.bool? supportsDisablingEncryption,
-  }) {
-    final _result = create();
-    if (endpointId != null) {
-      _result.endpointId = endpointId;
-    }
-    if (supportsDisablingEncryption != null) {
-      _result.supportsDisablingEncryption = supportsDisablingEncryption;
-    }
-    return _result;
-  }
-  factory BandwidthUpgradeNegotiationFrame_ClientIntroduction.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory BandwidthUpgradeNegotiationFrame_ClientIntroduction.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1561,8 +1257,10 @@ class BandwidthUpgradeNegotiationFrame_ClientIntroduction extends $pb.GeneratedM
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  BandwidthUpgradeNegotiationFrame_ClientIntroduction copyWith(void Function(BandwidthUpgradeNegotiationFrame_ClientIntroduction) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_ClientIntroduction)) as BandwidthUpgradeNegotiationFrame_ClientIntroduction; // ignore: deprecated_member_use
+  BandwidthUpgradeNegotiationFrame_ClientIntroduction copyWith(void Function(BandwidthUpgradeNegotiationFrame_ClientIntroduction) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_ClientIntroduction)) as BandwidthUpgradeNegotiationFrame_ClientIntroduction;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static BandwidthUpgradeNegotiationFrame_ClientIntroduction create() => BandwidthUpgradeNegotiationFrame_ClientIntroduction._();
   BandwidthUpgradeNegotiationFrame_ClientIntroduction createEmptyInstance() => create();
@@ -1591,14 +1289,15 @@ class BandwidthUpgradeNegotiationFrame_ClientIntroduction extends $pb.GeneratedM
 }
 
 class BandwidthUpgradeNegotiationFrame_ClientIntroductionAck extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BandwidthUpgradeNegotiationFrame.ClientIntroductionAck', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+  factory BandwidthUpgradeNegotiationFrame_ClientIntroductionAck() => create();
+  BandwidthUpgradeNegotiationFrame_ClientIntroductionAck._() : super();
+  factory BandwidthUpgradeNegotiationFrame_ClientIntroductionAck.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BandwidthUpgradeNegotiationFrame_ClientIntroductionAck.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BandwidthUpgradeNegotiationFrame.ClientIntroductionAck', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
-  BandwidthUpgradeNegotiationFrame_ClientIntroductionAck._() : super();
-  factory BandwidthUpgradeNegotiationFrame_ClientIntroductionAck() => create();
-  factory BandwidthUpgradeNegotiationFrame_ClientIntroductionAck.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory BandwidthUpgradeNegotiationFrame_ClientIntroductionAck.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1608,8 +1307,10 @@ class BandwidthUpgradeNegotiationFrame_ClientIntroductionAck extends $pb.Generat
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  BandwidthUpgradeNegotiationFrame_ClientIntroductionAck copyWith(void Function(BandwidthUpgradeNegotiationFrame_ClientIntroductionAck) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_ClientIntroductionAck)) as BandwidthUpgradeNegotiationFrame_ClientIntroductionAck; // ignore: deprecated_member_use
+  BandwidthUpgradeNegotiationFrame_ClientIntroductionAck copyWith(void Function(BandwidthUpgradeNegotiationFrame_ClientIntroductionAck) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame_ClientIntroductionAck)) as BandwidthUpgradeNegotiationFrame_ClientIntroductionAck;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static BandwidthUpgradeNegotiationFrame_ClientIntroductionAck create() => BandwidthUpgradeNegotiationFrame_ClientIntroductionAck._();
   BandwidthUpgradeNegotiationFrame_ClientIntroductionAck createEmptyInstance() => create();
@@ -1620,38 +1321,19 @@ class BandwidthUpgradeNegotiationFrame_ClientIntroductionAck extends $pb.Generat
 }
 
 class BandwidthUpgradeNegotiationFrame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BandwidthUpgradeNegotiationFrame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..e<BandwidthUpgradeNegotiationFrame_EventType>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'eventType', $pb.PbFieldType.OE, defaultOrMaker: BandwidthUpgradeNegotiationFrame_EventType.UNKNOWN_EVENT_TYPE, valueOf: BandwidthUpgradeNegotiationFrame_EventType.valueOf, enumValues: BandwidthUpgradeNegotiationFrame_EventType.values)
-    ..aOM<BandwidthUpgradeNegotiationFrame_UpgradePathInfo>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'upgradePathInfo', subBuilder: BandwidthUpgradeNegotiationFrame_UpgradePathInfo.create)
-    ..aOM<BandwidthUpgradeNegotiationFrame_ClientIntroduction>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'clientIntroduction', subBuilder: BandwidthUpgradeNegotiationFrame_ClientIntroduction.create)
-    ..aOM<BandwidthUpgradeNegotiationFrame_ClientIntroductionAck>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'clientIntroductionAck', subBuilder: BandwidthUpgradeNegotiationFrame_ClientIntroductionAck.create)
+  factory BandwidthUpgradeNegotiationFrame() => create();
+  BandwidthUpgradeNegotiationFrame._() : super();
+  factory BandwidthUpgradeNegotiationFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BandwidthUpgradeNegotiationFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BandwidthUpgradeNegotiationFrame', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..e<BandwidthUpgradeNegotiationFrame_EventType>(1, _omitFieldNames ? '' : 'eventType', $pb.PbFieldType.OE, defaultOrMaker: BandwidthUpgradeNegotiationFrame_EventType.UNKNOWN_EVENT_TYPE, valueOf: BandwidthUpgradeNegotiationFrame_EventType.valueOf, enumValues: BandwidthUpgradeNegotiationFrame_EventType.values)
+    ..aOM<BandwidthUpgradeNegotiationFrame_UpgradePathInfo>(2, _omitFieldNames ? '' : 'upgradePathInfo', subBuilder: BandwidthUpgradeNegotiationFrame_UpgradePathInfo.create)
+    ..aOM<BandwidthUpgradeNegotiationFrame_ClientIntroduction>(3, _omitFieldNames ? '' : 'clientIntroduction', subBuilder: BandwidthUpgradeNegotiationFrame_ClientIntroduction.create)
+    ..aOM<BandwidthUpgradeNegotiationFrame_ClientIntroductionAck>(4, _omitFieldNames ? '' : 'clientIntroductionAck', subBuilder: BandwidthUpgradeNegotiationFrame_ClientIntroductionAck.create)
     ..hasRequiredFields = false
   ;
 
-  BandwidthUpgradeNegotiationFrame._() : super();
-  factory BandwidthUpgradeNegotiationFrame({
-    BandwidthUpgradeNegotiationFrame_EventType? eventType,
-    BandwidthUpgradeNegotiationFrame_UpgradePathInfo? upgradePathInfo,
-    BandwidthUpgradeNegotiationFrame_ClientIntroduction? clientIntroduction,
-    BandwidthUpgradeNegotiationFrame_ClientIntroductionAck? clientIntroductionAck,
-  }) {
-    final _result = create();
-    if (eventType != null) {
-      _result.eventType = eventType;
-    }
-    if (upgradePathInfo != null) {
-      _result.upgradePathInfo = upgradePathInfo;
-    }
-    if (clientIntroduction != null) {
-      _result.clientIntroduction = clientIntroduction;
-    }
-    if (clientIntroductionAck != null) {
-      _result.clientIntroductionAck = clientIntroductionAck;
-    }
-    return _result;
-  }
-  factory BandwidthUpgradeNegotiationFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory BandwidthUpgradeNegotiationFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1661,8 +1343,10 @@ class BandwidthUpgradeNegotiationFrame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  BandwidthUpgradeNegotiationFrame copyWith(void Function(BandwidthUpgradeNegotiationFrame) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame)) as BandwidthUpgradeNegotiationFrame; // ignore: deprecated_member_use
+  BandwidthUpgradeNegotiationFrame copyWith(void Function(BandwidthUpgradeNegotiationFrame) updates) => super.copyWith((message) => updates(message as BandwidthUpgradeNegotiationFrame)) as BandwidthUpgradeNegotiationFrame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static BandwidthUpgradeNegotiationFrame create() => BandwidthUpgradeNegotiationFrame._();
   BandwidthUpgradeNegotiationFrame createEmptyInstance() => create();
@@ -1715,23 +1399,16 @@ class BandwidthUpgradeNegotiationFrame extends $pb.GeneratedMessage {
 }
 
 class KeepAliveFrame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'KeepAliveFrame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ack')
+  factory KeepAliveFrame() => create();
+  KeepAliveFrame._() : super();
+  factory KeepAliveFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory KeepAliveFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'KeepAliveFrame', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'ack')
     ..hasRequiredFields = false
   ;
 
-  KeepAliveFrame._() : super();
-  factory KeepAliveFrame({
-    $core.bool? ack,
-  }) {
-    final _result = create();
-    if (ack != null) {
-      _result.ack = ack;
-    }
-    return _result;
-  }
-  factory KeepAliveFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory KeepAliveFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1741,8 +1418,10 @@ class KeepAliveFrame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  KeepAliveFrame copyWith(void Function(KeepAliveFrame) updates) => super.copyWith((message) => updates(message as KeepAliveFrame)) as KeepAliveFrame; // ignore: deprecated_member_use
+  KeepAliveFrame copyWith(void Function(KeepAliveFrame) updates) => super.copyWith((message) => updates(message as KeepAliveFrame)) as KeepAliveFrame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static KeepAliveFrame create() => KeepAliveFrame._();
   KeepAliveFrame createEmptyInstance() => create();
@@ -1762,28 +1441,17 @@ class KeepAliveFrame extends $pb.GeneratedMessage {
 }
 
 class DisconnectionFrame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DisconnectionFrame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'requestSafeToDisconnect')
-    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ackSafeToDisconnect')
+  factory DisconnectionFrame() => create();
+  DisconnectionFrame._() : super();
+  factory DisconnectionFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DisconnectionFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DisconnectionFrame', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'requestSafeToDisconnect')
+    ..aOB(2, _omitFieldNames ? '' : 'ackSafeToDisconnect')
     ..hasRequiredFields = false
   ;
 
-  DisconnectionFrame._() : super();
-  factory DisconnectionFrame({
-    $core.bool? requestSafeToDisconnect,
-    $core.bool? ackSafeToDisconnect,
-  }) {
-    final _result = create();
-    if (requestSafeToDisconnect != null) {
-      _result.requestSafeToDisconnect = requestSafeToDisconnect;
-    }
-    if (ackSafeToDisconnect != null) {
-      _result.ackSafeToDisconnect = ackSafeToDisconnect;
-    }
-    return _result;
-  }
-  factory DisconnectionFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory DisconnectionFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1793,8 +1461,10 @@ class DisconnectionFrame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  DisconnectionFrame copyWith(void Function(DisconnectionFrame) updates) => super.copyWith((message) => updates(message as DisconnectionFrame)) as DisconnectionFrame; // ignore: deprecated_member_use
+  DisconnectionFrame copyWith(void Function(DisconnectionFrame) updates) => super.copyWith((message) => updates(message as DisconnectionFrame)) as DisconnectionFrame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static DisconnectionFrame create() => DisconnectionFrame._();
   DisconnectionFrame createEmptyInstance() => create();
@@ -1823,23 +1493,16 @@ class DisconnectionFrame extends $pb.GeneratedMessage {
 }
 
 class PairedKeyEncryptionFrame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PairedKeyEncryptionFrame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signedData', $pb.PbFieldType.OY)
+  factory PairedKeyEncryptionFrame() => create();
+  PairedKeyEncryptionFrame._() : super();
+  factory PairedKeyEncryptionFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PairedKeyEncryptionFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PairedKeyEncryptionFrame', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'signedData', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
   ;
 
-  PairedKeyEncryptionFrame._() : super();
-  factory PairedKeyEncryptionFrame({
-    $core.List<$core.int>? signedData,
-  }) {
-    final _result = create();
-    if (signedData != null) {
-      _result.signedData = signedData;
-    }
-    return _result;
-  }
-  factory PairedKeyEncryptionFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PairedKeyEncryptionFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1849,8 +1512,10 @@ class PairedKeyEncryptionFrame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PairedKeyEncryptionFrame copyWith(void Function(PairedKeyEncryptionFrame) updates) => super.copyWith((message) => updates(message as PairedKeyEncryptionFrame)) as PairedKeyEncryptionFrame; // ignore: deprecated_member_use
+  PairedKeyEncryptionFrame copyWith(void Function(PairedKeyEncryptionFrame) updates) => super.copyWith((message) => updates(message as PairedKeyEncryptionFrame)) as PairedKeyEncryptionFrame;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static PairedKeyEncryptionFrame create() => PairedKeyEncryptionFrame._();
   PairedKeyEncryptionFrame createEmptyInstance() => create();
@@ -1870,73 +1535,26 @@ class PairedKeyEncryptionFrame extends $pb.GeneratedMessage {
 }
 
 class MediumMetadata extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MediumMetadata', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supports5Ghz', protoName: 'supports_5_ghz')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'bssid')
-    ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ipAddress', $pb.PbFieldType.OY)
-    ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supports6Ghz', protoName: 'supports_6_ghz')
-    ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mobileRadio')
-    ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'apFrequency', $pb.PbFieldType.O3, defaultOrMaker: -1)
-    ..aOM<AvailableChannels>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'availableChannels', subBuilder: AvailableChannels.create)
-    ..aOM<WifiDirectCliUsableChannels>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wifiDirectCliUsableChannels', subBuilder: WifiDirectCliUsableChannels.create)
-    ..aOM<WifiLanUsableChannels>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wifiLanUsableChannels', subBuilder: WifiLanUsableChannels.create)
-    ..aOM<WifiAwareUsableChannels>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wifiAwareUsableChannels', subBuilder: WifiAwareUsableChannels.create)
-    ..aOM<WifiHotspotStaUsableChannels>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wifiHotspotStaUsableChannels', subBuilder: WifiHotspotStaUsableChannels.create)
+  factory MediumMetadata() => create();
+  MediumMetadata._() : super();
+  factory MediumMetadata.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MediumMetadata.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MediumMetadata', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'supports5Ghz', protoName: 'supports_5_ghz')
+    ..aOS(2, _omitFieldNames ? '' : 'bssid')
+    ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'ipAddress', $pb.PbFieldType.OY)
+    ..aOB(4, _omitFieldNames ? '' : 'supports6Ghz', protoName: 'supports_6_ghz')
+    ..aOB(5, _omitFieldNames ? '' : 'mobileRadio')
+    ..a<$core.int>(6, _omitFieldNames ? '' : 'apFrequency', $pb.PbFieldType.O3, defaultOrMaker: -1)
+    ..aOM<AvailableChannels>(7, _omitFieldNames ? '' : 'availableChannels', subBuilder: AvailableChannels.create)
+    ..aOM<WifiDirectCliUsableChannels>(8, _omitFieldNames ? '' : 'wifiDirectCliUsableChannels', subBuilder: WifiDirectCliUsableChannels.create)
+    ..aOM<WifiLanUsableChannels>(9, _omitFieldNames ? '' : 'wifiLanUsableChannels', subBuilder: WifiLanUsableChannels.create)
+    ..aOM<WifiAwareUsableChannels>(10, _omitFieldNames ? '' : 'wifiAwareUsableChannels', subBuilder: WifiAwareUsableChannels.create)
+    ..aOM<WifiHotspotStaUsableChannels>(11, _omitFieldNames ? '' : 'wifiHotspotStaUsableChannels', subBuilder: WifiHotspotStaUsableChannels.create)
     ..hasRequiredFields = false
   ;
 
-  MediumMetadata._() : super();
-  factory MediumMetadata({
-    $core.bool? supports5Ghz,
-    $core.String? bssid,
-    $core.List<$core.int>? ipAddress,
-    $core.bool? supports6Ghz,
-    $core.bool? mobileRadio,
-    $core.int? apFrequency,
-    AvailableChannels? availableChannels,
-    WifiDirectCliUsableChannels? wifiDirectCliUsableChannels,
-    WifiLanUsableChannels? wifiLanUsableChannels,
-    WifiAwareUsableChannels? wifiAwareUsableChannels,
-    WifiHotspotStaUsableChannels? wifiHotspotStaUsableChannels,
-  }) {
-    final _result = create();
-    if (supports5Ghz != null) {
-      _result.supports5Ghz = supports5Ghz;
-    }
-    if (bssid != null) {
-      _result.bssid = bssid;
-    }
-    if (ipAddress != null) {
-      _result.ipAddress = ipAddress;
-    }
-    if (supports6Ghz != null) {
-      _result.supports6Ghz = supports6Ghz;
-    }
-    if (mobileRadio != null) {
-      _result.mobileRadio = mobileRadio;
-    }
-    if (apFrequency != null) {
-      _result.apFrequency = apFrequency;
-    }
-    if (availableChannels != null) {
-      _result.availableChannels = availableChannels;
-    }
-    if (wifiDirectCliUsableChannels != null) {
-      _result.wifiDirectCliUsableChannels = wifiDirectCliUsableChannels;
-    }
-    if (wifiLanUsableChannels != null) {
-      _result.wifiLanUsableChannels = wifiLanUsableChannels;
-    }
-    if (wifiAwareUsableChannels != null) {
-      _result.wifiAwareUsableChannels = wifiAwareUsableChannels;
-    }
-    if (wifiHotspotStaUsableChannels != null) {
-      _result.wifiHotspotStaUsableChannels = wifiHotspotStaUsableChannels;
-    }
-    return _result;
-  }
-  factory MediumMetadata.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory MediumMetadata.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1946,8 +1564,10 @@ class MediumMetadata extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  MediumMetadata copyWith(void Function(MediumMetadata) updates) => super.copyWith((message) => updates(message as MediumMetadata)) as MediumMetadata; // ignore: deprecated_member_use
+  MediumMetadata copyWith(void Function(MediumMetadata) updates) => super.copyWith((message) => updates(message as MediumMetadata)) as MediumMetadata;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static MediumMetadata create() => MediumMetadata._();
   MediumMetadata createEmptyInstance() => create();
@@ -2067,23 +1687,16 @@ class MediumMetadata extends $pb.GeneratedMessage {
 }
 
 class AvailableChannels extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AvailableChannels', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..p<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'channels', $pb.PbFieldType.K3)
+  factory AvailableChannels() => create();
+  AvailableChannels._() : super();
+  factory AvailableChannels.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AvailableChannels.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AvailableChannels', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..p<$core.int>(1, _omitFieldNames ? '' : 'channels', $pb.PbFieldType.K3)
     ..hasRequiredFields = false
   ;
 
-  AvailableChannels._() : super();
-  factory AvailableChannels({
-    $core.Iterable<$core.int>? channels,
-  }) {
-    final _result = create();
-    if (channels != null) {
-      _result.channels.addAll(channels);
-    }
-    return _result;
-  }
-  factory AvailableChannels.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory AvailableChannels.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -2093,8 +1706,10 @@ class AvailableChannels extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  AvailableChannels copyWith(void Function(AvailableChannels) updates) => super.copyWith((message) => updates(message as AvailableChannels)) as AvailableChannels; // ignore: deprecated_member_use
+  AvailableChannels copyWith(void Function(AvailableChannels) updates) => super.copyWith((message) => updates(message as AvailableChannels)) as AvailableChannels;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static AvailableChannels create() => AvailableChannels._();
   AvailableChannels createEmptyInstance() => create();
@@ -2108,23 +1723,16 @@ class AvailableChannels extends $pb.GeneratedMessage {
 }
 
 class WifiDirectCliUsableChannels extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'WifiDirectCliUsableChannels', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..p<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'channels', $pb.PbFieldType.K3)
+  factory WifiDirectCliUsableChannels() => create();
+  WifiDirectCliUsableChannels._() : super();
+  factory WifiDirectCliUsableChannels.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory WifiDirectCliUsableChannels.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'WifiDirectCliUsableChannels', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..p<$core.int>(1, _omitFieldNames ? '' : 'channels', $pb.PbFieldType.K3)
     ..hasRequiredFields = false
   ;
 
-  WifiDirectCliUsableChannels._() : super();
-  factory WifiDirectCliUsableChannels({
-    $core.Iterable<$core.int>? channels,
-  }) {
-    final _result = create();
-    if (channels != null) {
-      _result.channels.addAll(channels);
-    }
-    return _result;
-  }
-  factory WifiDirectCliUsableChannels.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory WifiDirectCliUsableChannels.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -2134,8 +1742,10 @@ class WifiDirectCliUsableChannels extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  WifiDirectCliUsableChannels copyWith(void Function(WifiDirectCliUsableChannels) updates) => super.copyWith((message) => updates(message as WifiDirectCliUsableChannels)) as WifiDirectCliUsableChannels; // ignore: deprecated_member_use
+  WifiDirectCliUsableChannels copyWith(void Function(WifiDirectCliUsableChannels) updates) => super.copyWith((message) => updates(message as WifiDirectCliUsableChannels)) as WifiDirectCliUsableChannels;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static WifiDirectCliUsableChannels create() => WifiDirectCliUsableChannels._();
   WifiDirectCliUsableChannels createEmptyInstance() => create();
@@ -2149,23 +1759,16 @@ class WifiDirectCliUsableChannels extends $pb.GeneratedMessage {
 }
 
 class WifiLanUsableChannels extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'WifiLanUsableChannels', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..p<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'channels', $pb.PbFieldType.K3)
+  factory WifiLanUsableChannels() => create();
+  WifiLanUsableChannels._() : super();
+  factory WifiLanUsableChannels.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory WifiLanUsableChannels.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'WifiLanUsableChannels', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..p<$core.int>(1, _omitFieldNames ? '' : 'channels', $pb.PbFieldType.K3)
     ..hasRequiredFields = false
   ;
 
-  WifiLanUsableChannels._() : super();
-  factory WifiLanUsableChannels({
-    $core.Iterable<$core.int>? channels,
-  }) {
-    final _result = create();
-    if (channels != null) {
-      _result.channels.addAll(channels);
-    }
-    return _result;
-  }
-  factory WifiLanUsableChannels.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory WifiLanUsableChannels.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -2175,8 +1778,10 @@ class WifiLanUsableChannels extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  WifiLanUsableChannels copyWith(void Function(WifiLanUsableChannels) updates) => super.copyWith((message) => updates(message as WifiLanUsableChannels)) as WifiLanUsableChannels; // ignore: deprecated_member_use
+  WifiLanUsableChannels copyWith(void Function(WifiLanUsableChannels) updates) => super.copyWith((message) => updates(message as WifiLanUsableChannels)) as WifiLanUsableChannels;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static WifiLanUsableChannels create() => WifiLanUsableChannels._();
   WifiLanUsableChannels createEmptyInstance() => create();
@@ -2190,23 +1795,16 @@ class WifiLanUsableChannels extends $pb.GeneratedMessage {
 }
 
 class WifiAwareUsableChannels extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'WifiAwareUsableChannels', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..p<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'channels', $pb.PbFieldType.K3)
+  factory WifiAwareUsableChannels() => create();
+  WifiAwareUsableChannels._() : super();
+  factory WifiAwareUsableChannels.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory WifiAwareUsableChannels.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'WifiAwareUsableChannels', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..p<$core.int>(1, _omitFieldNames ? '' : 'channels', $pb.PbFieldType.K3)
     ..hasRequiredFields = false
   ;
 
-  WifiAwareUsableChannels._() : super();
-  factory WifiAwareUsableChannels({
-    $core.Iterable<$core.int>? channels,
-  }) {
-    final _result = create();
-    if (channels != null) {
-      _result.channels.addAll(channels);
-    }
-    return _result;
-  }
-  factory WifiAwareUsableChannels.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory WifiAwareUsableChannels.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -2216,8 +1814,10 @@ class WifiAwareUsableChannels extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  WifiAwareUsableChannels copyWith(void Function(WifiAwareUsableChannels) updates) => super.copyWith((message) => updates(message as WifiAwareUsableChannels)) as WifiAwareUsableChannels; // ignore: deprecated_member_use
+  WifiAwareUsableChannels copyWith(void Function(WifiAwareUsableChannels) updates) => super.copyWith((message) => updates(message as WifiAwareUsableChannels)) as WifiAwareUsableChannels;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static WifiAwareUsableChannels create() => WifiAwareUsableChannels._();
   WifiAwareUsableChannels createEmptyInstance() => create();
@@ -2231,23 +1831,16 @@ class WifiAwareUsableChannels extends $pb.GeneratedMessage {
 }
 
 class WifiHotspotStaUsableChannels extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'WifiHotspotStaUsableChannels', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..p<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'channels', $pb.PbFieldType.K3)
+  factory WifiHotspotStaUsableChannels() => create();
+  WifiHotspotStaUsableChannels._() : super();
+  factory WifiHotspotStaUsableChannels.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory WifiHotspotStaUsableChannels.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'WifiHotspotStaUsableChannels', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..p<$core.int>(1, _omitFieldNames ? '' : 'channels', $pb.PbFieldType.K3)
     ..hasRequiredFields = false
   ;
 
-  WifiHotspotStaUsableChannels._() : super();
-  factory WifiHotspotStaUsableChannels({
-    $core.Iterable<$core.int>? channels,
-  }) {
-    final _result = create();
-    if (channels != null) {
-      _result.channels.addAll(channels);
-    }
-    return _result;
-  }
-  factory WifiHotspotStaUsableChannels.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory WifiHotspotStaUsableChannels.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -2257,8 +1850,10 @@ class WifiHotspotStaUsableChannels extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  WifiHotspotStaUsableChannels copyWith(void Function(WifiHotspotStaUsableChannels) updates) => super.copyWith((message) => updates(message as WifiHotspotStaUsableChannels)) as WifiHotspotStaUsableChannels; // ignore: deprecated_member_use
+  WifiHotspotStaUsableChannels copyWith(void Function(WifiHotspotStaUsableChannels) updates) => super.copyWith((message) => updates(message as WifiHotspotStaUsableChannels)) as WifiHotspotStaUsableChannels;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static WifiHotspotStaUsableChannels create() => WifiHotspotStaUsableChannels._();
   WifiHotspotStaUsableChannels createEmptyInstance() => create();
@@ -2272,28 +1867,17 @@ class WifiHotspotStaUsableChannels extends $pb.GeneratedMessage {
 }
 
 class LocationHint extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LocationHint', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'location')
-    ..e<LocationStandard_Format>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'format', $pb.PbFieldType.OE, defaultOrMaker: LocationStandard_Format.UNKNOWN, valueOf: LocationStandard_Format.valueOf, enumValues: LocationStandard_Format.values)
+  factory LocationHint() => create();
+  LocationHint._() : super();
+  factory LocationHint.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LocationHint.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'LocationHint', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'location')
+    ..e<LocationStandard_Format>(2, _omitFieldNames ? '' : 'format', $pb.PbFieldType.OE, defaultOrMaker: LocationStandard_Format.UNKNOWN, valueOf: LocationStandard_Format.valueOf, enumValues: LocationStandard_Format.values)
     ..hasRequiredFields = false
   ;
 
-  LocationHint._() : super();
-  factory LocationHint({
-    $core.String? location,
-    LocationStandard_Format? format,
-  }) {
-    final _result = create();
-    if (location != null) {
-      _result.location = location;
-    }
-    if (format != null) {
-      _result.format = format;
-    }
-    return _result;
-  }
-  factory LocationHint.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory LocationHint.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -2303,8 +1887,10 @@ class LocationHint extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  LocationHint copyWith(void Function(LocationHint) updates) => super.copyWith((message) => updates(message as LocationHint)) as LocationHint; // ignore: deprecated_member_use
+  LocationHint copyWith(void Function(LocationHint) updates) => super.copyWith((message) => updates(message as LocationHint)) as LocationHint;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static LocationHint create() => LocationHint._();
   LocationHint createEmptyInstance() => create();
@@ -2333,14 +1919,15 @@ class LocationHint extends $pb.GeneratedMessage {
 }
 
 class LocationStandard extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LocationStandard', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+  factory LocationStandard() => create();
+  LocationStandard._() : super();
+  factory LocationStandard.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LocationStandard.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'LocationStandard', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
-  LocationStandard._() : super();
-  factory LocationStandard() => create();
-  factory LocationStandard.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory LocationStandard.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -2350,8 +1937,10 @@ class LocationStandard extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  LocationStandard copyWith(void Function(LocationStandard) updates) => super.copyWith((message) => updates(message as LocationStandard)) as LocationStandard; // ignore: deprecated_member_use
+  LocationStandard copyWith(void Function(LocationStandard) updates) => super.copyWith((message) => updates(message as LocationStandard)) as LocationStandard;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static LocationStandard create() => LocationStandard._();
   LocationStandard createEmptyInstance() => create();
@@ -2362,23 +1951,16 @@ class LocationStandard extends $pb.GeneratedMessage {
 }
 
 class OsInfo extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'OsInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'location.nearby.connections'), createEmptyInstance: create)
-    ..e<OsInfo_OsType>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: OsInfo_OsType.UNKNOWN_OS_TYPE, valueOf: OsInfo_OsType.valueOf, enumValues: OsInfo_OsType.values)
+  factory OsInfo() => create();
+  OsInfo._() : super();
+  factory OsInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory OsInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OsInfo', package: const $pb.PackageName(_omitMessageNames ? '' : 'location.nearby.connections'), createEmptyInstance: create)
+    ..e<OsInfo_OsType>(1, _omitFieldNames ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: OsInfo_OsType.UNKNOWN_OS_TYPE, valueOf: OsInfo_OsType.valueOf, enumValues: OsInfo_OsType.values)
     ..hasRequiredFields = false
   ;
 
-  OsInfo._() : super();
-  factory OsInfo({
-    OsInfo_OsType? type,
-  }) {
-    final _result = create();
-    if (type != null) {
-      _result.type = type;
-    }
-    return _result;
-  }
-  factory OsInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory OsInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -2388,8 +1970,10 @@ class OsInfo extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  OsInfo copyWith(void Function(OsInfo) updates) => super.copyWith((message) => updates(message as OsInfo)) as OsInfo; // ignore: deprecated_member_use
+  OsInfo copyWith(void Function(OsInfo) updates) => super.copyWith((message) => updates(message as OsInfo)) as OsInfo;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static OsInfo create() => OsInfo._();
   OsInfo createEmptyInstance() => create();
@@ -2408,3 +1992,6 @@ class OsInfo extends $pb.GeneratedMessage {
   void clearType() => clearField(1);
 }
 
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');
