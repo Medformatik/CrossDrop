@@ -12,25 +12,33 @@ import 'package:system_tray/system_tray.dart';
 
 import 'theme.dart';
 
+class AppConfig {
+  static String get name => 'CrossDrop';
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
 
-  WindowOptions windowOptions = const WindowOptions(
+  WindowOptions windowOptions = WindowOptions(
     center: true,
     backgroundColor: Colors.transparent,
     skipTaskbar: false,
     titleBarStyle: TitleBarStyle.hidden,
     windowButtonVisibility: true,
-    minimumSize: Size(400, 250),
-    maximumSize: Size(800, 600),
+    minimumSize: const Size(400, 250),
+    maximumSize: const Size(800, 600),
     alwaysOnTop: true,
-    title: 'CrossDrop',
+    title: AppConfig.name,
   );
 
   windowManager.waitUntilReadyToShow(windowOptions, () async {
     await windowManager.hide();
   });
+
+  await const MacosWindowUtilsConfig(
+    toolbarStyle: NSWindowToolbarStyle.unified,
+  ).apply();
 
   runApp(const App());
 }
@@ -99,7 +107,7 @@ class _AppState extends State<App> {
         DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
         if (Platform.isIOS) {
           deviceInfo.iosInfo.then((info) {
-            deviceName = info.name ?? info.model ?? '';
+            deviceName = info.name;
             SharedPreferences.getInstance().then((prefs) {
               prefs.setString('deviceName', deviceName);
               setState(() {
@@ -169,15 +177,15 @@ class AppMaterial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'CrossDrop',
+      title: AppConfig.name,
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       themeMode: appTheme.mode,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'CrossDrop',
+          title: Text(
+            AppConfig.name,
             textAlign: TextAlign.center,
           ),
           centerTitle: true,
@@ -221,16 +229,16 @@ class AppMacos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MacosApp(
-      title: 'Crossdrop',
+      title: AppConfig.name,
       theme: MacosThemeData.light(),
       darkTheme: MacosThemeData.dark(),
       themeMode: appTheme.mode,
       debugShowCheckedModeBanner: false,
       home: AppPlatformMenuBar(
         child: MacosScaffold(
-          toolBar: const ToolBar(
+          toolBar: ToolBar(
             title: Text(
-              'Crossdrop',
+              AppConfig.name,
               textAlign: TextAlign.center,
             ),
             centerTitle: true,

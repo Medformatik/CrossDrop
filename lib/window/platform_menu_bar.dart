@@ -1,3 +1,4 @@
+import 'package:crossdrop/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class AppPlatformMenuBar extends StatelessWidget {
     return PlatformMenuBar(
       menus: [
         PlatformMenu(
-          label: 'Crossdrop',
+          label: AppConfig.name,
           menus: [
             if (PlatformProvidedMenuItem.hasMenu(PlatformProvidedMenuItemType.about))
               const PlatformProvidedMenuItem(
