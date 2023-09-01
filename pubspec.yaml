@@ -8,6 +8,10 @@ environment:
   sdk: ">=3.0.5 <4.0.0"
 
 dependencies:
+  adwaita:
+    git:
+      url: https://github.com/gtk-flutter/adwaita.git
+      ref: main
   crypto: ^3.0.3
   cryptography: ^2.5.0
   cupertino_icons: ^1.0.2
@@ -15,10 +19,10 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_local_notifications: ^15.1.0+1
-  macos_ui: ^2.0.0
   multicast_dns: ^0.3.2+3
   nsd: ^2.3.1
   protobuf: ^3.0.0
+  fixnum: ^1.1.0
   provider: ^6.0.5
   shared_preferences: ^2.2.0
   system_tray: ^2.0.3
@@ -26,6 +30,7 @@ dependencies:
     git:
       url: https://github.com/leanflutter/window_manager.git
       ref: main
+  flutter_animate: ^4.2.0+1
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.0
@@ -39,16 +44,8 @@ flutter:
     - assets/sf_symbols/
     - assets/icons/
 flutter_icons:
-  android: false
   ios: true
   remove_alpha_ios: true
   image_path: "assets/icons/app_icon.png"
   web:
     generate: false
-  windows:
-    generate: true
-    icon_size: 128 # min:48, max:256, default: 48
-    image_path: "assets/icons/app_icon.png"
-  macos:
-    generate: true
-    image_path: "assets/icons/app_icon.png"

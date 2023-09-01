@@ -1,9 +1,8 @@
 import 'dart:async';
 import 'dart:io';
-
-import 'package:crossdrop/window/platform_menu_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:macos_ui/macos_ui.dart';
+import 'package:adwaita/adwaita.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:window_manager/window_manager.dart';
@@ -16,29 +15,34 @@ class AppConfig {
   static String get name => 'CrossDrop';
 }
 
+class OnCloseWindowListener with WindowListener {
+  @override
+  void onWindowClose() {
+    windowManager.hide();
+  }
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await windowManager.ensureInitialized();
+  if (Platform.isLinux) {
+    OnCloseWindowListener onCloseWindowListener = OnCloseWindowListener();
 
-  WindowOptions windowOptions = WindowOptions(
-    center: true,
-    backgroundColor: Colors.transparent,
-    skipTaskbar: false,
-    titleBarStyle: TitleBarStyle.hidden,
-    windowButtonVisibility: true,
-    minimumSize: const Size(400, 250),
-    maximumSize: const Size(800, 600),
-    alwaysOnTop: true,
-    title: AppConfig.name,
-  );
+    await windowManager.ensureInitialized();
 
-  windowManager.waitUntilReadyToShow(windowOptions, () async {
-    await windowManager.hide();
-  });
+    WindowOptions windowOptions = WindowOptions(
+      backgroundColor: Colors.transparent,
+      titleBarStyle: TitleBarStyle.normal,
+      windowButtonVisibility: true,
+      size: const Size(340, 360),
+      title: AppConfig.name,
+    );
 
-  await const MacosWindowUtilsConfig(
-    toolbarStyle: NSWindowToolbarStyle.unified,
-  ).apply();
+    windowManager.waitUntilReadyToShow(windowOptions, () async {
+      windowManager.setPreventClose(true);
+      windowManager.addListener(onCloseWindowListener);
+      await windowManager.hide();
+    });
+  }
 
   runApp(const App());
 }
@@ -51,16 +55,48 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  late String currentDeviceName;
+
   final TextEditingController _deviceNameController = TextEditingController();
+  bool isTextFieldEditing = false;
+
+  final List<ShapeBorder> animationShapes = [
+    const CircleBorder(),
+    const StarBorder(
+      points: 8.00,
+      rotation: 0.00,
+      innerRadiusRatio: 0.50,
+      pointRounding: 0.60,
+      valleyRounding: 0.29,
+      squash: 0.00,
+    ),
+    const StarBorder(
+      points: 3.95,
+      rotation: 45.0,
+      innerRadiusRatio: 0.43,
+      pointRounding: 0.69,
+      valleyRounding: 0.11,
+      squash: 0.00,
+    ),
+    const StarBorder.polygon(
+      sides: 5.00,
+      rotation: 0.00,
+      pointRounding: 0.35,
+      squash: 0.00,
+    ),
+  ];
 
   final SystemTray _systemTray = SystemTray();
   final Menu menu = Menu();
 
   @override
-  void initState() {
+  void initState() async {
     super.initState();
-    initSystemTray();
-    initDeviceNameController();
+    await _initializeDeviceName();
+    if (Platform.isLinux) {
+      await initSystemTray();
+      await initSystemTrayMenu();
+    }
   }
 
   @override
@@ -69,79 +105,48 @@ class _AppState extends State<App> {
     _deviceNameController.dispose();
   }
 
-  Future<void> initSystemTray() async {
-    String path = Platform.isWindows ? 'assets/icons/system_tray_icon.ico' : 'assets/icons/system_tray_icon.png';
+  Future<void> _initializeDeviceName() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String deviceName = prefs.getString('deviceName') ?? '';
+    if (deviceName.isEmpty) {
+      if (Platform.isIOS) {
+        DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+        IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
+        deviceName = iosDeviceInfo.name;
+      } else if (Platform.isLinux) {
+        deviceName = Platform.localHostname;
+      }
+      await prefs.setString('deviceName', deviceName);
+    }
+    currentDeviceName = deviceName;
+    setState(() => _deviceNameController.text = deviceName);
+  }
 
-    // We first init the systray menu and then add the menu entries
-    await _systemTray.initSystemTray(iconPath: path, toolTip: 'CrossDrop: Nearby Share for all platforms');
+  Future<void> initSystemTray() async {
+    String path = 'assets/icons/system_tray_icon.png';
+    await _systemTray.initSystemTray(iconPath: path, toolTip: 'CrossDrop');
 
     // handle system tray event
     _systemTray.registerSystemTrayEventHandler((eventName) {
       if (eventName == kSystemTrayEventClick) {
-        Platform.isWindows ? windowManager.show() : _systemTray.popUpContextMenu();
+        _systemTray.popUpContextMenu();
       } else if (eventName == kSystemTrayEventRightClick) {
-        Platform.isWindows ? _systemTray.popUpContextMenu() : windowManager.show();
+        windowManager.show();
       }
     });
-
-    await menu.buildFrom([
-      MenuItemLabel(label: 'Show', onClicked: (menuItem) => windowManager.show()),
-      MenuItemLabel(label: 'Hide', onClicked: (menuItem) => windowManager.hide()),
-      MenuItemLabel(
-          label: 'Exit',
-          onClicked: (menuItem) {
-            windowManager.close();
-            exit(0);
-          }),
-    ]);
-
-    _systemTray.setContextMenu(menu);
   }
 
-  Future<void> initDeviceNameController() async {
-    // Get deviceName from SharedPreferences and device name from device_info_plus
-    // If text in controller is empty, set to deviceName from SharedPreferences if it exists and is not empty, otherwise set to device name from device_info_plus
-    SharedPreferences.getInstance().then((prefs) {
-      String deviceName = prefs.getString('deviceName') ?? '';
-      if (deviceName.isEmpty) {
-        DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-        if (Platform.isIOS) {
-          deviceInfo.iosInfo.then((info) {
-            deviceName = info.name;
-            SharedPreferences.getInstance().then((prefs) {
-              prefs.setString('deviceName', deviceName);
-              setState(() {
-                _deviceNameController.text = deviceName;
-              });
-            });
-          });
-        } else if (Platform.isMacOS) {
-          deviceInfo.macOsInfo.then((info) {
-            deviceName = info.computerName;
-            SharedPreferences.getInstance().then((prefs) {
-              prefs.setString('deviceName', deviceName);
-              setState(() {
-                _deviceNameController.text = deviceName;
-              });
-            });
-          });
-        } else if (Platform.isLinux) {
-          deviceInfo.linuxInfo.then((info) {
-            deviceName = info.prettyName;
-            SharedPreferences.getInstance().then((prefs) {
-              prefs.setString('deviceName', deviceName);
-              setState(() {
-                _deviceNameController.text = deviceName;
-              });
-            });
-          });
-        }
-      } else {
-        setState(() {
-          _deviceNameController.text = deviceName;
-        });
-      }
-    });
+  Future<void> initSystemTrayMenu() async {
+    await menu.buildFrom([
+      MenuItemLabel(label: 'Visible to everyone', enabled: false),
+      MenuItemLabel(label: 'Device name: $currentDeviceName', enabled: false),
+      MenuItemLabel(label: 'Settings', onClicked: (menuItem) => windowManager.show()),
+      MenuItemLabel(label: 'Quit', onClicked: (menuItem) {
+        windowManager.close();
+        exit(0);
+      }),
+    ]);
+    await _systemTray.setContextMenu(menu);
   }
 
   @override
@@ -150,126 +155,79 @@ class _AppState extends State<App> {
       create: (_) => AppTheme(),
       builder: (context, _) {
         final appTheme = context.watch<AppTheme>();
-        return Platform.isMacOS
-            ? AppMacos(
-                appTheme: appTheme,
-                deviceNameController: _deviceNameController,
-              )
-            : AppMaterial(
-                appTheme: appTheme,
-                deviceNameController: _deviceNameController,
-              );
-      },
-    );
-  }
-}
-
-class AppMaterial extends StatelessWidget {
-  const AppMaterial({
-    super.key,
-    required this.appTheme,
-    required TextEditingController deviceNameController,
-  }) : _deviceNameController = deviceNameController;
-
-  final AppTheme appTheme;
-  final TextEditingController _deviceNameController;
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: AppConfig.name,
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
-      themeMode: appTheme.mode,
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            AppConfig.name,
-            textAlign: TextAlign.center,
-          ),
-          centerTitle: true,
-        ),
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              SizedBox(
-                width: 300.0,
-                child: TextField(
-                  decoration: const InputDecoration(
-                    labelText: 'Device name',
-                  ),
-                  maxLines: 1,
-                  controller: _deviceNameController,
-                  onEditingComplete: () async {
-                    SharedPreferences prefs = await SharedPreferences.getInstance();
-                    prefs.setString('deviceName', _deviceNameController.text);
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class AppMacos extends StatelessWidget {
-  const AppMacos({
-    super.key,
-    required this.appTheme,
-    required TextEditingController deviceNameController,
-  }) : _deviceNameController = deviceNameController;
-
-  final AppTheme appTheme;
-  final TextEditingController _deviceNameController;
-
-  @override
-  Widget build(BuildContext context) {
-    return MacosApp(
-      title: AppConfig.name,
-      theme: MacosThemeData.light(),
-      darkTheme: MacosThemeData.dark(),
-      themeMode: appTheme.mode,
-      debugShowCheckedModeBanner: false,
-      home: AppPlatformMenuBar(
-        child: MacosScaffold(
-          toolBar: ToolBar(
-            title: Text(
-              AppConfig.name,
-              textAlign: TextAlign.center,
-            ),
-            centerTitle: true,
-          ),
-          children: [
-            ContentArea(
-              builder: (context, scrollController) {
-                return SingleChildScrollView(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        width: 300.0,
-                        child: MacosTextField(
-                          placeholder: 'Device name',
-                          maxLines: 1,
-                          controller: _deviceNameController,
-                          onEditingComplete: () async {
-                            SharedPreferences prefs = await SharedPreferences.getInstance();
-                            prefs.setString('deviceName', _deviceNameController.text);
-                          },
+        return MaterialApp(
+          title: AppConfig.name,
+          theme: Platform.isLinux ? AdwaitaThemeData.light() : ThemeData.light(),
+          darkTheme: Platform.isLinux ? AdwaitaThemeData.dark() : ThemeData.dark(),
+          themeMode: appTheme.mode,
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+            appBar: Platform.isIOS ? AppBar(title: Text(AppConfig.name, textAlign: TextAlign.center), centerTitle: true) : null,
+            body: SingleChildScrollView(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  const Text('Ready to receive', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500)),
+                  const SizedBox(height: 20),
+                  Stack(
+                    fit: StackFit.passthrough,
+                    children: animationShapes.asMap().entries.map((entry) {
+                      int index = entry.key;
+                      ShapeBorder shape = entry.value;
+                      return Container(
+                        width: 140,
+                        height: 140,
+                        decoration: ShapeDecoration(
+                          shape: shape,
+                          color: const Color.fromRGBO(13, 85, 201, 1.0),
                         ),
+                      )
+                        .animate(onPlay: (controller) => controller.repeat())
+                        .then(delay: const Duration(seconds: 2) * index)
+                        .fadeIn(curve: Curves.easeOut, duration: const Duration(seconds: 1))
+                        .fadeOut(delay: const Duration(seconds: 1))
+                        .then(delay: const Duration(seconds: 2) * (animationShapes.length - (index + 1)));
+                    }).toList(),
+                  ),
+                  const SizedBox(height: 40),
+                  const Text('Receiving from everyone', textAlign: TextAlign.start, style: TextStyle(fontSize: 16)),
+                  const SizedBox(height: 20),
+                  Stack(
+                    alignment: Alignment.center,
+                    fit: StackFit.passthrough,
+                    children: [
+                      TextField(
+                        decoration: const InputDecoration(labelText: 'Device name'),
+                        maxLines: 1,
+                        controller: _deviceNameController,
+                        onChanged: (_) => setState(() => isTextFieldEditing = true),
                       ),
+                      if (isTextFieldEditing)
+                        Positioned(
+                          right: 0,
+                          child: ElevatedButton(
+                            onPressed: () async {
+                              setState(() => isTextFieldEditing = false);
+                              SharedPreferences prefs = await SharedPreferences.getInstance();
+                              currentDeviceName = _deviceNameController.text;
+                              await prefs.setString('deviceName', _deviceNameController.text);
+                              await initSystemTrayMenu();
+                            },
+                            style: ElevatedButton.styleFrom(
+                              shape: const CircleBorder(),
+                              backgroundColor: const Color.fromRGBO(53, 132, 228, 1.0),
+                            ),
+                            child: const Icon(Icons.done),
+                          ),
+                        ),
                     ],
                   ),
-                );
-              },
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
