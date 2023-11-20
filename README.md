@@ -2,7 +2,11 @@
 
 CrossDrop is based on [NearDrop](https://github.com/grishka/NearDrop), a Swift implementation of Nearby Share for macOS.
 
-**⚠️ This is a work in progress. It is not yet feature-complete, and it is not yet stable. It is not yet ready for production use.**
+> [!IMPORTANT]
+> **⚠️ This is a work in progress. It is not yet feature-complete, and it is not yet stable. It is not yet ready for production use.**
+
+> [!NOTE]
+> At the moment I don't have the time to work on implementing Nearby Share here, even though that's what it's all about. I've started working on it, but I don't have the time to finish it at the moment.
 
 [Protocol documentation](https://github.com/grishka/NearDrop/blob/master/PROTOCOL.md) is available in the NearDrop repository.
 
