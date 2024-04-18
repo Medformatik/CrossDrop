@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -13,6 +13,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+/// This enum is used by iOS devices as values for device_display_diagonal_mils
+/// in GcmDeviceInfo. There is no good way to calculate it on those devices.
 class AppleDeviceDiagonalMils extends $pb.ProtobufEnum {
   static const AppleDeviceDiagonalMils APPLE_PHONE = AppleDeviceDiagonalMils._(4000, _omitEnumNames ? '' : 'APPLE_PHONE');
   static const AppleDeviceDiagonalMils APPLE_PAD = AppleDeviceDiagonalMils._(7900, _omitEnumNames ? '' : 'APPLE_PAD');
@@ -28,6 +30,8 @@ class AppleDeviceDiagonalMils extends $pb.ProtobufEnum {
   const AppleDeviceDiagonalMils._($core.int v, $core.String n) : super(v, n);
 }
 
+/// This should be kept in sync with DeviceType in:
+/// java/com/google/security/cryptauth/backend/services/common/common_enums.proto
 class DeviceType extends $pb.ProtobufEnum {
   static const DeviceType UNKNOWN = DeviceType._(0, _omitEnumNames ? '' : 'UNKNOWN');
   static const DeviceType ANDROID = DeviceType._(1, _omitEnumNames ? '' : 'ANDROID');
@@ -51,6 +55,7 @@ class DeviceType extends $pb.ProtobufEnum {
   const DeviceType._($core.int v, $core.String n) : super(v, n);
 }
 
+/// MultiDevice features which may be supported and enabled on a device. See
 class SoftwareFeature extends $pb.ProtobufEnum {
   static const SoftwareFeature UNKNOWN_FEATURE = SoftwareFeature._(0, _omitEnumNames ? '' : 'UNKNOWN_FEATURE');
   static const SoftwareFeature BETTER_TOGETHER_HOST = SoftwareFeature._(1, _omitEnumNames ? '' : 'BETTER_TOGETHER_HOST');
@@ -80,6 +85,10 @@ class SoftwareFeature extends $pb.ProtobufEnum {
   const SoftwareFeature._($core.int v, $core.String n) : super(v, n);
 }
 
+/// A list of "reasons" that can be provided for calling server-side APIs.
+/// This is particularly important for calls that can be triggered by different
+/// kinds of events. Please try to keep reasons as generic as possible, so that
+/// codes can be re-used by various callers in a sensible fashion.
 class InvocationReason extends $pb.ProtobufEnum {
   static const InvocationReason REASON_UNKNOWN = InvocationReason._(0, _omitEnumNames ? '' : 'REASON_UNKNOWN');
   static const InvocationReason REASON_INITIALIZATION = InvocationReason._(1, _omitEnumNames ? '' : 'REASON_INITIALIZATION');

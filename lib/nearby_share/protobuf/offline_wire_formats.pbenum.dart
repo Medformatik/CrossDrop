@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -55,6 +55,8 @@ class V1Frame_FrameType extends $pb.ProtobufEnum {
   const V1Frame_FrameType._($core.int v, $core.String n) : super(v, n);
 }
 
+/// Should always match cs/symbol:location.nearby.proto.connections.Medium
+/// LINT.IfChange
 class ConnectionRequestFrame_Medium extends $pb.ProtobufEnum {
   static const ConnectionRequestFrame_Medium UNKNOWN_MEDIUM = ConnectionRequestFrame_Medium._(0, _omitEnumNames ? '' : 'UNKNOWN_MEDIUM');
   static const ConnectionRequestFrame_Medium MDNS = ConnectionRequestFrame_Medium._(1, _omitEnumNames ? '' : 'MDNS');
@@ -90,6 +92,10 @@ class ConnectionRequestFrame_Medium extends $pb.ProtobufEnum {
   const ConnectionRequestFrame_Medium._($core.int v, $core.String n) : super(v, n);
 }
 
+/// Used to replace the status integer parameter with a meaningful enum item.
+/// Map ConnectionsStatusCodes.STATUS_OK to ACCEPT and
+/// ConnectionsStatusCodes.STATUS_CONNECTION_REJECTED to REJECT.
+/// Flag: connection_replace_status_with_response_connectionResponseFrame
 class ConnectionResponseFrame_ResponseStatus extends $pb.ProtobufEnum {
   static const ConnectionResponseFrame_ResponseStatus UNKNOWN_RESPONSE_STATUS = ConnectionResponseFrame_ResponseStatus._(0, _omitEnumNames ? '' : 'UNKNOWN_RESPONSE_STATUS');
   static const ConnectionResponseFrame_ResponseStatus ACCEPT = ConnectionResponseFrame_ResponseStatus._(1, _omitEnumNames ? '' : 'ACCEPT');
@@ -200,6 +206,7 @@ class BandwidthUpgradeNegotiationFrame_EventType extends $pb.ProtobufEnum {
   const BandwidthUpgradeNegotiationFrame_EventType._($core.int v, $core.String n) : super(v, n);
 }
 
+/// Should always match cs/symbol:location.nearby.proto.connections.Medium
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium extends $pb.ProtobufEnum {
   static const BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium UNKNOWN_MEDIUM = BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium._(0, _omitEnumNames ? '' : 'UNKNOWN_MEDIUM');
   static const BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium MDNS = BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium._(1, _omitEnumNames ? '' : 'MDNS');

@@ -1,24 +1,24 @@
 import 'dart:convert';
-import 'dart:math';
 import 'dart:typed_data';
-import 'package:flutter/services.dart';
 
-extension Uint8ListExtension on Uint8List {
+extension DataExtensions on Uint8List {
   String urlSafeBase64EncodedString() {
     String base64String = base64.encode(this);
-    String urlSafeString = base64String.replaceAll(RegExp(r'='), '');
-    urlSafeString = urlSafeString.replaceAll('/', '_');
-    urlSafeString = urlSafeString.replaceAll('+', '-');
-    return urlSafeString;
+    return base64String.replaceAll(RegExp('='), '').replaceAll('/', '_').replaceAll('+', '-');
   }
-}
 
-class Data {
+  static Uint8List dataFromUrlSafeBase64(String str) {
+    var regularB64 = str.replaceAll('_', '/').replaceAll('-', '+');
+    while (regularB64.length % 4 != 0) {
+      regularB64 += '=';
+    }
+    return base64.decode(regularB64);
+  }
+
   static Uint8List randomData(int length) {
     var data = Uint8List(length);
-    final rng = Random.secure();
     for (var i = 0; i < length; i++) {
-      data[i] = rng.nextInt(256);
+      data[i] = (DateTime.now().microsecondsSinceEpoch % 256).toUnsigned(8);
     }
     return data;
   }

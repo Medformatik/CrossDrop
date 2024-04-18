@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -18,8 +18,167 @@ import 'securegcm.pbenum.dart';
 
 export 'securegcm.pbenum.dart';
 
+/// Message used only during enrollment
+/// Field numbers should be kept in sync with DeviceInfo in:
+///   java/com/google/security/cryptauth/backend/services/common/common.proto
 class GcmDeviceInfo extends $pb.GeneratedMessage {
-  factory GcmDeviceInfo() => create();
+  factory GcmDeviceInfo({
+    $fixnum.Int64? androidDeviceId,
+    $core.List<$core.int>? userPublicKey,
+    $core.String? deviceModel,
+    $core.String? locale,
+    $core.List<$core.int>? keyHandle,
+    $fixnum.Int64? counter,
+    $core.String? deviceOsVersion,
+    $fixnum.Int64? deviceOsVersionCode,
+    $core.String? deviceOsRelease,
+    $core.String? deviceOsCodename,
+    $core.String? deviceSoftwareVersion,
+    $fixnum.Int64? deviceSoftwareVersionCode,
+    $core.String? deviceSoftwarePackage,
+    $core.int? deviceDisplayDiagonalMils,
+    $core.int? deviceAuthzenVersion,
+    $core.List<$core.int>? longDeviceId,
+    $core.String? deviceManufacturer,
+    DeviceType? deviceType,
+    $core.List<$core.int>? gcmRegistrationId,
+    $core.List<$core.int>? deviceMasterKeyHash,
+    $core.List<$core.int>? apnRegistrationId,
+    $core.bool? notificationEnabled,
+    $core.String? bluetoothMacAddress,
+    $core.bool? usingSecureScreenlock,
+    $core.bool? autoUnlockScreenlockSupported,
+    $core.bool? autoUnlockScreenlockEnabled,
+    $core.bool? bluetoothRadioSupported,
+    $core.bool? bluetoothRadioEnabled,
+    $core.bool? mobileDataSupported,
+    $core.bool? tetheringSupported,
+    $core.bool? bleRadioSupported,
+    $core.bool? pixelExperience,
+    $core.bool? arcPlusPlus,
+    $core.bool? isScreenlockStateFlaky,
+    $core.Iterable<SoftwareFeature>? supportedSoftwareFeatures,
+    $core.Iterable<SoftwareFeature>? enabledSoftwareFeatures,
+    $core.List<$core.int>? enrollmentSessionId,
+    $core.String? oauthToken,
+  }) {
+    final $result = create();
+    if (androidDeviceId != null) {
+      $result.androidDeviceId = androidDeviceId;
+    }
+    if (userPublicKey != null) {
+      $result.userPublicKey = userPublicKey;
+    }
+    if (deviceModel != null) {
+      $result.deviceModel = deviceModel;
+    }
+    if (locale != null) {
+      $result.locale = locale;
+    }
+    if (keyHandle != null) {
+      $result.keyHandle = keyHandle;
+    }
+    if (counter != null) {
+      $result.counter = counter;
+    }
+    if (deviceOsVersion != null) {
+      $result.deviceOsVersion = deviceOsVersion;
+    }
+    if (deviceOsVersionCode != null) {
+      $result.deviceOsVersionCode = deviceOsVersionCode;
+    }
+    if (deviceOsRelease != null) {
+      $result.deviceOsRelease = deviceOsRelease;
+    }
+    if (deviceOsCodename != null) {
+      $result.deviceOsCodename = deviceOsCodename;
+    }
+    if (deviceSoftwareVersion != null) {
+      $result.deviceSoftwareVersion = deviceSoftwareVersion;
+    }
+    if (deviceSoftwareVersionCode != null) {
+      $result.deviceSoftwareVersionCode = deviceSoftwareVersionCode;
+    }
+    if (deviceSoftwarePackage != null) {
+      $result.deviceSoftwarePackage = deviceSoftwarePackage;
+    }
+    if (deviceDisplayDiagonalMils != null) {
+      $result.deviceDisplayDiagonalMils = deviceDisplayDiagonalMils;
+    }
+    if (deviceAuthzenVersion != null) {
+      $result.deviceAuthzenVersion = deviceAuthzenVersion;
+    }
+    if (longDeviceId != null) {
+      $result.longDeviceId = longDeviceId;
+    }
+    if (deviceManufacturer != null) {
+      $result.deviceManufacturer = deviceManufacturer;
+    }
+    if (deviceType != null) {
+      $result.deviceType = deviceType;
+    }
+    if (gcmRegistrationId != null) {
+      $result.gcmRegistrationId = gcmRegistrationId;
+    }
+    if (deviceMasterKeyHash != null) {
+      $result.deviceMasterKeyHash = deviceMasterKeyHash;
+    }
+    if (apnRegistrationId != null) {
+      $result.apnRegistrationId = apnRegistrationId;
+    }
+    if (notificationEnabled != null) {
+      $result.notificationEnabled = notificationEnabled;
+    }
+    if (bluetoothMacAddress != null) {
+      $result.bluetoothMacAddress = bluetoothMacAddress;
+    }
+    if (usingSecureScreenlock != null) {
+      $result.usingSecureScreenlock = usingSecureScreenlock;
+    }
+    if (autoUnlockScreenlockSupported != null) {
+      $result.autoUnlockScreenlockSupported = autoUnlockScreenlockSupported;
+    }
+    if (autoUnlockScreenlockEnabled != null) {
+      $result.autoUnlockScreenlockEnabled = autoUnlockScreenlockEnabled;
+    }
+    if (bluetoothRadioSupported != null) {
+      $result.bluetoothRadioSupported = bluetoothRadioSupported;
+    }
+    if (bluetoothRadioEnabled != null) {
+      $result.bluetoothRadioEnabled = bluetoothRadioEnabled;
+    }
+    if (mobileDataSupported != null) {
+      $result.mobileDataSupported = mobileDataSupported;
+    }
+    if (tetheringSupported != null) {
+      $result.tetheringSupported = tetheringSupported;
+    }
+    if (bleRadioSupported != null) {
+      $result.bleRadioSupported = bleRadioSupported;
+    }
+    if (pixelExperience != null) {
+      $result.pixelExperience = pixelExperience;
+    }
+    if (arcPlusPlus != null) {
+      $result.arcPlusPlus = arcPlusPlus;
+    }
+    if (isScreenlockStateFlaky != null) {
+      $result.isScreenlockStateFlaky = isScreenlockStateFlaky;
+    }
+    if (supportedSoftwareFeatures != null) {
+      $result.supportedSoftwareFeatures.addAll(supportedSoftwareFeatures);
+    }
+    if (enabledSoftwareFeatures != null) {
+      $result.enabledSoftwareFeatures.addAll(enabledSoftwareFeatures);
+    }
+    if (enrollmentSessionId != null) {
+      $result.enrollmentSessionId = enrollmentSessionId;
+    }
+    if (oauthToken != null) {
+      $result.oauthToken = oauthToken;
+    }
+    return $result;
+  }
   GcmDeviceInfo._() : super();
   factory GcmDeviceInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GcmDeviceInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -86,6 +245,9 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   static GcmDeviceInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GcmDeviceInfo>(create);
   static GcmDeviceInfo? _defaultInstance;
 
+  /// This field's name does not match the one in DeviceInfo for legacy reasons.
+  /// Consider using long_device_id and device_type instead when enrolling
+  /// non-android devices.
   @$pb.TagNumber(1)
   $fixnum.Int64 get androidDeviceId => $_getI64(0);
   @$pb.TagNumber(1)
@@ -95,6 +257,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearAndroidDeviceId() => clearField(1);
 
+  /// A SecureMessage.EcP256PublicKey
   @$pb.TagNumber(4)
   $core.List<$core.int> get userPublicKey => $_getN(1);
   @$pb.TagNumber(4)
@@ -104,6 +267,8 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearUserPublicKey() => clearField(4);
 
+  /// device's model name
+  /// (e.g., an android.os.Build.MODEL or UIDevice.model)
   @$pb.TagNumber(7)
   $core.String get deviceModel => $_getSZ(2);
   @$pb.TagNumber(7)
@@ -113,6 +278,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   void clearDeviceModel() => clearField(7);
 
+  /// device's locale
   @$pb.TagNumber(8)
   $core.String get locale => $_getSZ(3);
   @$pb.TagNumber(8)
@@ -122,6 +288,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   void clearLocale() => clearField(8);
 
+  /// The handle for user_public_key (and implicitly, a master key)
   @$pb.TagNumber(9)
   $core.List<$core.int> get keyHandle => $_getN(4);
   @$pb.TagNumber(9)
@@ -131,6 +298,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   void clearKeyHandle() => clearField(9);
 
+  /// The initial counter value for the device, sent by the device
   @$pb.TagNumber(12)
   $fixnum.Int64 get counter => $_getI64(5);
   @$pb.TagNumber(12)
@@ -140,6 +308,8 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(12)
   void clearCounter() => clearField(12);
 
+  /// The Operating System version on the device
+  /// (e.g., an android.os.Build.DISPLAY or UIDevice.systemVersion)
   @$pb.TagNumber(13)
   $core.String get deviceOsVersion => $_getSZ(6);
   @$pb.TagNumber(13)
@@ -149,6 +319,8 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(13)
   void clearDeviceOsVersion() => clearField(13);
 
+  /// The Operating System version number on the device
+  /// (e.g., an android.os.Build.VERSION.SDK_INT)
   @$pb.TagNumber(14)
   $fixnum.Int64 get deviceOsVersionCode => $_getI64(7);
   @$pb.TagNumber(14)
@@ -158,6 +330,8 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(14)
   void clearDeviceOsVersionCode() => clearField(14);
 
+  /// The Operating System release on the device
+  /// (e.g., an android.os.Build.VERSION.RELEASE)
   @$pb.TagNumber(15)
   $core.String get deviceOsRelease => $_getSZ(8);
   @$pb.TagNumber(15)
@@ -167,6 +341,8 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(15)
   void clearDeviceOsRelease() => clearField(15);
 
+  /// The Operating System codename on the device
+  /// (e.g., an android.os.Build.VERSION.CODENAME or UIDevice.systemName)
   @$pb.TagNumber(16)
   $core.String get deviceOsCodename => $_getSZ(9);
   @$pb.TagNumber(16)
@@ -176,6 +352,8 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(16)
   void clearDeviceOsCodename() => clearField(16);
 
+  /// The software version running on the device
+  /// (e.g., Authenticator app version string)
   @$pb.TagNumber(17)
   $core.String get deviceSoftwareVersion => $_getSZ(10);
   @$pb.TagNumber(17)
@@ -185,6 +363,8 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(17)
   void clearDeviceSoftwareVersion() => clearField(17);
 
+  /// The software version number running on the device
+  /// (e.g., Authenticator app version code)
   @$pb.TagNumber(18)
   $fixnum.Int64 get deviceSoftwareVersionCode => $_getI64(11);
   @$pb.TagNumber(18)
@@ -194,6 +374,8 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(18)
   void clearDeviceSoftwareVersionCode() => clearField(18);
 
+  /// Software package information if applicable
+  /// (e.g., com.google.android.apps.authenticator2)
   @$pb.TagNumber(19)
   $core.String get deviceSoftwarePackage => $_getSZ(12);
   @$pb.TagNumber(19)
@@ -203,6 +385,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(19)
   void clearDeviceSoftwarePackage() => clearField(19);
 
+  /// Size of the display in thousandths of an inch (e.g., 7000 mils = 7 in)
   @$pb.TagNumber(22)
   $core.int get deviceDisplayDiagonalMils => $_getIZ(13);
   @$pb.TagNumber(22)
@@ -212,6 +395,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(22)
   void clearDeviceDisplayDiagonalMils() => clearField(22);
 
+  /// For Authzen capable devices, their Authzen protocol version
   @$pb.TagNumber(24)
   $core.int get deviceAuthzenVersion => $_getIZ(14);
   @$pb.TagNumber(24)
@@ -221,6 +405,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(24)
   void clearDeviceAuthzenVersion() => clearField(24);
 
+  /// Not all devices have device identifiers that fit in 64 bits.
   @$pb.TagNumber(29)
   $core.List<$core.int> get longDeviceId => $_getN(15);
   @$pb.TagNumber(29)
@@ -230,6 +415,8 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(29)
   void clearLongDeviceId() => clearField(29);
 
+  /// The device manufacturer name
+  /// (e.g., android.os.Build.MANUFACTURER)
   @$pb.TagNumber(31)
   $core.String get deviceManufacturer => $_getSZ(16);
   @$pb.TagNumber(31)
@@ -239,6 +426,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(31)
   void clearDeviceManufacturer() => clearField(31);
 
+  /// Used to indicate which type of device this is.
   @$pb.TagNumber(32)
   DeviceType get deviceType => $_getN(17);
   @$pb.TagNumber(32)
@@ -248,6 +436,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(32)
   void clearDeviceType() => clearField(32);
 
+  /// Used for device_address of DeviceInfo field 2, but for GCM capable devices.
   @$pb.TagNumber(102)
   $core.List<$core.int> get gcmRegistrationId => $_getN(18);
   @$pb.TagNumber(102)
@@ -257,6 +446,8 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(102)
   void clearGcmRegistrationId() => clearField(102);
 
+  /// SHA-256 hash of the device master key (from the key exchange).
+  /// Differs from DeviceInfo field 3, which contains the actual master key.
   @$pb.TagNumber(103)
   $core.List<$core.int> get deviceMasterKeyHash => $_getN(19);
   @$pb.TagNumber(103)
@@ -266,6 +457,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(103)
   void clearDeviceMasterKeyHash() => clearField(103);
 
+  /// Used for device_address of DeviceInfo field 2, but for iOS devices.
   @$pb.TagNumber(202)
   $core.List<$core.int> get apnRegistrationId => $_getN(20);
   @$pb.TagNumber(202)
@@ -275,6 +467,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(202)
   void clearApnRegistrationId() => clearField(202);
 
+  /// Does the user have notifications enabled for the given device address.
   @$pb.TagNumber(203)
   $core.bool get notificationEnabled => $_getB(21, true);
   @$pb.TagNumber(203)
@@ -284,6 +477,8 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(203)
   void clearNotificationEnabled() => clearField(203);
 
+  /// Used for device_address of DeviceInfo field 2, a Bluetooth Mac address for
+  /// the device (e.g., to be used with EasyUnlock)
   @$pb.TagNumber(302)
   $core.String get bluetoothMacAddress => $_getSZ(22);
   @$pb.TagNumber(302)
@@ -293,6 +488,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(302)
   void clearBluetoothMacAddress() => clearField(302);
 
+  /// Is this device using  a secure screenlock (e.g., pattern or pin unlock)
   @$pb.TagNumber(400)
   $core.bool get usingSecureScreenlock => $_getBF(23);
   @$pb.TagNumber(400)
@@ -302,6 +498,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(400)
   void clearUsingSecureScreenlock() => clearField(400);
 
+  /// Is auto-unlocking the screenlock (e.g., when at "home") supported?
   @$pb.TagNumber(401)
   $core.bool get autoUnlockScreenlockSupported => $_getBF(24);
   @$pb.TagNumber(401)
@@ -311,6 +508,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(401)
   void clearAutoUnlockScreenlockSupported() => clearField(401);
 
+  /// Is auto-unlocking the screenlock (e.g., when at "home") enabled?
   @$pb.TagNumber(402)
   $core.bool get autoUnlockScreenlockEnabled => $_getBF(25);
   @$pb.TagNumber(402)
@@ -320,6 +518,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(402)
   void clearAutoUnlockScreenlockEnabled() => clearField(402);
 
+  /// Does the device have a Bluetooth (classic) radio?
   @$pb.TagNumber(403)
   $core.bool get bluetoothRadioSupported => $_getBF(26);
   @$pb.TagNumber(403)
@@ -329,6 +528,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(403)
   void clearBluetoothRadioSupported() => clearField(403);
 
+  /// Is the Bluetooth (classic) radio on?
   @$pb.TagNumber(404)
   $core.bool get bluetoothRadioEnabled => $_getBF(27);
   @$pb.TagNumber(404)
@@ -338,6 +538,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(404)
   void clearBluetoothRadioEnabled() => clearField(404);
 
+  /// Does the device hardware support a mobile data connection?
   @$pb.TagNumber(405)
   $core.bool get mobileDataSupported => $_getBF(28);
   @$pb.TagNumber(405)
@@ -347,6 +548,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(405)
   void clearMobileDataSupported() => clearField(405);
 
+  /// Does the device support tethering?
   @$pb.TagNumber(406)
   $core.bool get tetheringSupported => $_getBF(29);
   @$pb.TagNumber(406)
@@ -356,6 +558,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(406)
   void clearTetheringSupported() => clearField(406);
 
+  /// Does the device have a BLE radio?
   @$pb.TagNumber(407)
   $core.bool get bleRadioSupported => $_getBF(30);
   @$pb.TagNumber(407)
@@ -365,6 +568,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(407)
   void clearBleRadioSupported() => clearField(407);
 
+  /// Is the device a "Pixel Experience" Android device?
   @$pb.TagNumber(408)
   $core.bool get pixelExperience => $_getBF(31);
   @$pb.TagNumber(408)
@@ -374,6 +578,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(408)
   void clearPixelExperience() => clearField(408);
 
+  /// Is the device running in the ARC++ container on a chromebook?
   @$pb.TagNumber(409)
   $core.bool get arcPlusPlus => $_getBF(32);
   @$pb.TagNumber(409)
@@ -383,6 +588,9 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(409)
   void clearArcPlusPlus() => clearField(409);
 
+  /// Is the value set in |using_secure_screenlock| reliable? On some Android
+  /// devices, the platform API to get the screenlock state is not trustworthy.
+  /// See b/32212161.
   @$pb.TagNumber(410)
   $core.bool get isScreenlockStateFlaky => $_getBF(33);
   @$pb.TagNumber(410)
@@ -392,12 +600,16 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(410)
   void clearIsScreenlockStateFlaky() => clearField(410);
 
+  /// A list of multi-device software features supported by the device.
   @$pb.TagNumber(411)
   $core.List<SoftwareFeature> get supportedSoftwareFeatures => $_getList(34);
 
+  /// A list of multi-device software features currently enabled (active) on the
+  /// device.
   @$pb.TagNumber(412)
   $core.List<SoftwareFeature> get enabledSoftwareFeatures => $_getList(35);
 
+  /// The enrollment session id this is sent with
   @$pb.TagNumber(1000)
   $core.List<$core.int> get enrollmentSessionId => $_getN(36);
   @$pb.TagNumber(1000)
@@ -407,6 +619,7 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(1000)
   void clearEnrollmentSessionId() => clearField(1000);
 
+  /// A copy of the user's OAuth token
   @$pb.TagNumber(1001)
   $core.String get oauthToken => $_getSZ(37);
   @$pb.TagNumber(1001)
@@ -418,7 +631,19 @@ class GcmDeviceInfo extends $pb.GeneratedMessage {
 }
 
 class GcmMetadata extends $pb.GeneratedMessage {
-  factory GcmMetadata() => create();
+  factory GcmMetadata({
+    Type? type,
+    $core.int? version,
+  }) {
+    final $result = create();
+    if (type != null) {
+      $result.type = type;
+    }
+    if (version != null) {
+      $result.version = version;
+    }
+    return $result;
+  }
   GcmMetadata._() : super();
   factory GcmMetadata.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GcmMetadata.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -469,7 +694,15 @@ class GcmMetadata extends $pb.GeneratedMessage {
 }
 
 class Tickle extends $pb.GeneratedMessage {
-  factory Tickle() => create();
+  factory Tickle({
+    $fixnum.Int64? expiryTime,
+  }) {
+    final $result = create();
+    if (expiryTime != null) {
+      $result.expiryTime = expiryTime;
+    }
+    return $result;
+  }
   Tickle._() : super();
   factory Tickle.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Tickle.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -500,6 +733,7 @@ class Tickle extends $pb.GeneratedMessage {
   static Tickle getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Tickle>(create);
   static Tickle? _defaultInstance;
 
+  /// Time after which this tickle should expire
   @$pb.TagNumber(1)
   $fixnum.Int64 get expiryTime => $_getI64(0);
   @$pb.TagNumber(1)
@@ -511,7 +745,31 @@ class Tickle extends $pb.GeneratedMessage {
 }
 
 class LoginNotificationInfo extends $pb.GeneratedMessage {
-  factory LoginNotificationInfo() => create();
+  factory LoginNotificationInfo({
+    $fixnum.Int64? creationTime,
+    $core.String? email,
+    $core.String? host,
+    $core.String? source,
+    $core.String? eventType,
+  }) {
+    final $result = create();
+    if (creationTime != null) {
+      $result.creationTime = creationTime;
+    }
+    if (email != null) {
+      $result.email = email;
+    }
+    if (host != null) {
+      $result.host = host;
+    }
+    if (source != null) {
+      $result.source = source;
+    }
+    if (eventType != null) {
+      $result.eventType = eventType;
+    }
+    return $result;
+  }
   LoginNotificationInfo._() : super();
   factory LoginNotificationInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory LoginNotificationInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -546,6 +804,7 @@ class LoginNotificationInfo extends $pb.GeneratedMessage {
   static LoginNotificationInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LoginNotificationInfo>(create);
   static LoginNotificationInfo? _defaultInstance;
 
+  /// Time at which the server received the login notification request.
   @$pb.TagNumber(2)
   $fixnum.Int64 get creationTime => $_getI64(0);
   @$pb.TagNumber(2)
@@ -555,6 +814,7 @@ class LoginNotificationInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearCreationTime() => clearField(2);
 
+  /// Must correspond to user_id in LoginNotificationRequest, if set.
   @$pb.TagNumber(3)
   $core.String get email => $_getSZ(1);
   @$pb.TagNumber(3)
@@ -564,6 +824,7 @@ class LoginNotificationInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearEmail() => clearField(3);
 
+  /// Host where the user's credentials were used to login, if meaningful.
   @$pb.TagNumber(4)
   $core.String get host => $_getSZ(2);
   @$pb.TagNumber(4)
@@ -573,6 +834,7 @@ class LoginNotificationInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearHost() => clearField(4);
 
+  /// Location from where the user's credentials were used, if meaningful.
   @$pb.TagNumber(5)
   $core.String get source => $_getSZ(3);
   @$pb.TagNumber(5)
@@ -582,6 +844,7 @@ class LoginNotificationInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearSource() => clearField(5);
 
+  /// Type of login, e.g. ssh, gnome-screensaver, or web.
   @$pb.TagNumber(6)
   $core.String get eventType => $_getSZ(4);
   @$pb.TagNumber(6)

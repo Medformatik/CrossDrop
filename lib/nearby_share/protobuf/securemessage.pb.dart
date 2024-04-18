@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -18,7 +18,19 @@ import 'securemessage.pbenum.dart';
 export 'securemessage.pbenum.dart';
 
 class SecureMessage extends $pb.GeneratedMessage {
-  factory SecureMessage() => create();
+  factory SecureMessage({
+    $core.List<$core.int>? headerAndBody,
+    $core.List<$core.int>? signature,
+  }) {
+    final $result = create();
+    if (headerAndBody != null) {
+      $result.headerAndBody = headerAndBody;
+    }
+    if (signature != null) {
+      $result.signature = signature;
+    }
+    return $result;
+  }
   SecureMessage._() : super();
   factory SecureMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SecureMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -49,6 +61,7 @@ class SecureMessage extends $pb.GeneratedMessage {
   static SecureMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SecureMessage>(create);
   static SecureMessage? _defaultInstance;
 
+  /// Must contain a HeaderAndBody message
   @$pb.TagNumber(1)
   $core.List<$core.int> get headerAndBody => $_getN(0);
   @$pb.TagNumber(1)
@@ -58,6 +71,7 @@ class SecureMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearHeaderAndBody() => clearField(1);
 
+  /// Signature of header_and_body
   @$pb.TagNumber(2)
   $core.List<$core.int> get signature => $_getN(1);
   @$pb.TagNumber(2)
@@ -69,7 +83,39 @@ class SecureMessage extends $pb.GeneratedMessage {
 }
 
 class Header extends $pb.GeneratedMessage {
-  factory Header() => create();
+  factory Header({
+    SigScheme? signatureScheme,
+    EncScheme? encryptionScheme,
+    $core.List<$core.int>? verificationKeyId,
+    $core.List<$core.int>? decryptionKeyId,
+    $core.List<$core.int>? iv,
+    $core.List<$core.int>? publicMetadata,
+    $core.int? associatedDataLength,
+  }) {
+    final $result = create();
+    if (signatureScheme != null) {
+      $result.signatureScheme = signatureScheme;
+    }
+    if (encryptionScheme != null) {
+      $result.encryptionScheme = encryptionScheme;
+    }
+    if (verificationKeyId != null) {
+      $result.verificationKeyId = verificationKeyId;
+    }
+    if (decryptionKeyId != null) {
+      $result.decryptionKeyId = decryptionKeyId;
+    }
+    if (iv != null) {
+      $result.iv = iv;
+    }
+    if (publicMetadata != null) {
+      $result.publicMetadata = publicMetadata;
+    }
+    if (associatedDataLength != null) {
+      $result.associatedDataLength = associatedDataLength;
+    }
+    return $result;
+  }
   Header._() : super();
   factory Header.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Header.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -123,6 +169,7 @@ class Header extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearEncryptionScheme() => clearField(2);
 
+  /// Identifies the verification key
   @$pb.TagNumber(3)
   $core.List<$core.int> get verificationKeyId => $_getN(2);
   @$pb.TagNumber(3)
@@ -132,6 +179,7 @@ class Header extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearVerificationKeyId() => clearField(3);
 
+  /// Identifies the decryption key
   @$pb.TagNumber(4)
   $core.List<$core.int> get decryptionKeyId => $_getN(3);
   @$pb.TagNumber(4)
@@ -141,6 +189,7 @@ class Header extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearDecryptionKeyId() => clearField(4);
 
+  /// Encryption may use an IV
   @$pb.TagNumber(5)
   $core.List<$core.int> get iv => $_getN(4);
   @$pb.TagNumber(5)
@@ -150,6 +199,7 @@ class Header extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearIv() => clearField(5);
 
+  /// Arbitrary per-protocol public data, to be sent with the plain-text header
   @$pb.TagNumber(6)
   $core.List<$core.int> get publicMetadata => $_getN(5);
   @$pb.TagNumber(6)
@@ -159,6 +209,8 @@ class Header extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearPublicMetadata() => clearField(6);
 
+  /// The length of some associated data this is not sent in this SecureMessage,
+  /// but which will be bound to the signature.
   @$pb.TagNumber(7)
   $core.int get associatedDataLength => $_getIZ(6);
   @$pb.TagNumber(7)
@@ -170,7 +222,19 @@ class Header extends $pb.GeneratedMessage {
 }
 
 class HeaderAndBody extends $pb.GeneratedMessage {
-  factory HeaderAndBody() => create();
+  factory HeaderAndBody({
+    Header? header,
+    $core.List<$core.int>? body,
+  }) {
+    final $result = create();
+    if (header != null) {
+      $result.header = header;
+    }
+    if (body != null) {
+      $result.body = body;
+    }
+    return $result;
+  }
   HeaderAndBody._() : super();
   factory HeaderAndBody.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory HeaderAndBody.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -201,6 +265,7 @@ class HeaderAndBody extends $pb.GeneratedMessage {
   static HeaderAndBody getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<HeaderAndBody>(create);
   static HeaderAndBody? _defaultInstance;
 
+  /// Public data about this message (to be bound in the signature)
   @$pb.TagNumber(1)
   Header get header => $_getN(0);
   @$pb.TagNumber(1)
@@ -212,6 +277,7 @@ class HeaderAndBody extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   Header ensureHeader() => $_ensure(0);
 
+  /// Payload data
   @$pb.TagNumber(2)
   $core.List<$core.int> get body => $_getN(1);
   @$pb.TagNumber(2)
@@ -222,8 +288,25 @@ class HeaderAndBody extends $pb.GeneratedMessage {
   void clearBody() => clearField(2);
 }
 
+/// Must be kept wire-format compatible with HeaderAndBody. Provides the
+/// SecureMessage code with a consistent wire-format representation that
+/// remains stable irrespective of protobuf implementation choices. This
+/// low-level representation of a HeaderAndBody should not be used by
+/// any code outside of the SecureMessage library implementation/tests.
 class HeaderAndBodyInternal extends $pb.GeneratedMessage {
-  factory HeaderAndBodyInternal() => create();
+  factory HeaderAndBodyInternal({
+    $core.List<$core.int>? header,
+    $core.List<$core.int>? body,
+  }) {
+    final $result = create();
+    if (header != null) {
+      $result.header = header;
+    }
+    if (body != null) {
+      $result.body = body;
+    }
+    return $result;
+  }
   HeaderAndBodyInternal._() : super();
   factory HeaderAndBodyInternal.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory HeaderAndBodyInternal.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -254,6 +337,7 @@ class HeaderAndBodyInternal extends $pb.GeneratedMessage {
   static HeaderAndBodyInternal getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<HeaderAndBodyInternal>(create);
   static HeaderAndBodyInternal? _defaultInstance;
 
+  /// A raw (wire-format) byte encoding of a Header, suitable for hashing
   @$pb.TagNumber(1)
   $core.List<$core.int> get header => $_getN(0);
   @$pb.TagNumber(1)
@@ -263,6 +347,7 @@ class HeaderAndBodyInternal extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearHeader() => clearField(1);
 
+  /// Payload data
   @$pb.TagNumber(2)
   $core.List<$core.int> get body => $_getN(1);
   @$pb.TagNumber(2)
@@ -273,8 +358,21 @@ class HeaderAndBodyInternal extends $pb.GeneratedMessage {
   void clearBody() => clearField(2);
 }
 
+/// A convenience proto for encoding NIST P-256 elliptic curve public keys
 class EcP256PublicKey extends $pb.GeneratedMessage {
-  factory EcP256PublicKey() => create();
+  factory EcP256PublicKey({
+    $core.List<$core.int>? x,
+    $core.List<$core.int>? y,
+  }) {
+    final $result = create();
+    if (x != null) {
+      $result.x = x;
+    }
+    if (y != null) {
+      $result.y = y;
+    }
+    return $result;
+  }
   EcP256PublicKey._() : super();
   factory EcP256PublicKey.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory EcP256PublicKey.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -305,6 +403,8 @@ class EcP256PublicKey extends $pb.GeneratedMessage {
   static EcP256PublicKey getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EcP256PublicKey>(create);
   static EcP256PublicKey? _defaultInstance;
 
+  /// x and y are encoded in big-endian two's complement (slightly wasteful)
+  /// Client MUST verify (x,y) is a valid point on NIST P256
   @$pb.TagNumber(1)
   $core.List<$core.int> get x => $_getN(0);
   @$pb.TagNumber(1)
@@ -324,8 +424,21 @@ class EcP256PublicKey extends $pb.GeneratedMessage {
   void clearY() => clearField(2);
 }
 
+/// A convenience proto for encoding RSA public keys with small exponents
 class SimpleRsaPublicKey extends $pb.GeneratedMessage {
-  factory SimpleRsaPublicKey() => create();
+  factory SimpleRsaPublicKey({
+    $core.List<$core.int>? n,
+    $core.int? e,
+  }) {
+    final $result = create();
+    if (n != null) {
+      $result.n = n;
+    }
+    if (e != null) {
+      $result.e = e;
+    }
+    return $result;
+  }
   SimpleRsaPublicKey._() : super();
   factory SimpleRsaPublicKey.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SimpleRsaPublicKey.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -356,6 +469,7 @@ class SimpleRsaPublicKey extends $pb.GeneratedMessage {
   static SimpleRsaPublicKey getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SimpleRsaPublicKey>(create);
   static SimpleRsaPublicKey? _defaultInstance;
 
+  /// Encoded in big-endian two's complement
   @$pb.TagNumber(1)
   $core.List<$core.int> get n => $_getN(0);
   @$pb.TagNumber(1)
@@ -375,8 +489,19 @@ class SimpleRsaPublicKey extends $pb.GeneratedMessage {
   void clearE() => clearField(2);
 }
 
+/// A convenience proto for encoding Diffie-Hellman public keys,
+/// for use only when Elliptic Curve based key exchanges are not possible.
+/// (Note that the group parameters must be specified separately)
 class DhPublicKey extends $pb.GeneratedMessage {
-  factory DhPublicKey() => create();
+  factory DhPublicKey({
+    $core.List<$core.int>? y,
+  }) {
+    final $result = create();
+    if (y != null) {
+      $result.y = y;
+    }
+    return $result;
+  }
   DhPublicKey._() : super();
   factory DhPublicKey.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DhPublicKey.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -406,6 +531,7 @@ class DhPublicKey extends $pb.GeneratedMessage {
   static DhPublicKey getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DhPublicKey>(create);
   static DhPublicKey? _defaultInstance;
 
+  /// Big-endian two's complement encoded group element
   @$pb.TagNumber(1)
   $core.List<$core.int> get y => $_getN(0);
   @$pb.TagNumber(1)
@@ -417,7 +543,27 @@ class DhPublicKey extends $pb.GeneratedMessage {
 }
 
 class GenericPublicKey extends $pb.GeneratedMessage {
-  factory GenericPublicKey() => create();
+  factory GenericPublicKey({
+    PublicKeyType? type,
+    EcP256PublicKey? ecP256PublicKey,
+    SimpleRsaPublicKey? rsa2048PublicKey,
+    DhPublicKey? dh2048PublicKey,
+  }) {
+    final $result = create();
+    if (type != null) {
+      $result.type = type;
+    }
+    if (ecP256PublicKey != null) {
+      $result.ecP256PublicKey = ecP256PublicKey;
+    }
+    if (rsa2048PublicKey != null) {
+      $result.rsa2048PublicKey = rsa2048PublicKey;
+    }
+    if (dh2048PublicKey != null) {
+      $result.dh2048PublicKey = dh2048PublicKey;
+    }
+    return $result;
+  }
   GenericPublicKey._() : super();
   factory GenericPublicKey.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GenericPublicKey.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -481,6 +627,7 @@ class GenericPublicKey extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   SimpleRsaPublicKey ensureRsa2048PublicKey() => $_ensure(2);
 
+  /// Use only as a last resort
   @$pb.TagNumber(4)
   DhPublicKey get dh2048PublicKey => $_getN(3);
   @$pb.TagNumber(4)

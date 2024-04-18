@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -19,7 +19,19 @@ import 'offline_wire_formats.pbenum.dart';
 export 'offline_wire_formats.pbenum.dart';
 
 class OfflineFrame extends $pb.GeneratedMessage {
-  factory OfflineFrame() => create();
+  factory OfflineFrame({
+    OfflineFrame_Version? version,
+    V1Frame? v1,
+  }) {
+    final $result = create();
+    if (version != null) {
+      $result.version = version;
+    }
+    if (v1 != null) {
+      $result.v1 = v1;
+    }
+    return $result;
+  }
   OfflineFrame._() : super();
   factory OfflineFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory OfflineFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -60,6 +72,8 @@ class OfflineFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearVersion() => clearField(1);
 
+  /// Right now there's only 1 version, but if there are more, exactly one of
+  /// the following fields will be set.
   @$pb.TagNumber(2)
   V1Frame get v1 => $_getN(1);
   @$pb.TagNumber(2)
@@ -73,7 +87,43 @@ class OfflineFrame extends $pb.GeneratedMessage {
 }
 
 class V1Frame extends $pb.GeneratedMessage {
-  factory V1Frame() => create();
+  factory V1Frame({
+    V1Frame_FrameType? type,
+    ConnectionRequestFrame? connectionRequest,
+    ConnectionResponseFrame? connectionResponse,
+    PayloadTransferFrame? payloadTransfer,
+    BandwidthUpgradeNegotiationFrame? bandwidthUpgradeNegotiation,
+    KeepAliveFrame? keepAlive,
+    DisconnectionFrame? disconnection,
+    PairedKeyEncryptionFrame? pairedKeyEncryption,
+  }) {
+    final $result = create();
+    if (type != null) {
+      $result.type = type;
+    }
+    if (connectionRequest != null) {
+      $result.connectionRequest = connectionRequest;
+    }
+    if (connectionResponse != null) {
+      $result.connectionResponse = connectionResponse;
+    }
+    if (payloadTransfer != null) {
+      $result.payloadTransfer = payloadTransfer;
+    }
+    if (bandwidthUpgradeNegotiation != null) {
+      $result.bandwidthUpgradeNegotiation = bandwidthUpgradeNegotiation;
+    }
+    if (keepAlive != null) {
+      $result.keepAlive = keepAlive;
+    }
+    if (disconnection != null) {
+      $result.disconnection = disconnection;
+    }
+    if (pairedKeyEncryption != null) {
+      $result.pairedKeyEncryption = pairedKeyEncryption;
+    }
+    return $result;
+  }
   V1Frame._() : super();
   factory V1Frame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory V1Frame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -120,6 +170,7 @@ class V1Frame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearType() => clearField(1);
 
+  /// Exactly one of the following fields will be set.
   @$pb.TagNumber(2)
   ConnectionRequestFrame get connectionRequest => $_getN(1);
   @$pb.TagNumber(2)
@@ -199,7 +250,55 @@ class V1Frame extends $pb.GeneratedMessage {
 }
 
 class ConnectionRequestFrame extends $pb.GeneratedMessage {
-  factory ConnectionRequestFrame() => create();
+  factory ConnectionRequestFrame({
+    $core.String? endpointId,
+    $core.String? endpointName,
+    $core.List<$core.int>? handshakeData,
+    $core.int? nonce,
+    $core.Iterable<ConnectionRequestFrame_Medium>? mediums,
+    $core.List<$core.int>? endpointInfo,
+    MediumMetadata? mediumMetadata,
+    $core.int? keepAliveIntervalMillis,
+    $core.int? keepAliveTimeoutMillis,
+    $core.int? deviceType,
+    $core.List<$core.int>? deviceInfo,
+  }) {
+    final $result = create();
+    if (endpointId != null) {
+      $result.endpointId = endpointId;
+    }
+    if (endpointName != null) {
+      $result.endpointName = endpointName;
+    }
+    if (handshakeData != null) {
+      $result.handshakeData = handshakeData;
+    }
+    if (nonce != null) {
+      $result.nonce = nonce;
+    }
+    if (mediums != null) {
+      $result.mediums.addAll(mediums);
+    }
+    if (endpointInfo != null) {
+      $result.endpointInfo = endpointInfo;
+    }
+    if (mediumMetadata != null) {
+      $result.mediumMetadata = mediumMetadata;
+    }
+    if (keepAliveIntervalMillis != null) {
+      $result.keepAliveIntervalMillis = keepAliveIntervalMillis;
+    }
+    if (keepAliveTimeoutMillis != null) {
+      $result.keepAliveTimeoutMillis = keepAliveTimeoutMillis;
+    }
+    if (deviceType != null) {
+      $result.deviceType = deviceType;
+    }
+    if (deviceInfo != null) {
+      $result.deviceInfo = deviceInfo;
+    }
+    return $result;
+  }
   ConnectionRequestFrame._() : super();
   factory ConnectionRequestFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ConnectionRequestFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -267,6 +366,10 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearHandshakeData() => clearField(3);
 
+  /// A random number generated for each outgoing connection that is presently
+  /// used to act as a tiebreaker when 2 devices connect to each other
+  /// simultaneously; this can also be used for other initialization-scoped
+  /// things in the future.
   @$pb.TagNumber(4)
   $core.int get nonce => $_getIZ(3);
   @$pb.TagNumber(4)
@@ -276,6 +379,8 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearNonce() => clearField(4);
 
+  /// The mediums this device supports upgrading to. This list should be filtered
+  /// by both the strategy and this device's individual limitations.
   @$pb.TagNumber(5)
   $core.List<ConnectionRequestFrame_Medium> get mediums => $_getList(4);
 
@@ -317,6 +422,7 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   void clearKeepAliveTimeoutMillis() => clearField(9);
 
+  /// The type of {@link Device} object.
   @$pb.TagNumber(10)
   $core.int get deviceType => $_getIZ(9);
   @$pb.TagNumber(10)
@@ -326,6 +432,7 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   void clearDeviceType() => clearField(10);
 
+  /// The bytes of serialized {@link Device} object.
   @$pb.TagNumber(11)
   $core.List<$core.int> get deviceInfo => $_getN(10);
   @$pb.TagNumber(11)
@@ -337,7 +444,37 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
 }
 
 class ConnectionResponseFrame extends $pb.GeneratedMessage {
-  factory ConnectionResponseFrame() => create();
+  factory ConnectionResponseFrame({
+  @$core.Deprecated('This field is deprecated.')
+    $core.int? status,
+    $core.List<$core.int>? handshakeData,
+    ConnectionResponseFrame_ResponseStatus? response,
+    OsInfo? osInfo,
+    $core.int? multiplexSocketBitmask,
+    $core.int? nearbyConnectionsVersion,
+  }) {
+    final $result = create();
+    if (status != null) {
+      // ignore: deprecated_member_use_from_same_package
+      $result.status = status;
+    }
+    if (handshakeData != null) {
+      $result.handshakeData = handshakeData;
+    }
+    if (response != null) {
+      $result.response = response;
+    }
+    if (osInfo != null) {
+      $result.osInfo = osInfo;
+    }
+    if (multiplexSocketBitmask != null) {
+      $result.multiplexSocketBitmask = multiplexSocketBitmask;
+    }
+    if (nearbyConnectionsVersion != null) {
+      $result.nearbyConnectionsVersion = nearbyConnectionsVersion;
+    }
+    return $result;
+  }
   ConnectionResponseFrame._() : super();
   factory ConnectionResponseFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ConnectionResponseFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -373,6 +510,10 @@ class ConnectionResponseFrame extends $pb.GeneratedMessage {
   static ConnectionResponseFrame getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ConnectionResponseFrame>(create);
   static ConnectionResponseFrame? _defaultInstance;
 
+  ///  One of:
+  ///
+  ///  - ConnectionsStatusCodes.STATUS_OK
+  ///  - ConnectionsStatusCodes.STATUS_CONNECTION_REJECTED.
   @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
   $core.int get status => $_getIZ(0);
@@ -415,6 +556,11 @@ class ConnectionResponseFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   OsInfo ensureOsInfo() => $_ensure(3);
 
+  /// A bitmask value to indicate which medium supports Multiplex transmission
+  /// feature. Each supporting medium could utilize one bit starting from the
+  /// least significant bit in this field. eq. BT utilizes the LSB bit which 0x01
+  /// means bt supports multiplex while 0x00 means not. Refer to ClientProxy.java
+  /// for the bit usages.
   @$pb.TagNumber(5)
   $core.int get multiplexSocketBitmask => $_getIZ(4);
   @$pb.TagNumber(5)
@@ -435,7 +581,35 @@ class ConnectionResponseFrame extends $pb.GeneratedMessage {
 }
 
 class PayloadTransferFrame_PayloadHeader extends $pb.GeneratedMessage {
-  factory PayloadTransferFrame_PayloadHeader() => create();
+  factory PayloadTransferFrame_PayloadHeader({
+    $fixnum.Int64? id,
+    PayloadTransferFrame_PayloadHeader_PayloadType? type,
+    $fixnum.Int64? totalSize,
+    $core.bool? isSensitive,
+    $core.String? fileName,
+    $core.String? parentFolder,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (type != null) {
+      $result.type = type;
+    }
+    if (totalSize != null) {
+      $result.totalSize = totalSize;
+    }
+    if (isSensitive != null) {
+      $result.isSensitive = isSensitive;
+    }
+    if (fileName != null) {
+      $result.fileName = fileName;
+    }
+    if (parentFolder != null) {
+      $result.parentFolder = parentFolder;
+    }
+    return $result;
+  }
   PayloadTransferFrame_PayloadHeader._() : super();
   factory PayloadTransferFrame_PayloadHeader.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory PayloadTransferFrame_PayloadHeader.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -526,8 +700,25 @@ class PayloadTransferFrame_PayloadHeader extends $pb.GeneratedMessage {
   void clearParentFolder() => clearField(6);
 }
 
+/// Accompanies DATA packets.
 class PayloadTransferFrame_PayloadChunk extends $pb.GeneratedMessage {
-  factory PayloadTransferFrame_PayloadChunk() => create();
+  factory PayloadTransferFrame_PayloadChunk({
+    $core.int? flags,
+    $fixnum.Int64? offset,
+    $core.List<$core.int>? body,
+  }) {
+    final $result = create();
+    if (flags != null) {
+      $result.flags = flags;
+    }
+    if (offset != null) {
+      $result.offset = offset;
+    }
+    if (body != null) {
+      $result.body = body;
+    }
+    return $result;
+  }
   PayloadTransferFrame_PayloadChunk._() : super();
   factory PayloadTransferFrame_PayloadChunk.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory PayloadTransferFrame_PayloadChunk.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -588,8 +779,21 @@ class PayloadTransferFrame_PayloadChunk extends $pb.GeneratedMessage {
   void clearBody() => clearField(3);
 }
 
+/// Accompanies CONTROL packets.
 class PayloadTransferFrame_ControlMessage extends $pb.GeneratedMessage {
-  factory PayloadTransferFrame_ControlMessage() => create();
+  factory PayloadTransferFrame_ControlMessage({
+    PayloadTransferFrame_ControlMessage_EventType? event,
+    $fixnum.Int64? offset,
+  }) {
+    final $result = create();
+    if (event != null) {
+      $result.event = event;
+    }
+    if (offset != null) {
+      $result.offset = offset;
+    }
+    return $result;
+  }
   PayloadTransferFrame_ControlMessage._() : super();
   factory PayloadTransferFrame_ControlMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory PayloadTransferFrame_ControlMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -641,7 +845,27 @@ class PayloadTransferFrame_ControlMessage extends $pb.GeneratedMessage {
 }
 
 class PayloadTransferFrame extends $pb.GeneratedMessage {
-  factory PayloadTransferFrame() => create();
+  factory PayloadTransferFrame({
+    PayloadTransferFrame_PacketType? packetType,
+    PayloadTransferFrame_PayloadHeader? payloadHeader,
+    PayloadTransferFrame_PayloadChunk? payloadChunk,
+    PayloadTransferFrame_ControlMessage? controlMessage,
+  }) {
+    final $result = create();
+    if (packetType != null) {
+      $result.packetType = packetType;
+    }
+    if (payloadHeader != null) {
+      $result.payloadHeader = payloadHeader;
+    }
+    if (payloadChunk != null) {
+      $result.payloadChunk = payloadChunk;
+    }
+    if (controlMessage != null) {
+      $result.controlMessage = controlMessage;
+    }
+    return $result;
+  }
   PayloadTransferFrame._() : super();
   factory PayloadTransferFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory PayloadTransferFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -695,6 +919,7 @@ class PayloadTransferFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   PayloadTransferFrame_PayloadHeader ensurePayloadHeader() => $_ensure(1);
 
+  /// Exactly one of the following fields will be set, depending on the type.
   @$pb.TagNumber(3)
   PayloadTransferFrame_PayloadChunk get payloadChunk => $_getN(2);
   @$pb.TagNumber(3)
@@ -718,8 +943,33 @@ class PayloadTransferFrame extends $pb.GeneratedMessage {
   PayloadTransferFrame_ControlMessage ensureControlMessage() => $_ensure(3);
 }
 
+/// Accompanies Medium.WIFI_HOTSPOT.
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials extends $pb.GeneratedMessage {
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials() => create();
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials({
+    $core.String? ssid,
+    $core.String? password,
+    $core.int? port,
+    $core.String? gateway,
+    $core.int? frequency,
+  }) {
+    final $result = create();
+    if (ssid != null) {
+      $result.ssid = ssid;
+    }
+    if (password != null) {
+      $result.password = password;
+    }
+    if (port != null) {
+      $result.port = port;
+    }
+    if (gateway != null) {
+      $result.gateway = gateway;
+    }
+    if (frequency != null) {
+      $result.frequency = frequency;
+    }
+    return $result;
+  }
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials._() : super();
   factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -790,6 +1040,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials ex
   @$pb.TagNumber(4)
   void clearGateway() => clearField(4);
 
+  /// This field can be a band or frequency
   @$pb.TagNumber(5)
   $core.int get frequency => $_getI(4, -1);
   @$pb.TagNumber(5)
@@ -800,8 +1051,21 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials ex
   void clearFrequency() => clearField(5);
 }
 
+/// Accompanies Medium.WIFI_LAN.
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket extends $pb.GeneratedMessage {
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket() => create();
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket({
+    $core.List<$core.int>? ipAddress,
+    $core.int? wifiPort,
+  }) {
+    final $result = create();
+    if (ipAddress != null) {
+      $result.ipAddress = ipAddress;
+    }
+    if (wifiPort != null) {
+      $result.wifiPort = wifiPort;
+    }
+    return $result;
+  }
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket._() : super();
   factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -852,8 +1116,21 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket extends $pb
   void clearWifiPort() => clearField(2);
 }
 
+/// Accompanies Medium.BLUETOOTH.
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials extends $pb.GeneratedMessage {
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials() => create();
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials({
+    $core.String? serviceName,
+    $core.String? macAddress,
+  }) {
+    final $result = create();
+    if (serviceName != null) {
+      $result.serviceName = serviceName;
+    }
+    if (macAddress != null) {
+      $result.macAddress = macAddress;
+    }
+    return $result;
+  }
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials._() : super();
   factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -904,8 +1181,25 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials exte
   void clearMacAddress() => clearField(2);
 }
 
+/// Accompanies Medium.WIFI_AWARE.
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials extends $pb.GeneratedMessage {
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials() => create();
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials({
+    $core.String? serviceId,
+    $core.List<$core.int>? serviceInfo,
+    $core.String? password,
+  }) {
+    final $result = create();
+    if (serviceId != null) {
+      $result.serviceId = serviceId;
+    }
+    if (serviceInfo != null) {
+      $result.serviceInfo = serviceInfo;
+    }
+    if (password != null) {
+      $result.password = password;
+    }
+    return $result;
+  }
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials._() : super();
   factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -966,8 +1260,33 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials exte
   void clearPassword() => clearField(3);
 }
 
+/// Accompanies Medium.WIFI_DIRECT.
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials extends $pb.GeneratedMessage {
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials() => create();
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials({
+    $core.String? ssid,
+    $core.String? password,
+    $core.int? port,
+    $core.int? frequency,
+    $core.String? gateway,
+  }) {
+    final $result = create();
+    if (ssid != null) {
+      $result.ssid = ssid;
+    }
+    if (password != null) {
+      $result.password = password;
+    }
+    if (port != null) {
+      $result.port = port;
+    }
+    if (frequency != null) {
+      $result.frequency = frequency;
+    }
+    if (gateway != null) {
+      $result.gateway = gateway;
+    }
+    return $result;
+  }
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials._() : super();
   factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -1048,8 +1367,21 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials ext
   void clearGateway() => clearField(5);
 }
 
+/// Accompanies Medium.WEB_RTC
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials extends $pb.GeneratedMessage {
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials() => create();
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials({
+    $core.String? peerId,
+    LocationHint? locationHint,
+  }) {
+    final $result = create();
+    if (peerId != null) {
+      $result.peerId = peerId;
+    }
+    if (locationHint != null) {
+      $result.locationHint = locationHint;
+    }
+    return $result;
+  }
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials._() : super();
   factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -1102,8 +1434,49 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials extends
   LocationHint ensureLocationHint() => $_ensure(1);
 }
 
+/// Accompanies UPGRADE_PATH_AVAILABLE and UPGRADE_FAILURE events.
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo extends $pb.GeneratedMessage {
-  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo() => create();
+  factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo({
+    BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium? medium,
+    BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials? wifiHotspotCredentials,
+    BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket? wifiLanSocket,
+    BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials? bluetoothCredentials,
+    BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials? wifiAwareCredentials,
+    BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials? wifiDirectCredentials,
+    $core.bool? supportsDisablingEncryption,
+    BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials? webRtcCredentials,
+    $core.bool? supportsClientIntroductionAck,
+  }) {
+    final $result = create();
+    if (medium != null) {
+      $result.medium = medium;
+    }
+    if (wifiHotspotCredentials != null) {
+      $result.wifiHotspotCredentials = wifiHotspotCredentials;
+    }
+    if (wifiLanSocket != null) {
+      $result.wifiLanSocket = wifiLanSocket;
+    }
+    if (bluetoothCredentials != null) {
+      $result.bluetoothCredentials = bluetoothCredentials;
+    }
+    if (wifiAwareCredentials != null) {
+      $result.wifiAwareCredentials = wifiAwareCredentials;
+    }
+    if (wifiDirectCredentials != null) {
+      $result.wifiDirectCredentials = wifiDirectCredentials;
+    }
+    if (supportsDisablingEncryption != null) {
+      $result.supportsDisablingEncryption = supportsDisablingEncryption;
+    }
+    if (webRtcCredentials != null) {
+      $result.webRtcCredentials = webRtcCredentials;
+    }
+    if (supportsClientIntroductionAck != null) {
+      $result.supportsClientIntroductionAck = supportsClientIntroductionAck;
+    }
+    return $result;
+  }
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo._() : super();
   factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory BandwidthUpgradeNegotiationFrame_UpgradePathInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -1151,6 +1524,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo extends $pb.GeneratedMess
   @$pb.TagNumber(1)
   void clearMedium() => clearField(1);
 
+  /// Exactly one of the following fields will be set.
   @$pb.TagNumber(2)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials get wifiHotspotCredentials => $_getN(1);
   @$pb.TagNumber(2)
@@ -1206,6 +1580,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo extends $pb.GeneratedMess
   @$pb.TagNumber(6)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials ensureWifiDirectCredentials() => $_ensure(5);
 
+  /// Disable Encryption for this upgrade medium to improve throughput.
   @$pb.TagNumber(7)
   $core.bool get supportsDisablingEncryption => $_getBF(6);
   @$pb.TagNumber(7)
@@ -1226,6 +1601,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo extends $pb.GeneratedMess
   @$pb.TagNumber(8)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials ensureWebRtcCredentials() => $_ensure(7);
 
+  /// An ack will be sent after the CLIENT_INTRODUCTION frame.
   @$pb.TagNumber(9)
   $core.bool get supportsClientIntroductionAck => $_getBF(8);
   @$pb.TagNumber(9)
@@ -1236,8 +1612,21 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo extends $pb.GeneratedMess
   void clearSupportsClientIntroductionAck() => clearField(9);
 }
 
+/// Accompanies CLIENT_INTRODUCTION events.
 class BandwidthUpgradeNegotiationFrame_ClientIntroduction extends $pb.GeneratedMessage {
-  factory BandwidthUpgradeNegotiationFrame_ClientIntroduction() => create();
+  factory BandwidthUpgradeNegotiationFrame_ClientIntroduction({
+    $core.String? endpointId,
+    $core.bool? supportsDisablingEncryption,
+  }) {
+    final $result = create();
+    if (endpointId != null) {
+      $result.endpointId = endpointId;
+    }
+    if (supportsDisablingEncryption != null) {
+      $result.supportsDisablingEncryption = supportsDisablingEncryption;
+    }
+    return $result;
+  }
   BandwidthUpgradeNegotiationFrame_ClientIntroduction._() : super();
   factory BandwidthUpgradeNegotiationFrame_ClientIntroduction.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory BandwidthUpgradeNegotiationFrame_ClientIntroduction.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -1288,6 +1677,7 @@ class BandwidthUpgradeNegotiationFrame_ClientIntroduction extends $pb.GeneratedM
   void clearSupportsDisablingEncryption() => clearField(2);
 }
 
+/// Accompanies CLIENT_INTRODUCTION_ACK events.
 class BandwidthUpgradeNegotiationFrame_ClientIntroductionAck extends $pb.GeneratedMessage {
   factory BandwidthUpgradeNegotiationFrame_ClientIntroductionAck() => create();
   BandwidthUpgradeNegotiationFrame_ClientIntroductionAck._() : super();
@@ -1321,7 +1711,27 @@ class BandwidthUpgradeNegotiationFrame_ClientIntroductionAck extends $pb.Generat
 }
 
 class BandwidthUpgradeNegotiationFrame extends $pb.GeneratedMessage {
-  factory BandwidthUpgradeNegotiationFrame() => create();
+  factory BandwidthUpgradeNegotiationFrame({
+    BandwidthUpgradeNegotiationFrame_EventType? eventType,
+    BandwidthUpgradeNegotiationFrame_UpgradePathInfo? upgradePathInfo,
+    BandwidthUpgradeNegotiationFrame_ClientIntroduction? clientIntroduction,
+    BandwidthUpgradeNegotiationFrame_ClientIntroductionAck? clientIntroductionAck,
+  }) {
+    final $result = create();
+    if (eventType != null) {
+      $result.eventType = eventType;
+    }
+    if (upgradePathInfo != null) {
+      $result.upgradePathInfo = upgradePathInfo;
+    }
+    if (clientIntroduction != null) {
+      $result.clientIntroduction = clientIntroduction;
+    }
+    if (clientIntroductionAck != null) {
+      $result.clientIntroductionAck = clientIntroductionAck;
+    }
+    return $result;
+  }
   BandwidthUpgradeNegotiationFrame._() : super();
   factory BandwidthUpgradeNegotiationFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory BandwidthUpgradeNegotiationFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -1364,6 +1774,7 @@ class BandwidthUpgradeNegotiationFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearEventType() => clearField(1);
 
+  /// Exactly one of the following fields will be set.
   @$pb.TagNumber(2)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo get upgradePathInfo => $_getN(1);
   @$pb.TagNumber(2)
@@ -1399,7 +1810,15 @@ class BandwidthUpgradeNegotiationFrame extends $pb.GeneratedMessage {
 }
 
 class KeepAliveFrame extends $pb.GeneratedMessage {
-  factory KeepAliveFrame() => create();
+  factory KeepAliveFrame({
+    $core.bool? ack,
+  }) {
+    final $result = create();
+    if (ack != null) {
+      $result.ack = ack;
+    }
+    return $result;
+  }
   KeepAliveFrame._() : super();
   factory KeepAliveFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory KeepAliveFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -1430,6 +1849,7 @@ class KeepAliveFrame extends $pb.GeneratedMessage {
   static KeepAliveFrame getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<KeepAliveFrame>(create);
   static KeepAliveFrame? _defaultInstance;
 
+  /// And ack will be sent after receiving KEEP_ALIVE frame.
   @$pb.TagNumber(1)
   $core.bool get ack => $_getBF(0);
   @$pb.TagNumber(1)
@@ -1440,8 +1860,24 @@ class KeepAliveFrame extends $pb.GeneratedMessage {
   void clearAck() => clearField(1);
 }
 
+/// Informs the remote side to immediately severe the socket connection.
+/// Used in bandwidth upgrades to get around a race condition, but may be used
+/// in other situations to trigger a faster disconnection event than waiting for
+/// socket closed on the remote side.
 class DisconnectionFrame extends $pb.GeneratedMessage {
-  factory DisconnectionFrame() => create();
+  factory DisconnectionFrame({
+    $core.bool? requestSafeToDisconnect,
+    $core.bool? ackSafeToDisconnect,
+  }) {
+    final $result = create();
+    if (requestSafeToDisconnect != null) {
+      $result.requestSafeToDisconnect = requestSafeToDisconnect;
+    }
+    if (ackSafeToDisconnect != null) {
+      $result.ackSafeToDisconnect = ackSafeToDisconnect;
+    }
+    return $result;
+  }
   DisconnectionFrame._() : super();
   factory DisconnectionFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DisconnectionFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -1473,6 +1909,7 @@ class DisconnectionFrame extends $pb.GeneratedMessage {
   static DisconnectionFrame getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DisconnectionFrame>(create);
   static DisconnectionFrame? _defaultInstance;
 
+  /// Apply safe-to-disconnect protocol if true.
   @$pb.TagNumber(1)
   $core.bool get requestSafeToDisconnect => $_getBF(0);
   @$pb.TagNumber(1)
@@ -1482,6 +1919,8 @@ class DisconnectionFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearRequestSafeToDisconnect() => clearField(1);
 
+  /// Ack of receiving Disconnection frame will be sent to the sender
+  /// frame.
   @$pb.TagNumber(2)
   $core.bool get ackSafeToDisconnect => $_getBF(1);
   @$pb.TagNumber(2)
@@ -1492,8 +1931,17 @@ class DisconnectionFrame extends $pb.GeneratedMessage {
   void clearAckSafeToDisconnect() => clearField(2);
 }
 
+/// A paired key encryption packet sent between devices, contains signed data.
 class PairedKeyEncryptionFrame extends $pb.GeneratedMessage {
-  factory PairedKeyEncryptionFrame() => create();
+  factory PairedKeyEncryptionFrame({
+    $core.List<$core.int>? signedData,
+  }) {
+    final $result = create();
+    if (signedData != null) {
+      $result.signedData = signedData;
+    }
+    return $result;
+  }
   PairedKeyEncryptionFrame._() : super();
   factory PairedKeyEncryptionFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory PairedKeyEncryptionFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -1524,6 +1972,8 @@ class PairedKeyEncryptionFrame extends $pb.GeneratedMessage {
   static PairedKeyEncryptionFrame getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PairedKeyEncryptionFrame>(create);
   static PairedKeyEncryptionFrame? _defaultInstance;
 
+  /// The encrypted data (raw authentication token for the established
+  /// connection) in byte array format.
   @$pb.TagNumber(1)
   $core.List<$core.int> get signedData => $_getN(0);
   @$pb.TagNumber(1)
@@ -1535,7 +1985,55 @@ class PairedKeyEncryptionFrame extends $pb.GeneratedMessage {
 }
 
 class MediumMetadata extends $pb.GeneratedMessage {
-  factory MediumMetadata() => create();
+  factory MediumMetadata({
+    $core.bool? supports5Ghz,
+    $core.String? bssid,
+    $core.List<$core.int>? ipAddress,
+    $core.bool? supports6Ghz,
+    $core.bool? mobileRadio,
+    $core.int? apFrequency,
+    AvailableChannels? availableChannels,
+    WifiDirectCliUsableChannels? wifiDirectCliUsableChannels,
+    WifiLanUsableChannels? wifiLanUsableChannels,
+    WifiAwareUsableChannels? wifiAwareUsableChannels,
+    WifiHotspotStaUsableChannels? wifiHotspotStaUsableChannels,
+  }) {
+    final $result = create();
+    if (supports5Ghz != null) {
+      $result.supports5Ghz = supports5Ghz;
+    }
+    if (bssid != null) {
+      $result.bssid = bssid;
+    }
+    if (ipAddress != null) {
+      $result.ipAddress = ipAddress;
+    }
+    if (supports6Ghz != null) {
+      $result.supports6Ghz = supports6Ghz;
+    }
+    if (mobileRadio != null) {
+      $result.mobileRadio = mobileRadio;
+    }
+    if (apFrequency != null) {
+      $result.apFrequency = apFrequency;
+    }
+    if (availableChannels != null) {
+      $result.availableChannels = availableChannels;
+    }
+    if (wifiDirectCliUsableChannels != null) {
+      $result.wifiDirectCliUsableChannels = wifiDirectCliUsableChannels;
+    }
+    if (wifiLanUsableChannels != null) {
+      $result.wifiLanUsableChannels = wifiLanUsableChannels;
+    }
+    if (wifiAwareUsableChannels != null) {
+      $result.wifiAwareUsableChannels = wifiAwareUsableChannels;
+    }
+    if (wifiHotspotStaUsableChannels != null) {
+      $result.wifiHotspotStaUsableChannels = wifiHotspotStaUsableChannels;
+    }
+    return $result;
+  }
   MediumMetadata._() : super();
   factory MediumMetadata.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory MediumMetadata.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -1576,6 +2074,7 @@ class MediumMetadata extends $pb.GeneratedMessage {
   static MediumMetadata getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MediumMetadata>(create);
   static MediumMetadata? _defaultInstance;
 
+  /// True if local device supports 5GHz.
   @$pb.TagNumber(1)
   $core.bool get supports5Ghz => $_getBF(0);
   @$pb.TagNumber(1)
@@ -1585,6 +2084,7 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearSupports5Ghz() => clearField(1);
 
+  /// WiFi LAN BSSID, in the form of a six-byte MAC address: XX:XX:XX:XX:XX:XX
   @$pb.TagNumber(2)
   $core.String get bssid => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1594,6 +2094,8 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearBssid() => clearField(2);
 
+  /// IP address, in network byte order: the highest order byte of the address is
+  /// in byte[0].
   @$pb.TagNumber(3)
   $core.List<$core.int> get ipAddress => $_getN(2);
   @$pb.TagNumber(3)
@@ -1603,6 +2105,7 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearIpAddress() => clearField(3);
 
+  /// True if local device supports 6GHz.
   @$pb.TagNumber(4)
   $core.bool get supports6Ghz => $_getBF(3);
   @$pb.TagNumber(4)
@@ -1612,6 +2115,7 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearSupports6Ghz() => clearField(4);
 
+  /// True if local device has mobile radio.
   @$pb.TagNumber(5)
   $core.bool get mobileRadio => $_getBF(4);
   @$pb.TagNumber(5)
@@ -1621,6 +2125,8 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearMobileRadio() => clearField(5);
 
+  /// The frequency of the WiFi LAN AP(in MHz). Or -1 is not associated with an
+  /// AP over WiFi, -2 represents the active network uses an Ethernet transport.
   @$pb.TagNumber(6)
   $core.int get apFrequency => $_getI(5, -1);
   @$pb.TagNumber(6)
@@ -1630,6 +2136,7 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearApFrequency() => clearField(6);
 
+  /// Available channels on the local device.
   @$pb.TagNumber(7)
   AvailableChannels get availableChannels => $_getN(6);
   @$pb.TagNumber(7)
@@ -1641,6 +2148,7 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   AvailableChannels ensureAvailableChannels() => $_ensure(6);
 
+  /// Usable WiFi Direct client channels on the local device.
   @$pb.TagNumber(8)
   WifiDirectCliUsableChannels get wifiDirectCliUsableChannels => $_getN(7);
   @$pb.TagNumber(8)
@@ -1652,6 +2160,7 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   WifiDirectCliUsableChannels ensureWifiDirectCliUsableChannels() => $_ensure(7);
 
+  /// Usable WiFi LAN channels on the local device.
   @$pb.TagNumber(9)
   WifiLanUsableChannels get wifiLanUsableChannels => $_getN(8);
   @$pb.TagNumber(9)
@@ -1663,6 +2172,7 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   WifiLanUsableChannels ensureWifiLanUsableChannels() => $_ensure(8);
 
+  /// Usable WiFi Aware channels on the local device.
   @$pb.TagNumber(10)
   WifiAwareUsableChannels get wifiAwareUsableChannels => $_getN(9);
   @$pb.TagNumber(10)
@@ -1674,6 +2184,7 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   WifiAwareUsableChannels ensureWifiAwareUsableChannels() => $_ensure(9);
 
+  /// Usable WiFi Hotspot STA channels on the local device.
   @$pb.TagNumber(11)
   WifiHotspotStaUsableChannels get wifiHotspotStaUsableChannels => $_getN(10);
   @$pb.TagNumber(11)
@@ -1686,8 +2197,17 @@ class MediumMetadata extends $pb.GeneratedMessage {
   WifiHotspotStaUsableChannels ensureWifiHotspotStaUsableChannels() => $_ensure(10);
 }
 
+/// Available channels on the local device.
 class AvailableChannels extends $pb.GeneratedMessage {
-  factory AvailableChannels() => create();
+  factory AvailableChannels({
+    $core.Iterable<$core.int>? channels,
+  }) {
+    final $result = create();
+    if (channels != null) {
+      $result.channels.addAll(channels);
+    }
+    return $result;
+  }
   AvailableChannels._() : super();
   factory AvailableChannels.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory AvailableChannels.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -1722,8 +2242,17 @@ class AvailableChannels extends $pb.GeneratedMessage {
   $core.List<$core.int> get channels => $_getList(0);
 }
 
+/// Usable WiFi Direct client channels on the local device.
 class WifiDirectCliUsableChannels extends $pb.GeneratedMessage {
-  factory WifiDirectCliUsableChannels() => create();
+  factory WifiDirectCliUsableChannels({
+    $core.Iterable<$core.int>? channels,
+  }) {
+    final $result = create();
+    if (channels != null) {
+      $result.channels.addAll(channels);
+    }
+    return $result;
+  }
   WifiDirectCliUsableChannels._() : super();
   factory WifiDirectCliUsableChannels.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory WifiDirectCliUsableChannels.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -1758,8 +2287,17 @@ class WifiDirectCliUsableChannels extends $pb.GeneratedMessage {
   $core.List<$core.int> get channels => $_getList(0);
 }
 
+/// Usable WiFi LAN channels on the local device.
 class WifiLanUsableChannels extends $pb.GeneratedMessage {
-  factory WifiLanUsableChannels() => create();
+  factory WifiLanUsableChannels({
+    $core.Iterable<$core.int>? channels,
+  }) {
+    final $result = create();
+    if (channels != null) {
+      $result.channels.addAll(channels);
+    }
+    return $result;
+  }
   WifiLanUsableChannels._() : super();
   factory WifiLanUsableChannels.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory WifiLanUsableChannels.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -1794,8 +2332,17 @@ class WifiLanUsableChannels extends $pb.GeneratedMessage {
   $core.List<$core.int> get channels => $_getList(0);
 }
 
+/// Usable WiFi Aware channels on the local device.
 class WifiAwareUsableChannels extends $pb.GeneratedMessage {
-  factory WifiAwareUsableChannels() => create();
+  factory WifiAwareUsableChannels({
+    $core.Iterable<$core.int>? channels,
+  }) {
+    final $result = create();
+    if (channels != null) {
+      $result.channels.addAll(channels);
+    }
+    return $result;
+  }
   WifiAwareUsableChannels._() : super();
   factory WifiAwareUsableChannels.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory WifiAwareUsableChannels.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -1830,8 +2377,17 @@ class WifiAwareUsableChannels extends $pb.GeneratedMessage {
   $core.List<$core.int> get channels => $_getList(0);
 }
 
+/// Usable WiFi Hotspot STA channels on the local device.
 class WifiHotspotStaUsableChannels extends $pb.GeneratedMessage {
-  factory WifiHotspotStaUsableChannels() => create();
+  factory WifiHotspotStaUsableChannels({
+    $core.Iterable<$core.int>? channels,
+  }) {
+    final $result = create();
+    if (channels != null) {
+      $result.channels.addAll(channels);
+    }
+    return $result;
+  }
   WifiHotspotStaUsableChannels._() : super();
   factory WifiHotspotStaUsableChannels.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory WifiHotspotStaUsableChannels.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -1866,8 +2422,21 @@ class WifiHotspotStaUsableChannels extends $pb.GeneratedMessage {
   $core.List<$core.int> get channels => $_getList(0);
 }
 
+/// LocationHint is used to specify a location as well as format.
 class LocationHint extends $pb.GeneratedMessage {
-  factory LocationHint() => create();
+  factory LocationHint({
+    $core.String? location,
+    LocationStandard_Format? format,
+  }) {
+    final $result = create();
+    if (location != null) {
+      $result.location = location;
+    }
+    if (format != null) {
+      $result.format = format;
+    }
+    return $result;
+  }
   LocationHint._() : super();
   factory LocationHint.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory LocationHint.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -1899,6 +2468,7 @@ class LocationHint extends $pb.GeneratedMessage {
   static LocationHint getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LocationHint>(create);
   static LocationHint? _defaultInstance;
 
+  /// Location is the location, provided in the format specified by format.
   @$pb.TagNumber(1)
   $core.String get location => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1908,6 +2478,7 @@ class LocationHint extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearLocation() => clearField(1);
 
+  /// the format of location.
   @$pb.TagNumber(2)
   LocationStandard_Format get format => $_getN(1);
   @$pb.TagNumber(2)
@@ -1950,8 +2521,17 @@ class LocationStandard extends $pb.GeneratedMessage {
   static LocationStandard? _defaultInstance;
 }
 
+/// Device capability for OS information.
 class OsInfo extends $pb.GeneratedMessage {
-  factory OsInfo() => create();
+  factory OsInfo({
+    OsInfo_OsType? type,
+  }) {
+    final $result = create();
+    if (type != null) {
+      $result.type = type;
+    }
+    return $result;
+  }
   OsInfo._() : super();
   factory OsInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory OsInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);

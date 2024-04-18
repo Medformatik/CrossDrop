@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -13,6 +13,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+/// Supported "signature" schemes (both symmetric key and public key based)
 class SigScheme extends $pb.ProtobufEnum {
   static const SigScheme HMAC_SHA256 = SigScheme._(1, _omitEnumNames ? '' : 'HMAC_SHA256');
   static const SigScheme ECDSA_P256_SHA256 = SigScheme._(2, _omitEnumNames ? '' : 'ECDSA_P256_SHA256');
@@ -30,6 +31,7 @@ class SigScheme extends $pb.ProtobufEnum {
   const SigScheme._($core.int v, $core.String n) : super(v, n);
 }
 
+/// Supported encryption schemes
 class EncScheme extends $pb.ProtobufEnum {
   static const EncScheme NONE = EncScheme._(1, _omitEnumNames ? '' : 'NONE');
   static const EncScheme AES_256_CBC = EncScheme._(2, _omitEnumNames ? '' : 'AES_256_CBC');
@@ -45,6 +47,7 @@ class EncScheme extends $pb.ProtobufEnum {
   const EncScheme._($core.int v, $core.String n) : super(v, n);
 }
 
+/// A list of supported public key types
 class PublicKeyType extends $pb.ProtobufEnum {
   static const PublicKeyType EC_P256 = PublicKeyType._(1, _omitEnumNames ? '' : 'EC_P256');
   static const PublicKeyType RSA2048 = PublicKeyType._(2, _omitEnumNames ? '' : 'RSA2048');
