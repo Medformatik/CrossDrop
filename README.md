@@ -1,12 +1,12 @@
-**CrossDrop** is a partial implementation of [Google's Nearby Share](https://blog.google/products/android/nearby-share/) in Flutter for macOS, iOS and Linux.
+**CrossDrop** is a partial implementation of [Google's Quick Share](https://blog.google/products/android/how-to-use-quick-share-android/) in Flutter for macOS, iOS and Linux.
 
 CrossDrop is based on [NearDrop](https://github.com/grishka/NearDrop), a Swift implementation of Nearby Share for macOS.
 
 > [!IMPORTANT]
-> **⚠️ This is a work in progress. It is not yet feature-complete, and it is not yet stable. It is not yet ready for production use.**
+> **⚠️ This is a work in progress. It is not yet feature-complete, and it is not yet stable. It is not yet ready for use.**
 
 > [!NOTE]
-> At the moment I don't have the time to work on implementing Nearby Share here, even though that's what it's all about. I've started working on it, but I don't have the time to finish it at the moment.
+> As far as I find time I am working on the first version for testing. The current status can be seen in the [dev branch](https://github.com/Medformatik/CrossDrop/tree/dev). At the moment I cannot estimate how long I will need until the first release.
 
 [Protocol documentation](https://github.com/grishka/NearDrop/blob/master/PROTOCOL.md) is available in the NearDrop repository.
 
@@ -14,7 +14,7 @@ The app lives in your menu bar and saves files to your downloads folder.
 
 ℹ️ Getting CrossDrop to work on iOS has the least priority, first getting it to work on Linux is the goal. 
 
-📈 Since this project has gotten more attention, I will try very hard to release a working version as soon as possible. While much of the UI is ready so far, I'm currently working on the Nearby Share feature itself. After that, I still need to implement notifications.
+📈 Since this project has gotten more attention, I will try very hard to release a working version as soon as possible. While much of the UI is ready so far, I'm currently working on the Quick Share feature itself. After that, I still need to implement notifications.
 
 ## Limitations
 
@@ -31,7 +31,6 @@ Contributions are welcome! Please open an issue or a pull request.
 ### Why does this exist next to NearDrop?
 
 NearDrop is a Swift implementation of Nearby Share for macOS. It therefore only works on macOS. CrossDrop is a Flutter implementation of Nearby Share. It serves the same purpose, but works on more platforms. This way, Nearby Share can also be used on Linux and iOS.
-
 
 ### Why not the other way around, i.e. AirDrop on Android?
 
