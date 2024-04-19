@@ -26,7 +26,7 @@ class NearbyConnection {
   bool encryptionDone = false;
   final Map<Int64, InternalFileInfo> transferredFiles = {};
   final String id;
-  Error? lastError;
+  Exception? lastError;
   bool connectionClosed = false;
 
   // UKEY2-related state
@@ -58,7 +58,7 @@ class NearbyConnection {
       // TODO: handle data
       // receiveFrameAsync(data);
     }, onError: (error) {
-      lastError = error as Error;
+      lastError = error;
       print("Error opening socket: $error");
       handleConnectionClosure();
     }, onDone: () {
@@ -66,7 +66,7 @@ class NearbyConnection {
     });
   }
 
-  // void connectionReady() {}
+  void connectionReady() {}
 
   void handleConnectionClosure() {
     print('Connection closed');
@@ -125,8 +125,8 @@ class NearbyConnection {
         }
         receiveFrameAsyncLength(length: frameLength);
       },
-      onError: (err) {
-        lastError = err as Error;
+      onError: (error) {
+        lastError = error;
         protocolError();
       },
       onDone: () {
@@ -148,8 +148,8 @@ class NearbyConnection {
         processReceivedFrame(data);
         receiveFrameAsync();
       },
-      onError: (err) {
-        lastError = err as Error;
+      onError: (error) {
+        lastError = error;
         protocolError();
       },
       onDone: () {
@@ -209,10 +209,10 @@ class NearbyConnection {
   }
 
   void sendTransferSetupFrame(wire_format.Frame frame) {
-    sendBytesPayload(frame.writeToBuffer(), Random().nextInt(1 << 63) - (1 << 63));
+    sendBytesPayload(data: frame.writeToBuffer(), id: Int64(Random().nextInt(1 << 63) - (1 << 63)));
   }
 
-  void sendBytesPayload(Uint8List data, int id) {
+  void sendBytesPayload({required Uint8List data, required Int64 id}) {
     final transfer = offline_wire_formats.PayloadTransferFrame()
       ..packetType = offline_wire_formats.PayloadTransferFrame_PacketType.DATA
       ..payloadChunk = offline_wire_formats.PayloadTransferFrame_PayloadChunk()
@@ -220,7 +220,7 @@ class NearbyConnection {
       ..payloadChunk.flags = 0
       ..payloadChunk.body = data
       ..payloadHeader = offline_wire_formats.PayloadTransferFrame_PayloadHeader()
-      ..payloadHeader.id = Int64(id)
+      ..payloadHeader.id = id
       ..payloadHeader.type = offline_wire_formats.PayloadTransferFrame_PayloadHeader_PayloadType.BYTES
       ..payloadHeader.totalSize = Int64(data.length)
       ..payloadHeader.isSensitive = false;
@@ -283,25 +283,25 @@ class NearbyConnection {
         throw NearbyError.requiredFieldMissing();
       }
       if (offline_wire_formats.PayloadTransferFrame_PayloadHeader_PayloadType.BYTES == header.type) {
-        final payloadID = header.id.toInt();
+        final payloadId = header.id.toInt();
         if (header.totalSize.toInt() > saneFrameLength) {
-          payloadBuffers.remove(payloadID);
+          payloadBuffers.remove(payloadId);
           throw NearbyError.protocolError("Payload too large (${header.totalSize} bytes)");
         }
-        if (payloadBuffers[payloadID] == null) {
-          payloadBuffers[payloadID] = Uint8List(header.totalSize.toInt());
+        if (payloadBuffers[payloadId] == null) {
+          payloadBuffers[payloadId] = Uint8List(header.totalSize.toInt());
         }
-        final buffer = payloadBuffers[payloadID]!;
+        final buffer = payloadBuffers[payloadId]!;
         if (chunk.offset.toInt() != buffer.length) {
-          payloadBuffers.remove(payloadID);
+          payloadBuffers.remove(payloadId);
           throw NearbyError.protocolError("Unexpected chunk offset ${chunk.offset}, expected ${buffer.length}");
         }
         if (chunk.hasBody()) {
           buffer.setAll(buffer.length, chunk.body);
         }
         if ((chunk.flags & 1) == 1) {
-          payloadBuffers.remove(payloadID);
-          if (!await processBytesPayload(buffer, payloadID)) {
+          payloadBuffers.remove(payloadId);
+          if (!await processBytesPayload(buffer, payloadId)) {
             final innerFrame = wire_format.Frame.fromBuffer(buffer);
             processTransferSetupFrame(innerFrame);
           }

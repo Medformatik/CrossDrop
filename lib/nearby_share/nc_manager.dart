@@ -77,7 +77,7 @@ class NearbyError implements Exception {
 
   static NearbyError ukey2() => NearbyError("UKEY2 error");
 
-  static NearbyError inputOutput(int cause) => NearbyError("Input/output error: $cause");
+  static NearbyError inputOutput({required String cause}) => NearbyError("Input/output error: $cause");
 
   static NearbyError canceled(CancellationReason reason) => NearbyError("Canceled: $reason");
 }
@@ -187,7 +187,7 @@ class EndpointInfo {
 
 class NearbyConnectionManager {
   late ServerSocket _server;
-  final Uint8List endpointID = _generateEndpointID();
+  final Uint8List endpointId = _generateEndpointID();
   final Map<String, InboundNearbyConnection> _activeConnections = {};
   final Map<String, FoundServiceInfo> _foundServices = {};
   final Map<String, OutgoingTransferInfo> _outgoingTransfers = {};
@@ -195,7 +195,13 @@ class NearbyConnectionManager {
   int _discoveryRefCount = 0;
   BonsoirDiscovery? discovery;
 
-  Future<void> startTcpListener() async {
+  static final NearbyConnectionManager shared = NearbyConnectionManager();
+
+  Future<void> becomeVisible() async {
+    await _startTcpListener();
+  }
+
+  Future<void> _startTcpListener() async {
     _server = await ServerSocket.bind(InternetAddress.anyIPv4, 65535);
     await _initMdns();
     _server.listen((socket) {
@@ -221,10 +227,10 @@ class NearbyConnectionManager {
   Future<void> _initMdns() async {
     final Uint8List nameBytes = Uint8List.fromList([
       0x23,
-      endpointID[0],
-      endpointID[1],
-      endpointID[2],
-      endpointID[3],
+      endpointId[0],
+      endpointId[1],
+      endpointId[2],
+      endpointId[3],
       0xFC,
       0x9F,
       0x5E,
@@ -356,7 +362,7 @@ class NearbyConnectionManager {
     final Socket socket = await Socket.connect(host!, info.service.port);
     final OutboundNearbyConnection connection = OutboundNearbyConnection(connection: socket, id: deviceId, urlsToSend: urls);
     _outgoingTransfers[deviceId] = OutgoingTransferInfo(service: info.service, device: info.device!, connection: connection);
-    await connection.start();
+    connection.start();
   }
 
   Future<void> outboundConnectionTransferWasEstablished(OutboundNearbyConnection connection) async {

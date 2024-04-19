@@ -74,7 +74,7 @@ class InboundNearbyConnection extends NearbyConnection {
           break;
       }
     } catch (e) {
-      lastError = e as Error; // TODO: is this safe?
+      lastError = e as Exception; // TODO: is this safe?
       print("Deserialization error: $e in state $_currentState");
       protocolError();
     }
@@ -134,7 +134,7 @@ class InboundNearbyConnection extends NearbyConnection {
     }
     if (frame.payloadChunk.body.isNotEmpty) {
       try {
-        fileInfo.fileHandle?.writeAsBytes(frame.payloadChunk.body, mode: FileMode.append);
+        fileInfo.file?.writeAsBytes(frame.payloadChunk.body, mode: FileMode.append);
         transferredFiles[id]!.bytesTransferred += frame.payloadChunk.body.length;
         fileInfo.progress?.completedUnitCount = transferredFiles[id]!.bytesTransferred;
       } catch (e) {
@@ -142,15 +142,15 @@ class InboundNearbyConnection extends NearbyConnection {
       }
     } else if ((frame.payloadChunk.flags & 1) == 1) {
       try {
-        fileInfo.fileHandle?.close();
-        transferredFiles[id]!.fileHandle = null;
+        // fileInfo.file?.close();
+        transferredFiles[id]!.file = null;
         fileInfo.progress?.unpublish();
         transferredFiles.remove(id);
         if (transferredFiles.isEmpty) {
           sendDisconnectionAndDisconnect();
         }
       } catch (e) {
-        // print("Error closing file: $e");
+        print(e);
       }
     }
   }
@@ -238,7 +238,7 @@ class InboundNearbyConnection extends NearbyConnection {
       ..random = Uint8List.fromList(List<int>.generate(32, (index) => Random().nextInt(256)))
       ..handshakeCipher = securegcm.CipherSuite.p256Sha512;
     final pkey = securemessage.GenericPublicKey()
-      ..type = securemessage.PublicKeyType.ecP256
+      ..type = securemessage.PublicKeyType.EC_P256
       ..ecP256PublicKey = securemessage.EcP256PublicKey()
       ..ecP256PublicKey.x = Uint8List.fromList(keyPair.publicKey.w.x.asSignedBytes())
       ..ecP256PublicKey.y = Uint8List.fromList(keyPair.publicKey.w.y.asSignedBytes());
@@ -405,7 +405,7 @@ class InboundNearbyConnection extends NearbyConnection {
         _currentState = State.receivingFiles;
         sendTransferSetupFrame(frame);
       } catch (e) {
-        lastError = e as Error;
+        lastError = e as Exception;
         protocolError();
       }
     }
@@ -422,7 +422,7 @@ class InboundNearbyConnection extends NearbyConnection {
       sendTransferSetupFrame(frame);
       sendDisconnectionAndDisconnect();
     } catch (e) {
-      lastError = e as Error;
+      lastError = e as Exception;
       protocolError();
     }
   }
@@ -443,5 +443,5 @@ class InboundNearbyConnection extends NearbyConnection {
 
 abstract class InboundNearbyConnectionDelegate {
   void obtainUserConsent(TransferMetadata transfer, RemoteDeviceInfo device, InboundNearbyConnection connection);
-  void connectionWasTerminated(InboundNearbyConnection connection, Error? error);
+  void connectionWasTerminated(InboundNearbyConnection connection, Exception? error);
 }
