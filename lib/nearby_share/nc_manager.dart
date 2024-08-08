@@ -73,11 +73,11 @@ class NearbyError implements Exception {
 
   static NearbyError protocolError(String message) => NearbyError("Protocol error: $message");
 
-  static NearbyError requiredFieldMissing() => NearbyError("Required field missing");
+  static NearbyError requiredFieldMissing(String message) => NearbyError("Required field missing: $message");
 
   static NearbyError ukey2() => NearbyError("UKEY2 error");
 
-  static NearbyError inputOutput({required String cause}) => NearbyError("Input/output error: $cause");
+  static NearbyError inputOutput() => NearbyError("Input/output error");
 
   static NearbyError canceled(CancellationReason reason) => NearbyError("Canceled: $reason");
 }
@@ -130,11 +130,13 @@ class OutgoingTransferInfo {
   BonsoirService service;
   RemoteDeviceInfo device;
   OutboundNearbyConnection connection;
+  ShareExtensionDelegate delegate;
 
   OutgoingTransferInfo({
     required this.service,
     required this.device,
     required this.connection,
+    required this.delegate,
   });
 }
 
@@ -183,6 +185,21 @@ class EndpointInfo {
 
     return Uint8List.fromList(endpointInfo);
   }
+}
+
+abstract class MainAppDelegate {
+  Future<void> obtainUserConsent(TransferMetadata transfer, RemoteDeviceInfo device);
+  Future<void> incomingTransfer(String id, Exception? error);
+}
+
+abstract class ShareExtensionDelegate {
+  void addDevice(RemoteDeviceInfo device);
+  void removeDevice(String id);
+  void connectionWasEstablished({required String pinCode});
+  void connectionFailed({required Exception error});
+  void transferAccepted();
+  void transferProgress({required double progress});
+  void transferFinished();
 }
 
 class NearbyConnectionManager {
@@ -355,47 +372,48 @@ class NearbyConnectionManager {
     }
   }
 
-  Future<void> startOutgoingTransfer(String deviceId, List<Uri> urls) async {
+  Future<void> startOutgoingTransfer({required String deviceId, required ShareExtensionDelegate delegate, required List<String> urls}) async {
     final FoundServiceInfo? info = _foundServices[deviceId];
     if (info == null) return;
     final host = info.service.toJson()['service.ip'] ?? info.service.toJson()['service.host'];
     final Socket socket = await Socket.connect(host!, info.service.port);
     final OutboundNearbyConnection connection = OutboundNearbyConnection(connection: socket, id: deviceId, urlsToSend: urls);
-    _outgoingTransfers[deviceId] = OutgoingTransferInfo(service: info.service, device: info.device!, connection: connection);
+    final transfer = OutgoingTransferInfo(service: info.service, device: info.device!, connection: connection, delegate: delegate);
+    _outgoingTransfers[deviceId] = transfer;
     connection.start();
   }
 
-  Future<void> outboundConnectionTransferWasEstablished(OutboundNearbyConnection connection) async {
+  Future<void> outboundConnectionTransferWasEstablished({required OutboundNearbyConnection connection}) async {
     final OutgoingTransferInfo? transfer = _outgoingTransfers[connection.id];
     if (transfer == null) return;
-    await transfer.delegate.connectionWasEstablished(pinCode: connection.pinCode!);
+    transfer.delegate.connectionWasEstablished(pinCode: connection.pinCode!);
   }
 
-  Future<void> outboundConnectionTransferAccepted(OutboundNearbyConnection connection) async {
+  Future<void> outboundConnectionTransferAccepted({required OutboundNearbyConnection connection}) async {
     final OutgoingTransferInfo? transfer = _outgoingTransfers[connection.id];
     if (transfer == null) return;
-    await transfer.delegate.transferAccepted();
+    transfer.delegate.transferAccepted();
   }
 
-  Future<void> outboundConnectionTransferProgress(OutboundNearbyConnection connection, double progress) async{
+  Future<void> outboundConnectionTransferProgress({required OutboundNearbyConnection connection, required double progress}) async {
     final OutgoingTransferInfo? transfer = _outgoingTransfers[connection.id];
     if (transfer == null) return;
-    await transfer.delegate.transferProgress(progress: progress);
+    transfer.delegate.transferProgress(progress: progress);
   }
 
-  Future<void> outboundConnectionError(OutboundNearbyConnection connection, Exception error)async {
+  Future<void> outboundConnectionError({required OutboundNearbyConnection connection, required Exception error}) async {
     final OutgoingTransferInfo? transfer = _outgoingTransfers[connection.id];
     if (transfer == null) return;
-    await transfer.delegate.connectionFailed(with: error);
+    transfer.delegate.connectionFailed(error: error);
     if (_outgoingTransfers.containsKey(connection.id)) {
       _outgoingTransfers.remove(connection.id);
     }
   }
 
-  Future<void> outboundConnectionTransferFinished(OutboundNearbyConnection connection) async{
+  Future<void> outboundConnectionTransferFinished({required OutboundNearbyConnection connection}) async {
     final OutgoingTransferInfo? transfer = _outgoingTransfers[connection.id];
     if (transfer == null) return;
-    await transfer.delegate.transferFinished();
+    transfer.delegate.transferFinished();
     if (_outgoingTransfers.containsKey(connection.id)) {
       _outgoingTransfers.remove(connection.id);
     }

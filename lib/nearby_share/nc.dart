@@ -19,6 +19,7 @@ class ProtocolError extends Error {}
 
 class NearbyConnection {
   static const saneFrameLength = 5 * 1024 * 1024;
+  static final List<Function> dispatchQueue = [];
 
   final Socket connection;
   RemoteDeviceInfo? remoteDeviceInfo;
@@ -54,9 +55,9 @@ class NearbyConnection {
 
   void start() {
     connection.listen((data) {
-      // connectionReady();
+      connectionReady();
       // TODO: handle data
-      // receiveFrameAsync(data);
+      receiveFrameAsync();
     }, onError: (error) {
       lastError = error;
       print("Error opening socket: $error");
@@ -96,18 +97,6 @@ class NearbyConnection {
   bool processBytesPayload(Uint8List payload, int id) {
     return false;
   }
-
-  /* void receiveFrameAsync(Uint8List content) {
-    if (connectionClosed) {
-      return;
-    }
-    final frameLength = content[0] << 24 | content[1] << 16 | content[2] << 8 | content[3];
-    if (frameLength >= saneFrameLength) {
-      lastError = NearbyError.protocolError("Unexpected packet length");
-      protocolError();
-    }
-    processReceivedFrame(content);
-  } */
 
   void receiveFrameAsync() {
     connection.listen(
@@ -241,7 +230,7 @@ class NearbyConnection {
 
   Future<void> decryptAndProcessReceivedSecureMessage(securemessage.SecureMessage smsg) async {
     if (!smsg.hasSignature() || !smsg.hasHeaderAndBody()) {
-      throw NearbyError.requiredFieldMissing();
+      throw NearbyError.requiredFieldMissing("secureMessage.signature|headerAndBody");
     }
     final hmac = HMac(SHA256Digest(), 64);
     hmac.init(KeyParameter(recvHmacKey!));
@@ -259,7 +248,7 @@ class NearbyConnection {
     final decryptedLength = decryptedData.length;
     final d2dMsg = device_to_device_messages.DeviceToDeviceMessage.fromBuffer(decryptedData.sublist(0, decryptedLength));
     if (!d2dMsg.hasMessage() || !d2dMsg.hasSequenceNumber()) {
-      throw NearbyError.requiredFieldMissing();
+      throw NearbyError.requiredFieldMissing("d2dMessage.message|sequenceNumber");
     }
     clientSeq++;
     if (d2dMsg.sequenceNumber != clientSeq) {
@@ -267,20 +256,20 @@ class NearbyConnection {
     }
     final offlineFrame = offline_wire_formats.OfflineFrame.fromBuffer(d2dMsg.message);
     if (!offlineFrame.hasV1() || !offlineFrame.v1.hasType()) {
-      throw NearbyError.requiredFieldMissing();
+      print("Unhandled offline frame encrypted: $offlineFrame");
     }
     if (offline_wire_formats.V1Frame_FrameType.PAYLOAD_TRANSFER == offlineFrame.v1.type) {
       if (!offlineFrame.v1.hasPayloadTransfer()) {
-        throw NearbyError.requiredFieldMissing();
+        throw NearbyError.requiredFieldMissing("offlineFrame.v1.payloadTransfer");
       }
       final payloadTransfer = offlineFrame.v1.payloadTransfer;
       final header = payloadTransfer.payloadHeader;
       final chunk = payloadTransfer.payloadChunk;
       if (!header.hasType() || !header.hasId()) {
-        throw NearbyError.requiredFieldMissing();
+        throw NearbyError.requiredFieldMissing("payloadHeader.type|id");
       }
       if (!payloadTransfer.hasPayloadChunk() || !chunk.hasOffset() || !chunk.hasFlags()) {
-        throw NearbyError.requiredFieldMissing();
+        throw NearbyError.requiredFieldMissing("payloadTransfer.payloadChunk|offset|flags");
       }
       if (offline_wire_formats.PayloadTransferFrame_PayloadHeader_PayloadType.BYTES == header.type) {
         final payloadId = header.id.toInt();
@@ -301,7 +290,7 @@ class NearbyConnection {
         }
         if ((chunk.flags & 1) == 1) {
           payloadBuffers.remove(payloadId);
-          if (!await processBytesPayload(buffer, payloadId)) {
+          if (!processBytesPayload(buffer, payloadId)) {
             final innerFrame = wire_format.Frame.fromBuffer(buffer);
             processTransferSetupFrame(innerFrame);
           }
@@ -329,36 +318,57 @@ class NearbyConnection {
     return hash.abs().toString().padLeft(4, '0');
   }
 
-  Future<void> finalizeKeyExchange({required securemessage.GenericPublicKey peerKey}) async {
+  static Uint8List hkdf(Uint8List inputKeyMaterial, Uint8List salt, Uint8List info, int outputByteCount) {
+    final hkdf = HKDFKeyDerivator(SHA256Digest());
+    hkdf.init(HkdfParameters(inputKeyMaterial, outputByteCount, salt, info));
+    return hkdf.process(Uint8List(outputByteCount));
+  }
+
+  void finalizeKeyExchange(securemessage.GenericPublicKey peerKey) {
     if (!peerKey.hasEcP256PublicKey()) {
-      throw NearbyError.requiredFieldMissing();
+      throw NearbyError.requiredFieldMissing("peerKey.ecP256PublicKey");
     }
 
-    final domain = ECCurve_secp256r1();
-    var clientX = peerKey.ecP256PublicKey.x;
-    var clientY = peerKey.ecP256PublicKey.y;
+    // Extract X and Y coordinates of the peer's public key
+    Uint8List clientX = Uint8List.fromList(peerKey.ecP256PublicKey.x);
+    Uint8List clientY = Uint8List.fromList(peerKey.ecP256PublicKey.y);
+
+    // Ensure X and Y are 32 bytes in length
     if (clientX.length > 32) {
-      clientX = clientX.sublist(clientX.length - 32);
+      clientX = Uint8List.fromList(clientX.sublist(clientX.length - 32));
     }
     if (clientY.length > 32) {
-      clientY = clientY.sublist(clientY.length - 32);
+      clientY = Uint8List.fromList(clientY.sublist(clientY.length - 32));
     }
 
-    final key = ECPublicKey(
-      domain.curve.createPoint(BigInt.parse(bytesToHex(Uint8List.fromList(clientX)), radix: 16), BigInt.parse(bytesToHex(Uint8List.fromList(clientY)), radix: 16)),
-      domain,
+    // Convert X and Y coordinates to a public key point
+    final curve = ECCurve_secp256r1();
+    final ecPoint = curve.curve.createPoint(
+      BigInt.parse(bytesToHex(clientX), radix: 16),
+      BigInt.parse(bytesToHex(clientY), radix: 16),
     );
+    final peerPublicKey = ECPublicKey(ecPoint, curve);
 
-    final dhs = privateKey!.d! * key.Q!.x!.toBigInteger()!;
-    var bytes = utf8.encode(dhs.toRadixString(16)); // convert BigInt to bytes
-    var derivedSecretKey = SHA256Digest().process(bytes);
+    // Perform ECDH key exchange to derive the shared secret
+    final agreement = ECDHBasicAgreement();
+    agreement.init(privateKey!); // Initialize with our private key
+    final sharedSecret = agreement.calculateAgreement(peerPublicKey);
 
-    final ukeyInfo = Uint8List.fromList([...ukeyClientInitMsgData!, ...ukeyServerInitMsgData!]);
-    final authString = hkdfDeriveKey(derivedSecretKey, Uint8List.fromList(utf8.encode("UKEY v1 auth")), ukeyInfo, 32);
-    final nextSecret = hkdfDeriveKey(derivedSecretKey, Uint8List.fromList(utf8.encode("UKEY v1 next")), ukeyInfo, 32);
+    // Hash the shared secret
+    final sha256 = SHA256Digest();
+    final derivedSecretKey = sha256.process(Uint8List.fromList(sharedSecret.toRadixString(16).codeUnits));
 
-    pinCode = pinCodeFromAuthKey(authString);
+    // Prepare UKEY2 info for HKDF
+    final ukeyInfo = Uint8List.fromList(ukeyClientInitMsgData! + ukeyServerInitMsgData!);
 
+    // Derive the auth and next keys using HKDF
+    final authString = hkdfDeriveKey(derivedSecretKey, Uint8List.fromList('UKEY2 v1 auth'.codeUnits), ukeyInfo, 32);
+    final nextSecret = hkdfDeriveKey(derivedSecretKey, Uint8List.fromList('UKEY2 v1 next'.codeUnits), ukeyInfo, 32);
+
+    // Generate the PIN code from the auth string
+    pinCode = NearbyConnection.pinCodeFromAuthKey(authString);
+
+    // Fixed salt for key derivation
     final salt = Uint8List.fromList([
       0x82,
       0xAA,
@@ -394,45 +404,67 @@ class NearbyConnection {
       0x10,
     ]);
 
-    final d2dClientKey = hkdfDeriveKey(nextSecret, salt, Uint8List.fromList(utf8.encode("client")), 32);
-    final d2dServerKey = hkdfDeriveKey(nextSecret, salt, Uint8List.fromList(utf8.encode("server")), 32);
+    // Derive client and server keys
+    final d2dClientKey = hkdfDeriveKey(nextSecret, salt, Uint8List.fromList('client'.codeUnits), 32);
+    final d2dServerKey = hkdfDeriveKey(nextSecret, salt, Uint8List.fromList('server'.codeUnits), 32);
 
-    final smsgSalt = SHA256Digest().process(utf8.encode("SecureMessage"));
+    // Derive SecureMessage keys
+    final smsgSalt = sha256.process(Uint8List.fromList('SecureMessage'.codeUnits));
+    final clientKey = hkdfDeriveKey(d2dClientKey, smsgSalt, Uint8List.fromList('ENC:2'.codeUnits), 32);
+    final clientHmacKey = hkdfDeriveKey(d2dClientKey, smsgSalt, Uint8List.fromList('SIG:1'.codeUnits), 32);
+    final serverKey = hkdfDeriveKey(d2dServerKey, smsgSalt, Uint8List.fromList('ENC:2'.codeUnits), 32);
+    final serverHmacKey = hkdfDeriveKey(d2dServerKey, smsgSalt, Uint8List.fromList('SIG:1'.codeUnits), 32);
 
-    /*
-    let clientKey=HKDF<SHA256>.deriveKey(inputKeyMaterial: d2dClientKey, salt: smsgSalt, info: "ENC:2".data(using: .utf8)!, outputByteCount: 32).withUnsafeBytes({return [UInt8]($0)})
-		let clientHmacKey=HKDF<SHA256>.deriveKey(inputKeyMaterial: d2dClientKey, salt: smsgSalt, info: "SIG:1".data(using: .utf8)!, outputByteCount: 32)
-		let serverKey=HKDF<SHA256>.deriveKey(inputKeyMaterial: d2dServerKey, salt: smsgSalt, info: "ENC:2".data(using: .utf8)!, outputByteCount: 32).withUnsafeBytes({return [UInt8]($0)})
-		let serverHmacKey=HKDF<SHA256>.deriveKey(inputKeyMaterial: d2dServerKey, salt: smsgSalt, info: "SIG:1".data(using: .utf8)!, outputByteCount: 32)
-    */
-
-    final clientKey = hkdfDeriveKey(d2dClientKey, smsgSalt, Uint8List.fromList(utf8.encode("ENC:2")), 32);
-    final clientHmacKey = hkdfDeriveKey(d2dClientKey, smsgSalt, Uint8List.fromList(utf8.encode("SIG:1")), 32);
-    final serverKey = hkdfDeriveKey(d2dServerKey, smsgSalt, Uint8List.fromList(utf8.encode("ENC:2")), 32);
-    final serverHmacKey = hkdfDeriveKey(d2dServerKey, smsgSalt, Uint8List.fromList(utf8.encode("SIG:1")), 32);
-
+    // Assign keys based on whether we are the server or not
     if (isServer()) {
-      decryptKey = clientKey;
-      recvHmacKey = clientHmacKey;
-      encryptKey = serverKey;
-      sendHmacKey = serverHmacKey;
-    } else {
+      // Server-side key assignments
       decryptKey = serverKey;
       recvHmacKey = serverHmacKey;
       encryptKey = clientKey;
       sendHmacKey = clientHmacKey;
+    } else {
+      // Client-side key assignments
+      decryptKey = clientKey;
+      recvHmacKey = clientHmacKey;
+      encryptKey = serverKey;
+      sendHmacKey = serverHmacKey;
     }
+
+    // Initialize sequence numbers
+    serverSeq = 0;
+    clientSeq = 0;
   }
 
   Uint8List hkdfDeriveKey(Uint8List inputKey, Uint8List salt, Uint8List info, int outputLength) {
+    // Initialize HKDF with SHA-256
     final hkdf = HKDFKeyDerivator(SHA256Digest());
-    hkdf.init(HkdfParameters(inputKey, outputLength, salt, info));
-    // TODO: verify that this is the correct way to get the derived key
-    return hkdf.process(Uint8List(outputLength));
+
+    // Set up the HKDF parameters with the input key, salt, info, and desired length
+    final parameters = HkdfParameters(
+      inputKey,
+      outputLength,
+      salt,
+      info,
+    );
+    hkdf.init(parameters);
+
+    // Generate the derived key with the desired output length
+    final derivedKey = Uint8List(outputLength);
+    hkdf.deriveKey(null, 0, derivedKey, 0);
+
+    return derivedKey;
   }
 
   String bytesToHex(Uint8List bytes) {
     return bytes.map((byte) => byte.toRadixString(16).padLeft(2, '0')).join();
+  }
+
+  List<int> hexToBytes(String hex) {
+    final List<int> bytes = [];
+    for (int i = 0; i < hex.length; i += 2) {
+      bytes.add(int.parse(hex.substring(i, i + 2), radix: 16));
+    }
+    return bytes;
   }
 
   Future<void> disconnect() async {
