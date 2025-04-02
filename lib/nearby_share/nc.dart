@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
@@ -6,11 +5,15 @@ import 'dart:typed_data';
 import 'package:crossdrop/nearby_share/protobuf/ukey.pb.dart' as ukey;
 import 'package:fixnum/fixnum.dart';
 import 'package:crossdrop/nearby_share/nc_manager.dart';
-import 'package:crossdrop/nearby_share/protobuf/device_to_device_messages.pb.dart' as device_to_device_messages;
-import 'package:crossdrop/nearby_share/protobuf/offline_wire_formats.pb.dart' as offline_wire_formats;
+import 'package:crossdrop/nearby_share/protobuf/device_to_device_messages.pb.dart'
+    as device_to_device_messages;
+import 'package:crossdrop/nearby_share/protobuf/offline_wire_formats.pb.dart'
+    as offline_wire_formats;
 import 'package:crossdrop/nearby_share/protobuf/securegcm.pb.dart' as securegcm;
-import 'package:crossdrop/nearby_share/protobuf/securemessage.pb.dart' as securemessage;
-import 'package:crossdrop/nearby_share/protobuf/wire_format.pb.dart' as wire_format;
+import 'package:crossdrop/nearby_share/protobuf/securemessage.pb.dart'
+    as securemessage;
+import 'package:crossdrop/nearby_share/protobuf/wire_format.pb.dart'
+    as wire_format;
 import 'package:pointycastle/export.dart';
 
 class FatalError extends Error {}
@@ -48,23 +51,24 @@ class NearbyConnection {
 
   String? pinCode;
 
-  NearbyConnection({
-    required this.connection,
-    required this.id,
-  });
+  NearbyConnection({required this.connection, required this.id});
 
   void start() {
-    connection.listen((data) {
-      connectionReady();
-      // TODO: handle data
-      receiveFrameAsync();
-    }, onError: (error) {
-      lastError = error;
-      print("Error opening socket: $error");
-      handleConnectionClosure();
-    }, onDone: () {
-      handleConnectionClosure();
-    });
+    connection.listen(
+      (data) {
+        connectionReady();
+        // TODO: handle data
+        receiveFrameAsync();
+      },
+      onError: (error) {
+        lastError = error;
+        print("Error opening socket: $error");
+        handleConnectionClosure();
+      },
+      onDone: () {
+        handleConnectionClosure();
+      },
+    );
   }
 
   void connectionReady() {}
@@ -89,7 +93,9 @@ class NearbyConnection {
     throw UnimplementedError();
   }
 
-  Future<void> processFileChunk(offline_wire_formats.PayloadTransferFrame frame) {
+  Future<void> processFileChunk(
+    offline_wire_formats.PayloadTransferFrame frame,
+  ) {
     protocolError();
     return Future.value();
   }
@@ -108,7 +114,8 @@ class NearbyConnection {
           handleConnectionClosure();
           return;
         }
-        int frameLength = data[0] << 24 | data[1] << 16 | data[2] << 8 | data[3];
+        int frameLength =
+            data[0] << 24 | data[1] << 16 | data[2] << 8 | data[3];
         if (frameLength > NearbyConnection.saneFrameLength) {
           throw NearbyError.protocolError('Unexpected packet length');
         }
@@ -161,11 +168,14 @@ class NearbyConnection {
     connection.add(lengthPrefixedData);
   }
 
-  Future<void> encryptAndSendOfflineFrame(offline_wire_formats.OfflineFrame frame) async {
+  Future<void> encryptAndSendOfflineFrame(
+    offline_wire_formats.OfflineFrame frame,
+  ) async {
     serverSeq++;
-    final d2dMsg = device_to_device_messages.DeviceToDeviceMessage()
-      ..sequenceNumber = serverSeq
-      ..message = frame.writeToBuffer();
+    final d2dMsg =
+        device_to_device_messages.DeviceToDeviceMessage()
+          ..sequenceNumber = serverSeq
+          ..message = frame.writeToBuffer();
     Uint8List serializedMsg = d2dMsg.writeToBuffer();
     final iv = Uint8List(16);
     Uint8List encryptedData = Uint8List(serializedMsg.length + 16);
@@ -177,48 +187,62 @@ class NearbyConnection {
     encryptedData = cipher.process(Uint8List.fromList(serializedMsg));
     encryptedLength = encryptedData.length;
 
-    final hb = securemessage.HeaderAndBody()
-      ..body = Uint8List.fromList(encryptedData.sublist(0, encryptedLength))
-      ..header = securemessage.Header()
-      ..header.encryptionScheme = securemessage.EncScheme.AES_256_CBC
-      ..header.signatureScheme = securemessage.SigScheme.HMAC_SHA256
-      ..header.iv = iv;
-    final md = securegcm.GcmMetadata()
-      ..type = securegcm.Type.DEVICE_TO_DEVICE_MESSAGE
-      ..version = 1;
+    final hb =
+        securemessage.HeaderAndBody()
+          ..body = Uint8List.fromList(encryptedData.sublist(0, encryptedLength))
+          ..header = securemessage.Header()
+          ..header.encryptionScheme = securemessage.EncScheme.AES_256_CBC
+          ..header.signatureScheme = securemessage.SigScheme.HMAC_SHA256
+          ..header.iv = iv;
+    final md =
+        securegcm.GcmMetadata()
+          ..type = securegcm.Type.DEVICE_TO_DEVICE_MESSAGE
+          ..version = 1;
     hb.header.publicMetadata = md.writeToBuffer();
 
     final hmac = HMac(SHA256Digest(), 64);
     hmac.init(KeyParameter(sendHmacKey!));
     final hbData = hb.writeToBuffer();
-    final smsg = securemessage.SecureMessage()
-      ..headerAndBody = hbData
-      ..signature = Uint8List.fromList(hmac.process(hbData));
+    final smsg =
+        securemessage.SecureMessage()
+          ..headerAndBody = hbData
+          ..signature = Uint8List.fromList(hmac.process(hbData));
     sendFrameAsync(smsg.writeToBuffer());
   }
 
   void sendTransferSetupFrame(wire_format.Frame frame) {
-    sendBytesPayload(data: frame.writeToBuffer(), id: Int64(Random().nextInt(1 << 63) - (1 << 63)));
+    sendBytesPayload(
+      data: frame.writeToBuffer(),
+      id: Int64(Random().nextInt(1 << 63) - (1 << 63)),
+    );
   }
 
   void sendBytesPayload({required Uint8List data, required Int64 id}) {
-    final transfer = offline_wire_formats.PayloadTransferFrame()
-      ..packetType = offline_wire_formats.PayloadTransferFrame_PacketType.DATA
-      ..payloadChunk = offline_wire_formats.PayloadTransferFrame_PayloadChunk()
-      ..payloadChunk.offset = Int64(0)
-      ..payloadChunk.flags = 0
-      ..payloadChunk.body = data
-      ..payloadHeader = offline_wire_formats.PayloadTransferFrame_PayloadHeader()
-      ..payloadHeader.id = id
-      ..payloadHeader.type = offline_wire_formats.PayloadTransferFrame_PayloadHeader_PayloadType.BYTES
-      ..payloadHeader.totalSize = Int64(data.length)
-      ..payloadHeader.isSensitive = false;
+    final transfer =
+        offline_wire_formats.PayloadTransferFrame()
+          ..packetType =
+              offline_wire_formats.PayloadTransferFrame_PacketType.DATA
+          ..payloadChunk =
+              offline_wire_formats.PayloadTransferFrame_PayloadChunk()
+          ..payloadChunk.offset = Int64(0)
+          ..payloadChunk.flags = 0
+          ..payloadChunk.body = data
+          ..payloadHeader =
+              offline_wire_formats.PayloadTransferFrame_PayloadHeader()
+          ..payloadHeader.id = id
+          ..payloadHeader.type =
+              offline_wire_formats
+                  .PayloadTransferFrame_PayloadHeader_PayloadType
+                  .BYTES
+          ..payloadHeader.totalSize = Int64(data.length)
+          ..payloadHeader.isSensitive = false;
 
-    final wrapper = offline_wire_formats.OfflineFrame()
-      ..version = offline_wire_formats.OfflineFrame_Version.V1
-      ..v1 = offline_wire_formats.V1Frame()
-      ..v1.type = offline_wire_formats.V1Frame_FrameType.PAYLOAD_TRANSFER
-      ..v1.payloadTransfer = transfer;
+    final wrapper =
+        offline_wire_formats.OfflineFrame()
+          ..version = offline_wire_formats.OfflineFrame_Version.V1
+          ..v1 = offline_wire_formats.V1Frame()
+          ..v1.type = offline_wire_formats.V1Frame_FrameType.PAYLOAD_TRANSFER
+          ..v1.payloadTransfer = transfer;
     encryptAndSendOfflineFrame(wrapper);
 
     transfer.payloadChunk.flags = 1; // .lastChunk
@@ -228,9 +252,13 @@ class NearbyConnection {
     encryptAndSendOfflineFrame(wrapper);
   }
 
-  Future<void> decryptAndProcessReceivedSecureMessage(securemessage.SecureMessage smsg) async {
+  Future<void> decryptAndProcessReceivedSecureMessage(
+    securemessage.SecureMessage smsg,
+  ) async {
     if (!smsg.hasSignature() || !smsg.hasHeaderAndBody()) {
-      throw NearbyError.requiredFieldMissing("secureMessage.signature|headerAndBody");
+      throw NearbyError.requiredFieldMissing(
+        "secureMessage.signature|headerAndBody",
+      );
     }
     final hmac = HMac(SHA256Digest(), 64);
     hmac.init(KeyParameter(recvHmacKey!));
@@ -238,29 +266,45 @@ class NearbyConnection {
     if (hmacData != smsg.signature) {
       throw NearbyError.protocolError("hmac!=signature");
     }
-    final headerAndBody = securemessage.HeaderAndBody.fromBuffer(smsg.headerAndBody);
+    final headerAndBody = securemessage.HeaderAndBody.fromBuffer(
+      smsg.headerAndBody,
+    );
     Uint8List decryptedData = Uint8List(headerAndBody.body.length);
     final key = KeyParameter(decryptKey!);
-    final params = ParametersWithIV(key, Uint8List.fromList(headerAndBody.header.iv));
+    final params = ParametersWithIV(
+      key,
+      Uint8List.fromList(headerAndBody.header.iv),
+    );
     final cipher = BlockCipher('AES/CTR');
     cipher.init(false, params);
     decryptedData = cipher.process(Uint8List.fromList(headerAndBody.body));
     final decryptedLength = decryptedData.length;
-    final d2dMsg = device_to_device_messages.DeviceToDeviceMessage.fromBuffer(decryptedData.sublist(0, decryptedLength));
+    final d2dMsg = device_to_device_messages.DeviceToDeviceMessage.fromBuffer(
+      decryptedData.sublist(0, decryptedLength),
+    );
     if (!d2dMsg.hasMessage() || !d2dMsg.hasSequenceNumber()) {
-      throw NearbyError.requiredFieldMissing("d2dMessage.message|sequenceNumber");
+      throw NearbyError.requiredFieldMissing(
+        "d2dMessage.message|sequenceNumber",
+      );
     }
     clientSeq++;
     if (d2dMsg.sequenceNumber != clientSeq) {
-      throw NearbyError.protocolError("Wrong sequence number. Expected $clientSeq, got ${d2dMsg.sequenceNumber}");
+      throw NearbyError.protocolError(
+        "Wrong sequence number. Expected $clientSeq, got ${d2dMsg.sequenceNumber}",
+      );
     }
-    final offlineFrame = offline_wire_formats.OfflineFrame.fromBuffer(d2dMsg.message);
+    final offlineFrame = offline_wire_formats.OfflineFrame.fromBuffer(
+      d2dMsg.message,
+    );
     if (!offlineFrame.hasV1() || !offlineFrame.v1.hasType()) {
       print("Unhandled offline frame encrypted: $offlineFrame");
     }
-    if (offline_wire_formats.V1Frame_FrameType.PAYLOAD_TRANSFER == offlineFrame.v1.type) {
+    if (offline_wire_formats.V1Frame_FrameType.PAYLOAD_TRANSFER ==
+        offlineFrame.v1.type) {
       if (!offlineFrame.v1.hasPayloadTransfer()) {
-        throw NearbyError.requiredFieldMissing("offlineFrame.v1.payloadTransfer");
+        throw NearbyError.requiredFieldMissing(
+          "offlineFrame.v1.payloadTransfer",
+        );
       }
       final payloadTransfer = offlineFrame.v1.payloadTransfer;
       final header = payloadTransfer.payloadHeader;
@@ -268,14 +312,23 @@ class NearbyConnection {
       if (!header.hasType() || !header.hasId()) {
         throw NearbyError.requiredFieldMissing("payloadHeader.type|id");
       }
-      if (!payloadTransfer.hasPayloadChunk() || !chunk.hasOffset() || !chunk.hasFlags()) {
-        throw NearbyError.requiredFieldMissing("payloadTransfer.payloadChunk|offset|flags");
+      if (!payloadTransfer.hasPayloadChunk() ||
+          !chunk.hasOffset() ||
+          !chunk.hasFlags()) {
+        throw NearbyError.requiredFieldMissing(
+          "payloadTransfer.payloadChunk|offset|flags",
+        );
       }
-      if (offline_wire_formats.PayloadTransferFrame_PayloadHeader_PayloadType.BYTES == header.type) {
+      if (offline_wire_formats
+              .PayloadTransferFrame_PayloadHeader_PayloadType
+              .BYTES ==
+          header.type) {
         final payloadId = header.id.toInt();
         if (header.totalSize.toInt() > saneFrameLength) {
           payloadBuffers.remove(payloadId);
-          throw NearbyError.protocolError("Payload too large (${header.totalSize} bytes)");
+          throw NearbyError.protocolError(
+            "Payload too large (${header.totalSize} bytes)",
+          );
         }
         if (payloadBuffers[payloadId] == null) {
           payloadBuffers[payloadId] = Uint8List(header.totalSize.toInt());
@@ -283,7 +336,9 @@ class NearbyConnection {
         final buffer = payloadBuffers[payloadId]!;
         if (chunk.offset.toInt() != buffer.length) {
           payloadBuffers.remove(payloadId);
-          throw NearbyError.protocolError("Unexpected chunk offset ${chunk.offset}, expected ${buffer.length}");
+          throw NearbyError.protocolError(
+            "Unexpected chunk offset ${chunk.offset}, expected ${buffer.length}",
+          );
         }
         if (chunk.hasBody()) {
           buffer.setAll(buffer.length, chunk.body);
@@ -295,10 +350,14 @@ class NearbyConnection {
             processTransferSetupFrame(innerFrame);
           }
         }
-      } else if (offline_wire_formats.PayloadTransferFrame_PayloadHeader_PayloadType.FILE == header.type) {
+      } else if (offline_wire_formats
+              .PayloadTransferFrame_PayloadHeader_PayloadType
+              .FILE ==
+          header.type) {
         processFileChunk(payloadTransfer);
       }
-    } else if (offline_wire_formats.V1Frame_FrameType.KEEP_ALIVE == offlineFrame.v1.type) {
+    } else if (offline_wire_formats.V1Frame_FrameType.KEEP_ALIVE ==
+        offlineFrame.v1.type) {
       print("Sent keep-alive");
       sendKeepAlive(true);
     } else {
@@ -318,7 +377,12 @@ class NearbyConnection {
     return hash.abs().toString().padLeft(4, '0');
   }
 
-  static Uint8List hkdf(Uint8List inputKeyMaterial, Uint8List salt, Uint8List info, int outputByteCount) {
+  static Uint8List hkdf(
+    Uint8List inputKeyMaterial,
+    Uint8List salt,
+    Uint8List info,
+    int outputByteCount,
+  ) {
     final hkdf = HKDFKeyDerivator(SHA256Digest());
     hkdf.init(HkdfParameters(inputKeyMaterial, outputByteCount, salt, info));
     return hkdf.process(Uint8List(outputByteCount));
@@ -356,14 +420,28 @@ class NearbyConnection {
 
     // Hash the shared secret
     final sha256 = SHA256Digest();
-    final derivedSecretKey = sha256.process(Uint8List.fromList(sharedSecret.toRadixString(16).codeUnits));
+    final derivedSecretKey = sha256.process(
+      Uint8List.fromList(sharedSecret.toRadixString(16).codeUnits),
+    );
 
     // Prepare UKEY2 info for HKDF
-    final ukeyInfo = Uint8List.fromList(ukeyClientInitMsgData! + ukeyServerInitMsgData!);
+    final ukeyInfo = Uint8List.fromList(
+      ukeyClientInitMsgData! + ukeyServerInitMsgData!,
+    );
 
     // Derive the auth and next keys using HKDF
-    final authString = hkdfDeriveKey(derivedSecretKey, Uint8List.fromList('UKEY2 v1 auth'.codeUnits), ukeyInfo, 32);
-    final nextSecret = hkdfDeriveKey(derivedSecretKey, Uint8List.fromList('UKEY2 v1 next'.codeUnits), ukeyInfo, 32);
+    final authString = hkdfDeriveKey(
+      derivedSecretKey,
+      Uint8List.fromList('UKEY2 v1 auth'.codeUnits),
+      ukeyInfo,
+      32,
+    );
+    final nextSecret = hkdfDeriveKey(
+      derivedSecretKey,
+      Uint8List.fromList('UKEY2 v1 next'.codeUnits),
+      ukeyInfo,
+      32,
+    );
 
     // Generate the PIN code from the auth string
     pinCode = NearbyConnection.pinCodeFromAuthKey(authString);
@@ -405,15 +483,47 @@ class NearbyConnection {
     ]);
 
     // Derive client and server keys
-    final d2dClientKey = hkdfDeriveKey(nextSecret, salt, Uint8List.fromList('client'.codeUnits), 32);
-    final d2dServerKey = hkdfDeriveKey(nextSecret, salt, Uint8List.fromList('server'.codeUnits), 32);
+    final d2dClientKey = hkdfDeriveKey(
+      nextSecret,
+      salt,
+      Uint8List.fromList('client'.codeUnits),
+      32,
+    );
+    final d2dServerKey = hkdfDeriveKey(
+      nextSecret,
+      salt,
+      Uint8List.fromList('server'.codeUnits),
+      32,
+    );
 
     // Derive SecureMessage keys
-    final smsgSalt = sha256.process(Uint8List.fromList('SecureMessage'.codeUnits));
-    final clientKey = hkdfDeriveKey(d2dClientKey, smsgSalt, Uint8List.fromList('ENC:2'.codeUnits), 32);
-    final clientHmacKey = hkdfDeriveKey(d2dClientKey, smsgSalt, Uint8List.fromList('SIG:1'.codeUnits), 32);
-    final serverKey = hkdfDeriveKey(d2dServerKey, smsgSalt, Uint8List.fromList('ENC:2'.codeUnits), 32);
-    final serverHmacKey = hkdfDeriveKey(d2dServerKey, smsgSalt, Uint8List.fromList('SIG:1'.codeUnits), 32);
+    final smsgSalt = sha256.process(
+      Uint8List.fromList('SecureMessage'.codeUnits),
+    );
+    final clientKey = hkdfDeriveKey(
+      d2dClientKey,
+      smsgSalt,
+      Uint8List.fromList('ENC:2'.codeUnits),
+      32,
+    );
+    final clientHmacKey = hkdfDeriveKey(
+      d2dClientKey,
+      smsgSalt,
+      Uint8List.fromList('SIG:1'.codeUnits),
+      32,
+    );
+    final serverKey = hkdfDeriveKey(
+      d2dServerKey,
+      smsgSalt,
+      Uint8List.fromList('ENC:2'.codeUnits),
+      32,
+    );
+    final serverHmacKey = hkdfDeriveKey(
+      d2dServerKey,
+      smsgSalt,
+      Uint8List.fromList('SIG:1'.codeUnits),
+      32,
+    );
 
     // Assign keys based on whether we are the server or not
     if (isServer()) {
@@ -435,17 +545,17 @@ class NearbyConnection {
     clientSeq = 0;
   }
 
-  Uint8List hkdfDeriveKey(Uint8List inputKey, Uint8List salt, Uint8List info, int outputLength) {
+  Uint8List hkdfDeriveKey(
+    Uint8List inputKey,
+    Uint8List salt,
+    Uint8List info,
+    int outputLength,
+  ) {
     // Initialize HKDF with SHA-256
     final hkdf = HKDFKeyDerivator(SHA256Digest());
 
     // Set up the HKDF parameters with the input key, salt, info, and desired length
-    final parameters = HkdfParameters(
-      inputKey,
-      outputLength,
-      salt,
-      info,
-    );
+    final parameters = HkdfParameters(inputKey, outputLength, salt, info);
     hkdf.init(parameters);
 
     // Generate the derived key with the desired output length
@@ -474,10 +584,11 @@ class NearbyConnection {
   }
 
   Future<void> sendDisconnectionAndDisconnect() async {
-    final offlineFrame = offline_wire_formats.OfflineFrame()
-      ..version = offline_wire_formats.OfflineFrame_Version.V1
-      ..v1.type = offline_wire_formats.V1Frame_FrameType.DISCONNECTION
-      ..v1.disconnection = offline_wire_formats.DisconnectionFrame();
+    final offlineFrame =
+        offline_wire_formats.OfflineFrame()
+          ..version = offline_wire_formats.OfflineFrame_Version.V1
+          ..v1.type = offline_wire_formats.V1Frame_FrameType.DISCONNECTION
+          ..v1.disconnection = offline_wire_formats.DisconnectionFrame();
     if (encryptionDone) {
       await encryptAndSendOfflineFrame(offlineFrame);
     } else {
@@ -488,18 +599,20 @@ class NearbyConnection {
 
   void sendUkey2Alert(ukey.Ukey2Alert_AlertType type) {
     final alert = ukey.Ukey2Alert()..type = type;
-    final msg = ukey.Ukey2Message()
-      ..messageType = ukey.Ukey2Message_Type.ALERT
-      ..messageData = alert.writeToBuffer();
+    final msg =
+        ukey.Ukey2Message()
+          ..messageType = ukey.Ukey2Message_Type.ALERT
+          ..messageData = alert.writeToBuffer();
     sendFrameAsync(msg.writeToBuffer());
     disconnect();
   }
 
   void sendKeepAlive(bool ack) {
-    final offlineFrame = offline_wire_formats.OfflineFrame()
-      ..version = offline_wire_formats.OfflineFrame_Version.V1
-      ..v1.type = offline_wire_formats.V1Frame_FrameType.KEEP_ALIVE
-      ..v1.keepAlive.ack = ack;
+    final offlineFrame =
+        offline_wire_formats.OfflineFrame()
+          ..version = offline_wire_formats.OfflineFrame_Version.V1
+          ..v1.type = offline_wire_formats.V1Frame_FrameType.KEEP_ALIVE
+          ..v1.keepAlive.ack = ack;
     if (encryptionDone) {
       encryptAndSendOfflineFrame(offlineFrame);
     } else {

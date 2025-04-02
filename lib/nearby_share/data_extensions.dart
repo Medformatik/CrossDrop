@@ -4,7 +4,10 @@ import 'dart:typed_data';
 extension DataExtensions on Uint8List {
   String urlSafeBase64EncodedString() {
     String base64String = base64.encode(this);
-    return base64String.replaceAll(RegExp('='), '').replaceAll('/', '_').replaceAll('+', '-');
+    return base64String
+        .replaceAll(RegExp('='), '')
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   static Uint8List dataFromUrlSafeBase64(String str) {

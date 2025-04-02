@@ -24,10 +24,7 @@ dependencies:
   shared_preferences: ^2.5.3
   system_tray: ^2.0.3
   uuid: ^4.5.1
-  window_manager_workspace:
-    git:
-      url: https://github.com/leanflutter/window_manager.git
-      ref: main
+  window_manager: ^0.4.3
 
 dependency_overrides:
   uuid: ^3.0.6

@@ -17,17 +17,10 @@ class RemoteDeviceInfo {
   final DeviceType type;
   String? id;
 
-  RemoteDeviceInfo({
-    required this.name,
-    required this.type,
-    this.id,
-  });
+  RemoteDeviceInfo({required this.name, required this.type, this.id});
 
   factory RemoteDeviceInfo.fromEndpointInfo(EndpointInfo info) {
-    return RemoteDeviceInfo(
-      name: info.name,
-      type: info.deviceType,
-    );
+    return RemoteDeviceInfo(name: info.name, type: info.deviceType);
   }
 }
 
@@ -47,8 +40,6 @@ enum DeviceType {
         return 2;
       case DeviceType.computer:
         return 3;
-      default:
-        return 0;
     }
   }
 
@@ -71,15 +62,18 @@ class NearbyError implements Exception {
 
   NearbyError(this.message);
 
-  static NearbyError protocolError(String message) => NearbyError("Protocol error: $message");
+  static NearbyError protocolError(String message) =>
+      NearbyError("Protocol error: $message");
 
-  static NearbyError requiredFieldMissing(String message) => NearbyError("Required field missing: $message");
+  static NearbyError requiredFieldMissing(String message) =>
+      NearbyError("Required field missing: $message");
 
   static NearbyError ukey2() => NearbyError("UKEY2 error");
 
   static NearbyError inputOutput() => NearbyError("Input/output error");
 
-  static NearbyError canceled(CancellationReason reason) => NearbyError("Canceled: $reason");
+  static NearbyError canceled(CancellationReason reason) =>
+      NearbyError("Canceled: $reason");
 }
 
 enum CancellationReason {
@@ -120,10 +114,7 @@ class FoundServiceInfo {
   BonsoirService service;
   RemoteDeviceInfo? device;
 
-  FoundServiceInfo({
-    required this.service,
-    this.device,
-  });
+  FoundServiceInfo({required this.service, this.device});
 }
 
 class OutgoingTransferInfo {
@@ -144,10 +135,7 @@ class EndpointInfo {
   String name;
   DeviceType deviceType;
 
-  EndpointInfo({
-    required this.name,
-    required this.deviceType,
-  });
+  EndpointInfo({required this.name, required this.deviceType});
 
   static EndpointInfo? fromData(Uint8List data) {
     if (data.length <= 17) return null;
@@ -188,7 +176,10 @@ class EndpointInfo {
 }
 
 abstract class MainAppDelegate {
-  Future<void> obtainUserConsent(TransferMetadata transfer, RemoteDeviceInfo device);
+  Future<void> obtainUserConsent(
+    TransferMetadata transfer,
+    RemoteDeviceInfo device,
+  );
   Future<void> incomingTransfer(String id, Exception? error);
 }
 
@@ -223,7 +214,10 @@ class NearbyConnectionManager {
     await _initMdns();
     _server.listen((socket) {
       final String id = const Uuid().v4();
-      final InboundNearbyConnection connection = InboundNearbyConnection(connection: socket, id: id);
+      final InboundNearbyConnection connection = InboundNearbyConnection(
+        connection: socket,
+        id: id,
+      );
       _activeConnections[id] = connection;
       connection.start();
     });
@@ -231,7 +225,8 @@ class NearbyConnectionManager {
 
   static Uint8List _generateEndpointID() {
     List<int> id = [];
-    String alphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    String alphabet =
+        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     List<int> alphabetBytes = alphabet.runes.map((int rune) => rune).toList();
 
     for (int i = 0; i < 4; i++) {
@@ -255,7 +250,10 @@ class NearbyConnectionManager {
       0,
     ]);
     final String name = nameBytes.urlSafeBase64EncodedString();
-    final EndpointInfo endpointInfo = EndpointInfo(name: await getDeviceName(), deviceType: DeviceType.computer);
+    final EndpointInfo endpointInfo = EndpointInfo(
+      name: await getDeviceName(),
+      deviceType: DeviceType.computer,
+    );
 
     final int port = _server.port;
     /*
@@ -271,9 +269,7 @@ class NearbyConnectionManager {
       name: name,
       type: "_FC9F5ED42C8A._tcp.",
       port: port,
-      attributes: {
-        "n": endpointInfo.serialize().urlSafeBase64EncodedString(),
-      },
+      attributes: {"n": endpointInfo.serialize().urlSafeBase64EncodedString()},
     );
 
     final BonsoirBroadcast broadcast = BonsoirBroadcast(service: service);
@@ -293,7 +289,10 @@ class NearbyConnectionManager {
     ); */
   }
 
-  void connectionWasTerminated(InboundNearbyConnection connection, Exception? error) {
+  void connectionWasTerminated(
+    InboundNearbyConnection connection,
+    Exception? error,
+  ) {
     if (_activeConnections.containsKey(connection.id)) {
       _activeConnections.remove(connection.id);
     }
@@ -308,7 +307,8 @@ class NearbyConnectionManager {
         discovery?.eventStream?.listen((event) {
           if (event.type == BonsoirDiscoveryEventType.discoveryServiceFound) {
             _maybeAddFoundDevice(event.service!);
-          } else if (event.type == BonsoirDiscoveryEventType.discoveryServiceLost) {
+          } else if (event.type ==
+              BonsoirDiscoveryEventType.discoveryServiceLost) {
             _maybeRemoveFoundDevice(event.service!);
           }
         });
@@ -333,13 +333,19 @@ class NearbyConnectionManager {
   }
 
   String? _endpointId(BonsoirService service) {
-    final Uint8List nameData = DataExtensions.dataFromUrlSafeBase64(service.name);
+    final Uint8List nameData = DataExtensions.dataFromUrlSafeBase64(
+      service.name,
+    );
     if (nameData.length < 10) return null;
     final int pcp = nameData[0];
     if (pcp != 0x23) return null;
     final String endpointId = utf8.decode(nameData.sublist(1, 5));
     final Uint8List serviceIdHash = nameData.sublist(5, 8);
-    if (!ListEquality().equals(serviceIdHash, Uint8List.fromList([0xFC, 0x9F, 0x5E]))) return null;
+    if (!ListEquality().equals(
+      serviceIdHash,
+      Uint8List.fromList([0xFC, 0x9F, 0x5E]),
+    ))
+      return null;
     return endpointId;
   }
 
@@ -350,16 +356,24 @@ class NearbyConnectionManager {
 
     final String? endpointInfoEncoded = service.attributes["n"];
     if (endpointInfoEncoded == null) return;
-    final Uint8List endpointInfo = DataExtensions.dataFromUrlSafeBase64(endpointInfoEncoded);
+    final Uint8List endpointInfo = DataExtensions.dataFromUrlSafeBase64(
+      endpointInfoEncoded,
+    );
     if (endpointInfo.length < 19) return;
 
     final int deviceTypeRaw = (endpointInfo[0] >> 1) & 7;
     final DeviceType deviceType = DeviceType.fromRawValue(deviceTypeRaw);
     final int deviceNameLength = endpointInfo[17];
     if (endpointInfo.length < deviceNameLength + 17) return;
-    final String deviceName = utf8.decode(endpointInfo.sublist(18, 18 + deviceNameLength));
+    final String deviceName = utf8.decode(
+      endpointInfo.sublist(18, 18 + deviceNameLength),
+    );
 
-    final RemoteDeviceInfo deviceInfo = RemoteDeviceInfo(name: deviceName, type: deviceType, id: endpointId);
+    final RemoteDeviceInfo deviceInfo = RemoteDeviceInfo(
+      name: deviceName,
+      type: deviceType,
+      id: endpointId,
+    );
     foundService.device = deviceInfo;
     _foundServices[endpointId] = foundService;
   }
@@ -372,36 +386,61 @@ class NearbyConnectionManager {
     }
   }
 
-  Future<void> startOutgoingTransfer({required String deviceId, required ShareExtensionDelegate delegate, required List<String> urls}) async {
+  Future<void> startOutgoingTransfer({
+    required String deviceId,
+    required ShareExtensionDelegate delegate,
+    required List<String> urls,
+  }) async {
     final FoundServiceInfo? info = _foundServices[deviceId];
     if (info == null) return;
-    final host = info.service.toJson()['service.ip'] ?? info.service.toJson()['service.host'];
+    final host =
+        info.service.toJson()['service.ip'] ??
+        info.service.toJson()['service.host'];
     final Socket socket = await Socket.connect(host!, info.service.port);
-    final OutboundNearbyConnection connection = OutboundNearbyConnection(connection: socket, id: deviceId, urlsToSend: urls);
-    final transfer = OutgoingTransferInfo(service: info.service, device: info.device!, connection: connection, delegate: delegate);
+    final OutboundNearbyConnection connection = OutboundNearbyConnection(
+      connection: socket,
+      id: deviceId,
+      urlsToSend: urls,
+    );
+    final transfer = OutgoingTransferInfo(
+      service: info.service,
+      device: info.device!,
+      connection: connection,
+      delegate: delegate,
+    );
     _outgoingTransfers[deviceId] = transfer;
     connection.start();
   }
 
-  Future<void> outboundConnectionTransferWasEstablished({required OutboundNearbyConnection connection}) async {
+  Future<void> outboundConnectionTransferWasEstablished({
+    required OutboundNearbyConnection connection,
+  }) async {
     final OutgoingTransferInfo? transfer = _outgoingTransfers[connection.id];
     if (transfer == null) return;
     transfer.delegate.connectionWasEstablished(pinCode: connection.pinCode!);
   }
 
-  Future<void> outboundConnectionTransferAccepted({required OutboundNearbyConnection connection}) async {
+  Future<void> outboundConnectionTransferAccepted({
+    required OutboundNearbyConnection connection,
+  }) async {
     final OutgoingTransferInfo? transfer = _outgoingTransfers[connection.id];
     if (transfer == null) return;
     transfer.delegate.transferAccepted();
   }
 
-  Future<void> outboundConnectionTransferProgress({required OutboundNearbyConnection connection, required double progress}) async {
+  Future<void> outboundConnectionTransferProgress({
+    required OutboundNearbyConnection connection,
+    required double progress,
+  }) async {
     final OutgoingTransferInfo? transfer = _outgoingTransfers[connection.id];
     if (transfer == null) return;
     transfer.delegate.transferProgress(progress: progress);
   }
 
-  Future<void> outboundConnectionError({required OutboundNearbyConnection connection, required Exception error}) async {
+  Future<void> outboundConnectionError({
+    required OutboundNearbyConnection connection,
+    required Exception error,
+  }) async {
     final OutgoingTransferInfo? transfer = _outgoingTransfers[connection.id];
     if (transfer == null) return;
     transfer.delegate.connectionFailed(error: error);
@@ -410,7 +449,9 @@ class NearbyConnectionManager {
     }
   }
 
-  Future<void> outboundConnectionTransferFinished({required OutboundNearbyConnection connection}) async {
+  Future<void> outboundConnectionTransferFinished({
+    required OutboundNearbyConnection connection,
+  }) async {
     final OutgoingTransferInfo? transfer = _outgoingTransfers[connection.id];
     if (transfer == null) return;
     transfer.delegate.transferFinished();

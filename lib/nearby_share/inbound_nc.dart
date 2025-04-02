@@ -8,10 +8,13 @@ import 'package:crossdrop/nearby_share/protobuf/ukey.pb.dart' as ukey;
 import 'package:cryptography/cryptography.dart';
 import 'package:fixnum/fixnum.dart';
 import 'package:crossdrop/nearby_share/nc_manager.dart';
-import 'package:crossdrop/nearby_share/protobuf/offline_wire_formats.pb.dart' as offline_wire_formats;
+import 'package:crossdrop/nearby_share/protobuf/offline_wire_formats.pb.dart'
+    as offline_wire_formats;
 import 'package:crossdrop/nearby_share/protobuf/securegcm.pb.dart' as securegcm;
-import 'package:crossdrop/nearby_share/protobuf/securemessage.pb.dart' as securemessage;
-import 'package:crossdrop/nearby_share/protobuf/wire_format.pb.dart' as wire_format;
+import 'package:crossdrop/nearby_share/protobuf/securemessage.pb.dart'
+    as securemessage;
+import 'package:crossdrop/nearby_share/protobuf/wire_format.pb.dart'
+    as wire_format;
 
 enum State {
   initial,
@@ -23,7 +26,7 @@ enum State {
   receivedPairedKeyResult,
   waitingForUserConsent,
   receivingFiles,
-  disconnected
+  disconnected,
 }
 
 class InboundNearbyConnection extends NearbyConnection {
@@ -69,7 +72,8 @@ class InboundNearbyConnection extends NearbyConnection {
           _processConnectionResponseFrame(frame);
           break;
         default:
-          final smsg = securemessage.SecureMessage()..mergeFromBuffer(frameData);
+          final smsg =
+              securemessage.SecureMessage()..mergeFromBuffer(frameData);
           decryptAndProcessReceivedSecureMessage(smsg);
           break;
       }
@@ -104,7 +108,9 @@ class InboundNearbyConnection extends NearbyConnection {
         _processIntroductionFrame(frame);
         break;
       default:
-        print("Unexpected connection state in processTransferSetupFrame: $_currentState");
+        print(
+          "Unexpected connection state in processTransferSetupFrame: $_currentState",
+        );
         print(frame);
         break;
     }
@@ -116,7 +122,9 @@ class InboundNearbyConnection extends NearbyConnection {
   }
 
   @override
-  Future<void> processFileChunk(offline_wire_formats.PayloadTransferFrame frame) async {
+  Future<void> processFileChunk(
+    offline_wire_formats.PayloadTransferFrame frame,
+  ) async {
     final id = frame.payloadHeader.id;
     final fileInfo = transferredFiles[id];
     if (fileInfo == null) {
@@ -125,18 +133,26 @@ class InboundNearbyConnection extends NearbyConnection {
     }
     final currentOffset = fileInfo.bytesTransferred;
     if (frame.payloadChunk.offset != currentOffset) {
-      print("Invalid offset into file ${frame.payloadChunk.offset}, expected $currentOffset");
+      print(
+        "Invalid offset into file ${frame.payloadChunk.offset}, expected $currentOffset",
+      );
       return;
     }
-    if (currentOffset + frame.payloadChunk.body.length <= fileInfo.meta.size.toInt()) {
+    if (currentOffset + frame.payloadChunk.body.length <=
+        fileInfo.meta.size.toInt()) {
       print("Transferred file size exceeds previously specified value");
       return;
     }
     if (frame.payloadChunk.body.isNotEmpty) {
       try {
-        fileInfo.file?.writeAsBytes(frame.payloadChunk.body, mode: FileMode.append);
-        transferredFiles[id]!.bytesTransferred += frame.payloadChunk.body.length;
-        fileInfo.progress?.completedUnitCount = transferredFiles[id]!.bytesTransferred;
+        fileInfo.file?.writeAsBytes(
+          frame.payloadChunk.body,
+          mode: FileMode.append,
+        );
+        transferredFiles[id]!.bytesTransferred +=
+            frame.payloadChunk.body.length;
+        fileInfo.progress?.completedUnitCount =
+            transferredFiles[id]!.bytesTransferred;
       } catch (e) {
         print("Error writing to file: $e");
       }
@@ -176,10 +192,13 @@ class InboundNearbyConnection extends NearbyConnection {
   }
 
   void _processConnectionRequestFrame(offline_wire_formats.OfflineFrame frame) {
-    if (!(frame.hasV1() && frame.v1.hasConnectionRequest() && frame.v1.connectionRequest.hasEndpointInfo())) {
+    if (!(frame.hasV1() &&
+        frame.v1.hasConnectionRequest() &&
+        frame.v1.connectionRequest.hasEndpointInfo())) {
       throw NearbyError.requiredFieldMissing();
     }
-    if (frame.v1.type != offline_wire_formats.V1Frame_FrameType.CONNECTION_REQUEST) {
+    if (frame.v1.type !=
+        offline_wire_formats.V1Frame_FrameType.CONNECTION_REQUEST) {
       throw NearbyError.protocolError("Unexpected frame type ${frame.v1.type}");
     }
     final endpointInfo = frame.v1.connectionRequest.endpointInfo;
@@ -188,11 +207,18 @@ class InboundNearbyConnection extends NearbyConnection {
     }
     final deviceNameLength = endpointInfo[17];
     if (endpointInfo.length < deviceNameLength + 18) {
-      throw NearbyError.protocolError("Endpoint info too short to contain the device name");
+      throw NearbyError.protocolError(
+        "Endpoint info too short to contain the device name",
+      );
     }
-    final deviceName = utf8.decode(endpointInfo.sublist(18, 18 + deviceNameLength));
+    final deviceName = utf8.decode(
+      endpointInfo.sublist(18, 18 + deviceNameLength),
+    );
     final rawDeviceType = (endpointInfo[0] & 7) >> 1;
-    remoteDeviceInfo = RemoteDeviceInfo(name: deviceName, type: DeviceType.fromRawValue(rawDeviceType));
+    remoteDeviceInfo = RemoteDeviceInfo(
+      name: deviceName,
+      type: DeviceType.fromRawValue(rawDeviceType),
+    );
     _currentState = State.receivedConnectionRequest;
   }
 
@@ -233,26 +259,38 @@ class InboundNearbyConnection extends NearbyConnection {
     final keyPair = domain.makeKeyPair();
     publicKey = keyPair.publicKey;
     privateKey = keyPair.privateKey;
-    final serverInit = ukey.Ukey2ServerInit()
-      ..version = 1
-      ..random = Uint8List.fromList(List<int>.generate(32, (index) => Random().nextInt(256)))
-      ..handshakeCipher = securegcm.CipherSuite.p256Sha512;
-    final pkey = securemessage.GenericPublicKey()
-      ..type = securemessage.PublicKeyType.EC_P256
-      ..ecP256PublicKey = securemessage.EcP256PublicKey()
-      ..ecP256PublicKey.x = Uint8List.fromList(keyPair.publicKey.w.x.asSignedBytes())
-      ..ecP256PublicKey.y = Uint8List.fromList(keyPair.publicKey.w.y.asSignedBytes());
+    final serverInit =
+        ukey.Ukey2ServerInit()
+          ..version = 1
+          ..random = Uint8List.fromList(
+            List<int>.generate(32, (index) => Random().nextInt(256)),
+          )
+          ..handshakeCipher = securegcm.CipherSuite.p256Sha512;
+    final pkey =
+        securemessage.GenericPublicKey()
+          ..type = securemessage.PublicKeyType.EC_P256
+          ..ecP256PublicKey = securemessage.EcP256PublicKey()
+          ..ecP256PublicKey.x = Uint8List.fromList(
+            keyPair.publicKey.w.x.asSignedBytes(),
+          )
+          ..ecP256PublicKey.y = Uint8List.fromList(
+            keyPair.publicKey.w.y.asSignedBytes(),
+          );
     serverInit.publicKey = pkey.writeToBuffer();
-    final serverInitMsg = ukey.Ukey2Message()
-      ..messageType = ukey.Ukey2Message_Type.SERVER_INIT
-      ..messageData = serverInit.writeToBuffer();
+    final serverInitMsg =
+        ukey.Ukey2Message()
+          ..messageType = ukey.Ukey2Message_Type.SERVER_INIT
+          ..messageData = serverInit.writeToBuffer();
     final serverInitData = serverInitMsg.writeToBuffer();
     ukeyServerInitMsgData = serverInitData;
     sendFrameAsync(serverInitData);
     _currentState = State.sentUkeyServerInit;
   }
 
-  Future<void> _processUkey2ClientFinish(ukey.Ukey2Message msg, {required Uint8List raw}) async {
+  Future<void> _processUkey2ClientFinish(
+    ukey.Ukey2Message msg, {
+    required Uint8List raw,
+  }) async {
     if (!msg.hasMessageType() || !msg.hasMessageData()) {
       throw NearbyError.requiredFieldMissing();
     }
@@ -265,42 +303,62 @@ class InboundNearbyConnection extends NearbyConnection {
       throw NearbyError.ukey2;
     }
 
-    final clientFinish = ukey.Ukey2ClientFinished()..mergeFromBuffer(msg.messageData);
+    final clientFinish =
+        ukey.Ukey2ClientFinished()..mergeFromBuffer(msg.messageData);
     if (!clientFinish.hasPublicKey()) {
       throw NearbyError.requiredFieldMissing();
     }
-    final clientKey = securemessage.GenericPublicKey()..mergeFromBuffer(clientFinish.publicKey);
+    final clientKey =
+        securemessage.GenericPublicKey()
+          ..mergeFromBuffer(clientFinish.publicKey);
 
     await finalizeKeyExchange(peerKey: clientKey);
 
     _currentState = State.receivedUkeyClientFinish;
   }
 
-  void _processConnectionResponseFrame(offline_wire_formats.OfflineFrame frame) {
-    if (!(frame.hasV1() && frame.v1.hasType() && frame.v1.hasConnectionResponse())) {
+  void _processConnectionResponseFrame(
+    offline_wire_formats.OfflineFrame frame,
+  ) {
+    if (!(frame.hasV1() &&
+        frame.v1.hasType() &&
+        frame.v1.hasConnectionResponse())) {
       throw NearbyError.requiredFieldMissing();
     }
-    if (frame.v1.type == offline_wire_formats.V1Frame_FrameType.CONNECTION_RESPONSE) {
-      final resp = offline_wire_formats.OfflineFrame()
-        ..version = offline_wire_formats.OfflineFrame_Version.V1
-        ..v1 = offline_wire_formats.V1Frame()
-        ..v1.type = offline_wire_formats.V1Frame_FrameType.CONNECTION_RESPONSE
-        ..v1.connectionResponse = offline_wire_formats.ConnectionResponseFrame()
-        ..v1.connectionResponse.response = offline_wire_formats.ConnectionResponseFrame_ResponseStatus.ACCEPT
-        ..v1.connectionResponse.status = 0
-        ..v1.connectionResponse.osInfo = offline_wire_formats.OsInfo()
-        ..v1.connectionResponse.osInfo.type = offline_wire_formats.OsInfo_OsType.APPLE;
+    if (frame.v1.type ==
+        offline_wire_formats.V1Frame_FrameType.CONNECTION_RESPONSE) {
+      final resp =
+          offline_wire_formats.OfflineFrame()
+            ..version = offline_wire_formats.OfflineFrame_Version.V1
+            ..v1 = offline_wire_formats.V1Frame()
+            ..v1.type =
+                offline_wire_formats.V1Frame_FrameType.CONNECTION_RESPONSE
+            ..v1.connectionResponse =
+                offline_wire_formats.ConnectionResponseFrame()
+            ..v1.connectionResponse.response =
+                offline_wire_formats
+                    .ConnectionResponseFrame_ResponseStatus
+                    .ACCEPT
+            ..v1.connectionResponse.status = 0
+            ..v1.connectionResponse.osInfo = offline_wire_formats.OsInfo()
+            ..v1.connectionResponse.osInfo.type =
+                offline_wire_formats.OsInfo_OsType.APPLE;
       sendFrameAsync(resp.writeToBuffer());
 
       encryptionDone = true;
 
-      final pairedEncryption = wire_format.Frame()
-        ..version = wire_format.Frame_Version.V1
-        ..v1 = wire_format.V1Frame()
-        ..v1.type = wire_format.V1Frame_FrameType.PAIRED_KEY_ENCRYPTION
-        ..v1.pairedKeyEncryption = wire_format.PairedKeyEncryptionFrame()
-        ..v1.pairedKeyEncryption.secretIdHash = Uint8List.fromList(List<int>.generate(6, (index) => Random().nextInt(256)))
-        ..v1.pairedKeyEncryption.signedData = Uint8List.fromList(List<int>.generate(72, (index) => Random().nextInt(256)));
+      final pairedEncryption =
+          wire_format.Frame()
+            ..version = wire_format.Frame_Version.V1
+            ..v1 = wire_format.V1Frame()
+            ..v1.type = wire_format.V1Frame_FrameType.PAIRED_KEY_ENCRYPTION
+            ..v1.pairedKeyEncryption = wire_format.PairedKeyEncryptionFrame()
+            ..v1.pairedKeyEncryption.secretIdHash = Uint8List.fromList(
+              List<int>.generate(6, (index) => Random().nextInt(256)),
+            )
+            ..v1.pairedKeyEncryption.signedData = Uint8List.fromList(
+              List<int>.generate(72, (index) => Random().nextInt(256)),
+            );
       sendTransferSetupFrame(pairedEncryption);
       _currentState = State.sentConnectionResponse;
     } else {
@@ -312,12 +370,14 @@ class InboundNearbyConnection extends NearbyConnection {
     if (!(frame.hasV1() && frame.v1.hasPairedKeyEncryption())) {
       throw NearbyError.requiredFieldMissing();
     }
-    final pairedResult = wire_format.Frame()
-      ..version = wire_format.Frame_Version.V1
-      ..v1 = wire_format.V1Frame()
-      ..v1.type = wire_format.V1Frame_FrameType.PAIRED_KEY_RESULT
-      ..v1.pairedKeyResult = wire_format.PairedKeyResultFrame()
-      ..v1.pairedKeyResult.status = wire_format.PairedKeyResultFrame_Status.UNABLE;
+    final pairedResult =
+        wire_format.Frame()
+          ..version = wire_format.Frame_Version.V1
+          ..v1 = wire_format.V1Frame()
+          ..v1.type = wire_format.V1Frame_FrameType.PAIRED_KEY_RESULT
+          ..v1.pairedKeyResult = wire_format.PairedKeyResultFrame()
+          ..v1.pairedKeyResult.status =
+              wire_format.PairedKeyResultFrame_Status.UNABLE;
     sendTransferSetupFrame(pairedResult);
     _currentState = State.sentPairedKeyResult;
   }
@@ -334,7 +394,8 @@ class InboundNearbyConnection extends NearbyConnection {
       throw NearbyError.requiredFieldMissing();
     }
     _currentState = State.waitingForUserConsent;
-    if (frame.v1.introduction.fileMetadata.isNotEmpty && frame.v1.introduction.textMetadata.isEmpty) {
+    if (frame.v1.introduction.fileMetadata.isNotEmpty &&
+        frame.v1.introduction.textMetadata.isEmpty) {
       final downloadsDirectory = Directory.systemTemp;
       for (final file in frame.v1.introduction.fileMetadata) {
         var dest = File("${downloadsDirectory.path}/${file.name}");
@@ -342,7 +403,10 @@ class InboundNearbyConnection extends NearbyConnection {
           var counter = 1;
           String path;
           final ext = dest.path.split(".").last;
-          final baseUrl = dest.path.substring(0, dest.path.length - ext.length - 1);
+          final baseUrl = dest.path.substring(
+            0,
+            dest.path.length - ext.length - 1,
+          );
           do {
             path = "$baseUrl ($counter)";
             if (ext.isNotEmpty) {
@@ -352,22 +416,49 @@ class InboundNearbyConnection extends NearbyConnection {
           } while (File(path).existsSync());
           dest = File(path);
         }
-        final info = InternalFileInfo(meta: wire_format.FileMetadata(name: file.name, size: file.size, mimeType: file.mimeType), payloadId: file.payloadId, destinationUrl: dest);
+        final info = InternalFileInfo(
+          meta: wire_format.FileMetadata(
+            name: file.name,
+            size: file.size,
+            mimeType: file.mimeType,
+          ),
+          payloadId: file.payloadId,
+          destinationUrl: dest,
+        );
         transferredFiles[file.payloadId] = info;
       }
-      final metadata = TransferMetadata(files: transferredFiles.values.toList(), id: id, pinCode: pinCode);
+      final metadata = TransferMetadata(
+        files: transferredFiles.values.toList(),
+        id: id,
+        pinCode: pinCode,
+      );
       delegate?.obtainUserConsent(metadata, remoteDeviceInfo!, this);
     } else if (frame.v1.introduction.textMetadata.length == 1) {
       final meta = frame.v1.introduction.textMetadata[0];
       if (meta.type == wire_format.TextMetadata_Type.URL) {
-        final metadata = TransferMetadata(files: [], id: id, pinCode: pinCode, textDescription: meta.textTitle);
+        final metadata = TransferMetadata(
+          files: [],
+          id: id,
+          pinCode: pinCode,
+          textDescription: meta.textTitle,
+        );
         textPayloadId = meta.payloadId;
         delegate?.obtainUserConsent(metadata, remoteDeviceInfo!, this);
       } else {
-        _rejectTransfer(reason: wire_format.ConnectionResponseFrame_Status.UNSUPPORTED_ATTACHMENT_TYPE);
+        _rejectTransfer(
+          reason:
+              wire_format
+                  .ConnectionResponseFrame_Status
+                  .UNSUPPORTED_ATTACHMENT_TYPE,
+        );
       }
     } else {
-      _rejectTransfer(reason: wire_format.ConnectionResponseFrame_Status.UNSUPPORTED_ATTACHMENT_TYPE);
+      _rejectTransfer(
+        reason:
+            wire_format
+                .ConnectionResponseFrame_Status
+                .UNSUPPORTED_ATTACHMENT_TYPE,
+      );
     }
   }
 
@@ -396,12 +487,14 @@ class InboundNearbyConnection extends NearbyConnection {
         transferredFiles[id]!.progress = progress;
         transferredFiles[id]!.created = true;
 
-        final frame = wire_format.Frame()
-          ..version = wire_format.Frame_Version.V1
-          ..v1 = wire_format.V1Frame()
-          ..v1.type = wire_format.V1Frame_FrameType.RESPONSE
-          ..v1.connectionResponse = wire_format.ConnectionResponseFrame()
-          ..v1.connectionResponse.status = wire_format.ConnectionResponseFrame_Status.ACCEPT;
+        final frame =
+            wire_format.Frame()
+              ..version = wire_format.Frame_Version.V1
+              ..v1 = wire_format.V1Frame()
+              ..v1.type = wire_format.V1Frame_FrameType.RESPONSE
+              ..v1.connectionResponse = wire_format.ConnectionResponseFrame()
+              ..v1.connectionResponse.status =
+                  wire_format.ConnectionResponseFrame_Status.ACCEPT;
         _currentState = State.receivingFiles;
         sendTransferSetupFrame(frame);
       } catch (e) {
@@ -411,13 +504,17 @@ class InboundNearbyConnection extends NearbyConnection {
     }
   }
 
-  void _rejectTransfer({wire_format.ConnectionResponseFrame_Status reason = wire_format.ConnectionResponseFrame_Status.REJECT}) {
-    final frame = wire_format.Frame()
-      ..version = wire_format.Frame_Version.V1
-      ..v1 = wire_format.V1Frame()
-      ..v1.type = wire_format.V1Frame_FrameType.RESPONSE
-      ..v1.connectionResponse = wire_format.ConnectionResponseFrame()
-      ..v1.connectionResponse.status = reason;
+  void _rejectTransfer({
+    wire_format.ConnectionResponseFrame_Status reason =
+        wire_format.ConnectionResponseFrame_Status.REJECT,
+  }) {
+    final frame =
+        wire_format.Frame()
+          ..version = wire_format.Frame_Version.V1
+          ..v1 = wire_format.V1Frame()
+          ..v1.type = wire_format.V1Frame_FrameType.RESPONSE
+          ..v1.connectionResponse = wire_format.ConnectionResponseFrame()
+          ..v1.connectionResponse.status = reason;
     try {
       sendTransferSetupFrame(frame);
       sendDisconnectionAndDisconnect();
@@ -442,6 +539,13 @@ class InboundNearbyConnection extends NearbyConnection {
 }
 
 abstract class InboundNearbyConnectionDelegate {
-  void obtainUserConsent(TransferMetadata transfer, RemoteDeviceInfo device, InboundNearbyConnection connection);
-  void connectionWasTerminated(InboundNearbyConnection connection, Exception? error);
+  void obtainUserConsent(
+    TransferMetadata transfer,
+    RemoteDeviceInfo device,
+    InboundNearbyConnection connection,
+  );
+  void connectionWasTerminated(
+    InboundNearbyConnection connection,
+    Exception? error,
+  );
 }

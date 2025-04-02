@@ -23,7 +23,7 @@ enum State {
   sendingFiles,
 }
 
-class OutboundNearbyConnection extends NearbyConnection {
+class OutboundNearbyConnection extends NearbyConnection implements OutboundNearbyConnectionDelegate {
   State currentState = State.initial;
   final List<String> urlsToSend = [];
   Uint8List? ukeyClientFinishMsgData;
@@ -328,21 +328,21 @@ class OutboundNearbyConnection extends NearbyConnection {
           continue;
         }
         var meta = wire_format.FileMetadata();
-        meta.name = _sanitizeFileName(url.split('/').last!);
+        meta.name = _sanitizeFileName(url.split('/').last);
         var attrs = File(url).statSync();
         meta.size = Int64(attrs.size);
-        var typeID = '';
+        var typeId = '';
         try {
-          typeID = File(url).statSync().type;
+          typeId = 
         } catch (e) {
           print(e);
         }
         meta.mimeType = 'application/octet-stream';
-        if (typeID.startsWith('image/')) {
+        if (typeId.startsWith('image/')) {
           meta.type = wire_format.FileMetadata_Type.IMAGE;
-        } else if (typeID.startsWith('video/')) {
+        } else if (typeId.startsWith('video/')) {
           meta.type = wire_format.FileMetadata_Type.VIDEO;
-        } else if (typeID.startsWith('audio/')) {
+        } else if (typeId.startsWith('audio/')) {
           meta.type = wire_format.FileMetadata_Type.AUDIO;
         } else if (url.endsWith('.apk')) {
           meta.type = wire_format.FileMetadata_Type.APP;
