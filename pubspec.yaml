@@ -5,28 +5,26 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.2.3 <4.0.0"
+  sdk: ^3.7.0
 
 dependencies:
   adwaita: ^1.1.0
-  bonsoir: ^5.1.10
+  bonsoir: ^5.1.11
   cryptography: ^2.7.0
-  cupertino_icons: ^1.0.8
-  device_info_plus: ^11.0.0
-  fixnum: ^1.1.0
+  device_info_plus: ^11.3.3
+  fixnum: ^1.1.1
   flutter:
     sdk: flutter
-  flutter_animate: ^4.5.0
-  flutter_local_notifications: ^17.2.3
-  multicast_dns: ^0.3.2+7
-  nsd: ^3.0.0
-  pointycastle: ^3.9.1
-  protobuf: ^3.1.0
-  provider: ^6.1.2
-  shared_preferences: ^2.3.2
+  flutter_local_notifications: ^19.0.0
+  # multicast_dns: ^0.3.2+7
+  # nsd: ^4.0.3
+  pointycastle: ^4.0.0
+  protobuf: ^4.0.0
+  provider: ^6.1.4
+  shared_preferences: ^2.5.3
   system_tray: ^2.0.3
   uuid: ^4.5.1
-  window_manager:
+  window_manager_workspace:
     git:
       url: https://github.com/leanflutter/window_manager.git
       ref: main
@@ -35,8 +33,8 @@ dependency_overrides:
   uuid: ^3.0.6
 
 dev_dependencies:
-  flutter_launcher_icons: ^0.13.1
-  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.14.3
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
 
@@ -45,6 +43,7 @@ flutter:
   assets:
     - assets/sf_symbols/
     - assets/icons/
+
 flutter_launcher_icons:
   android: false
   ios: true
