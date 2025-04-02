@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: device_to_device_messages.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -15,6 +15,8 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'device_to_device_messages.pbenum.dart';
 import 'securemessage.pb.dart' as $0;
+
+export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 export 'device_to_device_messages.pbenum.dart';
 
@@ -72,7 +74,7 @@ class DeviceToDeviceMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasMessage() => $_has(0);
   @$pb.TagNumber(1)
-  void clearMessage() => clearField(1);
+  void clearMessage() => $_clearField(1);
 
   /// the sequence number of the message - must be increasing.
   @$pb.TagNumber(2)
@@ -82,7 +84,7 @@ class DeviceToDeviceMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasSequenceNumber() => $_has(1);
   @$pb.TagNumber(2)
-  void clearSequenceNumber() => clearField(2);
+  void clearSequenceNumber() => $_clearField(2);
 }
 
 /// sent as the first message from initiator to responder
@@ -135,11 +137,11 @@ class InitiatorHello extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $0.GenericPublicKey get publicDhKey => $_getN(0);
   @$pb.TagNumber(1)
-  set publicDhKey($0.GenericPublicKey v) { setField(1, v); }
+  set publicDhKey($0.GenericPublicKey v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasPublicDhKey() => $_has(0);
   @$pb.TagNumber(1)
-  void clearPublicDhKey() => clearField(1);
+  void clearPublicDhKey() => $_clearField(1);
   @$pb.TagNumber(1)
   $0.GenericPublicKey ensurePublicDhKey() => $_ensure(0);
 
@@ -151,7 +153,7 @@ class InitiatorHello extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasProtocolVersion() => $_has(1);
   @$pb.TagNumber(2)
-  void clearProtocolVersion() => clearField(2);
+  void clearProtocolVersion() => $_clearField(2);
 }
 
 /// sent inside the header of the first message from the responder to the
@@ -204,11 +206,11 @@ class ResponderHello extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $0.GenericPublicKey get publicDhKey => $_getN(0);
   @$pb.TagNumber(1)
-  set publicDhKey($0.GenericPublicKey v) { setField(1, v); }
+  set publicDhKey($0.GenericPublicKey v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasPublicDhKey() => $_has(0);
   @$pb.TagNumber(1)
-  void clearPublicDhKey() => clearField(1);
+  void clearPublicDhKey() => $_clearField(1);
   @$pb.TagNumber(1)
   $0.GenericPublicKey ensurePublicDhKey() => $_ensure(0);
 
@@ -220,7 +222,7 @@ class ResponderHello extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasProtocolVersion() => $_has(1);
   @$pb.TagNumber(2)
-  void clearProtocolVersion() => clearField(2);
+  void clearProtocolVersion() => $_clearField(2);
 }
 
 /// A convenience proto for encoding curve points in affine representation
@@ -276,11 +278,11 @@ class EcPoint extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   Curve get curve => $_getN(0);
   @$pb.TagNumber(1)
-  set curve(Curve v) { setField(1, v); }
+  set curve(Curve v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCurve() => $_has(0);
   @$pb.TagNumber(1)
-  void clearCurve() => clearField(1);
+  void clearCurve() => $_clearField(1);
 
   /// x and y are encoded in big-endian two's complement
   /// client MUST verify (x,y) is a valid point on the specified curve
@@ -291,7 +293,7 @@ class EcPoint extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasX() => $_has(1);
   @$pb.TagNumber(2)
-  void clearX() => clearField(2);
+  void clearX() => $_clearField(2);
 
   @$pb.TagNumber(3)
   $core.List<$core.int> get y => $_getN(2);
@@ -300,7 +302,7 @@ class EcPoint extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasY() => $_has(2);
   @$pb.TagNumber(3)
-  void clearY() => clearField(3);
+  void clearY() => $_clearField(3);
 }
 
 class SpakeHandshakeMessage extends $pb.GeneratedMessage {
@@ -365,17 +367,17 @@ class SpakeHandshakeMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasFlowNumber() => $_has(0);
   @$pb.TagNumber(1)
-  void clearFlowNumber() => clearField(1);
+  void clearFlowNumber() => $_clearField(1);
 
   /// Some (but not all) SPAKE flows send a point on an elliptic curve
   @$pb.TagNumber(2)
   EcPoint get ecPoint => $_getN(1);
   @$pb.TagNumber(2)
-  set ecPoint(EcPoint v) { setField(2, v); }
+  set ecPoint(EcPoint v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasEcPoint() => $_has(1);
   @$pb.TagNumber(2)
-  void clearEcPoint() => clearField(2);
+  void clearEcPoint() => $_clearField(2);
   @$pb.TagNumber(2)
   EcPoint ensureEcPoint() => $_ensure(1);
 
@@ -387,7 +389,7 @@ class SpakeHandshakeMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasHashValue() => $_has(2);
   @$pb.TagNumber(3)
-  void clearHashValue() => clearField(3);
+  void clearHashValue() => $_clearField(3);
 
   /// The last flow of a SPAKE protocol can send an optional payload,
   /// since the key exchange is already complete on the sender's side.
@@ -398,7 +400,7 @@ class SpakeHandshakeMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasPayload() => $_has(3);
   @$pb.TagNumber(4)
-  void clearPayload() => clearField(4);
+  void clearPayload() => $_clearField(4);
 }
 
 

@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: offline_wire_formats.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -25,7 +25,7 @@ class OfflineFrame_Version extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, OfflineFrame_Version> _byValue = $pb.ProtobufEnum.initByValue(values);
   static OfflineFrame_Version? valueOf($core.int value) => _byValue[value];
 
-  const OfflineFrame_Version._($core.int v, $core.String n) : super(v, n);
+  const OfflineFrame_Version._(super.v, super.n);
 }
 
 class V1Frame_FrameType extends $pb.ProtobufEnum {
@@ -52,13 +52,14 @@ class V1Frame_FrameType extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, V1Frame_FrameType> _byValue = $pb.ProtobufEnum.initByValue(values);
   static V1Frame_FrameType? valueOf($core.int value) => _byValue[value];
 
-  const V1Frame_FrameType._($core.int v, $core.String n) : super(v, n);
+  const V1Frame_FrameType._(super.v, super.n);
 }
 
 /// Should always match cs/symbol:location.nearby.proto.connections.Medium
 /// LINT.IfChange
 class ConnectionRequestFrame_Medium extends $pb.ProtobufEnum {
   static const ConnectionRequestFrame_Medium UNKNOWN_MEDIUM = ConnectionRequestFrame_Medium._(0, _omitEnumNames ? '' : 'UNKNOWN_MEDIUM');
+  @$core.Deprecated('This enum value is deprecated')
   static const ConnectionRequestFrame_Medium MDNS = ConnectionRequestFrame_Medium._(1, _omitEnumNames ? '' : 'MDNS');
   static const ConnectionRequestFrame_Medium BLUETOOTH = ConnectionRequestFrame_Medium._(2, _omitEnumNames ? '' : 'BLUETOOTH');
   static const ConnectionRequestFrame_Medium WIFI_HOTSPOT = ConnectionRequestFrame_Medium._(3, _omitEnumNames ? '' : 'WIFI_HOTSPOT');
@@ -89,7 +90,7 @@ class ConnectionRequestFrame_Medium extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, ConnectionRequestFrame_Medium> _byValue = $pb.ProtobufEnum.initByValue(values);
   static ConnectionRequestFrame_Medium? valueOf($core.int value) => _byValue[value];
 
-  const ConnectionRequestFrame_Medium._($core.int v, $core.String n) : super(v, n);
+  const ConnectionRequestFrame_Medium._(super.v, super.n);
 }
 
 /// Used to replace the status integer parameter with a meaningful enum item.
@@ -110,7 +111,7 @@ class ConnectionResponseFrame_ResponseStatus extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, ConnectionResponseFrame_ResponseStatus> _byValue = $pb.ProtobufEnum.initByValue(values);
   static ConnectionResponseFrame_ResponseStatus? valueOf($core.int value) => _byValue[value];
 
-  const ConnectionResponseFrame_ResponseStatus._($core.int v, $core.String n) : super(v, n);
+  const ConnectionResponseFrame_ResponseStatus._(super.v, super.n);
 }
 
 class PayloadTransferFrame_PacketType extends $pb.ProtobufEnum {
@@ -127,7 +128,7 @@ class PayloadTransferFrame_PacketType extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, PayloadTransferFrame_PacketType> _byValue = $pb.ProtobufEnum.initByValue(values);
   static PayloadTransferFrame_PacketType? valueOf($core.int value) => _byValue[value];
 
-  const PayloadTransferFrame_PacketType._($core.int v, $core.String n) : super(v, n);
+  const PayloadTransferFrame_PacketType._(super.v, super.n);
 }
 
 class PayloadTransferFrame_PayloadHeader_PayloadType extends $pb.ProtobufEnum {
@@ -146,7 +147,7 @@ class PayloadTransferFrame_PayloadHeader_PayloadType extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, PayloadTransferFrame_PayloadHeader_PayloadType> _byValue = $pb.ProtobufEnum.initByValue(values);
   static PayloadTransferFrame_PayloadHeader_PayloadType? valueOf($core.int value) => _byValue[value];
 
-  const PayloadTransferFrame_PayloadHeader_PayloadType._($core.int v, $core.String n) : super(v, n);
+  const PayloadTransferFrame_PayloadHeader_PayloadType._(super.v, super.n);
 }
 
 class PayloadTransferFrame_PayloadChunk_Flags extends $pb.ProtobufEnum {
@@ -159,7 +160,7 @@ class PayloadTransferFrame_PayloadChunk_Flags extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, PayloadTransferFrame_PayloadChunk_Flags> _byValue = $pb.ProtobufEnum.initByValue(values);
   static PayloadTransferFrame_PayloadChunk_Flags? valueOf($core.int value) => _byValue[value];
 
-  const PayloadTransferFrame_PayloadChunk_Flags._($core.int v, $core.String n) : super(v, n);
+  const PayloadTransferFrame_PayloadChunk_Flags._(super.v, super.n);
 }
 
 class PayloadTransferFrame_ControlMessage_EventType extends $pb.ProtobufEnum {
@@ -178,7 +179,7 @@ class PayloadTransferFrame_ControlMessage_EventType extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, PayloadTransferFrame_ControlMessage_EventType> _byValue = $pb.ProtobufEnum.initByValue(values);
   static PayloadTransferFrame_ControlMessage_EventType? valueOf($core.int value) => _byValue[value];
 
-  const PayloadTransferFrame_ControlMessage_EventType._($core.int v, $core.String n) : super(v, n);
+  const PayloadTransferFrame_ControlMessage_EventType._(super.v, super.n);
 }
 
 class BandwidthUpgradeNegotiationFrame_EventType extends $pb.ProtobufEnum {
@@ -203,12 +204,13 @@ class BandwidthUpgradeNegotiationFrame_EventType extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, BandwidthUpgradeNegotiationFrame_EventType> _byValue = $pb.ProtobufEnum.initByValue(values);
   static BandwidthUpgradeNegotiationFrame_EventType? valueOf($core.int value) => _byValue[value];
 
-  const BandwidthUpgradeNegotiationFrame_EventType._($core.int v, $core.String n) : super(v, n);
+  const BandwidthUpgradeNegotiationFrame_EventType._(super.v, super.n);
 }
 
 /// Should always match cs/symbol:location.nearby.proto.connections.Medium
 class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium extends $pb.ProtobufEnum {
   static const BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium UNKNOWN_MEDIUM = BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium._(0, _omitEnumNames ? '' : 'UNKNOWN_MEDIUM');
+  @$core.Deprecated('This enum value is deprecated')
   static const BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium MDNS = BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium._(1, _omitEnumNames ? '' : 'MDNS');
   static const BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium BLUETOOTH = BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium._(2, _omitEnumNames ? '' : 'BLUETOOTH');
   static const BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium WIFI_HOTSPOT = BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium._(3, _omitEnumNames ? '' : 'WIFI_HOTSPOT');
@@ -218,6 +220,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium extends $pb.Protob
   static const BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium NFC = BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium._(7, _omitEnumNames ? '' : 'NFC');
   static const BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium WIFI_DIRECT = BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium._(8, _omitEnumNames ? '' : 'WIFI_DIRECT');
   static const BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium WEB_RTC = BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium._(9, _omitEnumNames ? '' : 'WEB_RTC');
+  /// 10 is reserved.
   static const BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium USB = BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium._(11, _omitEnumNames ? '' : 'USB');
 
   static const $core.List<BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium> values = <BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium> [
@@ -237,12 +240,17 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium extends $pb.Protob
   static final $core.Map<$core.int, BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium> _byValue = $pb.ProtobufEnum.initByValue(values);
   static BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium? valueOf($core.int value) => _byValue[value];
 
-  const BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium._($core.int v, $core.String n) : super(v, n);
+  const BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium._(super.v, super.n);
 }
 
 class LocationStandard_Format extends $pb.ProtobufEnum {
   static const LocationStandard_Format UNKNOWN = LocationStandard_Format._(0, _omitEnumNames ? '' : 'UNKNOWN');
+  /// E164 country codes:
+  /// https://en.wikipedia.org/wiki/List_of_country_calling_codes
+  /// e.g. +1 for USA
   static const LocationStandard_Format E164_CALLING = LocationStandard_Format._(1, _omitEnumNames ? '' : 'E164_CALLING');
+  /// ISO 3166-1 alpha-2 country codes:
+  /// https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
   static const LocationStandard_Format ISO_3166_1_ALPHA_2 = LocationStandard_Format._(2, _omitEnumNames ? '' : 'ISO_3166_1_ALPHA_2');
 
   static const $core.List<LocationStandard_Format> values = <LocationStandard_Format> [
@@ -254,7 +262,7 @@ class LocationStandard_Format extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, LocationStandard_Format> _byValue = $pb.ProtobufEnum.initByValue(values);
   static LocationStandard_Format? valueOf($core.int value) => _byValue[value];
 
-  const LocationStandard_Format._($core.int v, $core.String n) : super(v, n);
+  const LocationStandard_Format._(super.v, super.n);
 }
 
 class OsInfo_OsType extends $pb.ProtobufEnum {
@@ -277,7 +285,7 @@ class OsInfo_OsType extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, OsInfo_OsType> _byValue = $pb.ProtobufEnum.initByValue(values);
   static OsInfo_OsType? valueOf($core.int value) => _byValue[value];
 
-  const OsInfo_OsType._($core.int v, $core.String n) : super(v, n);
+  const OsInfo_OsType._(super.v, super.n);
 }
 
 

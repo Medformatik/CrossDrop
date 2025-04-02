@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: ukey.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -14,6 +14,8 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'ukey.pbenum.dart';
+
+export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 export 'ukey.pbenum.dart';
 
@@ -65,11 +67,11 @@ class Ukey2Message extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   Ukey2Message_Type get messageType => $_getN(0);
   @$pb.TagNumber(1)
-  set messageType(Ukey2Message_Type v) { setField(1, v); }
+  set messageType(Ukey2Message_Type v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasMessageType() => $_has(0);
   @$pb.TagNumber(1)
-  void clearMessageType() => clearField(1);
+  void clearMessageType() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.List<$core.int> get messageData => $_getN(1);
@@ -78,7 +80,7 @@ class Ukey2Message extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasMessageData() => $_has(1);
   @$pb.TagNumber(2)
-  void clearMessageData() => clearField(2);
+  void clearMessageData() => $_clearField(2);
 }
 
 class Ukey2Alert extends $pb.GeneratedMessage {
@@ -129,11 +131,11 @@ class Ukey2Alert extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   Ukey2Alert_AlertType get type => $_getN(0);
   @$pb.TagNumber(1)
-  set type(Ukey2Alert_AlertType v) { setField(1, v); }
+  set type(Ukey2Alert_AlertType v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasType() => $_has(0);
   @$pb.TagNumber(1)
-  void clearType() => clearField(1);
+  void clearType() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get errorMessage => $_getSZ(1);
@@ -142,7 +144,7 @@ class Ukey2Alert extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasErrorMessage() => $_has(1);
   @$pb.TagNumber(2)
-  void clearErrorMessage() => clearField(2);
+  void clearErrorMessage() => $_clearField(2);
 }
 
 /// One commitment (hash of ClientFinished containing public key) per supported
@@ -195,11 +197,11 @@ class Ukey2ClientInit_CipherCommitment extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   Ukey2HandshakeCipher get handshakeCipher => $_getN(0);
   @$pb.TagNumber(1)
-  set handshakeCipher(Ukey2HandshakeCipher v) { setField(1, v); }
+  set handshakeCipher(Ukey2HandshakeCipher v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasHandshakeCipher() => $_has(0);
   @$pb.TagNumber(1)
-  void clearHandshakeCipher() => clearField(1);
+  void clearHandshakeCipher() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.List<$core.int> get commitment => $_getN(1);
@@ -208,7 +210,7 @@ class Ukey2ClientInit_CipherCommitment extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasCommitment() => $_has(1);
   @$pb.TagNumber(2)
-  void clearCommitment() => clearField(2);
+  void clearCommitment() => $_clearField(2);
 }
 
 class Ukey2ClientInit extends $pb.GeneratedMessage {
@@ -273,7 +275,7 @@ class Ukey2ClientInit extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasVersion() => $_has(0);
   @$pb.TagNumber(1)
-  void clearVersion() => clearField(1);
+  void clearVersion() => $_clearField(1);
 
   /// protection
   @$pb.TagNumber(2)
@@ -283,10 +285,10 @@ class Ukey2ClientInit extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasRandom() => $_has(1);
   @$pb.TagNumber(2)
-  void clearRandom() => clearField(2);
+  void clearRandom() => $_clearField(2);
 
   @$pb.TagNumber(3)
-  $core.List<Ukey2ClientInit_CipherCommitment> get cipherCommitments => $_getList(2);
+  $pb.PbList<Ukey2ClientInit_CipherCommitment> get cipherCommitments => $_getList(2);
 
   /// Next protocol that the client wants to speak.
   @$pb.TagNumber(4)
@@ -296,7 +298,7 @@ class Ukey2ClientInit extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasNextProtocol() => $_has(3);
   @$pb.TagNumber(4)
-  void clearNextProtocol() => clearField(4);
+  void clearNextProtocol() => $_clearField(4);
 }
 
 class Ukey2ServerInit extends $pb.GeneratedMessage {
@@ -361,7 +363,7 @@ class Ukey2ServerInit extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasVersion() => $_has(0);
   @$pb.TagNumber(1)
-  void clearVersion() => clearField(1);
+  void clearVersion() => $_clearField(1);
 
   /// protection
   @$pb.TagNumber(2)
@@ -371,17 +373,17 @@ class Ukey2ServerInit extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasRandom() => $_has(1);
   @$pb.TagNumber(2)
-  void clearRandom() => clearField(2);
+  void clearRandom() => $_clearField(2);
 
   /// Selected Cipher and corresponding public key
   @$pb.TagNumber(3)
   Ukey2HandshakeCipher get handshakeCipher => $_getN(2);
   @$pb.TagNumber(3)
-  set handshakeCipher(Ukey2HandshakeCipher v) { setField(3, v); }
+  set handshakeCipher(Ukey2HandshakeCipher v) { $_setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasHandshakeCipher() => $_has(2);
   @$pb.TagNumber(3)
-  void clearHandshakeCipher() => clearField(3);
+  void clearHandshakeCipher() => $_clearField(3);
 
   @$pb.TagNumber(4)
   $core.List<$core.int> get publicKey => $_getN(3);
@@ -390,7 +392,7 @@ class Ukey2ServerInit extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasPublicKey() => $_has(3);
   @$pb.TagNumber(4)
-  void clearPublicKey() => clearField(4);
+  void clearPublicKey() => $_clearField(4);
 }
 
 class Ukey2ClientFinished extends $pb.GeneratedMessage {
@@ -440,7 +442,7 @@ class Ukey2ClientFinished extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasPublicKey() => $_has(0);
   @$pb.TagNumber(1)
-  void clearPublicKey() => clearField(1);
+  void clearPublicKey() => $_clearField(1);
 }
 
 

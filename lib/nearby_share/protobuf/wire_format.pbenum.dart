@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: wire_format.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -31,14 +31,17 @@ class FileMetadata_Type extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, FileMetadata_Type> _byValue = $pb.ProtobufEnum.initByValue(values);
   static FileMetadata_Type? valueOf($core.int value) => _byValue[value];
 
-  const FileMetadata_Type._($core.int v, $core.String n) : super(v, n);
+  const FileMetadata_Type._(super.v, super.n);
 }
 
 class TextMetadata_Type extends $pb.ProtobufEnum {
   static const TextMetadata_Type UNKNOWN = TextMetadata_Type._(0, _omitEnumNames ? '' : 'UNKNOWN');
   static const TextMetadata_Type TEXT = TextMetadata_Type._(1, _omitEnumNames ? '' : 'TEXT');
+  /// Open with browsers.
   static const TextMetadata_Type URL = TextMetadata_Type._(2, _omitEnumNames ? '' : 'URL');
+  /// Open with map apps.
   static const TextMetadata_Type ADDRESS = TextMetadata_Type._(3, _omitEnumNames ? '' : 'ADDRESS');
+  /// Dial.
   static const TextMetadata_Type PHONE_NUMBER = TextMetadata_Type._(4, _omitEnumNames ? '' : 'PHONE_NUMBER');
 
   static const $core.List<TextMetadata_Type> values = <TextMetadata_Type> [
@@ -52,7 +55,7 @@ class TextMetadata_Type extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, TextMetadata_Type> _byValue = $pb.ProtobufEnum.initByValue(values);
   static TextMetadata_Type? valueOf($core.int value) => _byValue[value];
 
-  const TextMetadata_Type._($core.int v, $core.String n) : super(v, n);
+  const TextMetadata_Type._(super.v, super.n);
 }
 
 class WifiCredentialsMetadata_SecurityType extends $pb.ProtobufEnum {
@@ -71,7 +74,7 @@ class WifiCredentialsMetadata_SecurityType extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, WifiCredentialsMetadata_SecurityType> _byValue = $pb.ProtobufEnum.initByValue(values);
   static WifiCredentialsMetadata_SecurityType? valueOf($core.int value) => _byValue[value];
 
-  const WifiCredentialsMetadata_SecurityType._($core.int v, $core.String n) : super(v, n);
+  const WifiCredentialsMetadata_SecurityType._(super.v, super.n);
 }
 
 class Frame_Version extends $pb.ProtobufEnum {
@@ -86,7 +89,7 @@ class Frame_Version extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, Frame_Version> _byValue = $pb.ProtobufEnum.initByValue(values);
   static Frame_Version? valueOf($core.int value) => _byValue[value];
 
-  const Frame_Version._($core.int v, $core.String n) : super(v, n);
+  const Frame_Version._(super.v, super.n);
 }
 
 class V1Frame_FrameType extends $pb.ProtobufEnum {
@@ -111,7 +114,7 @@ class V1Frame_FrameType extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, V1Frame_FrameType> _byValue = $pb.ProtobufEnum.initByValue(values);
   static V1Frame_FrameType? valueOf($core.int value) => _byValue[value];
 
-  const V1Frame_FrameType._($core.int v, $core.String n) : super(v, n);
+  const V1Frame_FrameType._(super.v, super.n);
 }
 
 class ConnectionResponseFrame_Status extends $pb.ProtobufEnum {
@@ -134,7 +137,7 @@ class ConnectionResponseFrame_Status extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, ConnectionResponseFrame_Status> _byValue = $pb.ProtobufEnum.initByValue(values);
   static ConnectionResponseFrame_Status? valueOf($core.int value) => _byValue[value];
 
-  const ConnectionResponseFrame_Status._($core.int v, $core.String n) : super(v, n);
+  const ConnectionResponseFrame_Status._(super.v, super.n);
 }
 
 class PairedKeyResultFrame_Status extends $pb.ProtobufEnum {
@@ -153,7 +156,7 @@ class PairedKeyResultFrame_Status extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, PairedKeyResultFrame_Status> _byValue = $pb.ProtobufEnum.initByValue(values);
   static PairedKeyResultFrame_Status? valueOf($core.int value) => _byValue[value];
 
-  const PairedKeyResultFrame_Status._($core.int v, $core.String n) : super(v, n);
+  const PairedKeyResultFrame_Status._(super.v, super.n);
 }
 
 

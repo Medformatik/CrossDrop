@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: offline_wire_formats.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -15,6 +15,8 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'offline_wire_formats.pbenum.dart';
+
+export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 export 'offline_wire_formats.pbenum.dart';
 
@@ -66,22 +68,22 @@ class OfflineFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   OfflineFrame_Version get version => $_getN(0);
   @$pb.TagNumber(1)
-  set version(OfflineFrame_Version v) { setField(1, v); }
+  set version(OfflineFrame_Version v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasVersion() => $_has(0);
   @$pb.TagNumber(1)
-  void clearVersion() => clearField(1);
+  void clearVersion() => $_clearField(1);
 
   /// Right now there's only 1 version, but if there are more, exactly one of
   /// the following fields will be set.
   @$pb.TagNumber(2)
   V1Frame get v1 => $_getN(1);
   @$pb.TagNumber(2)
-  set v1(V1Frame v) { setField(2, v); }
+  set v1(V1Frame v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasV1() => $_has(1);
   @$pb.TagNumber(2)
-  void clearV1() => clearField(2);
+  void clearV1() => $_clearField(2);
   @$pb.TagNumber(2)
   V1Frame ensureV1() => $_ensure(1);
 }
@@ -164,87 +166,87 @@ class V1Frame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   V1Frame_FrameType get type => $_getN(0);
   @$pb.TagNumber(1)
-  set type(V1Frame_FrameType v) { setField(1, v); }
+  set type(V1Frame_FrameType v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasType() => $_has(0);
   @$pb.TagNumber(1)
-  void clearType() => clearField(1);
+  void clearType() => $_clearField(1);
 
   /// Exactly one of the following fields will be set.
   @$pb.TagNumber(2)
   ConnectionRequestFrame get connectionRequest => $_getN(1);
   @$pb.TagNumber(2)
-  set connectionRequest(ConnectionRequestFrame v) { setField(2, v); }
+  set connectionRequest(ConnectionRequestFrame v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasConnectionRequest() => $_has(1);
   @$pb.TagNumber(2)
-  void clearConnectionRequest() => clearField(2);
+  void clearConnectionRequest() => $_clearField(2);
   @$pb.TagNumber(2)
   ConnectionRequestFrame ensureConnectionRequest() => $_ensure(1);
 
   @$pb.TagNumber(3)
   ConnectionResponseFrame get connectionResponse => $_getN(2);
   @$pb.TagNumber(3)
-  set connectionResponse(ConnectionResponseFrame v) { setField(3, v); }
+  set connectionResponse(ConnectionResponseFrame v) { $_setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasConnectionResponse() => $_has(2);
   @$pb.TagNumber(3)
-  void clearConnectionResponse() => clearField(3);
+  void clearConnectionResponse() => $_clearField(3);
   @$pb.TagNumber(3)
   ConnectionResponseFrame ensureConnectionResponse() => $_ensure(2);
 
   @$pb.TagNumber(4)
   PayloadTransferFrame get payloadTransfer => $_getN(3);
   @$pb.TagNumber(4)
-  set payloadTransfer(PayloadTransferFrame v) { setField(4, v); }
+  set payloadTransfer(PayloadTransferFrame v) { $_setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasPayloadTransfer() => $_has(3);
   @$pb.TagNumber(4)
-  void clearPayloadTransfer() => clearField(4);
+  void clearPayloadTransfer() => $_clearField(4);
   @$pb.TagNumber(4)
   PayloadTransferFrame ensurePayloadTransfer() => $_ensure(3);
 
   @$pb.TagNumber(5)
   BandwidthUpgradeNegotiationFrame get bandwidthUpgradeNegotiation => $_getN(4);
   @$pb.TagNumber(5)
-  set bandwidthUpgradeNegotiation(BandwidthUpgradeNegotiationFrame v) { setField(5, v); }
+  set bandwidthUpgradeNegotiation(BandwidthUpgradeNegotiationFrame v) { $_setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasBandwidthUpgradeNegotiation() => $_has(4);
   @$pb.TagNumber(5)
-  void clearBandwidthUpgradeNegotiation() => clearField(5);
+  void clearBandwidthUpgradeNegotiation() => $_clearField(5);
   @$pb.TagNumber(5)
   BandwidthUpgradeNegotiationFrame ensureBandwidthUpgradeNegotiation() => $_ensure(4);
 
   @$pb.TagNumber(6)
   KeepAliveFrame get keepAlive => $_getN(5);
   @$pb.TagNumber(6)
-  set keepAlive(KeepAliveFrame v) { setField(6, v); }
+  set keepAlive(KeepAliveFrame v) { $_setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasKeepAlive() => $_has(5);
   @$pb.TagNumber(6)
-  void clearKeepAlive() => clearField(6);
+  void clearKeepAlive() => $_clearField(6);
   @$pb.TagNumber(6)
   KeepAliveFrame ensureKeepAlive() => $_ensure(5);
 
   @$pb.TagNumber(7)
   DisconnectionFrame get disconnection => $_getN(6);
   @$pb.TagNumber(7)
-  set disconnection(DisconnectionFrame v) { setField(7, v); }
+  set disconnection(DisconnectionFrame v) { $_setField(7, v); }
   @$pb.TagNumber(7)
   $core.bool hasDisconnection() => $_has(6);
   @$pb.TagNumber(7)
-  void clearDisconnection() => clearField(7);
+  void clearDisconnection() => $_clearField(7);
   @$pb.TagNumber(7)
   DisconnectionFrame ensureDisconnection() => $_ensure(6);
 
   @$pb.TagNumber(8)
   PairedKeyEncryptionFrame get pairedKeyEncryption => $_getN(7);
   @$pb.TagNumber(8)
-  set pairedKeyEncryption(PairedKeyEncryptionFrame v) { setField(8, v); }
+  set pairedKeyEncryption(PairedKeyEncryptionFrame v) { $_setField(8, v); }
   @$pb.TagNumber(8)
   $core.bool hasPairedKeyEncryption() => $_has(7);
   @$pb.TagNumber(8)
-  void clearPairedKeyEncryption() => clearField(8);
+  void clearPairedKeyEncryption() => $_clearField(8);
   @$pb.TagNumber(8)
   PairedKeyEncryptionFrame ensurePairedKeyEncryption() => $_ensure(7);
 }
@@ -346,7 +348,7 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasEndpointId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearEndpointId() => clearField(1);
+  void clearEndpointId() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get endpointName => $_getSZ(1);
@@ -355,7 +357,7 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasEndpointName() => $_has(1);
   @$pb.TagNumber(2)
-  void clearEndpointName() => clearField(2);
+  void clearEndpointName() => $_clearField(2);
 
   @$pb.TagNumber(3)
   $core.List<$core.int> get handshakeData => $_getN(2);
@@ -364,7 +366,7 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasHandshakeData() => $_has(2);
   @$pb.TagNumber(3)
-  void clearHandshakeData() => clearField(3);
+  void clearHandshakeData() => $_clearField(3);
 
   /// A random number generated for each outgoing connection that is presently
   /// used to act as a tiebreaker when 2 devices connect to each other
@@ -377,12 +379,12 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasNonce() => $_has(3);
   @$pb.TagNumber(4)
-  void clearNonce() => clearField(4);
+  void clearNonce() => $_clearField(4);
 
   /// The mediums this device supports upgrading to. This list should be filtered
   /// by both the strategy and this device's individual limitations.
   @$pb.TagNumber(5)
-  $core.List<ConnectionRequestFrame_Medium> get mediums => $_getList(4);
+  $pb.PbList<ConnectionRequestFrame_Medium> get mediums => $_getList(4);
 
   @$pb.TagNumber(6)
   $core.List<$core.int> get endpointInfo => $_getN(5);
@@ -391,16 +393,16 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.bool hasEndpointInfo() => $_has(5);
   @$pb.TagNumber(6)
-  void clearEndpointInfo() => clearField(6);
+  void clearEndpointInfo() => $_clearField(6);
 
   @$pb.TagNumber(7)
   MediumMetadata get mediumMetadata => $_getN(6);
   @$pb.TagNumber(7)
-  set mediumMetadata(MediumMetadata v) { setField(7, v); }
+  set mediumMetadata(MediumMetadata v) { $_setField(7, v); }
   @$pb.TagNumber(7)
   $core.bool hasMediumMetadata() => $_has(6);
   @$pb.TagNumber(7)
-  void clearMediumMetadata() => clearField(7);
+  void clearMediumMetadata() => $_clearField(7);
   @$pb.TagNumber(7)
   MediumMetadata ensureMediumMetadata() => $_ensure(6);
 
@@ -411,7 +413,7 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   $core.bool hasKeepAliveIntervalMillis() => $_has(7);
   @$pb.TagNumber(8)
-  void clearKeepAliveIntervalMillis() => clearField(8);
+  void clearKeepAliveIntervalMillis() => $_clearField(8);
 
   @$pb.TagNumber(9)
   $core.int get keepAliveTimeoutMillis => $_getIZ(8);
@@ -420,7 +422,7 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   $core.bool hasKeepAliveTimeoutMillis() => $_has(8);
   @$pb.TagNumber(9)
-  void clearKeepAliveTimeoutMillis() => clearField(9);
+  void clearKeepAliveTimeoutMillis() => $_clearField(9);
 
   /// The type of {@link Device} object.
   @$pb.TagNumber(10)
@@ -430,7 +432,7 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   $core.bool hasDeviceType() => $_has(9);
   @$pb.TagNumber(10)
-  void clearDeviceType() => clearField(10);
+  void clearDeviceType() => $_clearField(10);
 
   /// The bytes of serialized {@link Device} object.
   @$pb.TagNumber(11)
@@ -440,7 +442,7 @@ class ConnectionRequestFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(11)
   $core.bool hasDeviceInfo() => $_has(10);
   @$pb.TagNumber(11)
-  void clearDeviceInfo() => clearField(11);
+  void clearDeviceInfo() => $_clearField(11);
 }
 
 class ConnectionResponseFrame extends $pb.GeneratedMessage {
@@ -525,7 +527,7 @@ class ConnectionResponseFrame extends $pb.GeneratedMessage {
   $core.bool hasStatus() => $_has(0);
   @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
-  void clearStatus() => clearField(1);
+  void clearStatus() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.List<$core.int> get handshakeData => $_getN(1);
@@ -534,25 +536,25 @@ class ConnectionResponseFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasHandshakeData() => $_has(1);
   @$pb.TagNumber(2)
-  void clearHandshakeData() => clearField(2);
+  void clearHandshakeData() => $_clearField(2);
 
   @$pb.TagNumber(3)
   ConnectionResponseFrame_ResponseStatus get response => $_getN(2);
   @$pb.TagNumber(3)
-  set response(ConnectionResponseFrame_ResponseStatus v) { setField(3, v); }
+  set response(ConnectionResponseFrame_ResponseStatus v) { $_setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasResponse() => $_has(2);
   @$pb.TagNumber(3)
-  void clearResponse() => clearField(3);
+  void clearResponse() => $_clearField(3);
 
   @$pb.TagNumber(4)
   OsInfo get osInfo => $_getN(3);
   @$pb.TagNumber(4)
-  set osInfo(OsInfo v) { setField(4, v); }
+  set osInfo(OsInfo v) { $_setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasOsInfo() => $_has(3);
   @$pb.TagNumber(4)
-  void clearOsInfo() => clearField(4);
+  void clearOsInfo() => $_clearField(4);
   @$pb.TagNumber(4)
   OsInfo ensureOsInfo() => $_ensure(3);
 
@@ -568,7 +570,7 @@ class ConnectionResponseFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.bool hasMultiplexSocketBitmask() => $_has(4);
   @$pb.TagNumber(5)
-  void clearMultiplexSocketBitmask() => clearField(5);
+  void clearMultiplexSocketBitmask() => $_clearField(5);
 
   @$pb.TagNumber(6)
   $core.int get nearbyConnectionsVersion => $_getIZ(5);
@@ -577,7 +579,7 @@ class ConnectionResponseFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.bool hasNearbyConnectionsVersion() => $_has(5);
   @$pb.TagNumber(6)
-  void clearNearbyConnectionsVersion() => clearField(6);
+  void clearNearbyConnectionsVersion() => $_clearField(6);
 }
 
 class PayloadTransferFrame_PayloadHeader extends $pb.GeneratedMessage {
@@ -652,16 +654,16 @@ class PayloadTransferFrame_PayloadHeader extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearId() => clearField(1);
+  void clearId() => $_clearField(1);
 
   @$pb.TagNumber(2)
   PayloadTransferFrame_PayloadHeader_PayloadType get type => $_getN(1);
   @$pb.TagNumber(2)
-  set type(PayloadTransferFrame_PayloadHeader_PayloadType v) { setField(2, v); }
+  set type(PayloadTransferFrame_PayloadHeader_PayloadType v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasType() => $_has(1);
   @$pb.TagNumber(2)
-  void clearType() => clearField(2);
+  void clearType() => $_clearField(2);
 
   @$pb.TagNumber(3)
   $fixnum.Int64 get totalSize => $_getI64(2);
@@ -670,7 +672,7 @@ class PayloadTransferFrame_PayloadHeader extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasTotalSize() => $_has(2);
   @$pb.TagNumber(3)
-  void clearTotalSize() => clearField(3);
+  void clearTotalSize() => $_clearField(3);
 
   @$pb.TagNumber(4)
   $core.bool get isSensitive => $_getBF(3);
@@ -679,7 +681,7 @@ class PayloadTransferFrame_PayloadHeader extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasIsSensitive() => $_has(3);
   @$pb.TagNumber(4)
-  void clearIsSensitive() => clearField(4);
+  void clearIsSensitive() => $_clearField(4);
 
   @$pb.TagNumber(5)
   $core.String get fileName => $_getSZ(4);
@@ -688,7 +690,7 @@ class PayloadTransferFrame_PayloadHeader extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.bool hasFileName() => $_has(4);
   @$pb.TagNumber(5)
-  void clearFileName() => clearField(5);
+  void clearFileName() => $_clearField(5);
 
   @$pb.TagNumber(6)
   $core.String get parentFolder => $_getSZ(5);
@@ -697,7 +699,7 @@ class PayloadTransferFrame_PayloadHeader extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.bool hasParentFolder() => $_has(5);
   @$pb.TagNumber(6)
-  void clearParentFolder() => clearField(6);
+  void clearParentFolder() => $_clearField(6);
 }
 
 /// Accompanies DATA packets.
@@ -758,7 +760,7 @@ class PayloadTransferFrame_PayloadChunk extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasFlags() => $_has(0);
   @$pb.TagNumber(1)
-  void clearFlags() => clearField(1);
+  void clearFlags() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $fixnum.Int64 get offset => $_getI64(1);
@@ -767,7 +769,7 @@ class PayloadTransferFrame_PayloadChunk extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasOffset() => $_has(1);
   @$pb.TagNumber(2)
-  void clearOffset() => clearField(2);
+  void clearOffset() => $_clearField(2);
 
   @$pb.TagNumber(3)
   $core.List<$core.int> get body => $_getN(2);
@@ -776,7 +778,7 @@ class PayloadTransferFrame_PayloadChunk extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasBody() => $_has(2);
   @$pb.TagNumber(3)
-  void clearBody() => clearField(3);
+  void clearBody() => $_clearField(3);
 }
 
 /// Accompanies CONTROL packets.
@@ -828,11 +830,11 @@ class PayloadTransferFrame_ControlMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   PayloadTransferFrame_ControlMessage_EventType get event => $_getN(0);
   @$pb.TagNumber(1)
-  set event(PayloadTransferFrame_ControlMessage_EventType v) { setField(1, v); }
+  set event(PayloadTransferFrame_ControlMessage_EventType v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasEvent() => $_has(0);
   @$pb.TagNumber(1)
-  void clearEvent() => clearField(1);
+  void clearEvent() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $fixnum.Int64 get offset => $_getI64(1);
@@ -841,7 +843,7 @@ class PayloadTransferFrame_ControlMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasOffset() => $_has(1);
   @$pb.TagNumber(2)
-  void clearOffset() => clearField(2);
+  void clearOffset() => $_clearField(2);
 }
 
 class PayloadTransferFrame extends $pb.GeneratedMessage {
@@ -902,20 +904,20 @@ class PayloadTransferFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   PayloadTransferFrame_PacketType get packetType => $_getN(0);
   @$pb.TagNumber(1)
-  set packetType(PayloadTransferFrame_PacketType v) { setField(1, v); }
+  set packetType(PayloadTransferFrame_PacketType v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasPacketType() => $_has(0);
   @$pb.TagNumber(1)
-  void clearPacketType() => clearField(1);
+  void clearPacketType() => $_clearField(1);
 
   @$pb.TagNumber(2)
   PayloadTransferFrame_PayloadHeader get payloadHeader => $_getN(1);
   @$pb.TagNumber(2)
-  set payloadHeader(PayloadTransferFrame_PayloadHeader v) { setField(2, v); }
+  set payloadHeader(PayloadTransferFrame_PayloadHeader v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPayloadHeader() => $_has(1);
   @$pb.TagNumber(2)
-  void clearPayloadHeader() => clearField(2);
+  void clearPayloadHeader() => $_clearField(2);
   @$pb.TagNumber(2)
   PayloadTransferFrame_PayloadHeader ensurePayloadHeader() => $_ensure(1);
 
@@ -923,22 +925,22 @@ class PayloadTransferFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   PayloadTransferFrame_PayloadChunk get payloadChunk => $_getN(2);
   @$pb.TagNumber(3)
-  set payloadChunk(PayloadTransferFrame_PayloadChunk v) { setField(3, v); }
+  set payloadChunk(PayloadTransferFrame_PayloadChunk v) { $_setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasPayloadChunk() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPayloadChunk() => clearField(3);
+  void clearPayloadChunk() => $_clearField(3);
   @$pb.TagNumber(3)
   PayloadTransferFrame_PayloadChunk ensurePayloadChunk() => $_ensure(2);
 
   @$pb.TagNumber(4)
   PayloadTransferFrame_ControlMessage get controlMessage => $_getN(3);
   @$pb.TagNumber(4)
-  set controlMessage(PayloadTransferFrame_ControlMessage v) { setField(4, v); }
+  set controlMessage(PayloadTransferFrame_ControlMessage v) { $_setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasControlMessage() => $_has(3);
   @$pb.TagNumber(4)
-  void clearControlMessage() => clearField(4);
+  void clearControlMessage() => $_clearField(4);
   @$pb.TagNumber(4)
   PayloadTransferFrame_ControlMessage ensureControlMessage() => $_ensure(3);
 }
@@ -1011,7 +1013,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials ex
   @$pb.TagNumber(1)
   $core.bool hasSsid() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSsid() => clearField(1);
+  void clearSsid() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get password => $_getSZ(1);
@@ -1020,7 +1022,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials ex
   @$pb.TagNumber(2)
   $core.bool hasPassword() => $_has(1);
   @$pb.TagNumber(2)
-  void clearPassword() => clearField(2);
+  void clearPassword() => $_clearField(2);
 
   @$pb.TagNumber(3)
   $core.int get port => $_getIZ(2);
@@ -1029,7 +1031,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials ex
   @$pb.TagNumber(3)
   $core.bool hasPort() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPort() => clearField(3);
+  void clearPort() => $_clearField(3);
 
   @$pb.TagNumber(4)
   $core.String get gateway => $_getS(3, '0.0.0.0');
@@ -1038,7 +1040,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials ex
   @$pb.TagNumber(4)
   $core.bool hasGateway() => $_has(3);
   @$pb.TagNumber(4)
-  void clearGateway() => clearField(4);
+  void clearGateway() => $_clearField(4);
 
   /// This field can be a band or frequency
   @$pb.TagNumber(5)
@@ -1048,7 +1050,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials ex
   @$pb.TagNumber(5)
   $core.bool hasFrequency() => $_has(4);
   @$pb.TagNumber(5)
-  void clearFrequency() => clearField(5);
+  void clearFrequency() => $_clearField(5);
 }
 
 /// Accompanies Medium.WIFI_LAN.
@@ -1104,7 +1106,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket extends $pb
   @$pb.TagNumber(1)
   $core.bool hasIpAddress() => $_has(0);
   @$pb.TagNumber(1)
-  void clearIpAddress() => clearField(1);
+  void clearIpAddress() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.int get wifiPort => $_getIZ(1);
@@ -1113,7 +1115,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket extends $pb
   @$pb.TagNumber(2)
   $core.bool hasWifiPort() => $_has(1);
   @$pb.TagNumber(2)
-  void clearWifiPort() => clearField(2);
+  void clearWifiPort() => $_clearField(2);
 }
 
 /// Accompanies Medium.BLUETOOTH.
@@ -1169,7 +1171,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials exte
   @$pb.TagNumber(1)
   $core.bool hasServiceName() => $_has(0);
   @$pb.TagNumber(1)
-  void clearServiceName() => clearField(1);
+  void clearServiceName() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get macAddress => $_getSZ(1);
@@ -1178,7 +1180,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials exte
   @$pb.TagNumber(2)
   $core.bool hasMacAddress() => $_has(1);
   @$pb.TagNumber(2)
-  void clearMacAddress() => clearField(2);
+  void clearMacAddress() => $_clearField(2);
 }
 
 /// Accompanies Medium.WIFI_AWARE.
@@ -1239,7 +1241,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials exte
   @$pb.TagNumber(1)
   $core.bool hasServiceId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearServiceId() => clearField(1);
+  void clearServiceId() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.List<$core.int> get serviceInfo => $_getN(1);
@@ -1248,7 +1250,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials exte
   @$pb.TagNumber(2)
   $core.bool hasServiceInfo() => $_has(1);
   @$pb.TagNumber(2)
-  void clearServiceInfo() => clearField(2);
+  void clearServiceInfo() => $_clearField(2);
 
   @$pb.TagNumber(3)
   $core.String get password => $_getSZ(2);
@@ -1257,7 +1259,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials exte
   @$pb.TagNumber(3)
   $core.bool hasPassword() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPassword() => clearField(3);
+  void clearPassword() => $_clearField(3);
 }
 
 /// Accompanies Medium.WIFI_DIRECT.
@@ -1328,7 +1330,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials ext
   @$pb.TagNumber(1)
   $core.bool hasSsid() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSsid() => clearField(1);
+  void clearSsid() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get password => $_getSZ(1);
@@ -1337,7 +1339,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials ext
   @$pb.TagNumber(2)
   $core.bool hasPassword() => $_has(1);
   @$pb.TagNumber(2)
-  void clearPassword() => clearField(2);
+  void clearPassword() => $_clearField(2);
 
   @$pb.TagNumber(3)
   $core.int get port => $_getIZ(2);
@@ -1346,7 +1348,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials ext
   @$pb.TagNumber(3)
   $core.bool hasPort() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPort() => clearField(3);
+  void clearPort() => $_clearField(3);
 
   @$pb.TagNumber(4)
   $core.int get frequency => $_getIZ(3);
@@ -1355,7 +1357,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials ext
   @$pb.TagNumber(4)
   $core.bool hasFrequency() => $_has(3);
   @$pb.TagNumber(4)
-  void clearFrequency() => clearField(4);
+  void clearFrequency() => $_clearField(4);
 
   @$pb.TagNumber(5)
   $core.String get gateway => $_getS(4, '0.0.0.0');
@@ -1364,7 +1366,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials ext
   @$pb.TagNumber(5)
   $core.bool hasGateway() => $_has(4);
   @$pb.TagNumber(5)
-  void clearGateway() => clearField(5);
+  void clearGateway() => $_clearField(5);
 }
 
 /// Accompanies Medium.WEB_RTC
@@ -1420,16 +1422,16 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials extends
   @$pb.TagNumber(1)
   $core.bool hasPeerId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearPeerId() => clearField(1);
+  void clearPeerId() => $_clearField(1);
 
   @$pb.TagNumber(2)
   LocationHint get locationHint => $_getN(1);
   @$pb.TagNumber(2)
-  set locationHint(LocationHint v) { setField(2, v); }
+  set locationHint(LocationHint v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasLocationHint() => $_has(1);
   @$pb.TagNumber(2)
-  void clearLocationHint() => clearField(2);
+  void clearLocationHint() => $_clearField(2);
   @$pb.TagNumber(2)
   LocationHint ensureLocationHint() => $_ensure(1);
 }
@@ -1518,65 +1520,65 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo extends $pb.GeneratedMess
   @$pb.TagNumber(1)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium get medium => $_getN(0);
   @$pb.TagNumber(1)
-  set medium(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium v) { setField(1, v); }
+  set medium(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_Medium v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasMedium() => $_has(0);
   @$pb.TagNumber(1)
-  void clearMedium() => clearField(1);
+  void clearMedium() => $_clearField(1);
 
   /// Exactly one of the following fields will be set.
   @$pb.TagNumber(2)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials get wifiHotspotCredentials => $_getN(1);
   @$pb.TagNumber(2)
-  set wifiHotspotCredentials(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials v) { setField(2, v); }
+  set wifiHotspotCredentials(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasWifiHotspotCredentials() => $_has(1);
   @$pb.TagNumber(2)
-  void clearWifiHotspotCredentials() => clearField(2);
+  void clearWifiHotspotCredentials() => $_clearField(2);
   @$pb.TagNumber(2)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiHotspotCredentials ensureWifiHotspotCredentials() => $_ensure(1);
 
   @$pb.TagNumber(3)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket get wifiLanSocket => $_getN(2);
   @$pb.TagNumber(3)
-  set wifiLanSocket(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket v) { setField(3, v); }
+  set wifiLanSocket(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket v) { $_setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasWifiLanSocket() => $_has(2);
   @$pb.TagNumber(3)
-  void clearWifiLanSocket() => clearField(3);
+  void clearWifiLanSocket() => $_clearField(3);
   @$pb.TagNumber(3)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiLanSocket ensureWifiLanSocket() => $_ensure(2);
 
   @$pb.TagNumber(4)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials get bluetoothCredentials => $_getN(3);
   @$pb.TagNumber(4)
-  set bluetoothCredentials(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials v) { setField(4, v); }
+  set bluetoothCredentials(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials v) { $_setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasBluetoothCredentials() => $_has(3);
   @$pb.TagNumber(4)
-  void clearBluetoothCredentials() => clearField(4);
+  void clearBluetoothCredentials() => $_clearField(4);
   @$pb.TagNumber(4)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_BluetoothCredentials ensureBluetoothCredentials() => $_ensure(3);
 
   @$pb.TagNumber(5)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials get wifiAwareCredentials => $_getN(4);
   @$pb.TagNumber(5)
-  set wifiAwareCredentials(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials v) { setField(5, v); }
+  set wifiAwareCredentials(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials v) { $_setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasWifiAwareCredentials() => $_has(4);
   @$pb.TagNumber(5)
-  void clearWifiAwareCredentials() => clearField(5);
+  void clearWifiAwareCredentials() => $_clearField(5);
   @$pb.TagNumber(5)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiAwareCredentials ensureWifiAwareCredentials() => $_ensure(4);
 
   @$pb.TagNumber(6)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials get wifiDirectCredentials => $_getN(5);
   @$pb.TagNumber(6)
-  set wifiDirectCredentials(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials v) { setField(6, v); }
+  set wifiDirectCredentials(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials v) { $_setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasWifiDirectCredentials() => $_has(5);
   @$pb.TagNumber(6)
-  void clearWifiDirectCredentials() => clearField(6);
+  void clearWifiDirectCredentials() => $_clearField(6);
   @$pb.TagNumber(6)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WifiDirectCredentials ensureWifiDirectCredentials() => $_ensure(5);
 
@@ -1588,16 +1590,16 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo extends $pb.GeneratedMess
   @$pb.TagNumber(7)
   $core.bool hasSupportsDisablingEncryption() => $_has(6);
   @$pb.TagNumber(7)
-  void clearSupportsDisablingEncryption() => clearField(7);
+  void clearSupportsDisablingEncryption() => $_clearField(7);
 
   @$pb.TagNumber(8)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials get webRtcCredentials => $_getN(7);
   @$pb.TagNumber(8)
-  set webRtcCredentials(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials v) { setField(8, v); }
+  set webRtcCredentials(BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials v) { $_setField(8, v); }
   @$pb.TagNumber(8)
   $core.bool hasWebRtcCredentials() => $_has(7);
   @$pb.TagNumber(8)
-  void clearWebRtcCredentials() => clearField(8);
+  void clearWebRtcCredentials() => $_clearField(8);
   @$pb.TagNumber(8)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo_WebRtcCredentials ensureWebRtcCredentials() => $_ensure(7);
 
@@ -1609,7 +1611,7 @@ class BandwidthUpgradeNegotiationFrame_UpgradePathInfo extends $pb.GeneratedMess
   @$pb.TagNumber(9)
   $core.bool hasSupportsClientIntroductionAck() => $_has(8);
   @$pb.TagNumber(9)
-  void clearSupportsClientIntroductionAck() => clearField(9);
+  void clearSupportsClientIntroductionAck() => $_clearField(9);
 }
 
 /// Accompanies CLIENT_INTRODUCTION events.
@@ -1665,7 +1667,7 @@ class BandwidthUpgradeNegotiationFrame_ClientIntroduction extends $pb.GeneratedM
   @$pb.TagNumber(1)
   $core.bool hasEndpointId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearEndpointId() => clearField(1);
+  void clearEndpointId() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.bool get supportsDisablingEncryption => $_getBF(1);
@@ -1674,7 +1676,7 @@ class BandwidthUpgradeNegotiationFrame_ClientIntroduction extends $pb.GeneratedM
   @$pb.TagNumber(2)
   $core.bool hasSupportsDisablingEncryption() => $_has(1);
   @$pb.TagNumber(2)
-  void clearSupportsDisablingEncryption() => clearField(2);
+  void clearSupportsDisablingEncryption() => $_clearField(2);
 }
 
 /// Accompanies CLIENT_INTRODUCTION_ACK events.
@@ -1768,43 +1770,43 @@ class BandwidthUpgradeNegotiationFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   BandwidthUpgradeNegotiationFrame_EventType get eventType => $_getN(0);
   @$pb.TagNumber(1)
-  set eventType(BandwidthUpgradeNegotiationFrame_EventType v) { setField(1, v); }
+  set eventType(BandwidthUpgradeNegotiationFrame_EventType v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasEventType() => $_has(0);
   @$pb.TagNumber(1)
-  void clearEventType() => clearField(1);
+  void clearEventType() => $_clearField(1);
 
   /// Exactly one of the following fields will be set.
   @$pb.TagNumber(2)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo get upgradePathInfo => $_getN(1);
   @$pb.TagNumber(2)
-  set upgradePathInfo(BandwidthUpgradeNegotiationFrame_UpgradePathInfo v) { setField(2, v); }
+  set upgradePathInfo(BandwidthUpgradeNegotiationFrame_UpgradePathInfo v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasUpgradePathInfo() => $_has(1);
   @$pb.TagNumber(2)
-  void clearUpgradePathInfo() => clearField(2);
+  void clearUpgradePathInfo() => $_clearField(2);
   @$pb.TagNumber(2)
   BandwidthUpgradeNegotiationFrame_UpgradePathInfo ensureUpgradePathInfo() => $_ensure(1);
 
   @$pb.TagNumber(3)
   BandwidthUpgradeNegotiationFrame_ClientIntroduction get clientIntroduction => $_getN(2);
   @$pb.TagNumber(3)
-  set clientIntroduction(BandwidthUpgradeNegotiationFrame_ClientIntroduction v) { setField(3, v); }
+  set clientIntroduction(BandwidthUpgradeNegotiationFrame_ClientIntroduction v) { $_setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasClientIntroduction() => $_has(2);
   @$pb.TagNumber(3)
-  void clearClientIntroduction() => clearField(3);
+  void clearClientIntroduction() => $_clearField(3);
   @$pb.TagNumber(3)
   BandwidthUpgradeNegotiationFrame_ClientIntroduction ensureClientIntroduction() => $_ensure(2);
 
   @$pb.TagNumber(4)
   BandwidthUpgradeNegotiationFrame_ClientIntroductionAck get clientIntroductionAck => $_getN(3);
   @$pb.TagNumber(4)
-  set clientIntroductionAck(BandwidthUpgradeNegotiationFrame_ClientIntroductionAck v) { setField(4, v); }
+  set clientIntroductionAck(BandwidthUpgradeNegotiationFrame_ClientIntroductionAck v) { $_setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasClientIntroductionAck() => $_has(3);
   @$pb.TagNumber(4)
-  void clearClientIntroductionAck() => clearField(4);
+  void clearClientIntroductionAck() => $_clearField(4);
   @$pb.TagNumber(4)
   BandwidthUpgradeNegotiationFrame_ClientIntroductionAck ensureClientIntroductionAck() => $_ensure(3);
 }
@@ -1857,7 +1859,7 @@ class KeepAliveFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasAck() => $_has(0);
   @$pb.TagNumber(1)
-  void clearAck() => clearField(1);
+  void clearAck() => $_clearField(1);
 }
 
 /// Informs the remote side to immediately severe the socket connection.
@@ -1917,7 +1919,7 @@ class DisconnectionFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasRequestSafeToDisconnect() => $_has(0);
   @$pb.TagNumber(1)
-  void clearRequestSafeToDisconnect() => clearField(1);
+  void clearRequestSafeToDisconnect() => $_clearField(1);
 
   /// Ack of receiving Disconnection frame will be sent to the sender
   /// frame.
@@ -1928,7 +1930,7 @@ class DisconnectionFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasAckSafeToDisconnect() => $_has(1);
   @$pb.TagNumber(2)
-  void clearAckSafeToDisconnect() => clearField(2);
+  void clearAckSafeToDisconnect() => $_clearField(2);
 }
 
 /// A paired key encryption packet sent between devices, contains signed data.
@@ -1981,7 +1983,7 @@ class PairedKeyEncryptionFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasSignedData() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSignedData() => clearField(1);
+  void clearSignedData() => $_clearField(1);
 }
 
 class MediumMetadata extends $pb.GeneratedMessage {
@@ -2082,7 +2084,7 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasSupports5Ghz() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSupports5Ghz() => clearField(1);
+  void clearSupports5Ghz() => $_clearField(1);
 
   /// WiFi LAN BSSID, in the form of a six-byte MAC address: XX:XX:XX:XX:XX:XX
   @$pb.TagNumber(2)
@@ -2092,7 +2094,7 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasBssid() => $_has(1);
   @$pb.TagNumber(2)
-  void clearBssid() => clearField(2);
+  void clearBssid() => $_clearField(2);
 
   /// IP address, in network byte order: the highest order byte of the address is
   /// in byte[0].
@@ -2103,7 +2105,7 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasIpAddress() => $_has(2);
   @$pb.TagNumber(3)
-  void clearIpAddress() => clearField(3);
+  void clearIpAddress() => $_clearField(3);
 
   /// True if local device supports 6GHz.
   @$pb.TagNumber(4)
@@ -2113,7 +2115,7 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasSupports6Ghz() => $_has(3);
   @$pb.TagNumber(4)
-  void clearSupports6Ghz() => clearField(4);
+  void clearSupports6Ghz() => $_clearField(4);
 
   /// True if local device has mobile radio.
   @$pb.TagNumber(5)
@@ -2123,7 +2125,7 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.bool hasMobileRadio() => $_has(4);
   @$pb.TagNumber(5)
-  void clearMobileRadio() => clearField(5);
+  void clearMobileRadio() => $_clearField(5);
 
   /// The frequency of the WiFi LAN AP(in MHz). Or -1 is not associated with an
   /// AP over WiFi, -2 represents the active network uses an Ethernet transport.
@@ -2134,17 +2136,17 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.bool hasApFrequency() => $_has(5);
   @$pb.TagNumber(6)
-  void clearApFrequency() => clearField(6);
+  void clearApFrequency() => $_clearField(6);
 
   /// Available channels on the local device.
   @$pb.TagNumber(7)
   AvailableChannels get availableChannels => $_getN(6);
   @$pb.TagNumber(7)
-  set availableChannels(AvailableChannels v) { setField(7, v); }
+  set availableChannels(AvailableChannels v) { $_setField(7, v); }
   @$pb.TagNumber(7)
   $core.bool hasAvailableChannels() => $_has(6);
   @$pb.TagNumber(7)
-  void clearAvailableChannels() => clearField(7);
+  void clearAvailableChannels() => $_clearField(7);
   @$pb.TagNumber(7)
   AvailableChannels ensureAvailableChannels() => $_ensure(6);
 
@@ -2152,11 +2154,11 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   WifiDirectCliUsableChannels get wifiDirectCliUsableChannels => $_getN(7);
   @$pb.TagNumber(8)
-  set wifiDirectCliUsableChannels(WifiDirectCliUsableChannels v) { setField(8, v); }
+  set wifiDirectCliUsableChannels(WifiDirectCliUsableChannels v) { $_setField(8, v); }
   @$pb.TagNumber(8)
   $core.bool hasWifiDirectCliUsableChannels() => $_has(7);
   @$pb.TagNumber(8)
-  void clearWifiDirectCliUsableChannels() => clearField(8);
+  void clearWifiDirectCliUsableChannels() => $_clearField(8);
   @$pb.TagNumber(8)
   WifiDirectCliUsableChannels ensureWifiDirectCliUsableChannels() => $_ensure(7);
 
@@ -2164,11 +2166,11 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   WifiLanUsableChannels get wifiLanUsableChannels => $_getN(8);
   @$pb.TagNumber(9)
-  set wifiLanUsableChannels(WifiLanUsableChannels v) { setField(9, v); }
+  set wifiLanUsableChannels(WifiLanUsableChannels v) { $_setField(9, v); }
   @$pb.TagNumber(9)
   $core.bool hasWifiLanUsableChannels() => $_has(8);
   @$pb.TagNumber(9)
-  void clearWifiLanUsableChannels() => clearField(9);
+  void clearWifiLanUsableChannels() => $_clearField(9);
   @$pb.TagNumber(9)
   WifiLanUsableChannels ensureWifiLanUsableChannels() => $_ensure(8);
 
@@ -2176,11 +2178,11 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   WifiAwareUsableChannels get wifiAwareUsableChannels => $_getN(9);
   @$pb.TagNumber(10)
-  set wifiAwareUsableChannels(WifiAwareUsableChannels v) { setField(10, v); }
+  set wifiAwareUsableChannels(WifiAwareUsableChannels v) { $_setField(10, v); }
   @$pb.TagNumber(10)
   $core.bool hasWifiAwareUsableChannels() => $_has(9);
   @$pb.TagNumber(10)
-  void clearWifiAwareUsableChannels() => clearField(10);
+  void clearWifiAwareUsableChannels() => $_clearField(10);
   @$pb.TagNumber(10)
   WifiAwareUsableChannels ensureWifiAwareUsableChannels() => $_ensure(9);
 
@@ -2188,11 +2190,11 @@ class MediumMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(11)
   WifiHotspotStaUsableChannels get wifiHotspotStaUsableChannels => $_getN(10);
   @$pb.TagNumber(11)
-  set wifiHotspotStaUsableChannels(WifiHotspotStaUsableChannels v) { setField(11, v); }
+  set wifiHotspotStaUsableChannels(WifiHotspotStaUsableChannels v) { $_setField(11, v); }
   @$pb.TagNumber(11)
   $core.bool hasWifiHotspotStaUsableChannels() => $_has(10);
   @$pb.TagNumber(11)
-  void clearWifiHotspotStaUsableChannels() => clearField(11);
+  void clearWifiHotspotStaUsableChannels() => $_clearField(11);
   @$pb.TagNumber(11)
   WifiHotspotStaUsableChannels ensureWifiHotspotStaUsableChannels() => $_ensure(10);
 }
@@ -2239,7 +2241,7 @@ class AvailableChannels extends $pb.GeneratedMessage {
   static AvailableChannels? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.int> get channels => $_getList(0);
+  $pb.PbList<$core.int> get channels => $_getList(0);
 }
 
 /// Usable WiFi Direct client channels on the local device.
@@ -2284,7 +2286,7 @@ class WifiDirectCliUsableChannels extends $pb.GeneratedMessage {
   static WifiDirectCliUsableChannels? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.int> get channels => $_getList(0);
+  $pb.PbList<$core.int> get channels => $_getList(0);
 }
 
 /// Usable WiFi LAN channels on the local device.
@@ -2329,7 +2331,7 @@ class WifiLanUsableChannels extends $pb.GeneratedMessage {
   static WifiLanUsableChannels? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.int> get channels => $_getList(0);
+  $pb.PbList<$core.int> get channels => $_getList(0);
 }
 
 /// Usable WiFi Aware channels on the local device.
@@ -2374,7 +2376,7 @@ class WifiAwareUsableChannels extends $pb.GeneratedMessage {
   static WifiAwareUsableChannels? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.int> get channels => $_getList(0);
+  $pb.PbList<$core.int> get channels => $_getList(0);
 }
 
 /// Usable WiFi Hotspot STA channels on the local device.
@@ -2419,7 +2421,7 @@ class WifiHotspotStaUsableChannels extends $pb.GeneratedMessage {
   static WifiHotspotStaUsableChannels? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.int> get channels => $_getList(0);
+  $pb.PbList<$core.int> get channels => $_getList(0);
 }
 
 /// LocationHint is used to specify a location as well as format.
@@ -2476,17 +2478,17 @@ class LocationHint extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasLocation() => $_has(0);
   @$pb.TagNumber(1)
-  void clearLocation() => clearField(1);
+  void clearLocation() => $_clearField(1);
 
   /// the format of location.
   @$pb.TagNumber(2)
   LocationStandard_Format get format => $_getN(1);
   @$pb.TagNumber(2)
-  set format(LocationStandard_Format v) { setField(2, v); }
+  set format(LocationStandard_Format v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasFormat() => $_has(1);
   @$pb.TagNumber(2)
-  void clearFormat() => clearField(2);
+  void clearFormat() => $_clearField(2);
 }
 
 class LocationStandard extends $pb.GeneratedMessage {
@@ -2565,11 +2567,11 @@ class OsInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   OsInfo_OsType get type => $_getN(0);
   @$pb.TagNumber(1)
-  set type(OsInfo_OsType v) { setField(1, v); }
+  set type(OsInfo_OsType v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasType() => $_has(0);
   @$pb.TagNumber(1)
-  void clearType() => clearField(1);
+  void clearType() => $_clearField(1);
 }
 
 

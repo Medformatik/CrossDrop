@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: device_to_device_messages.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -24,7 +24,7 @@ class Curve extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, Curve> _byValue = $pb.ProtobufEnum.initByValue(values);
   static Curve? valueOf($core.int value) => _byValue[value];
 
-  const Curve._($core.int v, $core.String n) : super(v, n);
+  const Curve._(super.v, super.n);
 }
 
 

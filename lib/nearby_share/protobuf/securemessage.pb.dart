@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: securemessage.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -14,6 +14,8 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'securemessage.pbenum.dart';
+
+export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 export 'securemessage.pbenum.dart';
 
@@ -69,7 +71,7 @@ class SecureMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasHeaderAndBody() => $_has(0);
   @$pb.TagNumber(1)
-  void clearHeaderAndBody() => clearField(1);
+  void clearHeaderAndBody() => $_clearField(1);
 
   /// Signature of header_and_body
   @$pb.TagNumber(2)
@@ -79,7 +81,7 @@ class SecureMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasSignature() => $_has(1);
   @$pb.TagNumber(2)
-  void clearSignature() => clearField(2);
+  void clearSignature() => $_clearField(2);
 }
 
 class Header extends $pb.GeneratedMessage {
@@ -154,20 +156,20 @@ class Header extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   SigScheme get signatureScheme => $_getN(0);
   @$pb.TagNumber(1)
-  set signatureScheme(SigScheme v) { setField(1, v); }
+  set signatureScheme(SigScheme v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasSignatureScheme() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSignatureScheme() => clearField(1);
+  void clearSignatureScheme() => $_clearField(1);
 
   @$pb.TagNumber(2)
   EncScheme get encryptionScheme => $_getN(1);
   @$pb.TagNumber(2)
-  set encryptionScheme(EncScheme v) { setField(2, v); }
+  set encryptionScheme(EncScheme v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasEncryptionScheme() => $_has(1);
   @$pb.TagNumber(2)
-  void clearEncryptionScheme() => clearField(2);
+  void clearEncryptionScheme() => $_clearField(2);
 
   /// Identifies the verification key
   @$pb.TagNumber(3)
@@ -177,7 +179,7 @@ class Header extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasVerificationKeyId() => $_has(2);
   @$pb.TagNumber(3)
-  void clearVerificationKeyId() => clearField(3);
+  void clearVerificationKeyId() => $_clearField(3);
 
   /// Identifies the decryption key
   @$pb.TagNumber(4)
@@ -187,7 +189,7 @@ class Header extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasDecryptionKeyId() => $_has(3);
   @$pb.TagNumber(4)
-  void clearDecryptionKeyId() => clearField(4);
+  void clearDecryptionKeyId() => $_clearField(4);
 
   /// Encryption may use an IV
   @$pb.TagNumber(5)
@@ -197,7 +199,7 @@ class Header extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.bool hasIv() => $_has(4);
   @$pb.TagNumber(5)
-  void clearIv() => clearField(5);
+  void clearIv() => $_clearField(5);
 
   /// Arbitrary per-protocol public data, to be sent with the plain-text header
   @$pb.TagNumber(6)
@@ -207,7 +209,7 @@ class Header extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.bool hasPublicMetadata() => $_has(5);
   @$pb.TagNumber(6)
-  void clearPublicMetadata() => clearField(6);
+  void clearPublicMetadata() => $_clearField(6);
 
   /// The length of some associated data this is not sent in this SecureMessage,
   /// but which will be bound to the signature.
@@ -218,7 +220,7 @@ class Header extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   $core.bool hasAssociatedDataLength() => $_has(6);
   @$pb.TagNumber(7)
-  void clearAssociatedDataLength() => clearField(7);
+  void clearAssociatedDataLength() => $_clearField(7);
 }
 
 class HeaderAndBody extends $pb.GeneratedMessage {
@@ -269,11 +271,11 @@ class HeaderAndBody extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   Header get header => $_getN(0);
   @$pb.TagNumber(1)
-  set header(Header v) { setField(1, v); }
+  set header(Header v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasHeader() => $_has(0);
   @$pb.TagNumber(1)
-  void clearHeader() => clearField(1);
+  void clearHeader() => $_clearField(1);
   @$pb.TagNumber(1)
   Header ensureHeader() => $_ensure(0);
 
@@ -285,7 +287,7 @@ class HeaderAndBody extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasBody() => $_has(1);
   @$pb.TagNumber(2)
-  void clearBody() => clearField(2);
+  void clearBody() => $_clearField(2);
 }
 
 /// Must be kept wire-format compatible with HeaderAndBody. Provides the
@@ -345,7 +347,7 @@ class HeaderAndBodyInternal extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasHeader() => $_has(0);
   @$pb.TagNumber(1)
-  void clearHeader() => clearField(1);
+  void clearHeader() => $_clearField(1);
 
   /// Payload data
   @$pb.TagNumber(2)
@@ -355,7 +357,7 @@ class HeaderAndBodyInternal extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasBody() => $_has(1);
   @$pb.TagNumber(2)
-  void clearBody() => clearField(2);
+  void clearBody() => $_clearField(2);
 }
 
 /// A convenience proto for encoding NIST P-256 elliptic curve public keys
@@ -412,7 +414,7 @@ class EcP256PublicKey extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasX() => $_has(0);
   @$pb.TagNumber(1)
-  void clearX() => clearField(1);
+  void clearX() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.List<$core.int> get y => $_getN(1);
@@ -421,7 +423,7 @@ class EcP256PublicKey extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasY() => $_has(1);
   @$pb.TagNumber(2)
-  void clearY() => clearField(2);
+  void clearY() => $_clearField(2);
 }
 
 /// A convenience proto for encoding RSA public keys with small exponents
@@ -477,7 +479,7 @@ class SimpleRsaPublicKey extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasN() => $_has(0);
   @$pb.TagNumber(1)
-  void clearN() => clearField(1);
+  void clearN() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.int get e => $_getI(1, 65537);
@@ -486,7 +488,7 @@ class SimpleRsaPublicKey extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasE() => $_has(1);
   @$pb.TagNumber(2)
-  void clearE() => clearField(2);
+  void clearE() => $_clearField(2);
 }
 
 /// A convenience proto for encoding Diffie-Hellman public keys,
@@ -539,7 +541,7 @@ class DhPublicKey extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasY() => $_has(0);
   @$pb.TagNumber(1)
-  void clearY() => clearField(1);
+  void clearY() => $_clearField(1);
 }
 
 class GenericPublicKey extends $pb.GeneratedMessage {
@@ -599,31 +601,31 @@ class GenericPublicKey extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   PublicKeyType get type => $_getN(0);
   @$pb.TagNumber(1)
-  set type(PublicKeyType v) { setField(1, v); }
+  set type(PublicKeyType v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasType() => $_has(0);
   @$pb.TagNumber(1)
-  void clearType() => clearField(1);
+  void clearType() => $_clearField(1);
 
   @$pb.TagNumber(2)
   EcP256PublicKey get ecP256PublicKey => $_getN(1);
   @$pb.TagNumber(2)
-  set ecP256PublicKey(EcP256PublicKey v) { setField(2, v); }
+  set ecP256PublicKey(EcP256PublicKey v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasEcP256PublicKey() => $_has(1);
   @$pb.TagNumber(2)
-  void clearEcP256PublicKey() => clearField(2);
+  void clearEcP256PublicKey() => $_clearField(2);
   @$pb.TagNumber(2)
   EcP256PublicKey ensureEcP256PublicKey() => $_ensure(1);
 
   @$pb.TagNumber(3)
   SimpleRsaPublicKey get rsa2048PublicKey => $_getN(2);
   @$pb.TagNumber(3)
-  set rsa2048PublicKey(SimpleRsaPublicKey v) { setField(3, v); }
+  set rsa2048PublicKey(SimpleRsaPublicKey v) { $_setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasRsa2048PublicKey() => $_has(2);
   @$pb.TagNumber(3)
-  void clearRsa2048PublicKey() => clearField(3);
+  void clearRsa2048PublicKey() => $_clearField(3);
   @$pb.TagNumber(3)
   SimpleRsaPublicKey ensureRsa2048PublicKey() => $_ensure(2);
 
@@ -631,11 +633,11 @@ class GenericPublicKey extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   DhPublicKey get dh2048PublicKey => $_getN(3);
   @$pb.TagNumber(4)
-  set dh2048PublicKey(DhPublicKey v) { setField(4, v); }
+  set dh2048PublicKey(DhPublicKey v) { $_setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasDh2048PublicKey() => $_has(3);
   @$pb.TagNumber(4)
-  void clearDh2048PublicKey() => clearField(4);
+  void clearDh2048PublicKey() => $_clearField(4);
   @$pb.TagNumber(4)
   DhPublicKey ensureDh2048PublicKey() => $_ensure(3);
 }

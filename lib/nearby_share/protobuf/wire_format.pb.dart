@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: wire_format.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -15,6 +15,8 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'wire_format.pbenum.dart';
+
+export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 export 'wire_format.pbenum.dart';
 
@@ -93,18 +95,18 @@ class FileMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasName() => $_has(0);
   @$pb.TagNumber(1)
-  void clearName() => clearField(1);
+  void clearName() => $_clearField(1);
 
   /// The type of file (eg. 'IMAGE' from 'dog.jpg'). Specifying a type helps
   /// provide a richer experience on the receiving side.
   @$pb.TagNumber(2)
   FileMetadata_Type get type => $_getN(1);
   @$pb.TagNumber(2)
-  set type(FileMetadata_Type v) { setField(2, v); }
+  set type(FileMetadata_Type v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasType() => $_has(1);
   @$pb.TagNumber(2)
-  void clearType() => clearField(2);
+  void clearType() => $_clearField(2);
 
   /// The FILE payload id that will be sent as a follow up containing the actual
   /// bytes of the file.
@@ -115,7 +117,7 @@ class FileMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasPayloadId() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPayloadId() => clearField(3);
+  void clearPayloadId() => $_clearField(3);
 
   /// The total size of the file.
   @$pb.TagNumber(4)
@@ -125,7 +127,7 @@ class FileMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasSize() => $_has(3);
   @$pb.TagNumber(4)
-  void clearSize() => clearField(4);
+  void clearSize() => $_clearField(4);
 
   /// The mimeType of file (eg. 'image/jpeg' from 'dog.jpg'). Specifying a
   /// mimeType helps provide a richer experience on receiving side.
@@ -136,7 +138,7 @@ class FileMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.bool hasMimeType() => $_has(4);
   @$pb.TagNumber(5)
-  void clearMimeType() => clearField(5);
+  void clearMimeType() => $_clearField(5);
 
   /// A uuid for the attachment. Should be unique across all attachments.
   @$pb.TagNumber(6)
@@ -146,7 +148,7 @@ class FileMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.bool hasId() => $_has(5);
   @$pb.TagNumber(6)
-  void clearId() => clearField(6);
+  void clearId() => $_clearField(6);
 }
 
 /// NEXT_ID=5
@@ -218,17 +220,17 @@ class TextMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasTextTitle() => $_has(0);
   @$pb.TagNumber(2)
-  void clearTextTitle() => clearField(2);
+  void clearTextTitle() => $_clearField(2);
 
   /// The type of text (phone number, url, address, or plain text).
   @$pb.TagNumber(3)
   TextMetadata_Type get type => $_getN(1);
   @$pb.TagNumber(3)
-  set type(TextMetadata_Type v) { setField(3, v); }
+  set type(TextMetadata_Type v) { $_setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasType() => $_has(1);
   @$pb.TagNumber(3)
-  void clearType() => clearField(3);
+  void clearType() => $_clearField(3);
 
   /// The BYTE payload id that will be sent as a follow up containing the actual
   /// bytes of the text.
@@ -239,7 +241,7 @@ class TextMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasPayloadId() => $_has(2);
   @$pb.TagNumber(4)
-  void clearPayloadId() => clearField(4);
+  void clearPayloadId() => $_clearField(4);
 
   /// The size of the text content.
   @$pb.TagNumber(5)
@@ -249,7 +251,7 @@ class TextMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.bool hasSize() => $_has(3);
   @$pb.TagNumber(5)
-  void clearSize() => clearField(5);
+  void clearSize() => $_clearField(5);
 
   /// A uuid for the attachment. Should be unique across all attachments.
   @$pb.TagNumber(6)
@@ -259,7 +261,7 @@ class TextMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.bool hasId() => $_has(4);
   @$pb.TagNumber(6)
-  void clearId() => clearField(6);
+  void clearId() => $_clearField(6);
 }
 
 /// NEXT_ID=5
@@ -326,17 +328,17 @@ class WifiCredentialsMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasSsid() => $_has(0);
   @$pb.TagNumber(2)
-  void clearSsid() => clearField(2);
+  void clearSsid() => $_clearField(2);
 
   /// The security type of network (OPEN, WPA_PSK, WEP).
   @$pb.TagNumber(3)
   WifiCredentialsMetadata_SecurityType get securityType => $_getN(1);
   @$pb.TagNumber(3)
-  set securityType(WifiCredentialsMetadata_SecurityType v) { setField(3, v); }
+  set securityType(WifiCredentialsMetadata_SecurityType v) { $_setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasSecurityType() => $_has(1);
   @$pb.TagNumber(3)
-  void clearSecurityType() => clearField(3);
+  void clearSecurityType() => $_clearField(3);
 
   /// The BYTE payload id that will be sent as a follow up containing the
   /// password.
@@ -347,7 +349,7 @@ class WifiCredentialsMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasPayloadId() => $_has(2);
   @$pb.TagNumber(4)
-  void clearPayloadId() => clearField(4);
+  void clearPayloadId() => $_clearField(4);
 
   /// A uuid for the attachment. Should be unique across all attachments.
   @$pb.TagNumber(5)
@@ -357,7 +359,7 @@ class WifiCredentialsMetadata extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.bool hasId() => $_has(3);
   @$pb.TagNumber(5)
-  void clearId() => clearField(5);
+  void clearId() => $_clearField(5);
 }
 
 /// A frame used when sending messages over the wire.
@@ -410,22 +412,22 @@ class Frame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   Frame_Version get version => $_getN(0);
   @$pb.TagNumber(1)
-  set version(Frame_Version v) { setField(1, v); }
+  set version(Frame_Version v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasVersion() => $_has(0);
   @$pb.TagNumber(1)
-  void clearVersion() => clearField(1);
+  void clearVersion() => $_clearField(1);
 
   /// Right now there's only 1 version, but if there are more, exactly one of
   /// the following fields will be set.
   @$pb.TagNumber(2)
   V1Frame get v1 => $_getN(1);
   @$pb.TagNumber(2)
-  set v1(V1Frame v) { setField(2, v); }
+  set v1(V1Frame v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasV1() => $_has(1);
   @$pb.TagNumber(2)
-  void clearV1() => clearField(2);
+  void clearV1() => $_clearField(2);
   @$pb.TagNumber(2)
   V1Frame ensureV1() => $_ensure(1);
 }
@@ -499,65 +501,65 @@ class V1Frame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   V1Frame_FrameType get type => $_getN(0);
   @$pb.TagNumber(1)
-  set type(V1Frame_FrameType v) { setField(1, v); }
+  set type(V1Frame_FrameType v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasType() => $_has(0);
   @$pb.TagNumber(1)
-  void clearType() => clearField(1);
+  void clearType() => $_clearField(1);
 
   /// Exactly one of the following fields will be set.
   @$pb.TagNumber(2)
   IntroductionFrame get introduction => $_getN(1);
   @$pb.TagNumber(2)
-  set introduction(IntroductionFrame v) { setField(2, v); }
+  set introduction(IntroductionFrame v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasIntroduction() => $_has(1);
   @$pb.TagNumber(2)
-  void clearIntroduction() => clearField(2);
+  void clearIntroduction() => $_clearField(2);
   @$pb.TagNumber(2)
   IntroductionFrame ensureIntroduction() => $_ensure(1);
 
   @$pb.TagNumber(3)
   ConnectionResponseFrame get connectionResponse => $_getN(2);
   @$pb.TagNumber(3)
-  set connectionResponse(ConnectionResponseFrame v) { setField(3, v); }
+  set connectionResponse(ConnectionResponseFrame v) { $_setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasConnectionResponse() => $_has(2);
   @$pb.TagNumber(3)
-  void clearConnectionResponse() => clearField(3);
+  void clearConnectionResponse() => $_clearField(3);
   @$pb.TagNumber(3)
   ConnectionResponseFrame ensureConnectionResponse() => $_ensure(2);
 
   @$pb.TagNumber(4)
   PairedKeyEncryptionFrame get pairedKeyEncryption => $_getN(3);
   @$pb.TagNumber(4)
-  set pairedKeyEncryption(PairedKeyEncryptionFrame v) { setField(4, v); }
+  set pairedKeyEncryption(PairedKeyEncryptionFrame v) { $_setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasPairedKeyEncryption() => $_has(3);
   @$pb.TagNumber(4)
-  void clearPairedKeyEncryption() => clearField(4);
+  void clearPairedKeyEncryption() => $_clearField(4);
   @$pb.TagNumber(4)
   PairedKeyEncryptionFrame ensurePairedKeyEncryption() => $_ensure(3);
 
   @$pb.TagNumber(5)
   PairedKeyResultFrame get pairedKeyResult => $_getN(4);
   @$pb.TagNumber(5)
-  set pairedKeyResult(PairedKeyResultFrame v) { setField(5, v); }
+  set pairedKeyResult(PairedKeyResultFrame v) { $_setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasPairedKeyResult() => $_has(4);
   @$pb.TagNumber(5)
-  void clearPairedKeyResult() => clearField(5);
+  void clearPairedKeyResult() => $_clearField(5);
   @$pb.TagNumber(5)
   PairedKeyResultFrame ensurePairedKeyResult() => $_ensure(4);
 
   @$pb.TagNumber(6)
   CertificateInfoFrame get certificateInfo => $_getN(5);
   @$pb.TagNumber(6)
-  set certificateInfo(CertificateInfoFrame v) { setField(6, v); }
+  set certificateInfo(CertificateInfoFrame v) { $_setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasCertificateInfo() => $_has(5);
   @$pb.TagNumber(6)
-  void clearCertificateInfo() => clearField(6);
+  void clearCertificateInfo() => $_clearField(6);
   @$pb.TagNumber(6)
   CertificateInfoFrame ensureCertificateInfo() => $_ensure(5);
 }
@@ -621,10 +623,10 @@ class IntroductionFrame extends $pb.GeneratedMessage {
   static IntroductionFrame? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<FileMetadata> get fileMetadata => $_getList(0);
+  $pb.PbList<FileMetadata> get fileMetadata => $_getList(0);
 
   @$pb.TagNumber(2)
-  $core.List<TextMetadata> get textMetadata => $_getList(1);
+  $pb.PbList<TextMetadata> get textMetadata => $_getList(1);
 
   /// The required app package to open the content. May be null.
   @$pb.TagNumber(3)
@@ -634,10 +636,10 @@ class IntroductionFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasRequiredPackage() => $_has(2);
   @$pb.TagNumber(3)
-  void clearRequiredPackage() => clearField(3);
+  void clearRequiredPackage() => $_clearField(3);
 
   @$pb.TagNumber(4)
-  $core.List<WifiCredentialsMetadata> get wifiCredentialsMetadata => $_getList(3);
+  $pb.PbList<WifiCredentialsMetadata> get wifiCredentialsMetadata => $_getList(3);
 }
 
 /// A response packet sent by the receiving side. Accepts or rejects the list of
@@ -687,11 +689,11 @@ class ConnectionResponseFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   ConnectionResponseFrame_Status get status => $_getN(0);
   @$pb.TagNumber(1)
-  set status(ConnectionResponseFrame_Status v) { setField(1, v); }
+  set status(ConnectionResponseFrame_Status v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasStatus() => $_has(0);
   @$pb.TagNumber(1)
-  void clearStatus() => clearField(1);
+  void clearStatus() => $_clearField(1);
 }
 
 /// A paired key encryption packet sent between devices, contains signed data.
@@ -754,7 +756,7 @@ class PairedKeyEncryptionFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasSignedData() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSignedData() => clearField(1);
+  void clearSignedData() => $_clearField(1);
 
   /// The hash of a certificate id.
   @$pb.TagNumber(2)
@@ -764,7 +766,7 @@ class PairedKeyEncryptionFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasSecretIdHash() => $_has(1);
   @$pb.TagNumber(2)
-  void clearSecretIdHash() => clearField(2);
+  void clearSecretIdHash() => $_clearField(2);
 
   /// An optional encrypted data in byte array format.
   @$pb.TagNumber(3)
@@ -774,7 +776,7 @@ class PairedKeyEncryptionFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasOptionalSignedData() => $_has(2);
   @$pb.TagNumber(3)
-  void clearOptionalSignedData() => clearField(3);
+  void clearOptionalSignedData() => $_clearField(3);
 }
 
 /// A paired key verification result packet sent between devices.
@@ -823,11 +825,11 @@ class PairedKeyResultFrame extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   PairedKeyResultFrame_Status get status => $_getN(0);
   @$pb.TagNumber(1)
-  set status(PairedKeyResultFrame_Status v) { setField(1, v); }
+  set status(PairedKeyResultFrame_Status v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasStatus() => $_has(0);
   @$pb.TagNumber(1)
-  void clearStatus() => clearField(1);
+  void clearStatus() => $_clearField(1);
 }
 
 /// A package containing certificate info to be shared to remote device offline.
@@ -874,7 +876,7 @@ class CertificateInfoFrame extends $pb.GeneratedMessage {
 
   /// The public certificates to be shared with remote devices.
   @$pb.TagNumber(1)
-  $core.List<PublicCertificate> get publicCertificate => $_getList(0);
+  $pb.PbList<PublicCertificate> get publicCertificate => $_getList(0);
 }
 
 /// A public certificate from the local device.
@@ -957,7 +959,7 @@ class PublicCertificate extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasSecretId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSecretId() => clearField(1);
+  void clearSecretId() => $_clearField(1);
 
   /// A bytes representation of a Secret Key owned by contact, to decrypt the
   /// metadata_key stored within the advertisement.
@@ -968,7 +970,7 @@ class PublicCertificate extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasAuthenticityKey() => $_has(1);
   @$pb.TagNumber(2)
-  void clearAuthenticityKey() => clearField(2);
+  void clearAuthenticityKey() => $_clearField(2);
 
   /// A bytes representation a public key of X509Certificate, owned by contact,
   /// to decrypt encrypted UKEY2 (from Nearby Connections API) as a hand shake in
@@ -980,7 +982,7 @@ class PublicCertificate extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasPublicKey() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPublicKey() => clearField(3);
+  void clearPublicKey() => $_clearField(3);
 
   /// The time in millis from epoch when this certificate becomes effective.
   @$pb.TagNumber(4)
@@ -990,7 +992,7 @@ class PublicCertificate extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasStartTime() => $_has(3);
   @$pb.TagNumber(4)
-  void clearStartTime() => clearField(4);
+  void clearStartTime() => $_clearField(4);
 
   /// The time in millis from epoch when this certificate expires.
   @$pb.TagNumber(5)
@@ -1000,7 +1002,7 @@ class PublicCertificate extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.bool hasEndTime() => $_has(4);
   @$pb.TagNumber(5)
-  void clearEndTime() => clearField(5);
+  void clearEndTime() => $_clearField(5);
 
   /// The encrypted metadata in bytes, contains personal information of the
   /// device/user who created this certificate. Needs to be decrypted into bytes,
@@ -1012,7 +1014,7 @@ class PublicCertificate extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.bool hasEncryptedMetadataBytes() => $_has(5);
   @$pb.TagNumber(6)
-  void clearEncryptedMetadataBytes() => clearField(6);
+  void clearEncryptedMetadataBytes() => $_clearField(6);
 
   /// The tag for verifying metadata_encryption_key.
   @$pb.TagNumber(7)
@@ -1022,7 +1024,7 @@ class PublicCertificate extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   $core.bool hasMetadataEncryptionKeyTag() => $_has(6);
   @$pb.TagNumber(7)
-  void clearMetadataEncryptionKeyTag() => clearField(7);
+  void clearMetadataEncryptionKeyTag() => $_clearField(7);
 }
 
 /// NEXT_ID=3
@@ -1079,7 +1081,7 @@ class WifiCredentials extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasPassword() => $_has(0);
   @$pb.TagNumber(1)
-  void clearPassword() => clearField(1);
+  void clearPassword() => $_clearField(1);
 
   /// True if the network is a hidden network that is not broadcasting its SSID.
   /// Default is false.
@@ -1090,7 +1092,7 @@ class WifiCredentials extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasHiddenSsid() => $_has(1);
   @$pb.TagNumber(2)
-  void clearHiddenSsid() => clearField(2);
+  void clearHiddenSsid() => $_clearField(2);
 }
 
 

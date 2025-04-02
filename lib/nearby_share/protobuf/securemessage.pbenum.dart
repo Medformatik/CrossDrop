@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: securemessage.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -17,6 +17,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 class SigScheme extends $pb.ProtobufEnum {
   static const SigScheme HMAC_SHA256 = SigScheme._(1, _omitEnumNames ? '' : 'HMAC_SHA256');
   static const SigScheme ECDSA_P256_SHA256 = SigScheme._(2, _omitEnumNames ? '' : 'ECDSA_P256_SHA256');
+  /// Not recommended -- use ECDSA_P256_SHA256 instead
   static const SigScheme RSA2048_SHA256 = SigScheme._(3, _omitEnumNames ? '' : 'RSA2048_SHA256');
 
   static const $core.List<SigScheme> values = <SigScheme> [
@@ -28,11 +29,12 @@ class SigScheme extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, SigScheme> _byValue = $pb.ProtobufEnum.initByValue(values);
   static SigScheme? valueOf($core.int value) => _byValue[value];
 
-  const SigScheme._($core.int v, $core.String n) : super(v, n);
+  const SigScheme._(super.v, super.n);
 }
 
 /// Supported encryption schemes
 class EncScheme extends $pb.ProtobufEnum {
+  /// No encryption
   static const EncScheme NONE = EncScheme._(1, _omitEnumNames ? '' : 'NONE');
   static const EncScheme AES_256_CBC = EncScheme._(2, _omitEnumNames ? '' : 'AES_256_CBC');
 
@@ -44,13 +46,14 @@ class EncScheme extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, EncScheme> _byValue = $pb.ProtobufEnum.initByValue(values);
   static EncScheme? valueOf($core.int value) => _byValue[value];
 
-  const EncScheme._($core.int v, $core.String n) : super(v, n);
+  const EncScheme._(super.v, super.n);
 }
 
 /// A list of supported public key types
 class PublicKeyType extends $pb.ProtobufEnum {
   static const PublicKeyType EC_P256 = PublicKeyType._(1, _omitEnumNames ? '' : 'EC_P256');
   static const PublicKeyType RSA2048 = PublicKeyType._(2, _omitEnumNames ? '' : 'RSA2048');
+  /// 2048-bit MODP group 14, from RFC 3526
   static const PublicKeyType DH2048_MODP = PublicKeyType._(3, _omitEnumNames ? '' : 'DH2048_MODP');
 
   static const $core.List<PublicKeyType> values = <PublicKeyType> [
@@ -62,7 +65,7 @@ class PublicKeyType extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, PublicKeyType> _byValue = $pb.ProtobufEnum.initByValue(values);
   static PublicKeyType? valueOf($core.int value) => _byValue[value];
 
-  const PublicKeyType._($core.int v, $core.String n) : super(v, n);
+  const PublicKeyType._(super.v, super.n);
 }
 
 

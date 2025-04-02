@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: ukey.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -16,6 +16,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 class Ukey2HandshakeCipher extends $pb.ProtobufEnum {
   static const Ukey2HandshakeCipher RESERVED = Ukey2HandshakeCipher._(0, _omitEnumNames ? '' : 'RESERVED');
   static const Ukey2HandshakeCipher P256_SHA512 = Ukey2HandshakeCipher._(100, _omitEnumNames ? '' : 'P256_SHA512');
+  /// commitment
   static const Ukey2HandshakeCipher CURVE25519_SHA512 = Ukey2HandshakeCipher._(200, _omitEnumNames ? '' : 'CURVE25519_SHA512');
 
   static const $core.List<Ukey2HandshakeCipher> values = <Ukey2HandshakeCipher> [
@@ -27,7 +28,7 @@ class Ukey2HandshakeCipher extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, Ukey2HandshakeCipher> _byValue = $pb.ProtobufEnum.initByValue(values);
   static Ukey2HandshakeCipher? valueOf($core.int value) => _byValue[value];
 
-  const Ukey2HandshakeCipher._($core.int v, $core.String n) : super(v, n);
+  const Ukey2HandshakeCipher._(super.v, super.n);
 }
 
 class Ukey2Message_Type extends $pb.ProtobufEnum {
@@ -48,19 +49,26 @@ class Ukey2Message_Type extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, Ukey2Message_Type> _byValue = $pb.ProtobufEnum.initByValue(values);
   static Ukey2Message_Type? valueOf($core.int value) => _byValue[value];
 
-  const Ukey2Message_Type._($core.int v, $core.String n) : super(v, n);
+  const Ukey2Message_Type._(super.v, super.n);
 }
 
 class Ukey2Alert_AlertType extends $pb.ProtobufEnum {
+  /// Framing errors
   static const Ukey2Alert_AlertType BAD_MESSAGE = Ukey2Alert_AlertType._(1, _omitEnumNames ? '' : 'BAD_MESSAGE');
   static const Ukey2Alert_AlertType BAD_MESSAGE_TYPE = Ukey2Alert_AlertType._(2, _omitEnumNames ? '' : 'BAD_MESSAGE_TYPE');
   static const Ukey2Alert_AlertType INCORRECT_MESSAGE = Ukey2Alert_AlertType._(3, _omitEnumNames ? '' : 'INCORRECT_MESSAGE');
+  /// expected type at this stage of the protocol
   static const Ukey2Alert_AlertType BAD_MESSAGE_DATA = Ukey2Alert_AlertType._(4, _omitEnumNames ? '' : 'BAD_MESSAGE_DATA');
+  /// ClientInit and ServerInit errors
   static const Ukey2Alert_AlertType BAD_VERSION = Ukey2Alert_AlertType._(100, _omitEnumNames ? '' : 'BAD_VERSION');
+  /// suitable version to speak with client.
   static const Ukey2Alert_AlertType BAD_RANDOM = Ukey2Alert_AlertType._(101, _omitEnumNames ? '' : 'BAD_RANDOM');
+  /// length
   static const Ukey2Alert_AlertType BAD_HANDSHAKE_CIPHER = Ukey2Alert_AlertType._(102, _omitEnumNames ? '' : 'BAD_HANDSHAKE_CIPHER');
   static const Ukey2Alert_AlertType BAD_NEXT_PROTOCOL = Ukey2Alert_AlertType._(103, _omitEnumNames ? '' : 'BAD_NEXT_PROTOCOL');
+  /// unsupported
   static const Ukey2Alert_AlertType BAD_PUBLIC_KEY = Ukey2Alert_AlertType._(104, _omitEnumNames ? '' : 'BAD_PUBLIC_KEY');
+  /// Other errors
   static const Ukey2Alert_AlertType INTERNAL_ERROR = Ukey2Alert_AlertType._(200, _omitEnumNames ? '' : 'INTERNAL_ERROR');
 
   static const $core.List<Ukey2Alert_AlertType> values = <Ukey2Alert_AlertType> [
@@ -79,7 +87,7 @@ class Ukey2Alert_AlertType extends $pb.ProtobufEnum {
   static final $core.Map<$core.int, Ukey2Alert_AlertType> _byValue = $pb.ProtobufEnum.initByValue(values);
   static Ukey2Alert_AlertType? valueOf($core.int value) => _byValue[value];
 
-  const Ukey2Alert_AlertType._($core.int v, $core.String n) : super(v, n);
+  const Ukey2Alert_AlertType._(super.v, super.n);
 }
 
 
