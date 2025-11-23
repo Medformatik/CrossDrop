@@ -1,8 +1,11 @@
+> [!IMPORTANT]
+> 🥳 [Google has launched official compatibility between Quick Share and AirDrop](https://blog.google/products/android/quick-share-airdrop/). Therefore this project is obsolete which is why I have decided to archive this repo. It was a trial of getting this to work, however Googles implementation in this case sounds more promising.
+
 **CrossDrop** is a partial implementation of [Google's Quick Share](https://blog.google/products/android/how-to-use-quick-share-android/) in Flutter for macOS, iOS and Linux.
 
 CrossDrop is based on [NearDrop](https://github.com/grishka/NearDrop), a Swift implementation of Nearby Share for macOS.
 
-> [!IMPORTANT]
+> [!WARNING]
 > **⚠️ This is a work in progress. It is not yet feature-complete, and it is not yet stable. It is not yet ready for use.**
 
 > [!NOTE]
